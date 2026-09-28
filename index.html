@@ -3,256 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Специализированный центр Miele в СПб — Ремонт бытовой техники на дому</title>
+    <title>Miele Zentrum — Премиальный сервис бытовой техники в СПб</title>
     <style>
-        /* Премиальные строгие шрифты и цвета (темный графит, золото, белый) */
         :root {
-            --primary-color: #8c2525; /* Фирменный благородный бордово-красный оттенок Miele */
-            --dark-color: #1a1a1a;
-            --light-bg: #f9f9f9;
-            --text-color: #333;
+            --primary-color: #8c2525;
+            --dark-color: #111111;
+            --gray-bg: #f5f5f7;
+            --text-color: #2b2b2b;
+            --light-gray: #777;
         }
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            background-color: #fff;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0; padding: 0; color: var(--text-color); background-color: #fff; line-height: 1.6;
         }
         header {
-            background-color: var(--dark-color);
-            color: #fff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid var(--primary-color);
+            background-color: var(--dark-color); color: #fff; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid var(--primary-color); position: sticky; top: 0; z-index: 1000;
         }
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+        .logo { font-size: 24px; font-weight: 700; letter-spacing: 1.5px; text-decoration: none; color: #fff; }
         .logo span { color: var(--primary-color); }
-        .header-contacts {
-            text-align: right;
-        }
-        .header-contacts a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .header-info {
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 5px;
-        }
-        nav {
-            background-color: #222;
-            padding: 10px 5%;
-            display: flex;
-            gap: 20px;
-        }
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        nav a:hover { color: #fff; }
+        .header-contacts { text-align: right; }
+        .header-contacts a { color: #fff; text-decoration: none; font-size: 20px; font-weight: bold; }
+        .header-info { font-size: 13px; color: #aaa; margin-top: 3px; }
         
-        /* Главный экран (Hero Section) */
+        nav { background-color: #1a1a1a; padding: 12px 5%; display: flex; gap: 30px; }
+        nav a { color: #ccc; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.3s; }
+        nav a:hover, nav a.active { color: #fff; border-bottom: 2px solid var(--primary-color); padding-bottom: 4px; }
+        
         .hero {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://unsplash.com') no-repeat center/cover;
-            color: #fff;
-            padding: 100px 5%;
-            text-align: center;
+            color: #fff; padding: 140px 5%; text-align: center;
         }
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        .hero p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #ddd;
-        }
+        .hero h1 { font-size: 46px; margin-bottom: 20px; font-weight: 300; letter-spacing: 1px; }
+        .hero p { font-size: 20px; max-width: 850px; margin: 0 auto 35px; color: #e5e5e5; font-weight: 300; }
         .btn {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 15px 35px;
-            border: none;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
+            background-color: var(--primary-color); color: #fff; padding: 16px 40px;
+            border: none; font-size: 16px; font-weight: 600; cursor: pointer;
+            text-decoration: none; display: inline-block; transition: 0.3s; letter-spacing: 0.5px;
         }
-        .btn:hover { background-color: #a82e2e; }
+        .btn:hover { background-color: #a82e2e; box-shadow: 0 5px 15px rgba(140, 37, 37, 0.4); }
 
-        /* Преимущества */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            padding: 50px 5%;
-            background-color: var(--light-bg);
-            text-align: center;
-        }
-        .feature-item h3 { margin-bottom: 10px; color: var(--dark-color); }
-        .feature-item p { font-size: 14px; color: #666; }
-
-        /* Услуги */
-        .services { padding: 60px 5%; text-align: center; }
-        .services h2 { font-size: 32px; margin-bottom: 40px; font-weight: 400; }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+        .section-title { text-align: center; font-size: 34px; font-weight: 400; margin: 60px 0 40px; color: var(--dark-color); }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 0 5% 60px; }
         .service-card {
-            border: 1px solid #eee;
-            padding: 30px;
-            transition: 0.3s;
-            background: #fff;
+            border: 1px solid #e1e1e3; background: #fff; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column;
         }
-        .service-card:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-color: var(--primary-color);
-        }
-        .service-card h3 { margin-bottom: 15px; font-size: 20px; }
-        .service-card .price { color: var(--primary-color); font-weight: bold; font-size: 18px; margin-bottom: 15px; }
+        .service-card img { width: 100%; height: 220px; object-fit: cover; }
+        .service-card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .service-card h3 { margin: 0 0 10px 0; font-size: 22px; font-weight: 500; }
+        .service-card .price { color: var(--primary-color); font-weight: 700; font-size: 20px; margin-bottom: 15px; }
+        .service-card p { color: #555; font-size: 15px; margin-bottom: 20px; flex-grow: 1; }
 
-        /* О компании */
-        .about { padding: 60px 5%; background-color: var(--light-bg); }
-        .about-content { max-width: 900px; margin: 0 auto; text-align: center; }
-
-        /* Гарантия и оплата */
-        .warranty { padding: 60px 5%; }
-        .warranty-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Футер */
-        footer {
-            background-color: var(--dark-color);
-            color: #aaa;
-            padding: 40px 5%;
-            font-size: 14px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .footer-grid h4 { color: #fff; margin-bottom: 15px; }
-        .footer-grid p, .footer-grid a { color: #aaa; text-decoration: none; margin: 5px 0; display: block; }
-        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; text-align: center; font-size: 12px; }
+        footer { background-color: var(--dark-color); color: #aaa; padding: 50px 5% 30px; font-size: 14px; border-top: 5px solid var(--primary-color); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-grid h4 { color: #fff; margin-bottom: 20px; font-size: 16px; font-weight: 600; }
+        .footer-grid p, .footer-grid a { color: #aaa; text-decoration: none; margin: 8px 0; display: block; }
+        .footer-grid a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; text-align: center; font-size: 13px; }
     </style>
 </head>
 <body>
 
-    <!-- Шапка сайта -->
     <header>
-        <div class="logo">MIELE<span>•ZENTRUM</span></div>
+        <a href="index.html" class="logo">MIELE<span>•ZENTRUM</span></a>
         <div class="header-contacts">
             <a href="tel:+79868311588">+7 (986) 831-15-88</a>
             <div class="header-info">Прием заявок: ежедневно 10:00 - 20:00</div>
         </div>
     </header>
 
-    <!-- Навигация (Без вакансий и Юр.лиц) -->
     <nav>
-        <a href="#services">Услуги и цены</a>
-        <a href="#about">О сервисе</a>
-        <a href="#warranty">Гарантии</a>
-        <a href="#contacts">Контакты</a>
+        <a href="index.html" class="active">Главная</a>
+        <a href="warranty.html">Условия гарантии</a>
+        <a href="news.html">Новости и статьи</a>
     </nav>
 
-    <!-- Главный экран -->
     <section class="hero">
         <h1>Инженерный ремонт техники Miele в Санкт-Петербурге</h1>
-        <p>Специализированное обслуживание и устранение неисправностей любого уровня сложности строго на дому у клиента. Оригинальные комплектующие и выезд в день обращения.</p>
-        <a href="tel:+79868311588" class="btn">Вызвать инженера на дом</a>
+        <p>Специализированный независимый сервис. Устранение неисправностей любого уровня сложности строго на дому у клиента в день обращения.</p>
+        <a href="tel:+79868311588" class="btn">Вызвать мастера на дом</a>
     </section>
 
-    <!-- Преимущества -->
-    <section class="features">
-        <div class="feature-item">
-            <h3>Оригинальные узлы</h3>
-            <p>Используем только аутентичные комплектующие Miele от проверенных поставщиков для сохранения ресурса прибора.</p>
-        </div>
-        <div class="feature-item">
-            <h3>Ремонт на месте</h3>
-            <p>Вся диагностика и восстановительные работы выполняются на дому. Никакой транспортировки в мастерскую.</p>
-        </div>
-        <div class="feature-item">
-            <h3>Инженерный подход</h3>
-            <p>Профильный опыт работы с премиальной немецкой электроникой, знание всех спецификаций и кодов ошибок.</p>
-        </div>
-        <div class="feature-item">
-            <h3>Прозрачный расчет</h3>
-            <p>Стоимость согласуется строго после комплексного осмотра. При проведении ремонта диагностика — 0 рублей.</p>
-        </div>
-    </section>
-
-    <!-- Услуги и цены (Без холодильников и сушилок) -->
-    <section id="services" class="services">
-        <h2>Стоимость обслуживания и ремонта Miele</h2>
-        <div class="services-grid">
-            <div class="service-card">
+    <h2 class="section-title">Профессиональный ремонт на дому</h2>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <img src="https://unsplash.com" alt="Ремонт стиральных машин Miele">
+            <div class="service-card-content">
                 <h3>Стиральные машины</h3>
                 <div class="price">от 1 500 руб.</div>
-                <p>Устранение протечек, замена ТЭНов, ремонт модулей управления, замена подшипников.</p>
+                <p>Ремонт и замена оригинальных ТЭНов, сливных помп, амортизаторов, подшипников и восстановление плат управления систем Softtronic и ProfiEco.</p>
+                <a href="tel:+79868311588" class="btn" style="text-align:center; padding: 10px;">Заказать ремонт</a>
             </div>
-            <div class="service-card">
+        </div>
+
+        <div class="service-card">
+            <img src="https://unsplash.com" alt="Ремонт посудомоечных машин Miele">
+            <div class="service-card-content">
                 <h3>Посудомоечные машины</h3>
                 <div class="price">от 1 600 руб.</div>
-                <p>Ремонт циркуляционных насосов, устранение ошибок системы Aquastop, чистка клапанов.</p>
+                <p>Устранение протечек (ошибка Waterproof), замена циркуляционных насосов со встроенным нагревателем, чистка ионно-обменных контуров.</p>
+                <a href="tel:+79868311588" class="btn" style="text-align:center; padding: 10px;">Заказать ремонт</a>
             </div>
-            <div class="service-card">
-                <h3>Кофемашины</h3>
+        </div>
+
+        <div class="service-card">
+            <img src="https://unsplash.com" alt="Ремонт кофемашин Miele">
+            <div class="service-card-content">
+                <h3>Встраиваемые кофемашины</h3>
                 <div class="price">от 1 200 руб.</div>
-                <p>Переборка заварного механизма, замена дренажных клапанов, декальцинация и настройка.</p>
-            </div>
-            <div class="service-card">
-                <h3>Духовые шкафы</h3>
-                <div class="price">от 1 800 руб.</div>
-                <p>Замена нагревательных элементов (ТЭН), ремонт переключателей, восстановление плат.</p>
-            </div>
-            <div class="service-card">
-                <h3>Варочные панели и плиты</h3>
-                <div class="price">от 1 700 руб.</div>
-                <p>Ремонт индукционных конфорок, замена сенсорных панелей, модулей фильтрации питания.</p>
-            </div>
-            <div class="service-card">
-                <h3>Микроволновые печи</h3>
-                <div class="price">от 1 100 руб.</div>
-                <p>Замена магнетронов, ремонт цепей высокого напряжения, восстановление сенсоров.</p>
+                <p>Комплексная переборка и смазка заварных механизмов, замена мультиклапанов распределения воды, ремонт встроенных кофемолок AromaticSystem.</p>
+                <a href="tel:+79868311588" class="btn" style="text-align:center; padding: 10px;">Заказать ремонт</a>
             </div>
         </div>
-        <p style="margin-top: 30px; font-size: 13px; color: #777;">*При отказе от проведения ремонта стоимость комплексной диагностики на дому составляет от 1000 рублей в зависимости от типа устройства.</p>
-    </section>
+    </div>
 
-    <!-- О компании (Без вакансий и юридических лиц) -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <h2>О специализированном сервисе</h2>
-            <p>Мы являемся независимой службой инженеров, специализирующихся исключительно на техническом обслуживании и ремонте бытового оборудования марки Miele в Санкт-Петербурге. Наша ключевая особенность — проведение всех манипуляций непосредственно на месте у заказчика. Премиальная техника требует бережного обращения, поэтому мы полностью исключили этап транспортировки приборов, проводя сложнейший компонентный ремонт плат и узлов прямо у вас дома.</p>
-        </div>
-    </section>
-
-    <!-- Гарантия и оплата (Обновленные сроки) -->
-    <section id="warranty" class="warranty">
-        <div class="warranty-grid">
+    <footer>
+        <div class="footer-grid">
             <div>
+                <h4>MIELE ZENTRUM</h4>
+                <p>Независимый специализированный сервис по Санкт-Петербургу и Ленинградской области.</p>
+            </div>
+            <div>
+                <h4>Разделы сервиса</h4>
+                <a href="index.html">Главная страница</a>
+                <a href="warranty.html">Условия расширенной гарантии</a>
+                <a href="news.html">Полезные статьи и новости</a>
+            </div>
+            <div>
+                <h4>Контакты и локация</h4>
+                <p>Телефон: +7 (986) 831-15-88</p>
+                <p>Email: miele.zentrum.service@gmail.com</p>
+                <p>г. Санкт-Петербург, В.О., Малый проспект, д. 54</p>
+                <p>График работы: Ежедневно 10:00 - 20:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Специализированный сервисный центр Miele. Все упоминаемые товарные знаки принадлежат их законным правообладателям. Сервис является независимым.
+        </div>
+    </footer>
+
+</body>
+</html>
