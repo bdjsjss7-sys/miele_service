@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miele Zentrum | Официальный прайс-лист сервисного центра в Санкт-Петербурге</title>
+    <title>Miele Zentrum | Стоимость ремонта и инженерно-технологические карты поломок</title>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           ГЛОБАЛЬНЫЕ ПРЕМИУМ-СТИЛИ (DARK IMMERSIVE MODE)
+           ЧАСТЬ 1: ГЛОБАЛЬНЫЕ ПРЕМИУМ-СТИЛИ И ИММЕРСИВНЫЙ ТЕМНЫЙ РЕЖИМ
            ========================================================================== */
         * {
             margin: 0;
@@ -18,18 +18,22 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            background-color: #080808;
+        }
 
         body {
             background-color: #080808;
             color: #E5E5EA;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Премиальные анимации проявления */
+        /* Системные премиальные анимации для интерфейса */
         @keyframes premiumFadeUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -38,86 +42,143 @@
             to { opacity: 1; }
         }
 
-        @keyframes goldGlow {
-            0% { border-color: rgba(212, 175, 55, 0.1); }
-            50% { border-color: rgba(212, 175, 55, 0.3); }
-            100% { border-color: rgba(212, 175, 55, 0.1); }
+        @keyframes goldPulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.2); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
-        /* ==========================================================================
-           ЧАСТЬ 2: СТИЛИ ПРЕМИУМ-ШАПКИ (HEADER)
+                /* ==========================================================================
+           ЧАСТЬ 2: СТИЛИ ПРЕМИУМ-ШАПКИ (HEADER) И НАВИГАЦИОННОГО МЕНЮ
            ========================================================================== */
         .premium-header {
             position: absolute;
-            top: 0; left: 0; width: 100%; padding: 30px 8%;
+            top: 0; left: 0; width: 100%; padding: 35px 8%;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(8, 8, 8, 0.95), rgba(8, 8, 8, 0));
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: linear-gradient(to bottom, rgba(8, 8, 8, 0.98), rgba(8, 8, 8, 0));
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            animation: premiumFadeIn 1s ease forwards;
+            animation: premiumFadeIn 1.2s ease forwards;
         }
 
         .logo-block { display: flex; flex-direction: column; }
-        .logo-title { font-size: 22px; font-weight: 700; letter-spacing: 3px; color: #FFFFFF; text-transform: uppercase; }
-        .logo-title span { color: #8C2323; }
-        .logo-subtitle { font-size: 9px; font-weight: 400; color: #8E8E93; letter-spacing: 1.5px; margin-top: 4px; text-transform: uppercase; }
+        .logo-title { font-size: 24px; font-weight: 700; letter-spacing: 3px; color: #FFFFFF; text-transform: uppercase; }
+        .logo-title span { color: #8C2323; transition: color 0.3s ease; }
+        .logo-subtitle { font-size: 9px; font-weight: 400; color: #8E8E93; letter-spacing: 1.8px; margin-top: 5px; text-transform: uppercase; }
 
-        .main-nav ul { display: flex; list-style: none; gap: 40px; }
+        .main-nav ul { display: flex; list-style: none; gap: 45px; }
         .main-nav ul li a {
             color: #AEAEB2; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;
-            transition: color 0.3s ease; position: relative; padding-bottom: 6px;
+            transition: color 0.3s ease; position: relative; padding-bottom: 8px;
         }
         .main-nav ul li a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: #D4AF37; transition: width 0.3s ease;
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: #D4AF37; transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
         .main-nav ul li a:hover, .main-nav ul li a.active { color: #D4AF37; }
 
         .header-info { text-align: right; }
-        .header-phone { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: color 0.3s ease; display: block; }
+        .header-phone { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; letter-spacing: 0.5px; transition: color 0.3s ease; display: block; }
         .header-phone:hover { color: #D4AF37; }
-        .header-schedule { font-size: 11px; color: #8E8E93; margin-top: 4px; letter-spacing: 0.3px; }
+        .header-schedule { font-size: 11px; color: #8E8E93; margin-top: 5px; letter-spacing: 0.4px; }
         /* ==========================================================================
-           ЧАСТЬ 3: СТИЛИ ГЛАВНОГО БАННЕРА И ЗАГОЛОВКОВ СЕКЦИЙ
+           ЧАСТЬ 3: СТИЛИ ГЛАВНОГО БАННЕРА (HERO-SECTION) И КОНТЕЙНЕРОВ
            ========================================================================== */
         .price-hero-section {
-            position: relative; padding: 180px 8% 60px 8%;
+            position: relative; 
+            padding: 200px 8% 70px 8%;
             background: 
-                radial-gradient(circle at 90% 20%, rgba(140, 35, 35, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 40%), #0A0A0A;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+                radial-gradient(circle at 85% 15%, rgba(140, 35, 35, 0.14) 0%, transparent 60%),
+                radial-gradient(circle at 15% 85%, rgba(212, 175, 55, 0.04) 0%, transparent 50%), 
+                #0A0A0F;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
             overflow: hidden;
         }
 
-        .price-hero-inner { max-width: 800px; z-index: 2; opacity: 0; transform: translateY(20px); animation: premiumFadeUp 1.2s cubic-bezier(0.25, 1, 0, 1) 0.2s forwards; }
-        .price-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); color: #D4AF37; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; border-radius: 2px; }
-        .price-badge span { width: 6px; height: 6px; background-color: #D4AF37; border-radius: 50%; display: inline-block; }
+        .price-hero-inner { 
+            max-width: 850px; 
+            z-index: 2; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: premiumFadeUp 1.3s cubic-bezier(0.25, 1, 0, 1) 0.1s forwards; 
+        }
         
-        .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #8C2323; margin-bottom: 15px; display: block; }
-        .section-title { font-size: 40px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
-        .section-subtitle { font-size: 16px; line-height: 1.7; color: #AEAEB2; font-weight: 300; max-width: 650px; }
+        .price-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            padding: 9px 18px; 
+            background: rgba(212, 175, 55, 0.04); 
+            border: 1px solid rgba(212, 175, 55, 0.15); 
+            color: #D4AF37; 
+            font-size: 11px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 2.5px; 
+            margin-bottom: 30px; 
+            border-radius: 2px; 
+        }
+        .price-badge span { 
+            width: 5px; 
+            height: 5px; 
+            background-color: #D4AF37; 
+            border-radius: 50%; 
+            display: inline-block; 
+            animation: premiumFadeIn 1s infinite alternate;
+        }
+        
+        .section-label { 
+            font-size: 12px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: #8C2323; 
+            margin-bottom: 18px; 
+            display: block; 
+        }
+        
+        .section-title { 
+            font-size: 44px; 
+            font-weight: 700; 
+            color: #FFFFFF; 
+            letter-spacing: -0.5px; 
+            line-height: 1.25; 
+            margin-bottom: 25px; 
+        }
+        
+        .section-subtitle { 
+            font-size: 16px; 
+            line-height: 1.8; 
+            color: #C7C7CC; 
+            font-weight: 300; 
+            max-width: 720px; 
+        }
 
-        .main-price-container { max-width: 1100px; margin: 60px auto 100px auto; padding: 0 4%; }
+        .main-price-container { 
+            max-width: 1200px; 
+            margin: 70px auto 120px auto; 
+            padding: 0 4%; 
+        }
         /* ==========================================================================
-           ЧАСТЬ 4: СТИЛИ РАСКРЫВАЮЩИХСЯ АККОРДЕОНОВ И МИНИ-СТАТЕЙ С ФОТО
+           ЧАСТЬ 4: CSS-ГЕОМЕТРИЯ ДВУХУРОВНЕВЫХ АККОРДЕОНОВ И МИНИ-СТАТЕЙ
            ========================================================================== */
         .category-accordion-item {
-            background: rgba(18, 18, 20, 0.5);
+            background: rgba(16, 16, 18, 0.45);
             border: 1px solid rgba(255, 255, 255, 0.02);
             margin-bottom: 25px;
             border-radius: 2px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.45s cubic-bezier(0.25, 1, 0.4, 1);
         }
 
         .category-accordion-item:hover {
-            border-color: rgba(212, 175, 55, 0.15);
-            background: rgba(22, 22, 26, 0.6);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(212, 175, 55, 0.18);
+            background: rgba(22, 22, 26, 0.55);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
         }
 
         .category-header {
-            padding: 30px 40px;
+            padding: 32px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -126,7 +187,7 @@
         }
 
         .category-title-block h3 {
-            font-size: 20px;
+            font-size: 21px;
             color: #FFFFFF;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -135,21 +196,22 @@
         .category-meta {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 35px;
         }
 
         .category-price-hint {
-            font-size: 14px;
+            font-size: 13px;
             color: #D4AF37;
             font-weight: 500;
-            letter-spacing: 0.5px;
-            background: rgba(212, 175, 55, 0.05);
-            padding: 6px 14px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            letter-spacing: 0.8px;
+            background: rgba(212, 175, 55, 0.04);
+            padding: 6px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            text-transform: uppercase;
         }
 
         .category-icon {
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.4, 1);
             display: flex;
             align-items: center;
         }
@@ -159,10 +221,10 @@
             transition: stroke 0.3s ease;
         }
 
-        /* Состояния при открытии категории */
+        /* Активные состояния развернутой категории */
         .category-accordion-item.active {
-            border-color: rgba(140, 35, 35, 0.3);
-            background: rgba(14, 14, 16, 0.8);
+            border-color: rgba(140, 35, 35, 0.35);
+            background: rgba(12, 12, 14, 0.85);
         }
         .category-accordion-item.active .category-icon {
             transform: rotate(180deg);
@@ -171,23 +233,22 @@
             stroke: #8C2323;
         }
 
-        /* Выпадающая панель цен */
         .category-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.25, 1, 0.2, 1);
-            background: rgba(8, 8, 10, 0.5);
+            transition: max-height 0.6s cubic-bezier(0.25, 1, 0.1, 1);
+            background: rgba(6, 6, 8, 0.6);
         }
 
-        /* Стили контейнера мини-статей внутри категории */
         .faults-list {
-            padding: 10px 40px 40px 40px;
+            padding: 10px 45px 45px 45px;
         }
 
-        /* Карточка конкретной поломки */
+        /* Контейнер отдельной поломки */
         .fault-card {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.025);
+            padding: 28px 0;
+            transition: border-color 0.3s ease;
         }
         .fault-card:last-child {
             border-bottom: none;
@@ -198,16 +259,20 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            user-select: none;
         }
 
         .fault-name {
             font-size: 16px;
             color: #E5E5EA;
             font-weight: 500;
-            transition: color 0.3s ease;
+            letter-spacing: 0.2px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding-right: 30px;
         }
         .fault-summary:hover .fault-name {
             color: #D4AF37;
+            transform: translateX(4px);
         }
 
         .fault-cost {
@@ -215,23 +280,28 @@
             color: #FFFFFF;
             font-weight: 600;
             white-space: nowrap;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+        .fault-card.active .fault-cost {
+            color: #D4AF37;
         }
 
-        /* Развертываемая мини-статья поломки */
         .fault-article-wrapper {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+            transition: max-height 0.45s cubic-bezier(0.25, 1, 0.2, 1);
         }
 
+        /* Оформление раскрывающейся мини-статьи */
         .fault-article-content {
-            background: linear-gradient(135deg, rgba(22, 22, 26, 0.7) 0%, rgba(14, 14, 16, 0.9) 100%);
-            border-left: 2px solid #8C2323;
-            margin-top: 20px;
-            padding: 25px;
+            background: linear-gradient(135deg, rgba(24, 24, 28, 0.65) 0%, rgba(14, 14, 16, 0.9) 100%);
+            border-left: 3px solid #8C2323;
+            margin-top: 24px;
+            padding: 30px;
             display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 30px;
+            grid-template-columns: 1fr 320px;
+            gap: 35px;
             animation: premiumFadeIn 0.5s ease forwards;
         }
 
@@ -239,21 +309,22 @@
             color: #FFFFFF;
             font-size: 15px;
             font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: 0.3px;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .article-text-block p {
             color: #AEAEB2;
-            font-size: 13.5px;
-            line-height: 1.6;
-            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.65;
+            margin-bottom: 18px;
             font-weight: 300;
         }
 
         .article-badges {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -262,49 +333,55 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             color: #8E8E93;
             font-size: 11px;
-            padding: 4px 10px;
+            padding: 5px 12px;
             text-transform: uppercase;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
         .article-badge.gold {
-            background: rgba(212, 175, 55, 0.05);
+            background: rgba(212, 175, 55, 0.04);
             border-color: rgba(212, 175, 55, 0.15);
             color: #D4AF37;
         }
 
-        /* Контейнер для гарантированно загружаемых фото */
+        /* Премиум-контейнер для SVG чертежей-схем */
         .article-image-block {
             width: 100%;
-            height: 180px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            background-color: #0A0A0A;
-            border-radius: 1px;
+            height: 190px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            background-color: #060608;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
         }
-
-        .article-image-block img {
+        .article-image-block svg {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            filter: grayscale(15%) contrast(105%);
-            transition: transform 0.5s ease;
+            max-height: 160px;
+            opacity: 0.85;
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        .fault-card.active .article-image-block img {
-            transform: scale(1.03);
+        .fault-card.active .article-image-block svg {
+            opacity: 1;
+            transform: scale(1.02);
         }
 
+        @media (max-width: 992px) {
+            .fault-article-content { grid-template-columns: 1fr; gap: 25px; padding: 20px; }
+            .article-image-block { height: 180px; }
+        }
         @media (max-width: 768px) {
-            .category-header { padding: 24px 20px; }
-            .category-title-block h3 { font-size: 17px; }
+            .category-header { padding: 26px 24px; }
+            .category-title-block h3 { font-size: 18px; }
             .category-meta { gap: 15px; }
             .category-price-hint { display: none; }
-            .faults-list { padding: 5px 20px 20px 20px; }
-            .fault-article-content { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
-            .article-image-block { height: 160px; }
+            .faults-list { padding: 5px 24px 24px 24px; }
         }
         /* ==========================================================================
-           ЧАСТЬ 5: СТИЛИ ДЛЯ ФОРМЫ ОБРАТНОЙ СВЯЗИ, КОНТАКТОВ И ПОДВАЛА
+           ЧАСТЬ 5: СТИЛИ ДЛЯ КОНТАКТОВ, ФОРМЫ ЗАКАЗА, ПОДВАЛА И ЗАКРЫТИЕ СТИЛЕЙ
            ========================================================================== */
         .contacts-section { 
             padding: 100px 8%; 
@@ -317,21 +394,22 @@
         .contact-item-box { 
             display: flex; 
             gap: 20px; 
-            background: rgba(16, 16, 18, 0.4); 
-            padding: 25px 30px; 
+            background: rgba(16, 16, 18, 0.5); 
+            padding: 26px 30px; 
             border: 1px solid rgba(255, 255, 255, 0.02); 
             border-radius: 2px; 
-            margin-bottom: 20px; 
-            transition: border-color 0.3s ease;
+            margin-bottom: 22px; 
+            transition: all 0.3s ease;
         }
         .contact-item-box:hover {
-            border-color: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.15);
+            background: rgba(20, 20, 24, 0.6);
         }
         .contact-item-icon { 
             width: 44px; 
             height: 44px; 
             background: rgba(212, 175, 55, 0.03); 
-            border: 1px solid rgba(212, 175, 55, 0.1); 
+            border: 1px solid rgba(212, 175, 55, 0.12); 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -343,7 +421,7 @@
         .contact-item-details a:hover { color: #D4AF37; }
 
         .callback-form-box { 
-            background: linear-gradient(135deg, rgba(20, 20, 22, 0.4) 0%, rgba(12, 12, 14, 0.7) 100%); 
+            background: linear-gradient(135deg, rgba(22, 22, 26, 0.45) 0%, rgba(12, 12, 14, 0.8) 100%); 
             border: 1px solid rgba(255, 255, 255, 0.02); 
             padding: 50px; 
             border-radius: 2px; 
@@ -352,8 +430,8 @@
         .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8E8E93; margin-bottom: 8px; font-weight: 500; }
         .form-control { 
             width: 100%; 
-            background-color: #08080A; 
-            border: 1px solid rgba(255, 255, 255, 0.06); 
+            background-color: #060608; 
+            border: 1px solid rgba(255, 255, 255, 0.07); 
             padding: 16px 20px; 
             color: #FFFFFF; 
             font-size: 15px; 
@@ -361,7 +439,7 @@
             outline: none; 
             transition: all 0.3s ease; 
         }
-        .form-control:focus { border-color: #D4AF37; background-color: #0C0C0F; }
+        .form-control:focus { border-color: #D4AF37; background-color: #0A0A0F; }
         
         .btn-gold { 
             background-color: #8C2323; 
@@ -378,13 +456,13 @@
             margin-top: 10px; 
             border-radius: 2px;
         }
-        .btn-gold:hover { background-color: #A32A2A; box-shadow: 0 5px 20px rgba(140, 35, 35, 0.25); }
-        .form-note { font-size: 12px; color: #636366; line-height: 1.5; margin-top: 20px; font-weight: 300; }
+        .btn-gold:hover { background-color: #A32A2A; box-shadow: 0 5px 22px rgba(140, 35, 35, 0.3); }
+        .form-note { font-size: 11.5px; color: #5C5C5E; line-height: 1.6; margin-top: 22px; font-weight: 300; }
 
         /* ПОДВАЛ (FOOTER) */
         .premium-footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.02); display: flex; justify-content: space-between; align-items: center; }
         .footer-copyright { font-size: 12px; color: #55555A; letter-spacing: 0.5px; }
-        .footer-legal-note { font-size: 11px; color: #55555A; max-width: 550px; text-align: right; line-height: 1.5; font-weight: 300; }
+        .footer-legal-note { font-size: 11px; color: #444448; max-width: 550px; text-align: right; line-height: 1.5; font-weight: 300; }
 
         @media (max-width: 992px) {
             .contacts-section { padding: 60px 5%; }
@@ -430,7 +508,7 @@
     <!-- Главный контейнер для всех категорий техники -->
     <div class="main-price-container">
         <!-- ==========================================================================
-           ЧАСТЬ 7: КАТЕГОРИЯ — СТИРАЛЬНЫЕ МАШИНЫ MIELE (НАЧАЛО)
+           ЧАСТЬ 7: КАТЕГОРИЯ — СТИРАЛЬНЫЕ МАШИНЫ MIELE (ПОЛОМКИ 1 - 3)
            ========================================================================== -->
         <div class="category-accordion-item">
             <div class="category-header">
@@ -451,45 +529,61 @@
                     <!-- Поломка 1 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Стиральная машина не сливает воду</span>
+                            <span class="fault-name">Стиральная машина не сливает воду (Блокировка системы)</span>
                             <span class="fault-cost">от 1 800 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Отсутствие слива чаще всего связано с блокировкой лопастей сливного насоса (помпы) посторонними предметами, критическим засором улитки или выходного патрубка. На профессиональных моделях Miele W1 причиной может стать износ крыльчатки или отказ соленоида сливного клапана.</p>
-                                    <p>Инженер производит аварийный слив воды, демонтирует патрубки для полной очистки системы. При механическом повреждении помпы или выгорании обмотки электромотора производится замена узла на оригинальный насос Miele.</p>
+                                    <p>Отсутствие слива чаще всего связано с механической блокировкой крыльчатки сливного насоса (помпы) мелкими предметами, попавшими из карманов. На профессиональных сериях Miele W1 причиной может стать критический засор улитки, сливного патрубка или отказ соленоида обратного клапана системы.</p>
+                                    <p>Инженер производит аварийный слив воды через технологический люк, демонтирует патрубки для очистки и проверяет сопротивление обмотки мотора помпы. При физическом износе или сгорании электромагнитной катушки деталь заменяется на оригинальный насос Miele с усиленным магнитным экраном.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 40-60 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Сливной насос стиральной машины Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Чертеж помпы -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="80" cy="60" r="30" stroke="#8C2323" stroke-width="2" stroke-dasharray="4 2"/>
+                                        <path d="M80 40V80M60 60H100" stroke="#D4AF37" stroke-width="2"/>
+                                        <path d="M110 60H160M160 50V70" stroke="#444448" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">MIELE PUMP SYSTEM v2.0</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Поломка 2 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Отсутствие нагрева воды (ошибка F20)</span>
+                            <span class="fault-name">Отсутствие нагрева воды (Код неисправности F20)</span>
                             <span class="fault-cost">от 2 400 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Если вода остается холодной, автоматика Miele прерывает цикл с кодом ошибки. Главная причина — перегорание спирали трубчатого нагревателя (ТЭНа) из-за накипи или естественного износа. Реже проблема кроется в неисправности датчика температуры NTC или выгорании реле нагрева на силовой плате электроники.</p>
-                                    <p>Мастер прозванивает цепь питания мультиметром. При подтверждении дефекта производится демонтаж передней панели корпуса и замена ТЭНа на оригинальный нагревательный элемент с керамическим покрытием, устойчивым к жесткой воде.</p>
+                                    <p>Если вода во время стирки остается холодной, автоматика прерывает цикл из-за отсутствия отклика от термодатчика. Главная причина — перегорание внутренней спирали трубчатого электронагревателя (ТЭНа) вследствие образования толстого слоя накипи или выработки ресурса детали. Реже дефект кроется в неисправности датчика NTC или выгорании реле нагрева на блоке управления ELP.</p>
+                                    <p>Мастер выполняет замер сопротивления изоляции. При подтверждении пробоя спирали ТЭНа на корпус производится демонтаж фронтальной панели стиральной машины и установка оригинального нагревательного элемента Miele с антикоррозийным керамическим напылением.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 50-70 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Замена ТЭНа стиральной машины Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Чертеж ТЭНа -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M30 50H150C160 50 160 70 150 70H30" stroke="#8C2323" stroke-width="2" stroke-linejoin="round"/>
+                                        <path d="M30 60H140C145 60 145 65 140 65H30" stroke="#444448" stroke-width="1.5"/>
+                                        <circle cx="30" cy="50" r="3" fill="#D4AF37"/>
+                                        <circle cx="30" cy="70" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HEATING ELEMENT CONTOUR</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -498,22 +592,310 @@
                     <!-- Поломка 3 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Сильный гул, грохот или вибрaция при отжиме</span>
+                            <span class="fault-name">Металлический гул, сильная вибрaция или стук при отжиме</span>
                             <span class="fault-cost">от 4 500 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Появление металлического скрежета или сильного гула на высоких оборотах свидетельствует о разрушении сальника и попадании влаги в подшипниковый узел бака. Также вибрация может возникать из-за ослабления креплений противовесов или выработки ресурса гидравлических амортизаторов.</p>
-                                    <p>Ремонт узла стиральных машин Miele требует полной разборки бака. Инженер производит выпрессовку старых подшипников, устанавливает усиленный комплект шведских подшипников SKF и оригинальный сальник, обработанный термостойкой влагоотталкивающей смазкой.</p>
+                                    <p>Громкий гул, напоминающий взлет самолета, однозначно указывает на критический износ или полное разрушение подшипников барабана. Влага проникает к подшипникам из-за затвердевания и растрескивания резинового сальника. Игнорирование проблемы ведет к повреждению вала крестовины бака и истиранию посадочного места.</p>
+                                    <p>Капитальный ремонт требует извлечения и полной разборки нержавеющего бака Miele на стапеле. Специалист производит выпрессовку старой обоймы подшипников гидравлическим прессом, полирует вал и запрессовывает оригинальный комплект подшипников повышенной износостойкости SKF вместе со специальным многоконусным сальником.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 3-4 часа</span>
                                         <span class="article-badge gold">Гарантия: 24 месяца</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Ремонт бака и подшипников Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Чертеж подшипника -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="40" stroke="#8C2323" stroke-width="3"/>
+                                        <circle cx="100" cy="60" r="25" stroke="#444448" stroke-width="2"/>
+                                        <circle cx="100" cy="28" r="4" fill="#D4AF37"/>
+                                        <circle cx="100" cy="92" r="4" fill="#D4AF37"/>
+                                        <circle cx="68" cy="60" r="4" fill="#D4AF37"/>
+                                        <circle cx="132" cy="60" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">BEARING ROTOR OVERVIEW</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Не открывается люк после стирки (Сбой блокировки замка)</span>
+                            <span class="fault-cost">от 1 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Застревание двери происходит из-за поломки терморезистора или катушки внутри устройства блокировки люка (УБЛ). Физический износ пластикового фиксирующего крючка ручки люка также блокирует открытие механически. В редких случаях плата управления не снимает напряжение блокировки из-за неисправности симистра цепи питания замка.</p>
+                                    <p>Инженер выполняет ручную деблокировку двери через аварийный трос в районе сливного фильтра. Демонтируется зажимная манжета и проверяются контакты замка. При обнаружении выгоревших биметаллических пластин узел блокировки УБЛ меняется на новый оригинальный замок системы Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-45 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема замка УБЛ -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M40 35H120V85H40V35Z" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M120 50H150V70H120" stroke="#8C2323" stroke-width="2" stroke-linejoin="round"/>
+                                        <path d="M60 60H100" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <path d="M70 50L60 60L70 70" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DOOR LOCK INTERLOCK MECHANISM</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Машина не набирает воду / Ошибка подачи воды (F10)</span>
+                            <span class="fault-cost">от 1 600 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Код F10 указывает на то, что за отведенное время бак не наполнился до нужного уровня. Это происходит из-за выхода из строя электромагнитного заливного клапана (КЭН), засорения сеточки фильтра грубой очистки ржавчиной из водопровода или при повреждении датчика уровня воды (прессостата), который измеряет давление воздушного столба.</p>
+                                    <p>Мастер тестирует обмотки соленоидных клапанов. Если они исправны, проверяется герметичность трубки прессостата. Обнаруженный дефектный тройной клапан подачи воды меняется на новый оригинальный блок КЭН Miele для восстановления штатного распределения потоков по отсекам кюветы.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема клапана подачи -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M40 60H100M100 40V80" stroke="#444448" stroke-width="1.5"/>
+                                        <rect x="100" y="45" width="25" height="30" fill="#8C2323" stroke="#8C2323"/>
+                                        <path d="M125 60H160" stroke="#D4AF37" stroke-width="2"/>
+                                        <path d="M55 50L40 60L55 70" stroke="#444448" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">INLET SOLENOID VALVE VALVE STAGE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Барабан не вращается / Рывки двигателя при старте (Ошибка F50)</span>
+                            <span class="fault-cost">от 2 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Остановка барабана на классических моторах вызвана износом угольных щеток. На современных инверторных двигателях Miele ProfiEco ошибка F50 сообщает о сбое связи с силовой платой инвертора или повреждении обмоток статора. Барабан также заклинивает при соскальзывании или разрыве поликлинового приводного ремня.</p>
+                                    <p>Мастер снимает заднюю стенку корпуса и проверяет натяжение ремня, а также состояние щеточного узла. На инверторах проводится диагностика силовых транзисторов IGBT. Изношенные щетки заменяются оригинальными двухслойными элементами, а дефектный ремень — оригинальным ремнем с полиамидным кордом.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема приводного мотора -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="32" stroke="#444448" stroke-width="2"/>
+                                        <circle cx="100" cy="60" r="20" stroke="#8C2323" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                        <path d="M50 60H80M120 60H150" stroke="#D4AF37" stroke-width="3"/>
+                                        <rect x="45" y="55" width="5" height="10" fill="#D4AF37"/>
+                                        <rect x="150" y="55" width="5" height="10" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">PROFIECO MOTOR INDUCTION CONTOUR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 7 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сработала защита от протечек / Вода в поддоне (Ошибка Waterproof / F138)</span>
+                            <span class="fault-cost">от 2 000 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Код F138 сообщает об активации поплавкового микропереключателя в аварийном поддоне из-за внутренней утечки. Вода может сочиться из растрескавшегося сливного патрубка, поврежденного стыка диспенсера порошка или деформированного бака. Также течь возникает из-за износа сальника приводного вала.</p>
+                                    <p>Мастер демонтирует боковые стенки корпуса, просушивает поддон и проводит опрессовку гидросистемы. Обнаруженный поврежденный патрубок или хомут заменяется на оригинальный компонент Miele повышенной прочности, после чего датчик Waterproof калибруется и сбрасывается в памяти процессора.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M40 90H160M100 90V50" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M85 50H115" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="100" cy="70" r="10" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="3 1"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">WATERPROOF FLOAT DETECTOR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 8 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Программные сбои / Зависание на середине цикла стирки</span>
+                            <span class="fault-cost">от 3 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Зависание программы, хаотичное мигание индикаторов дисплея или самопроизвольный перезапуск вызваны нестабильностью питания или деградацией компонентов центрального модуля управления. Скачки напряжения в сети СПб часто выводят из строя субмодули памяти или импульсные трансформаторы платы.</p>
+                                    <p>Инженер извлекает электронный блок и проводит его диагностику на осциллографе. Неисправные конденсаторы, стабилизаторы напряжения или сгоревшие симисторы выпаиваются. Плата восстанавливается на паяльной станции с последующим перепрограммированием ПЗУ актуальной заводской прошивкой.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1-2 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="35" width="100" height="50" rx="2" stroke="#444448" stroke-width="1.5"/>
+                                        <rect x="65" y="45" width="20" height="20" fill="#8C2323"/>
+                                        <circle cx="120" cy="55" r="8" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <path d="M50 75H150" stroke="#444448" stroke-width="1"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">MAIN CONTROL BOARD ARCHITECTURE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 9 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Разрыв резиновой манжеты люка / Вода вытекает из-под двери</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Разрез или сквозное истирание уплотнительной резины манжеты происходит из-за трения о забытые в вещах острые предметы (монеты, фурнитуру) или вследствие естественной потери эластичности силикона под воздействием агрессивной химии. Через поврежденный участок вода во время стирки заливает переднюю панель.</p>
+                                    <p>Попытки заклеить манжету не дают долгосрочного результата из-за вибраций. Мастер снимает внешнее стопорное кольцо-пружину, демонтирует старую манжету, тщательно зачищает посадочный бортик бака и устанавливает новую оригинальную износостойкую манжету Miele с идеальной герметизацией.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="42" stroke="#444448" stroke-width="4"/>
+                                        <path d="M62 40 C 70 30, 130 30, 138 40" stroke="#8C2323" stroke-width="2" fill="none"/>
+                                        <path d="M58 60H64M136 60H142" stroke="#D4AF37" stroke-width="2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DOOR GASKET CONTOUR SECTION</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 10 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Износ гидравлических амортизаторов / Сильные глухие удары бака</span>
+                            <span class="fault-cost">от 2 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>При выработке поршневого вкладыша внутри стоек амортизаторы теряют способность гасить колебания. На отжиме бак раскачивается по неконтролируемой амплитуде и бьет о внутренние стенки корпуса, что может привести к обрыву проводки или трещине пластикового кожуха.</p>
+                                    <p>Амортизаторы меняются исключительно парами. Специалист отсоединяет нижние крепления от станины, извлекает изношенные детали и монтирует новые оригинальные фрикционные амортизаторы Miele с строго калиброванным заводским усилием сопротивления в Ньютонах.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="94" y="30" width="12" height="40" fill="#444448"/>
+                                        <rect x="90" y="65" width="20" height="35" fill="#8C2323"/>
+                                        <circle cx="100" cy="30" r="4" fill="#D4AF37"/>
+                                        <circle cx="100" cy="95" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">SUSPENSION STRUT SHOCK v3</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 11 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Ошибка уровня воды / Постоянный одновременный слив и залив (F11)</span>
+                            <span class="fault-cost">от 1 600 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Бесконечный цикл набора и сброса воды связан либо с внешним «сифонным эффектом», либо с выходом из строя электронного датчика давления (прессостата). Если засоряется камера отбора давления, процессор получает ложные данные и запускает помпу для безопасности.</p>
+                                    <p>Мастер демонтирует прессостат и проверяет целостность его мембраны. Производится промывка камеры отбора давления от остатков нерастворившегося порошка. При внутренней неисправности индуктивного прессостата выполняется его замена на оригинальный аналог Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="28" stroke="#444448" stroke-width="2"/>
+                                        <path d="M100 32V60" stroke="#8C2323" stroke-width="1.5"/>
+                                        <path d="M100 60 L115 75" stroke="#D4AF37" stroke-width="2"/>
+                                        <path d="M100 88V100" stroke="#444448" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">ANALOG PRESSURE SWITCH MODULE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 12 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сбой системы автоматического дозирования жидких средств TwinDos</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Неисправность проистекает в виде ошибки инициализации картриджей. Причина кроется в засыхании концентрированного геля внутри соединительных капиллярных трубок при долгом простое или при отказе шаговых распределительных мини-насосов подачи химии.</p>
+                                    <p>Специалист выполняет глубокую программную и механическую промывку каналов флеш-раствором. При обнаружении течи соединительных манжет или перегорании мотора насоса TwinDos производится замена распределительного гидравлического картридж-блока.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="40" width="40" height="50" rx="2" stroke="#444448" stroke-width="1.5"/>
+                                        <rect x="110" y="40" width="40" height="50" rx="2" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M70 90V105H130V90" stroke="#8C2323" stroke-width="1.5" fill="none"/>
+                                        <circle cx="100" cy="105" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">TWINDOS DUAL VALVING SYSTEM</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -523,12 +905,12 @@
             </div> <!-- Конец category-content -->
         </div> <!-- Конец category-accordion-item стиральных машин -->
         <!-- ==========================================================================
-           ЧАСТЬ 9: КАТЕГОРИЯ — СУШИЛЬНЫЕ МАШИНЫ MIELE
+           ЧАСТЬ 11: КАТЕГОРИЯ — СУШИЛЬНЫЕ МАШИНЫ MIELE (ПОЛОМКИ 1 - 3)
            ========================================================================== -->
         <div class="category-accordion-item">
             <div class="category-header">
                 <div class="category-title-block">
-                    <h3>Сушильные машины (с тепловым насосом / конденсационные)</h3>
+                    <h3>Сушильные машины барабанного типа</h3>
                 </div>
                 <div class="category-meta">
                     <span class="category-price-hint">от 1 500 ₽</span>
@@ -544,22 +926,29 @@
                     <!-- Поломка 1 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Сушильная машина долго работает и не сушит белье</span>
+                            <span class="fault-name">Машина долго работает и не сушит белье (Сбой теплового насоса)</span>
                             <span class="fault-cost">от 2 900 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>В современных сушильных барабанах Miele Heat Pump за циркуляцию тепла отвечает компрессор фреонового контура. Если машина крутит барабан часами, но белье остается сырым, проблема кроется в утечке хладагента (фреона), выходе из строя пускового конденсатора компрессора или критическом загрязнении ворсовым налетом радиатора-испарителя.</p>
-                                    <p>Мастер проводит очистку теплообменника с помощью гидродинамической установки высокого давления. При обнаружении микротрещин контур вакуумируется, устраняется течь, и система заправляется точным весом хладагента по заводской спецификации Miele.</p>
+                                    <p>В продвинутых сериях Miele за генерацию тепла отвечает компрессор фреонового контура. Если цикл идет часами, но воздух остается холодным, проблема кроется в утечке хладагента, выходе из строя пускового конденсатора компрессора или тотальном засорении радиатора-испарителя ворсовой пылью, которая пробивается сквозь штатные фильтры.</p>
+                                    <p>Специалист проводит глубокую очистку теплообменника гидродинамическим методом. В случае нарушения герметичности магистрали, мастер локализует микротрещину, запаивает контур твердым припоем, вакуумирует систему и заправляет её точным весом фреона R134a/R290 по заводской табличке Miele.</p>
                                     <div class="article-badges">
-                                        <span class="article-badge">Время: 1.5-2 часа</span>
+                                        <span class="article-badge">Время: 1.5-2.5 часа</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Ремонт теплового насоса сушильной машины Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Схема компрессора -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M60 75C60 50 80 40 100 40C120 40 140 50 140 75V85H60V75Z" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M40 85H160" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 40V25M100 25H130" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HEAT PUMP COMPRESSOR CIRCUIT</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -568,32 +957,272 @@
                     <!-- Поломка 2 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Программа завершается раньше времени / Ошибка датчика влажности</span>
+                            <span class="fault-name">Программа завершается через 5-10 минут / Сбой датчика остаточной влажности</span>
                             <span class="fault-cost">от 1 600 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Сушильные машины Miele используют систему PerfectDry, которая измеряет проводимость воды и влажность ткани с помощью угольных щеток-контактов, прижимающихся к внешней стороне барабана. Если на датчиках оседает слой известкового налета от моющих средств, электроника некорректно считывает сопротивление и резко обрывает цикл.</p>
-                                    <p>Специалист замеряет опорное напряжение на шлейфе датчиков. Выполняется деликатная механическая и химическая очистка контактных дорожек барабана, а при физическом износе графитовых графитовых электродов производится их полная замена.</p>
+                                    <p>Интеллектуальная система PerfectDry непрерывно считывает уровень влажности белья через электрическое сопротивление, используя графитовые щетки-контакты на торце барабана. Если на датчиках оседает слой солей от жесткой воды и кондиционеров, цепь замыкается некорректно, и автоматика экстренно завершает сушку.</p>
+                                    <p>Мастер выполняет замер опорного напряжения цепи. Производится деликатная механическая шлифовка и химическое удаление налета с металлических ребер барабана. При критическом износе токосъемных графитовых электродов осуществляется установка нового оригинального комплекта щеток.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема датчика влажности -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="35" stroke="#444448" stroke-width="1.5" stroke-dasharray="4 2"/>
+                                        <rect x="130" y="45" width="8" height="30" fill="#D4AF37"/>
+                                        <path d="M134 45V25H160" stroke="#8C2323" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">PERFECTDRY CONTACT BRUSH UNIT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Горит индикатор «Опорожнить резервуар» при пустом контейнере (Ошибка F066)</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В процессе сушки влага конденсируется и стекает в нижний зумпф, откуда дренажная помпа перекачивает её в верхний лоток. Ошибка возникает, если забивается сливной канал, ломается поплавок-переключатель или сгорает обмотка помпы. Вода застаивается внизу, активируя защитный триггер блокировки.</p>
+                                    <p>Инженер очищает резервуар сбора от ворсового шлама, демонтирует дренажный насос и тестирует его на стенде. При обнаружении короткого замыкания или механического заклинивания вала помпы производится установка оригинального откачивающего насоса Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема помпы сушилки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="50" width="35" height="40" fill="#444448"/>
+                                        <path d="M85 70H140M140 70V40" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="67" cy="70" r="6" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">CONDENSATE CONDENSATION PUMP STAGE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Барабан не вращается / Гудение мотора без движения (Разрыв ремня)</span>
+                            <span class="fault-cost">от 2 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В отличие от стиральных машин, ремень в сушилках Miele опоясывает весь металлический барабан целиком. Разрыв или соскальзывание ремня происходит из-за систематического перегруза сушильной камеры мокрым тяжелым бельем или вследствие заклинивания натяжного шкива. Мотор при этом запускается и гудит, но вращение не передается.</p>
+                                    <p>Для замены ремня требуется демонтаж боковых панелей и частичное смещение задней стенки. Инженер очищает внутреннее пространство от пыли, проверяет люфт промежуточного натяжного ролика и монтирует новый оригинальный поликлиновый приводной ремень Miele с оптимизированным коэффициентом зацепления.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема приводного ремня -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="40" stroke="#444448" stroke-width="2"/>
+                                        <circle cx="100" cy="60" r="42" stroke="#8C2323" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <circle cx="100" cy="101" r="6" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DRUM BELT TENSION CONTOUR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Скрип, скрежет или прерывистый стук во время вращения барабана</span>
+                            <span class="fault-cost">от 2 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Массивный барабан сушильной машины Miele спереди и сзади опирается на специальные сверхпрочные ролики с резиновым или фторопластовым покрытием. При попадании ворса внутрь подшипников роликов смазка вырабатывается, колесо начинает тереться об ось с перекосом, создавая нарастающий неприятный скрежет или цикличный стук.</p>
+                                    <p>Мастер оценивает степень люфта опорных элементов. Чтобы избежать повторного ремонта, ролики заменяются полным комплектом (парой). Новые оригинальные опорные катки Miele устанавливаются на очищенные оси с нанесением термостойкого демпферного состава.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема опорных роликов -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="50" r="35" stroke="#444448" stroke-width="1.5"/>
+                                        <circle cx="72" cy="85" r="10" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="128" cy="85" r="10" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="72" cy="85" r="3" fill="#D4AF37"/>
+                                        <circle cx="128" cy="85" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">SUPPORT ROLLER SUSPENSION</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Вибрaция корпуса и гул без движения воздуха / Сбой вентилятора</span>
+                            <span class="fault-cost">от 1 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Эффективный теплообмен в сушилках Miele невозможен без мощного центробежного вентилятора (турбины), гонящего воздух сквозь испаритель. Если лопасти вентилятора блокируются плотным комком шерсти или на валу электромотора выгорает пусковая обмотка, циркуляция прекращается, вызывая перегрев компрессора.</p>
+                                    <p>Инженер добирается до воздуховода, осматривает целостность крыльчатки турбины и замеряет электрические параметры мотора. При разрушении пластиковых лопастей от механического удара или сгорании статора выполняется замена вентилятора в сборе на оригинальный бесшумный модуль Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема вентилятора -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="30" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 30V90M70 60H130" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M78 38L122 82M78 82L122 38" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">BLOWER IMPELLER RADIAL TURBINE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 7 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Перегрев корпуса / Запах гари или резкое отключение (Сбой ТЭНа конденсации)</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В классических конденсационных сушилках Miele без теплового насоса используется мощный блок нагревательных элементов. Из-за скопления мелкодисперсного ворса внутри шахты нагрева нарушается обдув спиралей. ТЭН начинает раскаляться до критических температур, что приводит к деформации пластика, появлению запаха гари или перегоранию термопредохранителя.</p>
+                                    <p>Инженер производит полную разборку воздуховода, удаляет следы нагара и ворса. Мультиметром проверяется целостность защитных термостатов (таблеток). Если сама спираль нагревателя повреждена или пробита на корпус, выполняется замена блока ТЭНа на оригинальный модуль Miele с термозащитой.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="40" y="45" width="120" height="30" rx="2" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M50 60H150" stroke="#8C2323" stroke-width="2" stroke-dasharray="5 2"/>
+                                        <circle cx="100" cy="45" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DRYER HEATING ASSEMBLY STAGE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 8 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сушка не запускается при закрытой двери / Индикация открытого люка</span>
+                            <span class="fault-cost">от 1 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Безопасность сушильных барабанов Miele контролируется концевым микропереключателем двери. Если при закрытии люка плата управления по-прежнему выдает сигнал о том, что дверь открыта, виной тому механическое повреждение нажимного язычка ручки, износ пружины фиксатора или подгорание внутренних контактов самого концевика.</p>
+                                    <p>Мастер проверяет геометрию петель люка на предмет провисания. Демонтируется накладка корпуса и тестируется микропереключатель на замыкание цепи. Дефектный узел блокировки двери заменяется на оригинальный оригинальный концевой выключатель Miele с защитой от высокотемпературных деформаций.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-40 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="60" y="45" width="60" height="30" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M120 52L145 40" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="60" cy="60" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DOOR MICROSWITCH INTERLOCK</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 9 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сушильная машина полностью не включается / Отсутствует индикация на дисплее</span>
+                            <span class="fault-cost">от 3 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Полное отсутствие признаков жизни при исправной розетке указывает на критический сбой в первичной цепи питания силового электронного модуля. В результате перепадов напряжения часто выгорает защитный варистор, выпрямительный диодный мост или ШИМ-контроллер импульсного трансформатора на плате.</p>
+                                    <p>Инженер извлекает главный модуль управления сушильной машины и проводит дефектовку компонентов на диагностическом стенде. Производится замена выгоревших полупроводников и цепей фильтрации помех. Плата восстанавливается оригинальными компонентами и покрывается защитным лаком.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1-1.5 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="40" width="100" height="45" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M60 50H75V75H60V50Z" fill="#8C2323"/>
+                                        <path d="M110 62H140" stroke="#D4AF37" stroke-width="2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">POWER SUPPLY STEP-DOWN LOGIC</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 10 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сбой или мерцание внутреннего освещения барабана</span>
+                            <span class="fault-cost">от 1 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Внутренняя LED-подсветка барабана Miele подвергается постоянным вибрациям и воздействию высокой влажности. Мерцание или полный отказ светодиодов вызваны разгерметизацией защитного плафона, окислением контактных клемм проводки или выходом из строя локального понижающего драйвера подсветки.</p>
+                                    <p>Мастер демонтирует защитный световой модуль над дверным проемом, зачищает окислившиеся контакты и замеряет приходящее напряжение. При разрушении матрицы светодиодов от влаги выполняется установка нового оригинального влагозащищенного LED-модуля Miele.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 30-45 мин</span>
                                         <span class="article-badge gold">Гарантия: 6 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Датчик влажности сушильной машины Miele" onerror="this.src='https://placehold.co'">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- Конец faults-list -->
-            </div> <!-- Конец category-content -->
-        </div> <!-- Конец category-accordion-item сушильных машин -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="15" fill="none" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 45V75M85 60H115" stroke="#D4AF37" stroke-width="1.5"/>
         <!-- ==========================================================================
-           ЧАСТЬ 10: КАТЕГОРИЯ — ПОСУДОМОЕЧНЫЕ МАШИНЫ MIELE
+           ЧАСТЬ 14: КАТЕГОРИЯ — ПОСУДОМОЕЧНЫЕ МАШИНЫ MIELE (ПОЛОМКИ 1 - 3)
            ========================================================================== -->
         <div class="category-accordion-item">
             <div class="category-header">
@@ -614,22 +1243,29 @@
                     <!-- Поломка 1 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Сработала защита от протечек Waterproof (Ошибка F70)</span>
+                            <span class="fault-name">Активация системы защиты от протечек Waterproof (Ошибка F70)</span>
                             <span class="fault-cost">от 1 900 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Код F70 означает, что вода попала в нижний защитный поддон посудомоечной машины Miele, подняв поплавковый датчик пенопласта. Протечка может возникнуть из-за трещины в сливном или заливном патрубке, разгерметизации сальника основного циркуляционного насоса, прокола соляного бака или износа контурного уплотнителя дверцы.</p>
-                                    <p>Мастер извлекает встроенную машину из гарнитура, сливает воду из поддона и проводит опрессовку гидросистемы под давлением. Локализовав течь, инженер меняет поврежденный патрубок или уплотнитель на новый оригинальный элемент Miele с обязательной перепроверкой датчика Аквастоп.</p>
+                                    <p>Код неисправности F70 указывает на то, что в нижний поддон посудомоечной машины попала вода, подняв поплавковый микропереключатель Аквастопа. Утечка чаще всего возникает из-за микротрещины в патрубках, разгерметизации сальника циркуляционной помпы, повреждения соляного бака из-за химической коррозии или износа контурного уплотнителя двери.</p>
+                                    <p>Инженер аккуратно извлекает встроенную посудомойку из кухонного гарнитура, удаляет жидкость из поддона и производит опрессовку всей гидросистемы под рабочим давлением. Локализовав источник течи, мастер производит замену изношенного патрубка, сальника или уплотнения на новый оригинальный компонент Miele.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 50-80 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Ремонт системы Waterproof посудомойки Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Схема Waterproof -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M30 95H170M100 95V60" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M80 60H120" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="100" cy="78" r="8" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="3 2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">WATERPROOF DETECTOR SYSTEM</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -638,37 +1274,277 @@
                     <!-- Поломка 2 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Посуда остается грязной / Блокировка циркуляционного насоса</span>
+                            <span class="fault-name">Посудомойка не сливает воду / Ошибка сливного тракта (F11)</span>
+                            <span class="fault-cost">от 1 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Остановка цикла с полным баком грязной воды сигнализирует о невозможности её откачки. Главная причина — заклинивание крыльчатки сливного насоса мелкими костями, осколками посуды или зубочистками, прошедшими сквозь поврежденный сетчатый фильтр. Также код F11 возникает при образовании жирового засора в сифоне или при перегорании обмотки помпы.</p>
+                                    <p>Мастер извлекает внутренние фильтры, проверяет легкость вращения крыльчатки через технологическое окно и осматривает обратный клапан. Если ручная очистка не помогает, помпа демонтируется для проверки сопротивления. Сгоревший насос заменяется оригинальной бесшумной помпой Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-55 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема сливной помпы -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="90" cy="65" r="25" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M90 45V85M70 65H110" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M115 65H160" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DRAINAGE IMPELLER MODULE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Отсутствие или критический дефицит залива воды (Ошибка F12 / F13)</span>
+                            <span class="fault-cost">от 1 700 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Коды F12 и F13 указывают на то, что за отведенное время электронный расходомер (крыльчатка счетчика воды) не зафиксировал нужного объема поступающей жидкости. Это происходит из-за поломки впускного клапана Аквастоп, расположенного прямо на шланге подключения, засорения сетки-фильтра окалиной или неисправности самого герконового датчика протока.</p>
+                                    <p>Инженер проверяет напряжение, подаваемое с платы управления на заливной блок клапанов. Промывается входной фильтр. При выгорании катушек заливного шланга, узел Аквастоп заменяется в сборе на оригинальный армированный шланг Miele со спаренным магнитным клапаном.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема залива -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M30 60H110" stroke="#444448" stroke-width="2"/>
+                                        <rect x="110" y="45" width="30" height="30" fill="#8C2323" stroke="#8C2323"/>
+                                        <path d="M140 60H170" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <circle cx="70" cy="60" r="10" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">AQUA-STOP INLET CONTOUR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Слабое давление воды / Коромысла не вращаются (Износ циркуляционного насоса)</span>
                             <span class="fault-cost">от 3 500 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Если посудомойка набирает воду, но цикл мытья не начинается (или коромысла не вращаются), виноват циркуляционный насос, создающий давление воды в системе. В него мог попасть осколок стекла или кость, заблокировав крыльчатку. Также со временем изнашиваются графитовые втулки мотора или сгорает встроенный в него нагревательный элемент (ТЭН).</p>
-                                    <p>Специалист разбирает нижнюю часть гидросистемы. Если насос просто заклинило посторонним предметом, выполняется его очистка. При критическом износе или выгорании обмотки ТЭНа производится замена высокотехнологичного узла в сборе.</p>
+                                    <p>Если машина набирает воду, но цикл мытья не начинается, виноват основной циркуляционный насос. Крыльчатку двигателя может заклинить осколок стекла или твердый налет. Также со временем разбиваются графито-керамические втулки вала, из-за чего ротор начинает люфтить и клинить при подаче питания, вызывая гул.</p>
+                                    <p>Инженер разбирает нижнюю часть гидросистемы. Если насос просто заблокирован, выполняется деликатное извлечение инородного тела. При выработке посадочных мест вала или выгорании обмоток статора производится замена высокотехнологичного узла в сборе на оригинальный мотор Miele.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 60-90 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Циркуляционный насос посудомоечной машины Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Схема циркуляционного насоса -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="30" stroke="#444448" stroke-width="2"/>
+                                        <path d="M100 30V90M70 60H130" stroke="#8C2323" stroke-width="1.5"/>
+                                        <circle cx="100" cy="60" r="12" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HIGH PRESSURE PUMP ROTOR</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div> <!-- Конец faults-list -->
-            </div> <!-- Конец category-content -->
-        </div> <!-- Конец category-accordion-item посудомоечных машин -->
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Посуда остается холодной и сырой / Ошибка цепи нагрева (F24)</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Код F24 указывает на сбой в цепи реле ТЭНа. В посудомойках Miele применяется проточный нагревательный элемент, интегрированный в корпус циркуляционного насоса. Перегорание спирали происходит из-за накипи или падения давления воды. Также проблема может заключаться в подгорании силовых контактов реле на плате управления.</p>
+                                    <p>Мастер тестирует ТЭН на пробой изоляции мегаомметром и проверяет реле нагрева. При неисправности электронных компонентов выполняется компонентный ремонт силовой платы. В случае физического разрушения спирали проточного нагревателя заменяется нагревательный блок.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-75 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема проточного ТЭНа -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="45" width="100" height="30" rx="15" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M65 60H135" stroke="#8C2323" stroke-width="2" stroke-dasharray="4 2"/>
+                                        <circle cx="65" cy="60" r="3" fill="#D4AF37"/>
+                                        <circle cx="135" cy="60" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">FLOW-THROUGH HEATER CONTROLLER</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Не работает автооткрывание двери AutoOpen / Система Knock2Open</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Премиальные модели Miele оснащены электроприводом, приоткрывающим дверь для безупречной сушки, или датчиком стука (Knock2Open) для фасадов без ручек. Отказ функции происходит из-за поломки пластиковых шестерен актуатора двери, выхода из строя концевого датчика положения или обрыва шлейфа связи.</p>
+                                    <p>Специалист демонтирует верхнюю часть панели управления и декоративный фасад. Проводится тестирование шагового моторчика актуатора и калибровка акустического сенсора. Неисправный блок выталкивающего механизма или поврежденный шлейф заменяются на новые оригинальные элементы.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема актуатора двери -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="40" y="50" width="70" height="30" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M110 65H160" stroke="#8C2323" stroke-width="3"/>
+                                        <circle cx="60" cy="65" r="8" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">AUTOOPEN MOTOR DRIVE v1.2</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 7 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Белый налет на посуде / Не расходуется соль (Сбой ионообменника)</span>
+                            <span class="fault-cost">от 2 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Появление стойкого известкового или соляного налета связано с нарушением цикла регенерации смолы в ионообменнике. Дефект возникает из-за заклинивания электромагнитного клапана регенерации в закрытом положении, разрушения резьбы крышки бачка соли или физического истощения ресурса смолы из-за использования некачественной соли.</p>
+                                    <p>Мастер проверяет герметичность емкости и тестирует соленоид клапана мультиметром. Проводится промывка каналов бака от окаменевшей соли. При электрическом выгорании катушки клапана регенерации выполняется его замена на оригинальный соленоид Miele для восстановления автоматического умягчения воды.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="45" width="60" height="45" rx="3" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M110 68H150" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="130" cy="68" r="8" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="2 2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">ION-EXCHANGE SOFTENER CONTROL</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 8 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Таблетка не выпадает / Дверца отсека моющих средств заблокирована</span>
+                            <span class="fault-cost">от 1 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если после мойки таблетка остается внутри диспенсера, посуда не отмывается должным образом. Причина заключается в поломке возвратной пружины, деформации пластиковой защелки крышки или перегорании обмотки соленоидного триггера, который получает импульс от платы управления в строго определенную фазу программы.</p>
+                                    <p>Мастер разбирает внутреннюю обшивку двери посудомоечной машины. Проверяется свободный ход пружины дверцы и подается тестовое напряжение на актуатор. При механической поломке или выгорании катушки диспенсер в сборе заменяется на новый оригинальный дозатор Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="45" width="80" height="40" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M130 55L155 40" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="90" cy="65" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DETERGENT DISPENSER MECHANISM</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 9 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Машина бесконечно моет посуду / Сбой датчика мутности воды (Aquasensor)</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Сенсор мутности оценивает степень прозрачности воды с помощью инфракрасного фотодиода, оптимизируя расход воды и время цикла. Если оптическое стекло датчика покрывается слоем жира, накипи или царапается, электроника считает воду грязной и непрерывно перезапускает фазы полоскания, не завершая программу.</p>
+                                    <p>Инженер извлекает датчик из зумпфа гидросистемы. Выполняется деликатная химическая очистка линзы фотодатчика и проверка его параметров по току. В случае деградации кристалла фотоэлемента производится замена оптического датчика мутности на новый компонент Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="22" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M78 60H122" stroke="#8C2323" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                        <rect x="73" y="55" width="5" height="10" fill="#D4AF37"/>
+                                        <rect x="122" y="55" width="5" height="10" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">OPTICAL AQUASENSOR MODULE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 10 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Посудомойка хаотично отключается / Ошибки коммуникации (F32 / F33)</span>
+                            <span class="fault-cost">от 3 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Коды F32/F33 указывают на аппаратный сбой обмена данными между силовой платой и модулем индикации на двери. Это происходит из-за перебивания проводов в жгуте на сгибе дверцы (внизу машины) или вследствие теплового повреждения процессора на главной силовой плате из-за скачков напряжения.</p>
+                                    <p>Инженер вскрывает дверной переход, прозванивает жгут проводки и устраняет обрывы. Если проводка цела, силовой модуль демонтируется для детальной диагностики под микроскопом. Выполняется перепайка сгоревших полупроводников шины данных или замена блока на оригинальный модуль Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1-2 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="45" y="40" width="110" height="45" stroke="#444448" stroke-width="1.5"/>
         <!-- ==========================================================================
-           ЧАСТЬ 11: КАТЕГОРИЯ — КОФЕМАШИНЫ MIELE
+           ЧАСТЬ 17: КАТЕГОРИЯ — КОФЕМАШИНЫ MIELE (ПОЛОМКИ 1 - 3)
            ========================================================================== -->
         <div class="category-accordion-item">
             <div class="category-header">
                 <div class="category-title-block">
-                    <h3>Кофемашины Miele (серии CVA / CM)</h3>
+                    <h3>Кофемашины Miele (встраиваемые CVA / настольные CM)</h3>
                 </div>
                 <div class="category-meta">
                     <span class="category-price-hint">от 1 200 ₽</span>
@@ -684,28 +1560,99 @@
                     <!-- Поломка 1 -->
                     <div class="fault-card">
                         <div class="fault-summary">
-                            <span class="fault-name">Напиток не поступает в чашку / Вся кофе-масса уходит в поддон</span>
+                            <span class="fault-name">Напиток не поступает в диспенсер / Сухой кофе и вся вода уходят в поддон</span>
                             <span class="fault-cost">от 2 500 ₽</span>
                         </div>
                         <div class="fault-article-wrapper">
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Сброс готового кофе или чистой воды в поддон свидетельствует о потере герметичности поршневых колец заварного блока, критическом износе уплотнителей дренажного клапана или засорении кофейными маслами сита пресса. Электроника Miele фиксирует чрезмерное сопротивление редуктора и аварийно прерывает варку.</p>
-                                    <p>Инженер производит полную разборку, ультразвуковую чистку заварного механизма от остатков смол, меняет комплект силиконовых колец высокого давления и обрабатывает трущиеся узлы пищевой термостойкой смазкой. При механической деформации корпуса заварника или выработке шестерен редуктора узел заменяется целиком.</p>
+                                    <p>Сброс чистой воды или несваренного кофе в поддон свидетельствует о потере герметичности поршневых колец заварного блока или износе манжет дренажного клапана. Когда помпа нагнетает рабочее давление в 15 бар, старые кольца деформируются, и поток устремляется по пути наименьшего сопротивления в дренаж, минуя носик выдачи.</p>
+                                    <p>Инженер производит полную разборку и ультразвуковую очистку заварного механизма от остатков кофейных смол. Выполняется замена комплекта высокотемпературных силиконовых колец и резиновых манжет дренажного клапана с обязательным нанесением фирменной термостойкой пищевой смазки Miele на трущиеся узлы.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 40-60 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Обслуживание заварного устройства кофемашины Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Схема заварника -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="70" y="35" width="60" height="55" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 35V90" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="100" cy="55" r="10" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                                        <path d="M130 65H160" stroke="#444448" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">BREWING VALVE VALVING CHAMBER</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сообщение «Вставьте заварной механизм» / Треск редуктора и блокировка</span>
+                            <span class="fault-cost">от 3 000 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если кофемашина Miele перестает видеть заварной блок или издает сильный треск при попытке инициализации, дефект кроется в механическом повреждении шестерен приводного редуктора. Редуктор заклинивает из-за возросшего сопротивления тугого, не обслуживавшегося вовремя заварника, либо из-за поломки концевых микропереключателей положения вала.</p>
+                                    <p>Мастер разбирает боковую стенку шасси, извлекает блок привода и дефектует состояние пластиковых шестерен редуктора. Производится замена поврежденных элементов трансмиссии или установка новых концевых датчиков. При критическом разрушении корпуса или выгорании приводного мотора 220V узел меняется в сборе.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема редуктора -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="80" cy="60" r="22" stroke="#444448" stroke-width="2"/>
+                                        <circle cx="125" cy="60" r="14" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M96 54L114 56" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <circle cx="80" cy="60" r="3" fill="#D4AF37"/>
+                                        <circle cx="125" cy="60" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">MAIN GEARBOX DRIVE REVERSE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Кофемолка работает слишком долго / Кофемашина пишет «Засыпьте зерна» при полном бункере</span>
+                            <span class="fault-cost">от 2 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Данная ошибка означает, что за установленное время в заварную камеру не поступило необходимое количество кофейного порошка. Это вызвано критическим износом (истиранием) стальных конических жерновов кофемолки, из-за чего они начинают прокручиваться и не перемалывают зерно. Также каналы жерновов часто забиваются жирным налетом от ароматизированного кофе или блокируются попавшим посторонним камнем.</p>
+                                    <p>Инженер полностью извлекает и разбирает блок кофемолки, вычищает кофейные отложения из внутренних шнеков. При обнаружении зазубрин или округления режущих кромок выполняется замена пары стальных жерновов на новые оригинальные элементы с последующей калибровкой микрометрического шага помола.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема кофемолки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M60 40 L100 85 L140 40 Z" stroke="#444448" stroke-width="1.5" fill="none"/>
+                                        <path d="M80 60 L100 85 L120 60" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M100 30V85" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">GRINDER MILL CONICAL ASSEMBLY</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
                     <div class="fault-card">
                         <div class="fault-summary">
                             <span class="fault-name">Не подается пар / Кофемашина не взбивает молоко в пышную пену</span>
@@ -715,15 +1662,718 @@
                             <div class="fault-article-content">
                                 <div class="article-text-block">
                                     <h4>Причины возникновения и методы устранения дефекта</h4>
-                                    <p>Отсутствие пара или подача тонкой струйки молока вместо пены вызвана либо кальциевым засором капилляров пароблока (бойлера), либо выходом из строя электронного мультиклапана распределения потоков. Кальцинация наступает из-за несвоевременного проведения сервисного цикла очистки или использования жесткой воды.</p>
-                                    <p>Специалист проводит глубокую декальцинацию бойлера профессиональными кислотными реагентами. Проверяется работоспособность соленоидных клапанов и датчиков температуры NTC. В случае механического заклинивания или сгорания электромагнитной катушки мультиклапана, деталь меняется на новую оригинальную запчасть Miele.</p>
+                                    <p>Отсутствие пара или подача тонкой струйки горячего молока вместо пены вызвана либо кальциевым засором внутренних капилляров пароблока (бойлера), либо засорением каналов воздушного жиклера капучинатора остатками прикипевшего молочного белка. Если бойлер забит накипью, автоматика Miele не может нагреть систему до температуры парообразования (выше 130°C).</p>
+                                    <p>Инженер проводит механическую разборку молочного тракта и глубокую химическую декальцинацию контура нагрева профессиональными кислотными реагентами. При обнаружении пробоя нагревательной спирали пароблока выполняется его замена на новый оригинальный бойлер Miele в сборе с термодатчиками NTC.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема бойлера пара -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="30" stroke="#444448" stroke-width="2"/>
+                                        <path d="M75 60 A 25 25 0 0 1 125 60" stroke="#8C2323" stroke-width="3" fill="none"/>
+                                        <path d="M100 30V15M100 90V105" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">STEAM BOILER THERMOBLOCK</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Ошибка распределения потоков / Заклинивание или течь мультиклапана</span>
+                            <span class="fault-cost">от 3 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Керамический мультиклапан отвечает за перенаправление горячей воды между контурами пара, заваривания кофе и промывки. Его заклинивание происходит из-за попадания частиц известкового налета на фторопластовые диски или при поломке пластикового вала микроредуктора. Течь сальников клапана приводит к залитию низковольтной платы его управления.</p>
+                                    <p>Мастер тестирует позиционирование клапана через сервисный режим. При механическом разрушении шестерен привода или потере герметичности корпуса, узел не подлежит локальному ремонту. Выполняется полная замена распределительного мультиклапана Miele на элемент новой ревизии с усиленным уплотнением.</p>
                                     <div class="article-badges">
                                         <span class="article-badge">Время: 60-90 мин</span>
                                         <span class="article-badge gold">Гарантия: 12 месяцев</span>
                                     </div>
                                 </div>
                                 <div class="article-image-block">
-                                    <img src="https://unsplash.com" alt="Ремонт капучинатора и бойлера Miele" onerror="this.src='https://placehold.co'">
+                                    <!-- Схема мультиклапана -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="65" r="25" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 65L100 45M100 65L120 75M100 65L80 75" stroke="#8C2323" stroke-width="2.5" stroke-linecap="round"/>
+                                        <circle cx="100" cy="65" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">CERAMIC MULTIVALVE LOGIC</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Кофе течет очень тонкой струйкой / Слишком тихий или громкий звук помпы</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Изменение тональности работы помпы и падение скорости подачи напитка указывают на потерю производительности насоса высокого давления. Внутри вибрационной помпы со временем просаживается возвратная пружина или изнашивается пластиковый шарик обратного клапана. Помпа теряет способность выдавать штатные 15-19 бар давления.</p>
+                                    <p>Специалист замеряет давление в напорной магистрали с помощью тестового манометра. При подтверждении выработки ресурса внутренней поршневой группы выполняется демонтаж дефектного насоса и установка новой оригинальной помпы Miele (Ulka/Invensys) с гасителем пульсаций Sysko.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-55 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема помпы -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="45" y="45" width="65" height="35" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M110 62H155M155 52V72" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="77" cy="62" r="8" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="2 1"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HIGH PRESSURE VIBRATION PUMP</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 7 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Внутренняя протечка / Вода или пар выходят из-под корпуса кофемашины</span>
+                            <span class="fault-cost">от 1 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Появление лужи под кофемашиной Miele или обильное выделение пара внутрь корпуса вызвано растрескиванием армированных тефлоновых трубок высокого давления или рассыханием уплотнительных колец в местах их стыковки с бойлером. Сильное известковое давление и перепады температур ускоряют износ силиконовых манжет, приводя к образованию свищей.</p>
+                                    <p>Мастер снимает защитные кожухи шасси и запускает тестовый пролив системы для локализации утечки. Поврежденные жесткие тефлоновые магистрали заменяются новыми трубками, а на штуцерах монтируются оригинальные фторкаучуковые кольца (FKM), устойчивые к температуре до 200°C, с фиксацией стальными скобами.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема трубок давления -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M40 40C40 80 160 40 160 80" stroke="#8C2323" stroke-width="3" fill="none"/>
+                                        <circle cx="40" cy="40" r="6" fill="#D4AF37"/>
+                                        <circle cx="160" cy="80" r="6" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HIGH-PRESSURE REINFORCED LINES</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 8 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Кофемашина не реагирует на нажатия / Ошибка электроники (F80 / F82)</span>
+                            <span class="fault-cost">от 3 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Коды ошибок F80/F82 на дисплее Miele сигнализируют о критическом сбое программного обеспечения или физическом повреждении процессора силовой платы управления. Это происходит из-за попадания влаги (конденсата) на дорожки платы, короткого замыкания в цепи помпы или нестабильного напряжения в электросети.</p>
+                                    <p>Инженер извлекает электронный модуль и проводит компьютерную диагностику логических цепей. Производится замена выгоревших контроллеров, диодов и восстанавливаются поврежденные коррозией токопроводящие дорожки. Плата перепрошивается лицензионным дампом ПО через программатор в сервисном режиме.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1-2 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема платы -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="35" width="100" height="50" stroke="#444448" stroke-width="1.5"/>
+                                        <rect x="90" y="45" width="20" height="20" fill="#8C2323"/>
+                                        <path d="M50 70H150" stroke="#D4AF37" stroke-width="1"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">CENTRAL CPU LOGIC REVISION</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 9 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Постоянное требование «Опустошить поддон» при чистых контактах</span>
+                            <span class="fault-cost">от 1 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Кофемашина блокирует работу, считая поддон переполненным, из-за окисления двух металлических пластин-контактов на задней стороне поддона. Если контакты покрываются слоем солей или намокает ответный разъем (микропереключатель) внутри шахты кофемашины, электрическая цепь остается постоянно замкнутой, обманывая автоматику.</p>
+                                    <p>Специалист зачищает металлические электроды поддона от окислов. Проводится вскрытие внутренней панели и диагностика ответной контактной группы. При обнаружении замыкания из-за затекшей воды выполняется сушка разъема и замена неисправного считывающего микропереключателя.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-45 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема контактов поддона -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="40" y="55" width="120" height="25" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M140 55V80M150 55V80" stroke="#D4AF37" stroke-width="2"/>
+                                        <circle cx="140" cy="67" r="2" fill="#8C2323"/>
+                                        <circle cx="150" cy="67" r="2" fill="#8C2323"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DRIP TRAY SENSOR INTERFACE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 10 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Не работает панель подогрева чашек / Чашки остаются холодными</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В топовых отдельностоящих моделях Miele верхняя металлическая панель подогревается низковольтным гибким ТЭНом. Отказ нагрева происходит из-за обрыва токопроводящей дорожки углеродного мата от постоянных температурных расширений, перегорания локального термопредохранителя или неисправности ключа коммутации на плате.</p>
+                                    <p>Мастер разбирает верхнюю крышку кофемашины, прозванивает шлейф питания и измеряет сопротивление нагревательного мата. Выполняется локальное устранение обрыва цепи или замена дефектного гибкого нагревательного элемента подогрева на оригинальную панель Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема подогрева чашек -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+        <!-- ==========================================================================
+           ЧАСТЬ 20: КАТЕГОРИЯ — ДУХОВЫЕ ШКАФЫ MIELE (ПОЛОМКИ 1 - 3)
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Духовые шкафы и варочные панели</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 600 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-content">
+                <div class="faults-list">
+
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Духовка работает, но не нагревается / Выгорание кольцевого ТЭНа конвекции</span>
+                            <span class="fault-cost">от 2 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В режимах конвекции Miele тепло генерируется круглым ТЭНом, расположенным на задней стенке вокруг вентилятора. Из-за длительной эксплуатации на высоких температурах или при попадании жира нихромовая спираль внутри нагревателя истончается и перегорает. В результате вентилятор гоняет холодный воздух, а духовой шкаф не набирает заданную температуру.</p>
+                                    <p>Инженер извлекает технику из ниши, демонтирует защитный экран камеры и замеряет сопротивление ТЭНа мультиметром. При обнаружении обрыва спирали или пробоя изоляции на корпус производится установка нового оригинального кольцевого ТЭНа Miele нужной мощности (от 2000W до 2500W) с высокотемпературными клеммами.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 45-65 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема кольцевого ТЭНа -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="35" stroke="#8C2323" stroke-width="3.5" fill="none"/>
+                                        <path d="M90 95V105M110 95V105" stroke="#444448" stroke-width="2"/>
+                                        <circle cx="90" cy="105" r="2" fill="#D4AF37"/>
+                                        <circle cx="110" cy="105" r="2" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">CIRCULAR CONVECTIVE ELEMENT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сильный гул, вибрация или остановка вентилятора конвекции</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Вентилятор обеспечивает равномерное распределение горячих потоков воздуха. Шум, металлический скрежет или полная остановка лопастей происходят из-за выработки ресурса подшипников скольжения мотора, деформации самой крыльчатки при термическом ударе или из-за высыхания смазки вала в условиях агрессивного жара.</p>
+                                    <p>Специалист вскрывает заднюю обшивку духового шкафа. Проверяется свободный люфт вала. Если лопасти забиты нагаром, выполняется их ультразвуковая очистка. При механическом износе втулок или межвитковом замыкании обмоток статора выполняется замена термостойкого вентилятора в сборе на оригинальный модуль Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема вентилятора духовки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="16" fill="none" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 25V95M65 60H135" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M75 35L125 85M75 85L125 35" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">OVEN OVEN FAN MOTOR IMPELLER</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Блюда подгорают с одной стороны / Неисправность верхнего ТЭНа (Гриля)</span>
+                            <span class="fault-cost">от 2 600 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Верхний нагревательный блок духовок Miele состоит из двух независимых контуров — внутреннего (малый гриль) и внешнего (большой гриль). Неравномерное пропекание или полное отсутствие корочки указывает на перегорание одного из этих контуров. Дефект часто вызывается коротким замыканием при попадании брызг маринада на раскаленный металл трубки.</p>
+                                    <p>Инженер замеряет омическое сопротивление обоих контуров верхнего блока. Проверяется целостность проводки под изоляцией. При фиксации обрыва цепи производится демонтаж крепежных планок свода камеры и установка оригинального двухконтурного ТЭНа гриля Miele с заменой термостойких изоляционных втулок.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема верхнего ТЭНа -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M40 40H160V55H60V70H160V85H40" stroke="#8C2323" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                                        <circle cx="40" cy="40" r="3" fill="#D4AF37"/>
+                                        <circle cx="40" cy="85" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">DUAL TOP BROWNER ELEMENT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Дверь заблокирована после пиролиза / Ошибка фиксатора замка (F3)</span>
+                            <span class="fault-cost">от 2 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Во время пиролитической очистки камера разогревается до 450°C, и дверь намертво блокируется защитным электрозамком. Если после остывания шкафа замок не открывается, а на дисплее горит код F3, причина кроется в оплавлении концевого выключателя, поломке шагового моторчика привода блокировки или деформации фиксирующего штока от экстремального перегрева.</p>
+                                    <p>Инженер производит аварийное механическое вскрытие фасада с помощью сервисного ключа, чтобы не повредить стекло. Проверяется целостность проводки и датчиков температуры. Дефектный узел автоматической блокировки двери заменяется на новый оригинальный замок пиролиза Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема замка пиролиза -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="45" width="70" height="35" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M120 55H150V70H120" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="85" cy="62" r="6" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">PYROLYTIC DOOR LOCK ASSEMBLY</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Духовка хаотично переключает программы / Поломка селектора режимов</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В классических моделях Miele выбор режимов осуществляется поворотной ручкой-кодером. Хаотичный сброс температуры, отказ включать нужный режим или отсутствие реакции на поворот ручки вызваны истиранием внутренних графитовых дорожек селектора или изломом центрального штока. Реже проблема заключается в выгорании шлейфа передачи сигналов на центральную плату.</p>
+                                    <p>Мастер разбирает панель управления и демонтирует поворотный переключатель. С помощью мультиметра проверяется корректность замыкания шаговых контактов. Окислившиеся или разрушенные компоненты кодера заменяются новым оригинальным блоком переключателя Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема селектора -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="25" stroke="#444448" stroke-width="2"/>
+                                        <path d="M100 35V60M100 60L118 75" stroke="#8C2323" stroke-width="2.5" stroke-linecap="round"/>
+                                        <circle cx="100" cy="60" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">ROTARY SELECTOR PROGRAM ENCODER</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Конфорка варочной панели не видит посуду / Сбой индукционного генератора</span>
+                            <span class="fault-cost">от 3 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если индукционная плита Miele щелкает, моргает символом посуды или выдает ошибку генератора, проблема кроется в силовой части. Перегорают мощные транзисторы IGBT или диодные мосты на плате индукционного генератора. Это происходит из-за перегрева панели при длительном использовании режима Booster или вследствие скачков напряжения в сети.</p>
+                                    <p>Инженер снимает стеклокерамическую поверхность, извлекает поврежденный блок генератора и проводит его дефектовку. Выполняется локальная перепайка выгоревших силовых ключей IGBT, восстанавливаются цепи фильтрации питания. При полном разрушении дорожек плата заменяется на оригинальный модуль генератора Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-90 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема индукционной конфорки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="35" stroke="#8C2323" stroke-width="2" stroke-dasharray="6 2"/>
+                                        <circle cx="100" cy="60" r="20" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M60 60H140" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">INDUCTION GENERATOR COIL CIRCUIT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 7 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Духовка сильно врет с температурой / Ошибка термодатчика (F00 / F01)</span>
+                            <span class="fault-cost">от 1 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Коды F00/F01 указывают на короткое замыкание или обрыв в цепи высокоточного платинового датчика температуры PT1000. Из-за деградации чувствительного элемента датчик начинает передавать процессору ложные данные о сопротивлении. В итоге духовой шкаф либо недогревает блюда, либо раскаляется до максимума, пережигая продукты.</p>
+                                    <p>Инженер замеряет сопротивление датчика при комнатной температуре и сопоставляет показания с заводской таблицей Miele. При фиксации отклонений выполняется демонтаж зонда из камеры и установка нового оригинального термодатчика Miele с заменой термостойкой изоляционной гильзы.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <path d="M30 60H150" stroke="#444448" stroke-width="2"/>
+                                        <rect x="150" y="55" width="20" height="10" fill="#8C2323"/>
+                                        <circle cx="160" cy="60" r="3" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">TEMPERATURE PLATINUM PROBE CONTOUR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 8 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сенсорная панель управления не реагирует на прикосновения</span>
+                            <span class="fault-cost">от 2 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Отказ сенсоров (Touch Control) чаще всего происходит из-за образования жировой или водяной пленки на стекле фасада, которая сбивает калибровку емкостных датчиков. Также проблема может быть вызвана статическим пробоем или потерей упругости токопроводящих поролоновых пружин, соединяющих стеклокерамику с платой сенсоров.</p>
+                                    <p>Мастер демонтирует фронтальное стекло, проводит очистку внутренней стороны и проверяет геометрию пружинных контактов. С помощью осциллографа тестируется контроллер обработки касаний. Неисправный субмодуль сенсоров или поврежденный шлейф заменяются новыми деталями Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="40" y="45" width="120" height="30" rx="1" stroke="#444448" stroke-width="1.5"/>
+                                        <circle cx="60" cy="60" r="6" stroke="#8C2323" stroke-width="1.5"/>
+                                        <circle cx="100" cy="60" r="6" stroke="#8C2323" stroke-width="1.5"/>
+                                        <circle cx="140" cy="60" r="6" stroke="#8C2323" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">CAPACITIVE TOUCH INTERFACE MODULE</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 9 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Духовка отключается через 10-15 минут стирки / Ошибка охлаждения корпуса</span>
+                            <span class="fault-cost">от 3 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Для защиты кухонной мебели от перегрева в шкафах Miele применяется мощный тангенциальный вентилятор охлаждения корпуса. Если его крыльчатка заклинивает или сгорает обмотка мотора, тепловой датчик безопасности фиксирует критический перегрев межстеночного пространства и аварийно обесточивает плату управления.</p>
+                                    <p>Инженер добирается до верхней части корпуса, осматривает лопасти удлиненного ротора на предмет заклинивания ворсом и тестирует цепь питания вентилятора. При перегорании статора производится замена тангенциального вентилятора в сборе на оригинальный малошумный узел Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="50" width="100" height="20" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M55 60H145" stroke="#8C2323" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <circle cx="150" cy="60" r="8" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">TANGENTIAL COOLING BLOWER SYSTEM</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 10 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Ошибка питания фаз варочной панели / Выгорание реле коммутации</span>
+                            <span class="fault-cost">от 3 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В многоконтурных индукционных и электрических панелях Miele за распределение входящих фаз питания (220V/380V) отвечают мощные силовые реле. При частой работе конфорок на максимальной мощности контакты внутри реле начинают искрить, обгорают или намертво свариваются друг с другом, из-за чего часть плиты перестает включаться.</p>
+                                    <p>Специалист вскрывает корпус варочной поверхности, выполняет визуальный осмотр дорожек силовой платы и тестирует контакты реле под нагрузкой. На паяльной станции производится выпайка поврежденных элементов и установка оригинальных силовых реле (Schrack/Tyco) с повышенным ресурсом переключений.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="60" y="45" width="45" height="35" stroke="#444448" stroke-width="1.5"/>
+        <!-- ==========================================================================
+           ЧАСТЬ 23: КАТЕГОРИЯ — ВЫТЯЖКИ MIELE (ПОЛОМКИ 1 - 3)
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Вытяжки и вентиляция</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 100 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-content">
+                <div class="faults-list">
+
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Мотор гудит, но крыльчатка не крутится / Вытяжка не тянет воздух</span>
+                            <span class="fault-cost">от 1 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если при включении вытяжки Miele слышен характерный гул электродвигателя, но лопасти остаются неподвижными, чаще всего из строя выходит пусковой конденсатор мотора или крыльчатка заблокирована плотным слоем жировых отложений. Длительная работа на максимальной скорости с забитыми жироулавливающими фильтрами также приводит к перегреву и межвитковому замыканию обмотки.</p>
+                                    <p>Мастер производит разборку корпуса, демонтирует защитный кожух и очищает турбину от налипшего жира. Мультиметром тестируется емкость пускового конденсатора. При потере номинальных параметров конденсатора или дефекте статора выполняется замена пускового элемента либо ремонт электродвигателя вытяжки.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема мотора вытяжки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="28" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M75 60H125M100 35V85" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="100" cy="60" r="6" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">HOOD TURBINE IMPELLER MOTOR</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Отказ или мерцание рабочего освещения варочной зоны</span>
+                            <span class="fault-cost">от 1 100 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Подсветка рабочей зоны над плитой подвергается постоянному температурному воздействию и испарениям жира. Выход из строя галогенных ламп или LED-модулей вытяжки связан с окислением контактных патронов, выгоранием понижающего трансформатора или сбоем платы стабилизации напряжения питания светильников.</p>
+                                    <p>Специалист извлекает защитное стекло светильника, проверяет целостность ламп и замеряет рабочее напряжение в цепи. При разрушении цоколя или деградации диодной матрицы устанавливается новый оригинальный световой модуль Miele с защитой от жировых испарений.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 25-40 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема подсветки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="18" fill="none" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 45V75M85 60H115" stroke="#D4AF37" stroke-width="2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">LED COOKTOP ILLUMINATION UNIT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Не работает синхронизация Con@ctivity / Вытяжка не реагирует на варочную панель</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Функция Con@ctivity позволяет вытяжке автоматически подстраивать мощность под режим работы варочной панели Miele через беспроводной радиомодуль. Обрыв связи происходит при сбое сопряжения устройств, выходе из строя радиоприемника RF на плате вытяжки или повреждении внутренней антенны из-за экранирования металлическим корпусом.</p>
+                                    <p>Инженер производит сброс настроек беспроводной сети и повторную процедуру сопряжения техники по заводскому протоколу. При аппаратной поломке радиомодуля связи выполняется замена беспроводного RF-компонента на оригинальный модуль Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-45 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема Con@ctivity -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="70" y="45" width="60" height="30" stroke="#444448" stroke-width="1.5"/>
+                                        <path d="M100 45V30M85 37L100 30M115 37L100 30" stroke="#8C2323" stroke-width="2"/>
+                                        <circle cx="100" cy="60" r="4" fill="#D4AF37"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">RF CON@CTIVITY MODULE LINK</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 4 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Вытяжка не реагирует на переключение скоростей / Поломка кнопочной панели</span>
+                            <span class="fault-cost">от 1 600 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Отказ сенсорных кнопок или механических переключателей ступеней мощности вытяжек Miele чаще всего происходит из-за проникновения жирового налета на токопроводящие дорожки подложки пульта. Жир разъедает медные контакты, вызывая их замыкание (вытяжка начинает жить своей жизнью) или полную потерю проводимости клика.</p>
+                                    <p>Мастер деликатно демонтирует декоративную стеклянную панель и извлекает модуль переключателей. Производится ультразвуковая очистка платы от жировых отложений в изопропиловом спирте. При глубоком выгорании дорожек или кнопок микропереключателей выполняется замена интерфейсного блока на новый оригинальный кнопочный узел Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 35-50 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема кнопок вытяжки -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="40" y="50" width="120" height="25" stroke="#444448" stroke-width="1.5"/>
+                                        <circle cx="60" cy="62" r="4" fill="#8C2323"/>
+                                        <circle cx="100" cy="62" r="4" fill="#8C2323"/>
+                                        <circle cx="140" cy="62" r="4" fill="#8C2323"/>
+                                        <line x1="40" y1="62" x2="160" y2="62" stroke="#D4AF37" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">KEYBOARD SWITCH BOARD REV1</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 5 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Вытяжка самопроизвольно отключается или меняет режимы / Сбой силового модуля</span>
+                            <span class="fault-cost">от 3 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Хаотичная смена скоростей, отказ отключаться с пульта или самопроизвольные перезапуски указывают на нестабильную работу центральной управляющей платы. Из-за воздействия тепла и паров от варочной панели электронные компоненты (конденсаторы, силовые реле коммутации обмоток) перегреваются и начинают выдавать ложные триггеры на исполнение команд.</p>
+                                    <p>Инженер извлекает электронный силовой модуль из верхней ниши короба и проводит диагностику осциллографом. Потерявшие емкость конденсаторы и обгоревшие реле переключения скоростей выпаиваются, а на их место монтируются новые оригинальные полупроводники с последующим нанесением влагозащитного лака.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1-1.5 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема силовой платы -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <rect x="50" y="35" width="100" height="50" stroke="#444448" stroke-width="1.5"/>
+                                        <rect x="65" y="45" width="20" height="20" fill="#8C2323"/>
+                                        <path d="M110 55H135M110 65H135" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">MAIN HOOD CONTROL PCB</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 6 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Посторонний стук из вентиляционной шахты / Заклинивание обратного клапана</span>
+                            <span class="fault-cost">от 1 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Появление прерывистого стука при выключенном или включенном моторе свидетельствует об износе или деформации пластиковых створок обратного клапана, перекрывающего доступ воздуха из общедомовой вентиляции. Лепестки клапана могут заклинить из-за налипшего жира или перекоситься от воздушного подпора из шахты, ограничивая отток воздуха из кухни.</p>
+                                    <p>Инженер отсоединяет гофрированный или пластиковый воздуховод от фланца вытяжки Miele. Проводится очистка посадочного места и проверка хода возвратных пружин створок. Деформированный обратный клапан заменяется на новый оригинальный модуль с бесшумными силиконовыми демпферами по краям лепестков.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-45 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <!-- Схема обратного клапана -->
+                                    <svg viewBox="0 0 200 120" fill="none" xmlns="http://w3.org">
+                                        <rect width="200" height="120" rx="4" fill="#0A0A0C"/>
+                                        <circle cx="100" cy="60" r="32" stroke="#444448" stroke-width="2"/>
+                                        <line x1="100" y1="28" x2="100" y2="92" stroke="#8C2323" stroke-width="2"/>
+                                        <path d="M100 60L125 45M100 60L75 75" stroke="#D4AF37" stroke-width="1.5"/>
+                                        <text x="10" y="20" fill="#636366" font-size="9" font-family="monospace">BACKDRAFT FLAPPER FLANGE</text>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -731,11 +2381,11 @@
 
                 </div> <!-- Конец faults-list -->
             </div> <!-- Конец category-content -->
-        </div> <!-- Конец category-accordion-item кофемашин -->
+        </div> <!-- Конец category-accordion-item вытяжек -->
 
     </div> <!-- Конец main-price-container (Закрываем общую обертку прайс-листа) -->
     <!-- ==========================================================================
-       ЧАСТЬ 12: СЕКЦИЯ КОНТАКТОВ, ПРЕМИУМ-ФОРМА И ПОДВАЛ САЙТА
+       ЧАСТЬ 25: СЕКЦИЯ КОНТАКТОВ И ПРЕМИУМ-ФОРМА ОБРАТНОЙ СВЯЗИ
        ========================================================================== -->
     <section id="contacts" class="contacts-section">
         <div class="section-header">
@@ -811,38 +2461,53 @@
                 </form>
             </div>
         </div>
-
-        <!-- Подвал -->
-        <footer class="premium-footer">
-            <div class="footer-copyright">
-                &copy; 2026 Miele Zentrum. Все права защищены.
-            </div>
-            <div class="footer-legal-note">
-                Наименование Miele используется исключительно для информирования потребителей об оказываемых услугах по ремонту. Сайт не является официальным ресурсом компании Miele.
-            </div>
-        </footer>
-    </section>
     <!-- ==========================================================================
-       ЧАСТЬ 13: ДВУХУРОВНЕВЫЙ ДИНАМИЧЕСКИЙ ДВИЖОК АККОРДЕОНОВ (JAVASCRIPT)
+       ЧАСТЬ 26: ПРЕМИУМ-ПОДВАЛ САЙТА (FOOTER)
+       ========================================================================== -->
+    <footer class="site-footer">
+        <div class="footer-content-wrapper">
+            <div class="footer-brand-col">
+                <div class="footer-logo">MIELE-ZENTRUM</div>
+                <p>Специализированный сервисный центр по экспертному ремонту и обслуживанию бытовой техники премиум-класса Miele в Санкт-Петербурге.</p>
+            </div>
+            <div class="footer-links-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#hero">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#prices">Прайс-лист</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-legal-col">
+                <h4>Правовая информация</h4>
+                <p>Все права защищены. Упоминание товарных знаков Miele используется исключительно для информирования потребителей о специализации сервисного центра. Не является публичной офертой.</p>
+                <p class="copyright">&copy; 2026 Miele-Zentrum Service St. Petersburg.</p>
+            </div>
+        </div>
+    </footer>
+    </section> <!-- Закрываем contacts-section -->
+
+    <!-- ==========================================================================
+       ЧАСТЬ 27: ДВУХУРОВНЕВЫЙ ДИНАМИЧЕСКИЙ ДВИЖОК АККОРДЕОНОВ (НАЧАЛО)
        ========================================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. ЛОГИКА ВЕРХНЕГО УРОВНЯ: Открытие категорий техники
+            // ЛОГИКА ВЕРХНЕГО УРОВНЯ: Открытие категорий бытовой техники
             const categoryHeaders = document.querySelectorAll('.category-header');
             
             categoryHeaders.forEach(header => {
                 header.addEventListener('click', (e) => {
-                    // Исключаем срабатывание, если кликнули по внутренним элементам, не относящимся к шапке
                     const item = header.parentElement;
                     const content = item.querySelector('.category-content');
                     
-                    // Переключаем класс активности для категории
+                    // Переключаем класс активности для родительской категории
                     item.classList.toggle('active');
                     
                     if (item.classList.contains('active')) {
                         content.style.maxHeight = content.scrollHeight + "px";
                     } else {
-                        // При закрытии категории обнуляем высоту и закрываем все открытые внутри карточки поломок
+                        // При закрытии категории обнуляем высоту и схлопываем все открытые внутри карточки поломок
                         content.style.maxHeight = null;
                         const activeFaults = item.querySelectorAll('.fault-card.active');
                         activeFaults.forEach(fault => {
@@ -852,19 +2517,18 @@
                     }
                 });
             });
-
-            // 2. ЛОГИКА ВНУТРЕННЕГО УРОВНЯ: Открытие мини-статей поломок с фото
+            // ЛОГИКА ВНУТРЕННЕГО УРОВНЯ: Открытие мини-статей поломок с чертежами
             const faultSummaries = document.querySelectorAll('.fault-summary');
             
             faultSummaries.forEach(summary => {
                 summary.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Предотвращаем закрытие родительской категории
+                    e.stopPropagation(); // Предотвращаем закрытие родительской категории техники Miele
                     
                     const faultCard = summary.parentElement;
                     const articleWrapper = faultCard.querySelector('.fault-article-wrapper');
                     const parentCategoryContent = faultCard.closest('.category-content');
                     
-                    // Закрываем другие открытые поломки ВНУТРИ ЭТОЙ ЖЕ категории
+                    // Закрываем другие открытые поломки в этой же категории (для аккуратности)
                     const siblingFaults = faultCard.parentElement.querySelectorAll('.fault-card');
                     siblingFaults.forEach(sibling => {
                         if (sibling !== faultCard && sibling.classList.contains('active')) {
@@ -873,12 +2537,12 @@
                         }
                     });
                     
-                    // Переключаем текущую мини-статью поломки
+                    // Переключаем активность текущей мини-статьи поломки
                     faultCard.classList.toggle('active');
                     
                     if (faultCard.classList.contains('active')) {
                         articleWrapper.style.maxHeight = articleWrapper.scrollHeight + "px";
-                        // Корректируем высоту родительского контейнера, чтобы контент не обрезался
+                        // Корректируем высоту главного родителя, чтобы вместить статью и схему
                         if (parentCategoryContent) {
                             parentCategoryContent.style.maxHeight = (parentCategoryContent.scrollHeight + articleWrapper.scrollHeight) + "px";
                         }
@@ -896,3 +2560,4 @@
     </script>
 </body>
 </html>
+
