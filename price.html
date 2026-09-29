@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивный прайс-лист Miele Zentrum — Стоимость ремонта в СПб</title>
+    <title>Miele Zentrum | Официальный прайс-лист сервисного центра в Санкт-Петербурге</title>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ==========================================================================
-           ГЛОБАЛЬНЫЕ ПРЕМИУМ-СТИЛИ И ЭНЦИКЛОПЕДИЧЕСКИЙ ДИЗАЙН (CARBON TOP)
+           ГЛОБАЛЬНЫЕ ПРЕМИУМ-СТИЛИ (DARK IMMERSIVE MODE)
            ========================================================================== */
         * {
             margin: 0;
@@ -21,31 +21,51 @@
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: #0A0A0A;
+            background-color: #080808;
             color: #E5E5EA;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ПРЕМИУМ-ШАПКА САЙТА (HEADER) */
-        .premium-header {
-            position: relative;
-            width: 100%; padding: 25px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 100;
-            background: #0A0A0A;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        /* Премиальные анимации проявления */
+        @keyframes premiumFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .logo-block { display: flex; flex-direction: column; text-decoration: none; }
-        .logo-title { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: #FFFFFF; text-transform: uppercase; }
-        .logo-title span { color: #8C2323; }
-        .logo-subtitle { font-size: 9px; font-weight: 400; color: #8E8E93; letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
+        @keyframes premiumFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-        .main-nav ul { display: flex; list-style: none; gap: 30px; }
+        @keyframes goldGlow {
+            0% { border-color: rgba(212, 175, 55, 0.1); }
+            50% { border-color: rgba(212, 175, 55, 0.3); }
+            100% { border-color: rgba(212, 175, 55, 0.1); }
+        }
+        /* ==========================================================================
+           ЧАСТЬ 2: СТИЛИ ПРЕМИУМ-ШАПКИ (HEADER)
+           ========================================================================== */
+        .premium-header {
+            position: absolute;
+            top: 0; left: 0; width: 100%; padding: 30px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(8, 8, 8, 0.95), rgba(8, 8, 8, 0));
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            animation: premiumFadeIn 1s ease forwards;
+        }
+
+        .logo-block { display: flex; flex-direction: column; }
+        .logo-title { font-size: 22px; font-weight: 700; letter-spacing: 3px; color: #FFFFFF; text-transform: uppercase; }
+        .logo-title span { color: #8C2323; }
+        .logo-subtitle { font-size: 9px; font-weight: 400; color: #8E8E93; letter-spacing: 1.5px; margin-top: 4px; text-transform: uppercase; }
+
+        .main-nav ul { display: flex; list-style: none; gap: 40px; }
         .main-nav ul li a {
-            color: #AEAEB2; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-            transition: color 0.3s ease; position: relative; padding-bottom: 4px;
+            color: #AEAEB2; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px;
+            transition: color 0.3s ease; position: relative; padding-bottom: 6px;
         }
         .main-nav ul li a::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: #D4AF37; transition: width 0.3s ease;
@@ -54,84 +74,336 @@
         .main-nav ul li a:hover, .main-nav ul li a.active { color: #D4AF37; }
 
         .header-info { text-align: right; }
-        .header-phone { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.3s ease; display: block; }
+        .header-phone { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; letter-spacing: 0.5px; transition: color 0.3s ease; display: block; }
         .header-phone:hover { color: #D4AF37; }
-        .header-schedule { font-size: 11px; color: #8E8E93; margin-top: 3px; }
-
-        /* ГЛАВНЫЙ БЛОК СТРАНИЦЫ ЦЕН */
-        .price-hero-zone {
-            padding: 80px 8% 50px 8%;
-            background: radial-gradient(circle at 50% 0%, rgba(140, 35, 35, 0.1) 0%, transparent 60%);
-            text-align: center;
+        .header-schedule { font-size: 11px; color: #8E8E93; margin-top: 4px; letter-spacing: 0.3px; }
+        /* ==========================================================================
+           ЧАСТЬ 3: СТИЛИ ГЛАВНОГО БАННЕРА И ЗАГОЛОВКОВ СЕКЦИЙ
+           ========================================================================== */
+        .price-hero-section {
+            position: relative; padding: 180px 8% 60px 8%;
+            background: 
+                radial-gradient(circle at 90% 20%, rgba(140, 35, 35, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 40%), #0A0A0A;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            overflow: hidden;
         }
-        .price-hero-zone h1 { font-size: 40px; font-weight: 700; color: #FFFFFF; margin-bottom: 20px; letter-spacing: -0.5px; }
-        .price-hero-zone p { font-size: 16px; color: #AEAEB2; font-weight: 300; max-width: 750px; margin: 0 auto; line-height: 1.7; }
 
-        /* МНОГОУРОВНЕВЫЙ ИНТЕРАКТИВНЫЙ КОНТЕЙНЕР */
-        .encyclopedia-container { max-width: 1150px; margin: 20px auto 100px auto; padding: 0 5%; }
-        .master-accordion { display: flex; flex-direction: column; gap: 20px; }
+        .price-hero-inner { max-width: 800px; z-index: 2; opacity: 0; transform: translateY(20px); animation: premiumFadeUp 1.2s cubic-bezier(0.25, 1, 0, 1) 0.2s forwards; }
+        .price-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); color: #D4AF37; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; border-radius: 2px; }
+        .price-badge span { width: 6px; height: 6px; background-color: #D4AF37; border-radius: 50%; display: inline-block; }
         
-        /* Стили основных папок (Категории техники) */
-        .category-folder { background: #111113; border: 1px solid rgba(255, 255, 255, 0.02); border-radius: 2px; transition: border-color 0.3s; }
-        .category-folder:hover { border-color: rgba(212, 175, 55, 0.15); }
-        .category-trigger { padding: 25px 35px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
-        .category-folder.active .category-trigger { border-bottom: 1px solid rgba(255, 255, 255, 0.03); background: rgba(255,255,255,0.01); }
-        
-        .category-title-box { display: flex; align-items: center; gap: 15px; }
-        .category-title-box h2 { font-size: 20px; font-weight: 600; color: #FFFFFF; letter-spacing: 0.5px; }
-        .category-arrow-icon { transition: transform 0.4s ease; }
-        .category-folder.active .category-arrow-icon { transform: rotate(180deg); }
-        
-        .category-body-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        .category-inner-table { padding: 15px 35px 35px 35px; display: flex; flex-direction: column; gap: 10px; }
+        .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #8C2323; margin-bottom: 15px; display: block; }
+        .section-title { font-size: 40px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
+        .section-subtitle { font-size: 16px; line-height: 1.7; color: #AEAEB2; font-weight: 300; max-width: 650px; }
 
-        /* Внутренние строки поломок (Второй уровень) */
-        .fault-row-block { border: 1px solid rgba(255, 255, 255, 0.01); background: rgba(20, 20, 20, 0.2); margin-bottom: 5px; border-radius: 2px; }
-        .fault-clickable-bar { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; cursor: pointer; transition: background 0.2s; user-select: none; }
-        .fault-clickable-bar:hover { background: rgba(255, 255, 255, 0.02); }
-        
-        .fault-name-text { font-size: 15px; color: #FFFFFF; font-weight: 500; display: flex; align-items: center; gap: 12px; }
-        .fault-toggle-plus { font-size: 18px; color: #8E8E93; transition: transform 0.3s, color 0.3s; }
-        .fault-row-block.open .fault-toggle-plus { transform: rotate(45deg); color: #D4AF37; }
-        .fault-row-block.open .fault-clickable-bar { background: rgba(212, 175, 55, 0.02); border-bottom: 1px solid rgba(255,255,255,0.02); }
-        .fault-price-tag { font-size: 15px; font-weight: 600; color: #D4AF37; letter-spacing: 0.5px; }
-
-        /* МИНИ-СТАТЬЯ И ИЛЛЮСТРАЦИЯ ПОД ПОЛОМКОЙ */
-        .fault-article-drop { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: #0E0E10; }
-        .article-layout { padding: 30px; display: grid; grid-template-columns: 1fr 280px; gap: 30px; }
-        
-        .article-text-side { display: flex; flex-direction: column; gap: 16px; }
-        .article-section-node { display: flex; flex-direction: column; gap: 5px; }
-        .article-section-node strong { color: #D4AF37; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; }
-        .article-section-node p { color: #AEAEB2; font-weight: 300; font-size: 14px; line-height: 1.6; }
-        
-        /* Защищенная от сбоев графика */
-        .article-visual-side { display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.02); border-radius: 2px; padding: 15px; height: 100%; min-height: 180px; }
-        .blueprint-svg { width: 100%; height: 100%; max-height: 160px; }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) { .main-nav { display: none; } }
-        @media (max-width: 900px) {
-            .article-layout { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
-            .article-visual-side { min-height: 140px; }
+        .main-price-container { max-width: 1100px; margin: 60px auto 100px auto; padding: 0 4%; }
+        /* ==========================================================================
+           ЧАСТЬ 4: СТИЛИ РАСКРЫВАЮЩИХСЯ АККОРДЕОНОВ И МИНИ-СТАТЕЙ С ФОТО
+           ========================================================================== */
+        .category-accordion-item {
+            background: rgba(18, 18, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin-bottom: 25px;
+            border-radius: 2px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
+
+        .category-accordion-item:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+            background: rgba(22, 22, 26, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .category-header {
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .category-title-block h3 {
+            font-size: 20px;
+            color: #FFFFFF;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .category-meta {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .category-price-hint {
+            font-size: 14px;
+            color: #D4AF37;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 6px 14px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .category-icon {
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .category-icon svg {
+            stroke: #AEAEB2;
+            transition: stroke 0.3s ease;
+        }
+
+        /* Состояния при открытии категории */
+        .category-accordion-item.active {
+            border-color: rgba(140, 35, 35, 0.3);
+            background: rgba(14, 14, 16, 0.8);
+        }
+        .category-accordion-item.active .category-icon {
+            transform: rotate(180deg);
+        }
+        .category-accordion-item.active .category-icon svg {
+            stroke: #8C2323;
+        }
+
+        /* Выпадающая панель цен */
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 1, 0.2, 1);
+            background: rgba(8, 8, 10, 0.5);
+        }
+
+        /* Стили контейнера мини-статей внутри категории */
+        .faults-list {
+            padding: 10px 40px 40px 40px;
+        }
+
+        /* Карточка конкретной поломки */
+        .fault-card {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 30px 0;
+        }
+        .fault-card:last-child {
+            border-bottom: none;
+        }
+
+        .fault-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fault-name {
+            font-size: 16px;
+            color: #E5E5EA;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .fault-summary:hover .fault-name {
+            color: #D4AF37;
+        }
+
+        .fault-cost {
+            font-size: 16px;
+            color: #FFFFFF;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Развертываемая мини-статья поломки */
+        .fault-article-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+        }
+
+        .fault-article-content {
+            background: linear-gradient(135deg, rgba(22, 22, 26, 0.7) 0%, rgba(14, 14, 16, 0.9) 100%);
+            border-left: 2px solid #8C2323;
+            margin-top: 20px;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 30px;
+            animation: premiumFadeIn 0.5s ease forwards;
+        }
+
+        .article-text-block h4 {
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .article-text-block p {
+            color: #AEAEB2;
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .article-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .article-badge {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #8E8E93;
+            font-size: 11px;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .article-badge.gold {
+            background: rgba(212, 175, 55, 0.05);
+            border-color: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+        }
+
+        /* Контейнер для гарантированно загружаемых фото */
+        .article-image-block {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background-color: #0A0A0A;
+            border-radius: 1px;
+        }
+
+        .article-image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(15%) contrast(105%);
+            transition: transform 0.5s ease;
+        }
+        .fault-card.active .article-image-block img {
+            transform: scale(1.03);
+        }
+
         @media (max-width: 768px) {
-            .premium-header { padding: 15px 5%; } .header-info { display: none; }
-            .price-hero-zone h1 { font-size: 28px; } .price-hero-zone p { font-size: 14px; }
-            .category-trigger { padding: 20px; } .category-title-box h2 { font-size: 16px; }
-            .category-inner-table { padding: 10px 10px 20px 10px; }
-            .fault-clickable-bar { flex-direction: column; align-items: flex-start; gap: 8px; padding: 15px; }
-            .fault-price-tag { width: 100%; text-align: left; padding-left: 30px; font-size: 14px; }
+            .category-header { padding: 24px 20px; }
+            .category-title-block h3 { font-size: 17px; }
+            .category-meta { gap: 15px; }
+            .category-price-hint { display: none; }
+            .faults-list { padding: 5px 20px 20px 20px; }
+            .fault-article-content { grid-template-columns: 1fr; gap: 20px; padding: 15px; }
+            .article-image-block { height: 160px; }
+        }
+        /* ==========================================================================
+           ЧАСТЬ 5: СТИЛИ ДЛЯ ФОРМЫ ОБРАТНОЙ СВЯЗИ, КОНТАКТОВ И ПОДВАЛА
+           ========================================================================== */
+        .contacts-section { 
+            padding: 100px 8%; 
+            background-color: #0A0A0C; 
+            position: relative; 
+            border-top: 1px solid rgba(255, 255, 255, 0.02); 
+        }
+        .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+        
+        .contact-item-box { 
+            display: flex; 
+            gap: 20px; 
+            background: rgba(16, 16, 18, 0.4); 
+            padding: 25px 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.02); 
+            border-radius: 2px; 
+            margin-bottom: 20px; 
+            transition: border-color 0.3s ease;
+        }
+        .contact-item-box:hover {
+            border-color: rgba(212, 175, 55, 0.1);
+        }
+        .contact-item-icon { 
+            width: 44px; 
+            height: 44px; 
+            background: rgba(212, 175, 55, 0.03); 
+            border: 1px solid rgba(212, 175, 55, 0.1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 2px; 
+            flex-shrink: 0; 
+        }
+        .contact-item-details h4 { font-size: 13px; color: #8E8E93; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+        .contact-item-details p, .contact-item-details a { font-size: 16px; color: #FFFFFF; text-decoration: none; line-height: 1.5; font-weight: 400; }
+        .contact-item-details a:hover { color: #D4AF37; }
+
+        .callback-form-box { 
+            background: linear-gradient(135deg, rgba(20, 20, 22, 0.4) 0%, rgba(12, 12, 14, 0.7) 100%); 
+            border: 1px solid rgba(255, 255, 255, 0.02); 
+            padding: 50px; 
+            border-radius: 2px; 
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #8E8E93; margin-bottom: 8px; font-weight: 500; }
+        .form-control { 
+            width: 100%; 
+            background-color: #08080A; 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            padding: 16px 20px; 
+            color: #FFFFFF; 
+            font-size: 15px; 
+            border-radius: 2px; 
+            outline: none; 
+            transition: all 0.3s ease; 
+        }
+        .form-control:focus { border-color: #D4AF37; background-color: #0C0C0F; }
+        
+        .btn-gold { 
+            background-color: #8C2323; 
+            color: #FFFFFF; 
+            border: none; 
+            padding: 18px 35px; 
+            font-size: 13px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            width: 100%; 
+            margin-top: 10px; 
+            border-radius: 2px;
+        }
+        .btn-gold:hover { background-color: #A32A2A; box-shadow: 0 5px 20px rgba(140, 35, 35, 0.25); }
+        .form-note { font-size: 12px; color: #636366; line-height: 1.5; margin-top: 20px; font-weight: 300; }
+
+        /* ПОДВАЛ (FOOTER) */
+        .premium-footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.02); display: flex; justify-content: space-between; align-items: center; }
+        .footer-copyright { font-size: 12px; color: #55555A; letter-spacing: 0.5px; }
+        .footer-legal-note { font-size: 11px; color: #55555A; max-width: 550px; text-align: right; line-height: 1.5; font-weight: 300; }
+
+        @media (max-width: 992px) {
+            .contacts-section { padding: 60px 5%; }
+            .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
+            .callback-form-box { padding: 35px 25px; }
+            .premium-footer { flex-direction: column; gap: 20px; text-align: center; margin-top: 50px; padding-top: 30px; }
+            .footer-legal-note { text-align: center; }
         }
     </style>
 </head>
 <body>
-
+    <!-- ==========================================================================
+       ЧАСТЬ 6: ПРЕМИУМ-ШАПКА И ДЕКОРАТИВНЫЙ ВЕРХНИЙ БАННЕР СТРАНИЦЫ
+       ========================================================================== -->
     <header class="premium-header">
-        <a href="index.html" class="logo-block">
+        <div class="logo-block">
             <div class="logo-title">Miele<span> Zentrum</span></div>
             <div class="logo-subtitle">Независимый специализированный сервис</div>
-        </a>
+        </div>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -147,894 +419,480 @@
         </div>
     </header>
 
-    <div class="price-hero-zone">
-        <h1>Интерактивная база поломок и стоимости</h1>
-        <p>Энциклопедия независимого сервиса Miele Zentrum. Выберите категорию прибора, чтобы открыть полный список деталей, кодов ошибок, причин дефектов и точной стоимости их устранения инженером на дому.</p>
-    </div>
+    <section class="price-hero-section">
+        <div class="price-hero-inner">
+            <div class="price-badge"><span></span>Актуальные тарифы 2026</div>
+            <h1 class="section-title">Стоимость ремонта техники Miele</h1>
+            <p class="section-subtitle">Ознакомьтесь с подробным прайс-листом на сервисные услуги. Каждая неисправность содержит экспертный разбор причин возникновения дефекта и технологические карты его устранения инженерами нашего центра.</p>
+        </div>
+    </section>
 
-    <div class="encyclopedia-container">
-        <div class="master-accordion">
-                <!-- ==========================================================================
-                   ЧАСТЬ 2 ИЗ 12: КОФЕМАШИНЫ (ПОЗИЦИИ 1 - 4)
-                   ========================================================================== -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/></svg>
-                            <h2>Кофемашины Miele, Jura, Nivona, Siemens, Melitta</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 1 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт и переборка заварного механизма</span>
-                                    <span class="fault-price-tag">от 2 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Высыхание заводской силиконовой смазки под воздействием температур и кофейных кислот. Накапливающиеся масла блокируют ход поршня, редуктор работает под критической нагрузкой, вызывая ошибку позиционирования блока.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер полностью демонтирует заварное устройство, разбирает его на составные узлы, проводит ультразвуковую очистку от спрессованного жмыха, меняет все уплотнительные кольца и манжеты, наносит сертифицированную термостойкую смазку OKS.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Если кофейный блок съемный (как в Nivona/Melitta), извлекайте его раз в 10 дней и промывайте теплой водой без мыла. Для встроенных блоков Miele обязательно запускайте цикл очистки таблетками каждые 200 чашек.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="35" y="20" width="30" height="60" rx="2"/><circle cx="50" cy="40" r="12"/><line x1="50" y1="20" x2="50" y2="80"/><line x1="30" y1="50" x2="70" y2="50"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 2 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена помпы высокого давления (насоса)</span>
-                                    <span class="fault-price-tag">от 3 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Износ пластикового поршня, падение упругости возвратной пружины или перегорание обмотки электромагнитной катушки. Помпа начинает сильно гудеть, но давление падает ниже необходимых 15 бар, из-за чего кофе капает по капле.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер замеряет рабочее давление гидросистемы дилерским манометром. При подтверждении дефекта старый насос демонтируется с гасящих вибрацию резиновых амортизаторов, и устанавливается новая оригинальная итальянская помпа ULKA EX5.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Никогда не запускайте приготовление, если в резервуаре закончилась вода. Работа помпы «всухую» приводит к моментальному перегреву пластиковых клапанов насоса.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="35" width="40" height="30" rx="3"/><rect x="65" y="43" width="12" height="14"/><line x1="45" y1="35" x2="45" y2="65"/><circle cx="45" cy="50" r="4"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 3 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Калибровка и замена жерновов кофемолки</span>
-                                    <span class="fault-price-tag">от 3 800 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Естественное затупление режущих кромок конических жерновов от пробега (более 5-7 тысяч чашек) либо попадание в зерна мелких посторонних предметов (камни, жесткие веточки), что приводит к слизыванию граней или заклиниванию мотора.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Разбирается кофемолка, шнек полностью вычищается от спрессованного кофейного порошка. Устанавливается комплект новых стальных или керамических жерновов, после чего инженер проводит ручную калибровку шага помола по эталонному стандарту.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Избегайте использования чрезмерно жирных, карамелизированных или ароматизированных зерен — они оставляют липкий налет, к которому намертво прилипает пыль, выводя кофемолку из строя.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="30" stroke-dasharray="2,2"/><circle cx="50" cy="50" r="15"/><line x1="50" y1="20" x2="50" y2="35"/><line x1="50" y1="65" x2="50" y2="80"/><line x1="20" y1="50" x2="35" y2="50"/><line x1="65" y1="50" x2="80" y2="50"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 4 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт или замена дренажного клапана</span>
-                                    <span class="fault-price-tag">от 3 200 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Появление микротрещин на пластиковом корпусе клапана из-за постоянных температурных ударов либо износ внутренних резиновых манжет штока. В результате вода при заваривании сливается напрямую в поддон, а кофе в чашку не течет.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер добирается до основания редуктора, извлекает дренажный узел, дефектует состояние штока. Производится замена клапана на новый оригинальный узел с модернизированными фторкаучуковыми (FKM) прокладками повышенной прочности.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Появление чистой воды или избыточного количества пара в поддоне во время варки — первый сигнал износа дренажа. Своевременное обращение спасет электронные концевики от заливания.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                            <!-- Поломка 5 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт платы управления / силового модуля</span>
-                                    <span class="fault-price-tag">от 4 200 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Нестабильное напряжение в электросетях СПб, короткое замыкание из-за попадания конденсата или воды на плату, выгорание симисторов управления кофемолкой или реле нагрева бойлера.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер извлекает электронный модуль, проводит диагностику цепей питания мультиметром. С помощью портативной паяльной станции заменяются выгоревшие радиокомпоненты, диодные мосты и восстанавливаются поврежденные токопроводящие дорожки.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не включайте прибор в розетки, которые искрят или сидят на одной перегруженной линии с чайником и микроволновкой. Электроника премиум-класса крайне чувствительна к импульсным помехам.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="25" width="50" height="50" rx="4"/><line x1="35" y1="35" x2="65" y2="35" stroke-dasharray="2,2"/><circle cx="35" cy="55" r="3"/><circle cx="50" cy="55" r="3"/><circle cx="65" cy="55" r="3"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 6 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт гидросистемы и устранение течи</span>
-                                    <span class="fault-price-tag">от 2 400 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Растрескивание тефлоновых трубок от постоянного давления (до 18 бар), пересыхание уплотнителей штуцеров бойлера или ослабление фиксирующих скоб из-за вибрации при работе кофемолки.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Производится полный визуальный осмотр контура под давлением. Мастер меняет поврежденные армированные шланги, ставит новые термостойкие переходники и фиксирует соединения усиленными металлическими зажимами.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Если под кофемашиной появилась лужица воды — не пользуйтесь прибором. Вода внутри корпуса может моментально закоротить силовой трансформатор или залить мотор привода.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><path d="M25 50 C 40 30, 60 70, 75 50" stroke-width="1.2"/><circle cx="25" cy="50" r="3"/><circle cx="75" cy="50" r="3"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 7 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена мультиклапана распределения воды</span>
-                                    <span class="fault-price-tag">от 4 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Заклинивание внутренних керамических дисков распределителя из-за отложений кальция (накипи) или поломка пластиковых шестерен микромотора, который вращает эти диски для смены режимов (пар/кофе).</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Электронный узел проверяется на подачу сигналов. Неисправный мультиклапан отключается от цепей питания и гидросистемы, после чего инженер монтирует новый оригинальный распределительный блок Miele.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Используйте фильтрованную воду или вовремя меняйте встроенный картридж-умягчитель. Кальцинаты — главный враг прецизионных дисков мультиклапана.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="20"/><line x1="50" y1="20" x2="50" y2="80"/><line x1="20" y1="50" x2="80" y2="50"/><circle cx="50" cy="50" r="4" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- Конец category-inner-table -->
-                    </div> <!-- Конец category-body-content -->
-                </div> <!-- Конец папки КОФЕМАШИНЫ -->
-                <!-- ==========================================================================
-                   ЧАСТЬ 4 ИЗ 12: ДУХОВЫЕ ШКАФЫ MIELE (ПОЗИЦИИ 1 - 4)
-                   ========================================================================== -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M6 14h12"/></svg>
-                            <h2>Духовые шкафы Miele</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 1 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена кольцевого, верхнего или нижнего ТЭНа</span>
-                                    <span class="fault-price-tag">от 3 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Истончение вольфрамовой нити накала от длительной эксплуатации, разрушение диэлектрического наполнителя (песка) внутри металлической трубки или межвитковое замыкание. В результате ТЭН либо не греет совсем, либо пробивает на корпус, выбивая автомат УЗО.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер замеряет сопротивление нагревателя мультиметром. При подтверждении обрыва спирали шкаф частично выдвигается из ниши, демонтируются защитные панели корпуса, извлекается сгоревший ТЭН и монтируется новый оригинальный нагревательный элемент Miele с обновлением термостойких клемм питания.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не злоупотребляйте функцией пиролитической очистки (выжигание жира при 500°C) чаще одного раза в 3-4 месяца. Экстремальный жар создает предельную нагрузку на металл спирали и ускоряет её разрушение.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="32"/><path d="M45 18 V30 M55 18 V30 M45 18 H55"/><path d="M35 50 Q 50 25 65 50" stroke-dasharray="2,2"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 2 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт силового инверторного модуля (платы питания)</span>
-                                    <span class="fault-price-tag">от 4 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Резкие скачки и просадки напряжения в электросетях Санкт-Петербурга, приводящие к выгоранию варисторов, выпрямительных диодов или потере емкости фильтрующих электролитических конденсаторов. Также часто подгорают контакты силовых реле, отвечающих за подачу тока на ТЭНы.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Плата извлекается из верхней части духового шкафа. Проводится детальная диагностика цепей питания портативным осциллографом. Сгоревшая обвязка импульсного трансформатора и изношенные реле аккуратно выпаиваются паяльной станцией, монтируются новые радиокомпоненты промышленного класса, плата покрывается защитным лаком.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Подключайте духовой шкаф к выделенной силовой линии с качественным автоматом защиты. Избегайте использования дешевых клеммников — плохой контакт на линии питания приводит к импульсным помехам, сжигающим процессор платы.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="20" y="25" width="60" height="50" rx="3"/><rect x="30" y="35" width="15" height="15" stroke-dasharray="1,1"/><circle cx="60" cy="45" r="5"/><path d="M25 62 H75"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 3 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена мотора конвекции / тангенциального обдува</span>
-                                    <span class="fault-price-tag">от 3 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Выгорание или закоксовывание высокотемпературной смазки во втулках или подшипниках качения из-за попадания жирового налета и жара. Вал вентилятора заклинивает, мотор начинает сильно гудеть, греться, а на плате выгорает симистор управления вентилятором.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Разбирается задняя внутренняя стенка камеры шкафа, снимается металлическая крыльчатка. Мастер отключает шлейф питания, демонтирует заклинивший электродвигатель и устанавливает оригинальный асинхронный мотор Miele с термостойкой защитой класса H.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Если во время работы духовки появился нетипичный металлический скрежет, писк или сильная вибрация — сразу вызывайте мастера. Заклинивший мотор может перегреть внутренние стенки и испортить кухонную мебель.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="14"/><path d="M50 15 V36 M50 64 V85 M15 50 H36 M64 50 H85"/><path d="M25 25 L40 40 M60 60 L75 75 M75 25 L60 40 M40 60 L25 75"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 4 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена температурного датчика NTC / термостата</span>
-                                    <span class="fault-price-tag">от 2 400 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Деградация платинового напыления внутри сенсора температуры из-за постоянных циклов нагрева и охлаждения. Датчик начинает выдавать на плату неверное сопротивление, из-за чего духовка либо сжигает выпечку, либо выдает ошибку датчика на дисплее и отключается.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер подключает сервисный компьютер к диагностическому разъему шкафа для снятия графика показаний температуры в реальном времени. При фиксации дрейфа параметров старый датчик аккуратно извлекается из жаропрочной гильзы, и монтируется новый оригинальный термосенсор.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не оставляйте дверцу духовки приоткрытой после готовки для быстрого охлаждения — горячий пар из камеры бьет прямо в верхнюю панель, перегревая датчики, плату управления и дисплей.</p></div>
-                                        </div>
-                            <!-- Поломка 5 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт замка двери и блокиратора пиролиза</span>
-                                    <span class="fault-price-tag">от 4 000 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Поломка пластиковых шестерен редуктора блокировки, перегорание микромотора привода или залипание концевого выключателя. При очистке шкаф нагревается до 500°C, дверь намертво блокируется, а после остывания замок не открывается или выдает ошибку системы фиксации.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер производит аварийное вскрытие фиксатора без повреждения фронтальной панели. Демонтируется замок, проверяется целостность обмоток шагового мотора. Выполняется замена узла блокировки в сборе на новую оригинальную деталь Miele с термостойкими датчиками положения штока.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Никогда не пытайтесь силой открыть заблокированную при пиролизе дверь духового шкафа. Это приведет к выламыванию ответной части на корпусе и дорогостоящей замене всей фасадной рамки.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="30" y="30" width="40" height="40" rx="2"/><path d="M45 40 H55 V60 H45 Z"/><path d="M50 30 V40 M50 60 V70"/><circle cx="50" cy="50" r="2" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 6 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена петель дверцы и шарниров</span>
-                                    <span class="fault-price-tag">от 2 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Ослабление или излом мощных возвратных пружин внутри шарнира, деформация рычагов из-за механической перегрузки (например, если на открытую дверцу облокотились). В результате дверь закрывается неплотно, пропуская жар наружу.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер аккуратно снимает тяжелую дверь с духового шкафа, разбирает внутренние профили, извлекает деформированные или лопнувшие петли. Устанавливается пара оригинальных шарниров Miele с интегрированной системой плавного закрытия SoftOpen/SoftClose.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Следите, чтобы на уплотнитель и петли не налипал застывший жир. Он работает как абразив, ускоряя износ трущихся металлических элементов шарнирного механизма.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><path d="M30 70 L50 30 L70 70 Z"/><circle cx="50" cy="30" r="4"/><line x1="30" y1="70" x2="70" y2="70"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 7 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена или переклейка жаропрочного стекла двери</span>
-                                    <span class="fault-price-tag">от 3 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Появление скрытых микротрещин из-за резкого термического шока (например, попадание холодной воды на раскаленное стекло) либо разрушение специального клеевого состава, на котором внутренние стекла держатся в рамке двери.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Дверь полностью демонтируется и разбирается на специальном мягком стенде. Остатки старого клея зачищаются и обезжириваются. Устанавливается новое оригинальное жаропрочное стекло Miele на профессиональный высокотемпературный клей-герметик Dow Corning.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не используйте агрессивные порошки со скребками для очистки стекол духовки. Мелкие царапины под воздействием сильного жара могут привести к тому, что стекло просто лопнет в процессе готовки.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="25" width="50" height="50" rx="1"/><line x1="35" y1="25" x2="35" y2="75"/><line x1="65" y1="25" x2="65" y2="75"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- Конец category-inner-table -->
-                    </div> <!-- Конец category-body-content -->
-                </div> <!-- Конец папки ДУХОВЫЕ ШКАФЫ -->
-                <!-- ==========================================================================
-                   ЧАСТЬ 6 ИЗ 12: ВАРОЧНЫЕ ПАНЕЛИ MIELE (ПОЗИЦИИ 1 - 4)
-                   ========================================================================== -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="7" cy="7" r="1"/><circle cx="17" cy="17" r="1"/></svg>
-                            <h2>Варочные панели (Индукция и Электро)</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 1 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт инверторного модуля частоты индукции</span>
-                                    <span class="fault-price-tag">от 5 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Выгорание мощных силовых транзисторов IGBT или диодного моста из-за длительной непрерывной работы конфорок в режиме максимальной мощности Booster. Электронные компоненты перегреваются, что приводит к короткому замыканию и полной блокировке панели.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер полностью извлекает варочную панель из столешницы, разбирает корпус и извлекает инверторную плату. Сгоревшие транзисторы выпаиваются, посадочное место на алюминиевом радиаторе зачищается, наносится свежая высокопроводящая термопаста, после чего впаиваются новые оригинальные компоненты.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Старайтесь не использовать режим Booster одновременно на нескольких зонах нагрева дольше 10–15 минут. Это убережет силовую электронику панели от экстремальных тепловых перегрузок.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="30" y="30" width="40" height="40" rx="2"/><path d="M40 45 L50 60 L60 45"/><line x1="50" y1="30" x2="50" y2="45"/><circle cx="50" cy="60" r="3"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 2 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена нагревательного элемента Hi-Light (электро)</span>
-                                    <span class="fault-price-tag">от 3 100 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Естественный обрыв или локальное перегорание гофрированной ленты накала из высокоомного сплава от времени работы или из-за падения напряжения в сети. Конфорка перестает светиться красным цветом и полностью теряет нагрев.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер разбирает корпус варочной поверхности, снимает фиксирующие пружины неисправной конфорки, извлекает её из посадочного места, устанавливает оригинальный круглый или овальный нагреватель Miele и подключает к нему датчики остаточного тепла.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Подбирайте дно посуды строго под диаметр конфорки. Если кастрюля меньше зоны нагрева, выделяемое тепло уходит впустую, перегревая края стеклокерамики и укорачивая ресурс нагревательной ленты.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="20" stroke-dasharray="2,2"/><circle cx="50" cy="50" r="10"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 3 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт сенсорного блока и плат управления кнопками</span>
-                                    <span class="fault-price-tag">от 4 000 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Попадание влаги или выкипевшей соленой жидкости под стеклокерамику, что приводит к окислению медных дорожек шлейфа или сбоям в прошивке контроллера сенсоров. Панель перестает реагировать на касания пальцев или хаотично пищит.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Проводится аккуратный демонтаж сенсорной платы с обратной стороны стекла. Детали проходят ультразвуковую сушку и деликатную очистку от окислов. При необходимости заменяются емкостные датчики и восстанавливается шлейф связи с силовым блоком.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Если на сенсорную зону выкипела вода, сразу отключайте панель и насухо вытирайте поверхность. Жидкость, просочившаяся через уплотнитель, может полностью выжечь управляющий чип.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="20" y="40" width="60" height="20" rx="1"/><line x1="30" y1="50" x2="40" y2="50"/><line x1="50" y1="50" x2="60" y2="50"/><circle cx="70" cy="50" r="2" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 4 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена силового реле включения зоны нагрева</span>
-                                    <span class="fault-price-tag">от 2 400 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Подгорание, залипание или полное разрушение внутренних электрических контактов реле из-за высоких пусковых токов. Конфорка при этом либо работает постоянно на максимуме и не отключается, либо вообще не включается.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер локализует неисправное реле на плате питания с помощью мультиметра. Изношенный элемент выпаивается паяльной станцией с контролем температуры, и на его место устанавливается надежное реле Finder с увеличенным ресурсом циклов коммутации.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не выключайте варочную панель резко выдергиванием вилки из розетки или автоматом сразу после окончания готовки. Вентилятор охлаждения должен отработать свой цикл, чтобы плавно остудить плату и реле.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                            <!-- Поломка 5 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена термодатчика под стеклокерамикой</span>
-                                    <span class="fault-price-tag">от 2 200 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Обрыв сигнального провода или разрушение корпуса терморезистора из-за локального перегрева или падения посуды. Панель выдает ошибку датчика и блокирует включение конфорки во избежание пожара.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер снимает стеклокерамическую поверхность, извлекает подпружиненный датчик из центра индукционной катушки, зачищает контакты и монтирует новый оригинальный сенсор температуры с термопастой повышенной проводимости.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не ставьте на панель посуду с неровным или деформированным дном. Из-за воздушных зазоров датчик считывает температуру неверно, вызывая постоянный перегрев посуды.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="25"/><path d="M40 50 H60 M50 40 V60"/><rect x="46" y="46" width="8" height="8" rx="1"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 6 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена сетевого фильтра радиопомех</span>
-                                    <span class="fault-price-tag">от 2 600 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Взрыв защитных варисторов или пробой помехоподавляющих конденсаторов X2/Y2 из-за мощного импульсного скачка напряжения в сети. После этого варочная панель полностью обесточивается и не подает признаков жизни.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер проверяет входные цепи питания, демонтирует поврежденную плату фильтрации, производит замену защитных элементов или монтирует новый сетевой фильтр Miele в сборе с плавкими предохранителями.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Если в доме моргает свет во время грозы или ремонтных работ на линии, временно отключите варочную панель автоматом в щитке, чтобы уберечь входные фильтры от пробоя.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="35" width="50" height="30" rx="2"/><path d="M35 50 H65 M45 40 V60 M55 40 V60"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 7 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Обновление герметизирующего шва панели</span>
-                                    <span class="fault-price-tag">от 1 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Пересыхание, растрескивание или растворение заводского уплотнителя под воздействием моющих средств и жира. В образовавшиеся щели начинает сочиться вода, которая заливает находящуюся прямо под стеклом электронику.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Панель извлекается из посадочного гнезда. Остатки старого уплотнителя полностью срезаются, торец стекла и столешница обезжириваются. Наносится новый премиальный демпферный термостойкий герметик-профиль.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не заливайте швы вокруг панели агрессивной химией для духовок на основе щелочи. Она разъедает полимерные составы шва за несколько месяцев.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><path d="M20 30 H80 M20 70 H80 M30 30 V70 M70 30 V70" stroke-dasharray="2,2"/><rect x="35" y="45" width="30" height="10" rx="1"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- Конец category-inner-table -->
-                    </div> <!-- Конец category-body-content -->
-                </div> <!-- Конец папки ВАРОЧНЫЕ ПАНЕЛИ -->
-                <!-- ==========================================================================
-                   ЧАСТЬ 8 ИЗ 12: ПОСУДОМОЕЧНЫЕ МАШИНЫ MIELE (ПОЗИЦИИ 1 - 4)
-                   ========================================================================== -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
-                            <h2>Посудомоечные машины Miele</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 1 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Устранение протечек по системе WaterProof (Ошибка F70)</span>
-                                    <span class="fault-price-tag">от 3 800 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Попадание воды в нижний защитный поддон из-за трещины в сливном патрубке, износа сальника или разгерметизации контура. Пенопластовый поплавок поднимается, замыкает микровыключатель, электроника выдает код F70 и принудительно включает сливной насос.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер выкатывает встроенную машину, наклоняет ее для слива остатков воды из поддона и демонтирует нижнюю крышку. С помощью опрессовки контура локализуется скрытая течь, заменяются поврежденные хомуты, патрубки или изношенные прокладки на новые жаропрочные детали.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не используйте дешевые моющие средства или обычное жидкое мыло — обильная пена может перелиться через края моечной камеры напрямую в поддон, заблокировав работу системы WaterProof.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="25" width="50" height="50" rx="1"/><path d="M35 75 H65"/><circle cx="50" cy="65" r="4"/><path d="M50 61 V45" stroke-dasharray="2,2"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 2 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт циркуляционного насоса (основного мотора)</span>
-                                    <span class="fault-price-tag">от 5 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Просачивание капель воды через графитовый сальник на подшипники вала, вызывающее их коррозию и заклинивание. Также возможен износ графитовых втулок из-за люфта или выгорание пусковой обмотки статора. Машина гудит, но воду в коромысла не подает.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер извлекает циркуляционный блок, разбирает улитку насоса. Производится деликатная замена изношенных подшипников, сальникового уплотнения, либо монтируется оригинальный асинхронный электродвигатель Miele со встроенным таходатчиком частоты вращения.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Всегда очищайте посуду от крупных остатков пищи и костей перед загрузкой. Мелкие твердые частицы, минуя сетку фильтра, попадают в крыльчатку насоса и разбивают сальник.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="22"/><circle cx="50" cy="50" r="6"/><path d="M50 28 V44 M50 56 V72 M28 50 H44 M56 50 H72"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 3 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена проточного ТЭНа подогрева воды</span>
-                                    <span class="fault-price-tag">от 4 600 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Образование плотного слоя накипи (кальцинатов) на внутренней стенке нагревательной трубки, препятствующее теплоотдаче. Спираль внутри ТЭНа перегревается и перегорает. Вода остается холодной, посуда не отмывается, а цикл мытья зависает.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Проводится замер сопротивления нагревательного элемента. Неисправный проточный нагреватель демонтируется из гидравлического контура, отключаются защитные термостаты. Устанавливается новый оригинальный проточный ТЭН Miele с проверкой герметичности соединений.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Следите за уровнем специальной регенерационной соли в бачке и правильно выставляйте уровень жесткости воды в меню по региону СПб. Соль нейтрализует известь и защищает ТЭН от накипи.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="35" width="50" height="30" rx="3"/><path d="M30 50 H70 M35 45 L45 55 M55 45 L65 55" stroke-dasharray="1,1"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 4 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена сливного насоса откачки (помпы)</span>
-                                    <span class="fault-price-tag">от 3 100 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Попадание посторонних предметов (осколки стекла, зубочистки) под крыльчатку, вызывающее блокировку ротора и перегорание катушки. Также возможен люфт постоянного магнита из-за износа пластиковой втулки, из-за чего помпа трещит и не сливает воду (Ошибка F11).</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер снимает нижний фильтр-сборник, открывает защитную защелку крыльчатки слива. При подтверждении перегорания обмоток, помпа демонтируется со стороны днища, и устанавливается оригинальный синхронный сливной насос Miele.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Регулярно (раз в месяц) вынимайте сетчатый фильтр моечной камеры и промывайте его щеткой. Это исключит попадание мелкого мусора в улитку сливного насоса.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="30" y="30" width="40" height="30" rx="2"/><path d="M50 30 V45 M35 45 H65"/><circle cx="50" cy="50" r="5" fill="#D4AF37"/></svg>
-                            <!-- Поломка 5 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт доводчика двери и системы AutoOpen</span>
-                                    <span class="fault-price-tag">от 3 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Износ пластиковых шестерен сервопривода или выгорание обмотки микромотора, выталкивающего шток для автоматического приоткрывания дверцы при сушке. В результате дверь либо блокируется, либо не открывается в конце цикла, нарушая процесс конденсационной сушки.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер разбирает верхнюю панель двери, проводит дефектовку блока сервопривода AutoOpen. Узел отключается от шины управления, демонтируется и заменяется на оригинальный оригинальный привод Miele с усиленным металлическим толкателем.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Не пытайтесь силой захлопнуть дверь сразу после завершения программы, если шток AutoOpen еще не задвинулся обратно в корпус. Это приведет к срезанию зубьев на ведущей шестеренке редуктора.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="35" y="25" width="30" height="50" rx="1"/><path d="M50 25 V15 M45 15 H55"/><circle cx="50" cy="50" r="6"/><line x1="50" y1="50" x2="60" y2="60"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 6 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена датчика мутности воды (Aquasensor)</span>
-                                    <span class="fault-price-tag">от 2 800 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Помутнение или покрытие плотным слоем жира и кальция оптического стекла инфракрасного фотодиода. Оптика теряет способность корректно определять степень прозрачности воды, из-за чего электроника преждевременно завершает цикл или бесконечно полощет посуду.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер заглядывает под днище моечной камеры в районе циркуляционного контура, извлекает датчик мутности, проверяет параметры светопропускания. Узел заменяется на новый оригинальный сенсор, контакты обрабатываются влагозащитным составом.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Раз в 3 месяца запускайте пустую машину на максимальной температуре (75°C) со специализированным средством для удаления жира. Это очистит оптику датчика и стенки бака от липкого налета.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><path d="M30 40 H70 V60 H30 Z"/><circle cx="40" cy="50" r="3" fill="#D4AF37"/><circle cx="60" cy="50" r="3" fill="#D4AF37"/><path d="M43 50 H57" stroke-dasharray="1,1"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 7 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт замка двери и датчика закрытия</span>
-                                    <span class="fault-price-tag">от 3 400 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Механическая деформация пластикового язычка-фиксатора из-за резких хлопков дверью или подгорание контактов микропереключателя, который сигнализирует плате о полной блокировке двери. Машина отказывается запускать программу мытья.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Снимается декоративное оформление верхней кромки двери. Извлекается блок замка, заменяется неисправный концевик, восстанавливается геометрия пружинного механизма захвата, после чего узел тестируется на надежность удержания контура под давлением.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Закрывайте дверцу посудомоечной машины плавно, до легкого щелчка. Резкие удары разбивают хрупкий пластиковый корпус блокиратора и расшатывают ответную петлю на раме.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="30" y="35" width="40" height="30" rx="1"/><path d="M45 45 H55 M50 35 V45"/><path d="M35 55 H65" stroke-dasharray="2,2"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- Конец category-inner-table -->
-                    </div> <!-- Конец category-body-content -->
-                </div> <!-- Конец папки ПОСУДОМОЕЧНЫЕ МАШИНЫ -->
-                <!-- ==========================================================================
-                   ЧАСТЬ 10 ИЗ 12: ГЛАДИЛЬНЫЕ СИСТЕМЫ MIELE FASHIONMASTER (ПОЗИЦИИ 1 - 3)
-                   ========================================================================== -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M4 18h16a2 2 0 0 0 2-2V9a5 5 0 0 0-5-5H7a3 3 0 0 0-3 3v11Z"/></svg>
-                            <h2>Гладильные системы Miele FashionMaster</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 1 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Чистка бойлера высокого давления от накипи (Кальция)</span>
-                                    <span class="fault-price-tag">от 4 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Использование водопроводной или недостаточно очищенной воды в СПб, богатой минералами. Кальциевый налет намертво заизвестковывает внутренние стенки стального толстостенного бойлера, блокирует датчики уровня жидкости и приводит к перегреву ТЭНа.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер производит частичную разборку корпуса базы, извлекает бойлер высокого давления. Выполняется химическая промывка специализированными концентрированными составами Miele, разрушающими окалину, после чего узел очищается ультразвуком и опрессовывается на герметичность.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Никогда не игнорируйте системное сообщение системы о необходимости проведения дегенерации (удаления накипи). Запущенный налет может полностью разрушить датчики, что потребует замены всего дорогостоящего бойлера в сборе.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="30" width="50" height="40" rx="6"/><circle cx="50" cy="50" r="12" stroke-dasharray="2,2"/><line x1="30" y1="60" x2="70" y2="60"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 2 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт узла подачи пара и электромагнитного клапана</span>
-                                    <span class="fault-price-tag">от 3 900 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Заклинивание механического подпружиненного сердечника (штока) клапана из-за попавших под него микрочастиц накипи или межвитковое замыкание обмотки индукционной катушки. Пар либо подается непрерывно, либо утюг полностью «молчит» при нажатии кнопки.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер прозванивает соленоид катушки мультиметром. При исправной электрической части клапан разбирается, очищается от грязи шток, меняется термостойкая возвратная пружина. При сгоревшей катушке электромагнитный клапан заменяется новым оригинальным узлом.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>После работы всегда сливайте остатки воды из резервуара и не оставляйте систему включенной в режиме ожидания часами — это приводит к постоянному перегреву катушки клапана.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="35" y="20" width="30" height="30" rx="1"/><rect x="42" y="50" width="16" height="30" rx="1"/><line x1="50" y1="50" x2="50" y2="20"/><circle cx="50" cy="40" r="4" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Поломка 3 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт вентилятора отвода / наддува гладильного стола</span>
-                                    <span class="fault-price-tag">от 4 200 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Проникновение влаги (конденсата) внутрь подшипникового узла вентилятора, установленного под сеткой стола, или налипание ворсинок ткани на лопасти. Вал заклинивает, функции отвода пара или создания «воздушной подушки» перестают переключаться.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Стол разбирается, снимается многослойный гладильный чехол и защитный поддон. Инженер извлекает блок двухскоростного вентилятора, вычищает лопасти, меняет изношенные подшипники вала, обрабатывает обмотки влагоотталкивающим изоляционным лаком.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Используйте функцию отвода пара правильно, не перекрывайте вентиляционные отверстия на днище стола вещами. По окончании глажки давайте вентилятору поработать пару минут для полной просушки внутренних слоев стола.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><circle cx="50" cy="50" r="28"/><path d="M50 22 C40 35, 60 35, 50 50 C40 65, 60 65, 50 78" stroke-width="1.2"/><circle cx="50" cy="50" r="4" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                <!-- КАТЕГОРИЯ 5: ГЛАДИЛЬНЫЕ СИСТЕМЫ -->
-                <div class="category-folder">
-                    <div class="category-trigger">
-                        <div class="category-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M4 18h16a2 2 0 0 0 2-2V9a5 5 0 0 0-5-5H7a3 3 0 0 0-3 3v11Z"/></svg>
-                            <h2>Гладильные системы Miele FashionMaster</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="category-body-content">
-                        <div class="category-inner-table">
-
-                            <!-- Поломка 4 -->
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт ТЭНа подошвы утюга или отпаривателя</span>
-                                    <span class="fault-price-tag">от 5 000 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Перегорание нагревательного элемента, встроенного непосредственно в алюминиевую или стальную подошву утюга (или насадки-отпаривателя), из-за деструкции спирали от времени или падения прибора. Утюг остается холодным, хотя пар из базы может поступать.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер разбирает корпус самого утюга, замеряет сопротивление встроенного ТЭНа и исправность термопредохранителя на 240°C. Выполняется деликатная замена термоэлемента либо подошвы в сборе с восстановлением внутренней жаропрочной проводки.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Никогда не ставьте утюг на металлические подставки или грубые поверхности, способные деформировать подошву. Глубокие царапины нарушают равномерность теплораспределения и приводят к локальному перегреву ТЭНа.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><path d="M25 75 C 25 35, 45 20, 50 20 C 55 20, 75 35, 75 75 Z"/><line x1="25" y1="75" x2="75" y2="75"/><path d="M35 65 Q 50 40 65 65" stroke-dasharray="2,2"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> <!-- Конец category-inner-table -->
-                    </div> <!-- Конец category-body-content -->
-                </div> <!-- Конец папки ГЛАДИЛЬНЫЕ СИСТЕМЫ -->
-                <!-- КАТЕГОРИЯ 6: ПАРОВАРКИ И СВЧ-ПЕЧИ -->
-                <div class="cat-item">
-                    <div class="cat-header">
-                        <div class="cat-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 12h10"/></svg>
-                            <h2>Пароварки и СВЧ-печи Miele</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="cat-content">
-                        <div class="sub-table">
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Замена инвертора или магнетрона излучения СВЧ</span>
-                                    <span class="fault-price-tag">от 5 800 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Пробой высоковольтного диода, потеря эмиссии катода магнетрона или выход из строя транзисторов инверторной платы из-за работы камеры пустой. Продукты полностью не нагреваются.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Мастер разряжает высоковольтный конденсатор. Проверяется инверторный блок питания, демонтируется неисправный магнетрон и устанавливается оригинальный излучатель Miele с обязательной заменой слюдяной пластины волновода.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Строго избегайте посуды с золотым напылением, ободками или металлических предметов внутри СВЧ. Металл вызывает дуговой разряд, который мгновенно выжигает колпачок магнетрона.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="30" y="30" width="40" height="40" rx="2"/><circle cx="50" cy="50" r="8"/><path d="M50 20 V30 M50 70 V80 M20 50 H30 M70 50 H80" stroke-dasharray="2,2"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Главный контейнер для всех категорий техники -->
+    <div class="main-price-container">
+        <!-- ==========================================================================
+           ЧАСТЬ 7: КАТЕГОРИЯ — СТИРАЛЬНЫЕ МАШИНЫ MIELE (НАЧАЛО)
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Стиральные и стирально-сушильные машины</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 400 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                 </div>
-
-                <!-- КАТЕГОРИЯ 7: КУХОННЫЕ ВЫТЯЖКИ -->
-                <div class="cat-item">
-                    <div class="cat-header">
-                        <div class="cat-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M4 20h16v-4L14 8V4h-4v4L4 16v4z"/></svg>
-                            <h2>Кухонные вытяжки Miele</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="cat-content">
-                        <div class="sub-table">
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт асинхронного мотора вентилятора</span>
-                                    <span class="fault-price-tag">от 4 000 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Выгорание пускового конденсатора, межвитковое замыкание обмоток из-за перегрева или закоксовывание вала липким жировым налетом. Вытяжка перестает переключать скорости или сильно шумит.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Инженер демонтирует внешние стальные фильтры, добирается до улитки воздуховода. Проверяется емкость конденсатора, извлекается двигатель, меняются изношенные подшипники вала, удаляется жир и восстанавливаются силовые контакты.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Регулярно мойте металлические жировые фильтры в посудомоечной машине. Если они забиты, мотор работает под двойной нагрузкой без должного забора воздуха и быстро перегревается.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="35" y="35" width="30" height="30" rx="15"/><line x1="50" y1="20" x2="50" y2="80"/><line x1="20" y1="50" x2="80" y2="50"/><circle cx="50" cy="50" r="6" fill="#D4AF37"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- КАТЕГОРИЯ 8: ПОДОГРЕВАТЕЛИ И ВАКУУМАТОРЫ -->
-                <div class="cat-item">
-                    <div class="cat-header">
-                        <div class="cat-title-box">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
-                            <h2>Подогреватели посуды и Вакууматоры</h2>
-                        </div>
-                        <div class="category-arrow-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                    </div>
-                    <div class="cat-content">
-                        <div class="sub-table">
-                            <div class="fault-row-block">
-                                <div class="fault-clickable-bar">
-                                    <span class="fault-name-text"><span class="fault-toggle-plus">+</span> Ремонт роторного вакуумного насоса</span>
-                                    <span class="fault-price-tag">от 5 500 ₽</span>
-                                </div>
-                                <div class="fault-article-drop">
-                                    <div class="article-layout">
-                                        <div class="article-text-side">
-                                            <div class="article-section-node"><strong>Причины дефекта:</strong><p>Выработка ресурса лопаток насоса, загрязнение уплотнительного контура камеры остатками продуктов или падение уровня масла в помпе вакууматора. Прибор выдает системную ошибку давления.</p></div>
-                                            <div class="article-section-node"><strong>Как устраняем на дому:</strong><p>Шкаф извлекается из мебельного гарнитура. Мастер дефектует камеру опрессовкой, меняет изношенные силиконовые профили-прокладки крышки, проводит чистку масляного контура насоса и заливает новое вакуумное масло.</p></div>
-                                            <div class="article-section-node"><strong>Совет инженера:</strong><p>Следите, чтобы края вакуумных пакетов перед запайкой оставались абсолютно чистыми и сухими. Попадание влаги или жира в вакуумный тракт быстро забивает клапаны помпы.</p></div>
-                                        </div>
-                                        <div class="article-visual-side">
-                                            <svg class="blueprint-svg" viewBox="0 0 100 100" stroke="#D4AF37" fill="none" stroke-width="0.8"><rect x="25" y="25" width="50" height="50" rx="4"/><circle cx="50" cy="50" r="14"/><line x1="50" y1="36" x2="50" y2="64"/></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- Конец master-accordion -->
-        </div> <!-- Конец encyclopedia-container -->
-
-        <!-- СОЛИДНЫЙ БАННЕР С СУПЕР-ОФФЕРОМ -->
-        <section class="price-section" style="padding: 0; background: none; border: none; max-width: 1150px; margin: -50px auto 80px auto; padding: 0 5%;">
-            <div class="price-offer-banner" style="background: linear-gradient(90deg, rgba(140, 35, 35, 0.08) 0%, rgba(20, 20, 20, 0.3) 100%); border: 1px solid rgba(140, 35, 35, 0.15); padding: 25px 35px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div class="offer-text">
-                    <h4 style="font-size: 17px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px;">Прямое обращение через сайт</h4>
-                    <p style="font-size: 14px; color: #AEAEB2; font-weight: 300;">При заполнении онлайн-заявки на ремонт предоставляется фиксированная скидка 10% на все работы инженера Miele Zentrum.</p>
-                </div>
-                <a href="index.html#callback" class="btn-gold" style="padding: 14px 28px; font-size: 12px; font-weight: 600; text-transform: uppercase; text-decoration: none; display: inline-block;">Вызвать мастера со скидкой</a>
             </div>
-        </section>
+            
+            <div class="category-content">
+                <div class="faults-list">
 
-        <!-- ПОДВАЛ СТРАНИЦЫ (FOOTER) -->
-        <footer class="contacts-section" style="padding: 40px 8%; background-color: #0A0A0A; border-top: 1px solid rgba(255, 255, 255, 0.02);">
-            <div class="premium-footer" style="margin-top: 0; padding-top: 0; border-top: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div class="footer-copyright" style="font-size: 12px; color: #555;">
-                    &copy; 2026 Miele Zentrum. Все права защищены. Прайс-лист СПб.
-                </div>
-                <div class="footer-legal-note" style="font-size: 11px; color: #555; max-width: 500px; text-align: right; line-height: 1.4;">
-                    Наименование брендов Miele, Jura, Nivona, Siemens, Melitta используется исключительно для информирования потребителей об услугах. Сайт независимой команды инженеров, не является официальным сайтом производителей.
-                </div>
-            </footer>
-        </footer>
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Стиральная машина не сливает воду</span>
+                            <span class="fault-cost">от 1 800 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Отсутствие слива чаще всего связано с блокировкой лопастей сливного насоса (помпы) посторонними предметами, критическим засором улитки или выходного патрубка. На профессиональных моделях Miele W1 причиной может стать износ крыльчатки или отказ соленоида сливного клапана.</p>
+                                    <p>Инженер производит аварийный слив воды, демонтирует патрубки для полной очистки системы. При механическом повреждении помпы или выгорании обмотки электромотора производится замена узла на оригинальный насос Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Сливной насос стиральной машины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Отсутствие нагрева воды (ошибка F20)</span>
+                            <span class="fault-cost">от 2 400 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если вода остается холодной, автоматика Miele прерывает цикл с кодом ошибки. Главная причина — перегорание спирали трубчатого нагревателя (ТЭНа) из-за накипи или естественного износа. Реже проблема кроется в неисправности датчика температуры NTC или выгорании реле нагрева на силовой плате электроники.</p>
+                                    <p>Мастер прозванивает цепь питания мультиметром. При подтверждении дефекта производится демонтаж передней панели корпуса и замена ТЭНа на оригинальный нагревательный элемент с керамическим покрытием, устойчивым к жесткой воде.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-70 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Замена ТЭНа стиральной машины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Поломка 3 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сильный гул, грохот или вибрaция при отжиме</span>
+                            <span class="fault-cost">от 4 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Появление металлического скрежета или сильного гула на высоких оборотах свидетельствует о разрушении сальника и попадании влаги в подшипниковый узел бака. Также вибрация может возникать из-за ослабления креплений противовесов или выработки ресурса гидравлических амортизаторов.</p>
+                                    <p>Ремонт узла стиральных машин Miele требует полной разборки бака. Инженер производит выпрессовку старых подшипников, устанавливает усиленный комплект шведских подшипников SKF и оригинальный сальник, обработанный термостойкой влагоотталкивающей смазкой.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 3-4 часа</span>
+                                        <span class="article-badge gold">Гарантия: 24 месяца</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Ремонт бака и подшипников Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Конец faults-list -->
+            </div> <!-- Конец category-content -->
+        </div> <!-- Конец category-accordion-item стиральных машин -->
+        <!-- ==========================================================================
+           ЧАСТЬ 9: КАТЕГОРИЯ — СУШИЛЬНЫЕ МАШИНЫ MIELE
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Сушильные машины (с тепловым насосом / конденсационные)</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 500 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-content">
+                <div class="faults-list">
+
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сушильная машина долго работает и не сушит белье</span>
+                            <span class="fault-cost">от 2 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>В современных сушильных барабанах Miele Heat Pump за циркуляцию тепла отвечает компрессор фреонового контура. Если машина крутит барабан часами, но белье остается сырым, проблема кроется в утечке хладагента (фреона), выходе из строя пускового конденсатора компрессора или критическом загрязнении ворсовым налетом радиатора-испарителя.</p>
+                                    <p>Мастер проводит очистку теплообменника с помощью гидродинамической установки высокого давления. При обнаружении микротрещин контур вакуумируется, устраняется течь, и система заправляется точным весом хладагента по заводской спецификации Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 1.5-2 часа</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Ремонт теплового насоса сушильной машины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Программа завершается раньше времени / Ошибка датчика влажности</span>
+                            <span class="fault-cost">от 1 600 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Сушильные машины Miele используют систему PerfectDry, которая измеряет проводимость воды и влажность ткани с помощью угольных щеток-контактов, прижимающихся к внешней стороне барабана. Если на датчиках оседает слой известкового налета от моющих средств, электроника некорректно считывает сопротивление и резко обрывает цикл.</p>
+                                    <p>Специалист замеряет опорное напряжение на шлейфе датчиков. Выполняется деликатная механическая и химическая очистка контактных дорожек барабана, а при физическом износе графитовых графитовых электродов производится их полная замена.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 30-45 мин</span>
+                                        <span class="article-badge gold">Гарантия: 6 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Датчик влажности сушильной машины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Конец faults-list -->
+            </div> <!-- Конец category-content -->
+        </div> <!-- Конец category-accordion-item сушильных машин -->
+        <!-- ==========================================================================
+           ЧАСТЬ 10: КАТЕГОРИЯ — ПОСУДОМОЕЧНЫЕ МАШИНЫ MIELE
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Посудомоечные машины</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 300 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-content">
+                <div class="faults-list">
+
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Сработала защита от протечек Waterproof (Ошибка F70)</span>
+                            <span class="fault-cost">от 1 900 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Код F70 означает, что вода попала в нижний защитный поддон посудомоечной машины Miele, подняв поплавковый датчик пенопласта. Протечка может возникнуть из-за трещины в сливном или заливном патрубке, разгерметизации сальника основного циркуляционного насоса, прокола соляного бака или износа контурного уплотнителя дверцы.</p>
+                                    <p>Мастер извлекает встроенную машину из гарнитура, сливает воду из поддона и проводит опрессовку гидросистемы под давлением. Локализовав течь, инженер меняет поврежденный патрубок или уплотнитель на новый оригинальный элемент Miele с обязательной перепроверкой датчика Аквастоп.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 50-80 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Ремонт системы Waterproof посудомойки Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Посуда остается грязной / Блокировка циркуляционного насоса</span>
+                            <span class="fault-cost">от 3 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Если посудомойка набирает воду, но цикл мытья не начинается (или коромысла не вращаются), виноват циркуляционный насос, создающий давление воды в системе. В него мог попасть осколок стекла или кость, заблокировав крыльчатку. Также со временем изнашиваются графитовые втулки мотора или сгорает встроенный в него нагревательный элемент (ТЭН).</p>
+                                    <p>Специалист разбирает нижнюю часть гидросистемы. Если насос просто заклинило посторонним предметом, выполняется его очистка. При критическом износе или выгорании обмотки ТЭНа производится замена высокотехнологичного узла в сборе.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-90 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Циркуляционный насос посудомоечной машины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Конец faults-list -->
+            </div> <!-- Конец category-content -->
+        </div> <!-- Конец category-accordion-item посудомоечных машин -->
+        <!-- ==========================================================================
+           ЧАСТЬ 11: КАТЕГОРИЯ — КОФЕМАШИНЫ MIELE
+           ========================================================================== -->
+        <div class="category-accordion-item">
+            <div class="category-header">
+                <div class="category-title-block">
+                    <h3>Кофемашины Miele (серии CVA / CM)</h3>
+                </div>
+                <div class="category-meta">
+                    <span class="category-price-hint">от 1 200 ₽</span>
+                    <div class="category-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-content">
+                <div class="faults-list">
+
+                    <!-- Поломка 1 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Напиток не поступает в чашку / Вся кофе-масса уходит в поддон</span>
+                            <span class="fault-cost">от 2 500 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Сброс готового кофе или чистой воды в поддон свидетельствует о потере герметичности поршневых колец заварного блока, критическом износе уплотнителей дренажного клапана или засорении кофейными маслами сита пресса. Электроника Miele фиксирует чрезмерное сопротивление редуктора и аварийно прерывает варку.</p>
+                                    <p>Инженер производит полную разборку, ультразвуковую чистку заварного механизма от остатков смол, меняет комплект силиконовых колец высокого давления и обрабатывает трущиеся узлы пищевой термостойкой смазкой. При механической деформации корпуса заварника или выработке шестерен редуктора узел заменяется целиком.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 40-60 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Обслуживание заварного устройства кофемашины Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Поломка 2 -->
+                    <div class="fault-card">
+                        <div class="fault-summary">
+                            <span class="fault-name">Не подается пар / Кофемашина не взбивает молоко в пышную пену</span>
+                            <span class="fault-cost">от 3 200 ₽</span>
+                        </div>
+                        <div class="fault-article-wrapper">
+                            <div class="fault-article-content">
+                                <div class="article-text-block">
+                                    <h4>Причины возникновения и методы устранения дефекта</h4>
+                                    <p>Отсутствие пара или подача тонкой струйки молока вместо пены вызвана либо кальциевым засором капилляров пароблока (бойлера), либо выходом из строя электронного мультиклапана распределения потоков. Кальцинация наступает из-за несвоевременного проведения сервисного цикла очистки или использования жесткой воды.</p>
+                                    <p>Специалист проводит глубокую декальцинацию бойлера профессиональными кислотными реагентами. Проверяется работоспособность соленоидных клапанов и датчиков температуры NTC. В случае механического заклинивания или сгорания электромагнитной катушки мультиклапана, деталь меняется на новую оригинальную запчасть Miele.</p>
+                                    <div class="article-badges">
+                                        <span class="article-badge">Время: 60-90 мин</span>
+                                        <span class="article-badge gold">Гарантия: 12 месяцев</span>
+                                    </div>
+                                </div>
+                                <div class="article-image-block">
+                                    <img src="https://unsplash.com" alt="Ремонт капучинатора и бойлера Miele" onerror="this.src='https://placehold.co'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Конец faults-list -->
+            </div> <!-- Конец category-content -->
+        </div> <!-- Конец category-accordion-item кофемашин -->
+
+    </div> <!-- Конец main-price-container (Закрываем общую обертку прайс-листа) -->
     <!-- ==========================================================================
-       УМНЫЙ ДВУХУРОВНЕВЫЙ СКРИПТ КЛИКОВ (ИНТЕЛЛЕКТ АККОРДЕОНА)
-       ========================================================================== */ -->
-    <script>
-        // Скрипт 1 уровня: Открытие больших папок техники
-        document.querySelectorAll('.category-trigger').forEach(trigger => {
-            header.parentElement; // фиксация контекста
-            trigger.addEventListener('click', () => {
-                const folder = trigger.parentElement;
-                const body = folder.querySelector('.category-body-content');
-                
-                folder.classList.toggle('active');
-                
-                if (folder.classList.contains('active')) {
-                    body.style.maxHeight = (body.scrollHeight + 100) + "px";
-                } else {
-                    body.style.maxHeight = "0px";
-                }
-            });
-        });
+       ЧАСТЬ 12: СЕКЦИЯ КОНТАКТОВ, ПРЕМИУМ-ФОРМА И ПОДВАЛ САЙТА
+       ========================================================================== -->
+    <section id="contacts" class="contacts-section">
+        <div class="section-header">
+            <span class="section-label">Обратная связь</span>
+            <h2 class="section-title">Согласуйте время визита инженера</h2>
+        </div>
 
-        // Скрипт 2 уровня: Открытие мини-статей внутри поломок
-        document.querySelectorAll('.fault-clickable-bar').forEach(bar => {
-            trigger.parentElement; // фиксация контекста
-            bar.addEventListener('click', (e) => {
-                e.stopPropagation(); // Защита, чтобы клик по поломке не закрывал всю большую папку
-                const block = bar.parentElement;
-                const article = block.querySelector('.fault-article-drop');
-                const mainFolderBody = block.closest('.category-body-content');
+        <div class="contacts-grid">
+            <!-- Левая колонка — Данные -->
+            <div class="contacts-info-block">
                 
-                block.classList.toggle('open');
-                
-                if (block.classList.contains('open')) {
-                    article.style.maxHeight = article.scrollHeight + "px";
-                    // Корректируем высоту родительской папки, чтобы текст не обрезался внизу
-                    if(mainFolderBody) {
-                        mainFolderBody.style.maxHeight = (mainFolderBody.scrollHeight + article.scrollHeight) + "px";
+                <div class="contact-item-box">
+                    <div class="contact-item-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="contact-item-details">
+                        <h4>Прямой телефон службы</h4>
+                        <a href="tel:+79868311588">+7 (986) 831-15-88</a>
+                    </div>
+                </div>
+
+                <div class="contact-item-box">
+                    <div class="contact-item-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div class="contact-item-details">
+                        <h4>Отдел приема обращений</h4>
+                        <a href="mailto:miele.zentrum.service@gmail.com">miele.zentrum.service@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item-box">
+                    <div class="contact-item-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="contact-item-details">
+                        <h4>График выезда мастеров</h4>
+                        <p>Ежедневно с 10:00 до 20:00 <span style="color: #707075; font-size: 14px;">(без выходных)</span></p>
+                    </div>
+                </div>
+
+                <div class="contact-item-box">
+                    <div class="contact-item-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="contact-item-details">
+                        <h4>Пункт приема и оформления</h4>
+                        <p>г. Санкт-Петербург, В.О., Малый проспект, д. 54</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Правая колонка — Форма -->
+            <div id="callback" class="callback-form-box">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Заявка успешно отправлена! Инженер свяжется с вами в течение 10 минут.');">
+                    <div class="form-group">
+                        <label for="client-name">Ваше имя</label>
+                        <input type="text" id="client-name" class="form-control" placeholder="Константин" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-phone">Контактный телефон</label>
+                        <input type="tel" id="client-phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="device-type">Тип техники / Проблема</label>
+                        <input type="text" id="device-type" class="form-control" placeholder="Кофемашина Miele, не взбивает молоко">
+                    </div>
+                    
+                    <button type="submit" class="btn-gold">Отправить заявку со скидкой</button>
+                    
+                    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Инженер свяжется с вами для согласования удобного времени визита.</p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <footer class="premium-footer">
+            <div class="footer-copyright">
+                &copy; 2026 Miele Zentrum. Все права защищены.
+            </div>
+            <div class="footer-legal-note">
+                Наименование Miele используется исключительно для информирования потребителей об оказываемых услугах по ремонту. Сайт не является официальным ресурсом компании Miele.
+            </div>
+        </footer>
+    </section>
+    <!-- ==========================================================================
+       ЧАСТЬ 13: ДВУХУРОВНЕВЫЙ ДИНАМИЧЕСКИЙ ДВИЖОК АККОРДЕОНОВ (JAVASCRIPT)
+       ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. ЛОГИКА ВЕРХНЕГО УРОВНЯ: Открытие категорий техники
+            const categoryHeaders = document.querySelectorAll('.category-header');
+            
+            categoryHeaders.forEach(header => {
+                header.addEventListener('click', (e) => {
+                    // Исключаем срабатывание, если кликнули по внутренним элементам, не относящимся к шапке
+                    const item = header.parentElement;
+                    const content = item.querySelector('.category-content');
+                    
+                    // Переключаем класс активности для категории
+                    item.classList.toggle('active');
+                    
+                    if (item.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        // При закрытии категории обнуляем высоту и закрываем все открытые внутри карточки поломок
+                        content.style.maxHeight = null;
+                        const activeFaults = item.querySelectorAll('.fault-card.active');
+                        activeFaults.forEach(fault => {
+                            fault.classList.remove('active');
+                            fault.querySelector('.fault-article-wrapper').style.maxHeight = null;
+                        });
                     }
-                } else {
-                    article.style.maxHeight = "0px";
-                }
+                });
+            });
+
+            // 2. ЛОГИКА ВНУТРЕННЕГО УРОВНЯ: Открытие мини-статей поломок с фото
+            const faultSummaries = document.querySelectorAll('.fault-summary');
+            
+            faultSummaries.forEach(summary => {
+                summary.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Предотвращаем закрытие родительской категории
+                    
+                    const faultCard = summary.parentElement;
+                    const articleWrapper = faultCard.querySelector('.fault-article-wrapper');
+                    const parentCategoryContent = faultCard.closest('.category-content');
+                    
+                    // Закрываем другие открытые поломки ВНУТРИ ЭТОЙ ЖЕ категории
+                    const siblingFaults = faultCard.parentElement.querySelectorAll('.fault-card');
+                    siblingFaults.forEach(sibling => {
+                        if (sibling !== faultCard && sibling.classList.contains('active')) {
+                            sibling.classList.remove('active');
+                            sibling.querySelector('.fault-article-wrapper').style.maxHeight = null;
+                        }
+                    });
+                    
+                    // Переключаем текущую мини-статью поломки
+                    faultCard.classList.toggle('active');
+                    
+                    if (faultCard.classList.contains('active')) {
+                        articleWrapper.style.maxHeight = articleWrapper.scrollHeight + "px";
+                        // Корректируем высоту родительского контейнера, чтобы контент не обрезался
+                        if (parentCategoryContent) {
+                            parentCategoryContent.style.maxHeight = (parentCategoryContent.scrollHeight + articleWrapper.scrollHeight) + "px";
+                        }
+                    } else {
+                        const previousHeight = articleWrapper.scrollHeight;
+                        articleWrapper.style.maxHeight = null;
+                        // Корректируем высоту родителя в меньшую сторону
+                        if (parentCategoryContent) {
+                            parentCategoryContent.style.maxHeight = Math.max(0, parentCategoryContent.scrollHeight - previousHeight) + "px";
+                        }
+                    }
+                });
             });
         });
     </script>
-
 </body>
 </html>
-
