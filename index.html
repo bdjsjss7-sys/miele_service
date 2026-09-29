@@ -849,102 +849,293 @@
         }
     </style>
 
+       <!-- ==========================================================================
+       ИНТЕРАКТИВНЫЙ ПРАЙС-ЛИСТ (КУСОК 1 ИЗ 5: СТИЛИ + КОФЕМАШИНЫ)
+       ========================================================================== -->
+    <style>
+        .price-accordion { margin-top: 40px; display: flex; flex-direction: column; gap: 15px; }
+        .accordion-item { background: rgba(20, 20, 20, 0.4); border: 1px solid rgba(255, 255, 255, 0.02); border-radius: 2px; overflow: hidden; transition: all 0.3s ease; }
+        .accordion-item:hover { border-color: rgba(212, 175, 55, 0.15); background: rgba(255, 255, 255, 0.01); }
+        .accordion-header { padding: 22px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .accordion-title-box { display: flex; align-items: center; gap: 15px; }
+        .accordion-title-box h3 { font-size: 18px; font-weight: 600; color: #FFFFFF; letter-spacing: 0.5px; }
+        .accordion-arrow { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .accordion-item.active .accordion-arrow { transform: rotate(180deg); }
+        .accordion-item.active { border-color: rgba(212, 175, 55, 0.2); background: rgba(15, 15, 17, 0.9); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .accordion-table { padding: 10px 30px 30px 30px; display: flex; flex-direction: column; }
+        .price-detailed-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.02); }
+        .price-detailed-row:last-child { border-bottom: none; }
+        .price-detailed-name { font-size: 15px; color: #C7C7CC; font-weight: 300; text-align: left; }
+        .price-detailed-value { font-size: 15px; font-weight: 600; color: #D4AF37; white-space: nowrap; padding-left: 20px; }
+        @media (max-width: 768px) {
+            .accordion-header { padding: 18px 20px; }
+            .accordion-title-box h3 { font-size: 15px; }
+            .accordion-table { padding: 5px 20px 20px 20px; }
+            .price-detailed-row { flex-direction: column; align-items: flex-start; gap: 4px; padding: 12px 0; }
+            .price-detailed-value { font-size: 14px; width: 100%; text-align: left; padding-left: 0; }
+        }
+    </style>
+
     <section id="price" class="price-section">
         <div class="section-header">
-            <span class="section-label">Стоимость услуг</span>
-            <h2 class="section-title">Базовые тарифы на обслуживание</h2>
+            <span class="section-label">Стоимость обслуживания</span>
+            <h2 class="section-title">Развернутый прайс-лист по категориям</h2>
         </div>
 
         <div class="price-container">
-            <div class="price-table">
-                <!-- Строка 1 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Диагностика системы при условии ремонта</div>
+            <div class="price-accordion">
+
+                <!-- 1. КОФЕМАШИНЫ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/></svg>
+                            <h3>Кофемашины (Miele, Jura, Nivona, Siemens, Melitta)</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                     </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Консультация</div>
-                        <div class="price-amount">Бесплатно</div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Комплексное ТО (чистка от масел, декальцинация, смазка узлов)</span><span class="price-detailed-value">от 2 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена уплотнительных колец и манжет гидросистемы кофемашины</span><span class="price-detailed-value">от 1 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Переборка и ультразвуковая чистка заварного механизма</span><span class="price-detailed-value">от 2 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена дренажного клапана в сборе</span><span class="price-detailed-value">от 3 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена помпы высокого давления (насоса ULKA / Sysko)</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена жерновов или калибровка степени помола кофемолки</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт или чистка узла раздачи кофе (двойного диспенсера)</span><span class="price-detailed-value">от 1 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена мультиклапана / электронного распределителя потоков</span><span class="price-detailed-value">от 4 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт силовой платы управления (цепей питания, симисторов)</span><span class="price-detailed-value">от 4 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Восстановление процессора, сброс ошибок или прошивка модуля</span><span class="price-detailed-value">от 5 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена датчика протока воды (турбинки / флоуметра)</span><span class="price-detailed-value">от 1 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена термодатчика NTC или защитного термостата бойлера</span><span class="price-detailed-value">от 2 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт автоматического капучинатора или замена молочных трубок</span><span class="price-detailed-value">от 2 400 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт привода заварного механизма (редуктора, шестерен мотора)</span><span class="price-detailed-value">от 3 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена концевых выключателей и микриков положения блока</span><span class="price-detailed-value">от 1 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт дисплея панели индикации, шлейфа контроллера</span><span class="price-detailed-value">от 4 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена термоблока нагрева воды или парового бойлера</span><span class="price-detailed-value">от 5 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт датчика заполнения поддона / отсека для отходов</span><span class="price-detailed-value">от 1 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Удаление воздушной пробки в контуре высокого давления</span><span class="price-detailed-value">от 1 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена обратного клапана бункера или уплотнения резервуара</span><span class="price-detailed-value">от 1 700 ₽</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. ДУХОВЫЕ ШКАФЫ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M6 14h12"/></svg>
+                            <h3>Духовые шкафы Miele</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена нижнего нагревательного элемента (ТЭНа) шкафа</span><span class="price-detailed-value">от 3 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена верхнего двухконтурного ТЭНа (гриля)</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена кругового ТЭНа конвекции на задней стенке</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт силовой платы управления или модуля питания</span><span class="price-detailed-value">от 4 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Восстановление сенсорного дисплея, калибровка отклика</span><span class="price-detailed-value">от 5 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена крыльчатки и мотора конвекционного вентилятора</span><span class="price-detailed-value">от 3 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена тангенциального вентилятора охлаждения корпуса</span><span class="price-detailed-value">от 4 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена температурного датчика PT1000 или термопары</span><span class="price-detailed-value">от 2 300 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена защитного аварийного термостата от перегрева</span><span class="price-detailed-value">от 2 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт или замена механических поворотных переключателей</span><span class="price-detailed-value">от 2 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена внутренних опорных петель (шарниров) двери</span><span class="price-detailed-value">от 2 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена уплотнительной термостойкой резины контура двери</span><span class="price-detailed-value">от 1 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена или переклейка внутреннего жаропрочного стекла двери</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт замка двери и электромеханического блокиратора пиролиза</span><span class="price-detailed-value">от 4 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт цепи освещения камеры, замена галогенного плафона</span><span class="price-detailed-value">от 1 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена высоковольтного кабеля, клеммной колодки питания</span><span class="price-detailed-value">от 1 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Программный сброс ошибок блокировки после скачка напряжения</span><span class="price-detailed-value">от 2 000 ₽</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Строка 2 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Комплексный ремонт кофемашин (Miele, Jura, Nivona и др.)</div>
+                <!-- 3. ВАРОЧНЫЕ ПАНЕЛИ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="7" cy="7" r="1"/><circle cx="17" cy="17" r="1"/></svg>
+                            <h3>Варочные панели (Индукция и Электро)</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                     </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Гарантия до 3 лет</div>
-                        <div class="price-amount">от 3 500 ₽</div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт инверторного блока генераторов частоты (основного модуля)</span><span class="price-detailed-value">от 5 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена силовой платы распределения питания индукторов</span><span class="price-detailed-value">от 4 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена нагревательного элемента конфорки Hi-Light (электро)</span><span class="price-detailed-value">от 3 100 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена двухконтурной конфорки (с расширением зоны нагрева)</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт сенсорной панели управления, замена шлейфов связи</span><span class="price-detailed-value">от 4 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена силового реле включения зоны индуктора на плате</span><span class="price-detailed-value">от 2 400 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена мощных транзисторов IGBT или диодного моста инвертора</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена термодатчика под стеклокерамикой (контроллера конфорки)</span><span class="price-detailed-value">от 2 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена сетевого фильтра радиопомех, плавких предохранителей</span><span class="price-detailed-value">от 2 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт, чистка или смазка вентилятора охлаждения электроники</span><span class="price-detailed-value">от 2 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Снятие аварийной блокировки панели управления, сброс ошибок</span><span class="price-detailed-value">от 1 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Восстановление токоведущих дорожек платы после короткого замыкания</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Обновление герметизирующего шва по периметру стеклокерамики</span><span class="price-detailed-value">от 1 900 ₽</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. ПОСУДОМОЕЧНЫЕ МАШИНЫ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+                            <h3>Посудомоечные машины Miele</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Устранение протечек в поддон по защитной системе WaterProof</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт или замена циркуляционной помпы (основного мотора)</span><span class="price-detailed-value">от 5 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена проточного ТЭНа подогрева воды (в сборе с помпой или отдельно)</span><span class="price-detailed-value">от 4 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена сливного насоса откачки или чистка обратного клапана</span><span class="price-detailed-value">от 3 100 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт электромеханического замка двери и доводчика AutoOpen</span><span class="price-detailed-value">от 3 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена прессостата (электронного датчика уровня воды)</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт заливного электромагнитного клапана на шланге</span><span class="price-detailed-value">от 3 400 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Очистка или полная замена бака солевой регенерации (ионообменника)</span><span class="price-detailed-value">от 4 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена датчика мутности воды (Aquasensor) или сушки терморадиатора</span><span class="price-detailed-value">от 2 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт дозатора моющих средств и системы раздачи ополаскивателя</span><span class="price-detailed-value">от 2 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Восстановление проводки в месте перегиба под дверью</span><span class="price-detailed-value">от 3 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена петель (шарниров) и пружин балансировки двери</span><span class="price-detailed-value">от 3 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Чистка импеллеров (коромысел разбрызгивателей) и системы фильтров</span><span class="price-detailed-value">от 1 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Сброс системных ошибок слива/залива (F11, F12, F13, F70)</span><span class="price-detailed-value">от 2 000 ₽</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Строка 3 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Ремонт электроники и модулей управления духовых шкафов</div>
+                <!-- 5. ГЛАДИЛЬНЫЕ СИСТЕМЫ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M4 18h16a2 2 0 0 0 2-2V9a5 5 0 0 0-5-5H7a3 3 0 0 0-3 3v11Z"/></svg>
+                            <h3>Гладильные системы Miele FashionMaster</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                     </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Гарантия до 2 лет</div>
-                        <div class="price-amount">от 4 500 ₽</div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Глубокая чистка бойлера высокого давления от накипи</span><span class="price-detailed-value">от 4 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт узла подачи пара, замена электромагнитного клапана</span><span class="price-detailed-value">от 3 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт вентилятора отвода пара или наддува гладильного стола</span><span class="price-detailed-value">от 4 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена или ремонт ТЭНа подогрева подошвы утюга / отпаривателя</span><span class="price-detailed-value">от 5 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена электронного датчика давления пара (манометра)</span><span class="price-detailed-value">от 4 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт или замена насоса подачи воды из резервуара в бойлер</span><span class="price-detailed-value">от 3 700 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт парошланга (герметизация соединений утюга и базы)</span><span class="price-detailed-value">от 3 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена датчика уровня воды в контейнере или датчика накипи</span><span class="price-detailed-value">от 2 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт механизма складывания стола, замена пневмопружины Comfort</span><span class="price-detailed-value">от 4 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Сброс ошибок автоматической промывки системы (ошибки де calc)</span><span class="price-detailed-value">от 2 200 ₽</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6. ПАРОВАРКИ И СВЧ-ПЕЧИ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 12h10"/></svg>
+                            <h3>Пароварки и СВЧ Miele</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена оригинального инвертора или магнетрона излучения СВЧ</span><span class="price-detailed-value">от 5 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт встроенного парогенератора (испарителя) пароварки Miele</span><span class="price-detailed-value">от 4 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена водяной помпы откачки / подачи воды из контейнера</span><span class="price-detailed-value">от 3 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт или замена датчиков влажности и термоконтроллеров</span><span class="price-detailed-value">от 3 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена высоковольтного диода, конденсатора или предохранителя</span><span class="price-detailed-value">от 2 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена защитной слюдяной пластины волновода в камере</span><span class="price-detailed-value">от 1 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт привода вращения тарелки (мотора редуктора)</span><span class="price-detailed-value">от 2 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена микриков концевиков блокировки двери (при открытии)</span><span class="price-detailed-value">от 1 900 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Автоматическое снятие ошибок накипи и блокировки подачи пара</span><span class="price-detailed-value">от 2 200 ₽</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Строка 4 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Замена ТЭНа / восстановление нагрева варочных панелей</div>
+                <!-- 7. ВЫТЯЖКИ MIELE -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M4 20h16v-4L14 8V4h-4v4L4 16v4z"/></svg>
+                            <h3>Кухонные вытяжки Miele</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                     </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Гарантия до 5 лет</div>
-                        <div class="price-amount">от 3 800 ₽</div>
-                    </div>
-                </div>
-
-                <!-- Строка 5 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Устранение протечек и ремонт циркуляции посудомоечных машин</div>
-                    </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Гарантия до 2 лет</div>
-                        <div class="price-amount">от 4 000 ₽</div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт асинхронного мотора вентилятора / замена подшипников турбины</span><span class="price-detailed-value">от 4 000 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Восстановление цепей питания и дорожек сенсорной панели управления</span><span class="price-detailed-value">от 4 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена электронного трансформатора освещения, плат LED-драйверов</span><span class="price-detailed-value">от 2 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Устранение постороннего шума, вибрации купола, балансировка крыльчатки</span><span class="price-detailed-value">от 3 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Настройка и ремонт беспроводного модуля синхронизации Con@ctivity</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена пускового конденсатора электродвигателя вытяжки</span><span class="price-detailed-value">от 1 900 ₽</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Строка 6 -->
-                <div class="price-row">
-                    <div class="price-service-info">
-                        <div class="price-dot"></div>
-                        <div class="price-name">Техническое обслуживание гладильных систем (парогенераторы)</div>
+                <!-- 8. ПОДОГРЕВАТЕЛИ ПОСУДЫ И ВАКУУМАТОРЫ -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="accordion-title-box">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                            <h3>Подогреватели посуды и Вакууматоры</h3>
+                        </div>
+                        <div class="accordion-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
                     </div>
-                    <div class="price-value-box">
-                        <div class="price-warranty">Гарантия 1 год</div>
-                        <div class="price-amount">от 5 500 ₽</div>
+                    <div class="accordion-content">
+                        <div class="accordion-table">
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена плоского кольцевого ТЭНа нагрева чашек и тарелок</span><span class="price-detailed-value">от 3 800 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт роторного вакуумного насоса и уплотнителей камеры</span><span class="price-detailed-value">от 5 500 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена механизмов клика Push2open, доводчиков, телескопических шин</span><span class="price-detailed-value">от 3 200 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Ремонт электронного терморегулятора или плат индикации температуры</span><span class="price-detailed-value">от 3 600 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Замена нагревательной сварочной шины пакетов (в вакууматорах)</span><span class="price-detailed-value">от 4 100 ₽</span></div>
+                            <div class="price-detailed-row"><span class="price-detailed-name">Устранение течи масла насоса, полная замена фильтров камеры</span><span class="price-detailed-value">от 2 900 ₽</span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- Конец блока price-accordion -->
 
-            <!-- Солидный баннер с акцией -->
+            <!-- Солидный баннер со скидкой 10% -->
             <div class="price-offer-banner">
                 <div class="offer-text">
                     <h4>Прямое обращение через сайт</h4>
-                    <p>При заполнении онлайн-заявки предоставляется фиксированная **скидка 10%** на общую стоимость работ инженера.</p>
+                    <p>При заполнении онлайн-заявки предоставляется фиксированная скидка 10% на общую стоимость работ инженера.</p>
                 </div>
-                <a href="#callback" class="btn-gold" style="padding: 14px 28px; font-size: 12px;">Получить скидку</a>
+                <a href="#callback" class="btn-gold" style="padding: 14px 28px; font-size: 12px; font-weight: 600; text-transform: uppercase; text-decoration: none; display: inline-block;">Получить скидку</a>
             </div>
 
-            <!-- Ссылка на полноценную страницу цен -->
+            <!-- Ссылка на будущую отдельную страницу прайса -->
             <div class="price-footer-actions">
                 <a href="price.html" class="btn-outline">Развернуть полный прайс-лист</a>
             </div>
-        </div>
+        </div> <!-- Конец price-container -->
     </section>
+
+    <!-- Скрипт плавного открытия папок прайс-листа -->
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = item.querySelector('.accordion-content');
+                
+                // Переключаем класс активности для изменения фона и разворота стрелочки
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    // Высчитываем точную высоту и плавно раскрываем список
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    // Плавно схлопываем список обратно в папку
+                    content.style.maxHeight = "0px";
+                }
+            });
+        });
+    </script>
+
     <!-- ==========================================================================
        КУСОК 6: КОНТАКТЫ, ФОРМА ЗАЯВКИ (FOOTER) И ЗАКРЫТИЕ ТЕГОВ
        ========================================================================== -->
