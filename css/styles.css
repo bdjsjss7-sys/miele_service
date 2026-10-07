@@ -3077,3 +3077,208 @@ a.contacts__item:hover {
     max-height: 36px !important;
   }
 }
+
+/* ============================================================
+   ПРЕМИАЛЬНОЕ МОБИЛЬНОЕ МЕНЮ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Полноэкранное меню */
+  .header__nav.is-open {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: #0a0a0a !important;
+    z-index: 9999 !important;
+    padding: 100px 0 32px !important;
+    gap: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    counter-reset: nav-counter;
+    animation: none !important;
+  }
+
+  /* Декоративная линия сверху */
+  .header__nav.is-open::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,0.4), transparent);
+  }
+
+  /* Ссылки с номерами */
+  .header__nav.is-open a {
+    counter-increment: nav-counter;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 20px !important;
+    padding: 22px 32px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 26px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    color: #f5f3ee !important;
+    text-decoration: none !important;
+    letter-spacing: -0.01em !important;
+    position: relative !important;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: nav-item-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: color 0.3s, padding-left 0.3s !important;
+  }
+
+  .header__nav.is-open a:active,
+  .header__nav.is-open a:hover {
+    color: #c9a961 !important;
+    padding-left: 40px !important;
+  }
+
+  /* Номер пункта */
+  .header__nav.is-open a::before {
+    content: counter(nav-counter, decimal-leading-zero);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #c9a961;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* Убираем старую подчёркивающую анимацию */
+  .header__nav.is-open a::after {
+    display: none !important;
+  }
+
+  /* Каскадное появление */
+  .header__nav.is-open a:nth-child(1) { animation-delay: 0.08s; }
+  .header__nav.is-open a:nth-child(2) { animation-delay: 0.14s; }
+  .header__nav.is-open a:nth-child(3) { animation-delay: 0.20s; }
+  .header__nav.is-open a:nth-child(4) { animation-delay: 0.26s; }
+  .header__nav.is-open a:nth-child(5) { animation-delay: 0.32s; }
+  .header__nav.is-open a:nth-child(6) { animation-delay: 0.38s; }
+  .header__nav.is-open a:nth-child(7) { animation-delay: 0.44s; }
+
+  @keyframes nav-item-in {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Блок контактов внизу меню */
+  .header__nav.is-open .nav-contacts {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding: 28px 32px 0;
+    border-top: 1px solid rgba(201,169,97,0.15);
+    opacity: 0;
+    animation: nav-item-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+
+  .header__nav.is-open .nav-contacts__label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6b6862;
+    font-weight: 500;
+    margin-bottom: 2px;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  .header__nav.is-open .nav-contacts__phone {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #f5f3ee !important;
+    letter-spacing: 0.02em !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    display: block !important;
+    counter-increment: none !important;
+  }
+
+  .header__nav.is-open .nav-contacts__phone::before {
+    display: none !important;
+  }
+
+  .header__nav.is-open .nav-contacts__note {
+    font-size: 12px;
+    color: #6b6862;
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .header__nav.is-open .nav-contacts__btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+    padding: 16px 24px !important;
+    background: #c9a961 !important;
+    color: #0a0a0a !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    counter-increment: none !important;
+  }
+
+  .header__nav.is-open .nav-contacts__btn::before {
+    display: none !important;
+  }
+
+  /* Бургер поверх меню */
+  .burger {
+    position: relative !important;
+    z-index: 10000 !important;
+  }
+
+  /* Шапка с логотипом поверх меню */
+  body.nav-open .header {
+    z-index: 10001 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom-color: transparent !important;
+  }
+
+  /* Блокируем прокрутку фона */
+  body.nav-open {
+    overflow: hidden !important;
+  }
+
+  /* Скрываем шум-текстуру */
+  body.nav-open::before {
+    display: none !important;
+  }
+}
+
+/* На десктопе скрываем блок контактов из меню */
+.nav-contacts {
+  display: none;
+}
