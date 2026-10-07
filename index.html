@@ -1,1221 +1,550 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Premium Service | Авторизованный ремонт и ТО элитной бытовой техники</title>
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ==========================================================================
-           ЧАСТЬ 1: ГЛОБАЛЬНЫЕ НАСТРОЙКИ И ИММЕРСИВНЫЙ ОБСИДИАНОВЫЙ ТЕМНЫЙ СТИЛЬ
-           ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        html { 
-            scroll-behavior: smooth; 
-            background-color: #050507;
-        }
-
-        body {
-            background-color: #050507;
-            color: #F2F2F7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Премиальные системные переменные цветов */
-        :root {
-            --bg-obsidian: #050507;
-            --bg-graphite: #0E0E12;
-            --miele-burgundy: #8C2323;
-            --neff-teal: #005F73;
-            --smeg-steel: #8E9AAF;
-            --gold-accent: #D4AF37;
-            --text-main: #F2F2F7;
-            --text-muted: #8E8E93;
-        }
-
-        /* Анимации плавного появления элементов */
-        @keyframes premiumBlurUp {
-            from { opacity: 0; transform: translateY(50px); filter: blur(10px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
-        @keyframes premiumFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes brandGlow {
-            0% { border-color: rgba(255, 255, 255, 0.02); }
-            50% { border-color: rgba(212, 175, 55, 0.15); }
-            100% { border-color: rgba(255, 255, 255, 0.02); }
-        }
-        /* ==========================================================================
-           ЧАСТЬ 2: СТИЛИ МУЛЬТИБРЕНДОВОЙ ШАПКИ И ИНТЕРАКТИВНОЙ НАВИГАЦИИ
-           ========================================================================== */
-        .premium-header {
-            position: absolute;
-            top: 0; left: 0; width: 100%; padding: 30px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(5, 5, 7, 0.98), rgba(5, 5, 7, 0));
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
-            animation: premiumFadeIn 1.5s ease forwards;
-        }
-
-        .logo-block { display: flex; flex-direction: column; }
-        .logo-title { font-size: 22px; font-weight: 700; letter-spacing: 4px; color: #FFFFFF; text-transform: uppercase; }
-        .logo-title span { color: var(--gold-accent); }
-        .logo-subtitle { font-size: 8.5px; font-weight: 500; color: var(--text-muted); letter-spacing: 2px; margin-top: 6px; text-transform: uppercase; }
-
-        .main-nav ul { display: flex; list-style: none; gap: 45px; align-items: center; }
-        .main-nav ul li a {
-            color: #AEAEB2; text-decoration: none; font-size: 12.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;
-            transition: all 0.3s ease; position: relative; padding-bottom: 8px;
-        }
-        .main-nav ul li a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background-color: var(--gold-accent); transition: width 0.4s cubic-bezier(0.25, 1, 0.3, 1);
-        }
-        .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
-        .main-nav ul li a:hover, .main-nav ul li a.active { color: #FFFFFF; }
-
-        /* Специальная кнопка срочного вызова в шапке */
-        .header-action-btn {
-            background: transparent;
-            border: 1px solid rgba(214, 175, 55, 0.3);
-            color: var(--gold-accent);
-            padding: 10px 20px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            border-radius: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .header-action-btn:hover {
-            background: rgba(214, 175, 55, 0.05);
-            border-color: var(--gold-accent);
-            box-shadow: 0 0 15px rgba(214, 175, 55, 0.1);
-        }
-
-        .header-info { text-align: right; display: flex; flex-direction: column; gap: 4px; }
-        .header-phone { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; letter-spacing: 0.5px; transition: color 0.3s ease; }
-        .header-phone:hover { color: var(--gold-accent); }
-        .header-status { font-size: 11px; color: #34C759; display: flex; align-items: center; gap: 6px; justify-content: flex-end; font-weight: 500; letter-spacing: 0.5px; }
-        .header-status span { width: 6px; height: 6px; background-color: #34C759; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #34C759; }
-        /* ==========================================================================
-           ЧАСТЬ 3: СТИЛИ ГЛАВНОГО ЭКРАНА (HERO) И АКЦЕНТА "РЕМОНТ НА ДОМУ"
-           ========================================================================== */
-        .hero-section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 150px 8% 80px 8%;
-            background: 
-                radial-gradient(circle at 80% 30%, rgba(140, 35, 35, 0.08) 0%, transparent 55%),
-                radial-gradient(circle at 20% 80%, rgba(0, 95, 115, 0.04) 0%, transparent 50%),
-                var(--bg-obsidian);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
-            overflow: hidden;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-            z-index: 2;
-        }
-
-        .hero-content {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: premiumBlurUp 1.4s cubic-bezier(0.25, 1, 0, 1) 0.2s forwards;
-        }
-
-        /* Главный бейдж "Строго на дому" */
-        .home-service-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            background: rgba(140, 35, 35, 0.06);
-            border: 1px solid rgba(140, 35, 35, 0.25);
-            color: #FFB3B3;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 35px;
-            border-radius: 2px;
-            box-shadow: inset 0 0 12px rgba(140, 35, 35, 0.1);
-        }
-        
-        .home-service-badge span {
-            width: 6px;
-            height: 6px;
-            background-color: var(--miele-burgundy);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px var(--miele-burgundy);
-            animation: premiumFadeIn 0.8s infinite alternate;
-        }
-
-        .hero-content h1 {
-            font-size: 46px;
-            font-weight: 700;
-            line-height: 1.25;
-            color: #FFFFFF;
-            letter-spacing: -0.5px;
-            margin-bottom: 25px;
-        }
-
-        .hero-content h1 span {
-            color: var(--gold-accent);
-            display: block;
-            font-size: 26px;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            margin-top: 14px;
-            text-transform: uppercase;
-        }
-
-        .hero-descr {
-            font-size: 16.5px;
-            line-height: 1.8;
-            color: #C7C7CC;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .hero-descr strong {
-            color: #FFFFFF;
-            font-weight: 500;
-        }
-
-        /* Кнопки основного действия */
-        .hero-buttons {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .btn-premium-main {
-            background-color: var(--miele-burgundy);
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 18px 38px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            border: 1px solid transparent;
-        }
-
-        .btn-premium-main:hover {
-            background-color: #A32A2A;
-            box-shadow: 0 8px 25px rgba(140, 35, 35, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .btn-premium-secondary {
-            background: transparent;
-            color: #AEAEB2;
-            text-decoration: none;
-            padding: 18px 32px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 2px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .btn-premium-secondary:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            color: #FFFFFF;
-            background: rgba(255, 255, 255, 0.01);
-        }
-        /* ==========================================================================
-           ЧАСТЬ 4: ГРАФИКА HERO-ЭКРАНА И СТИЛИ ИНТЕРАКТИВНОЙ ЛЕНТЫ БРЕНДОВ
-           ========================================================================== */
-        .hero-graphic-side {
-            position: relative;
-            width: 100%;
-            height: 480px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            animation: premiumFadeIn 1.5s ease 0.5s forwards;
-        }
-
-        .hero-blueprint-box {
-            width: 100%;
-            height: 100%;
-            background: rgba(14, 14, 18, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 4px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Интерактивная секция выбора брендов */
-        .brands-selector-section {
-            padding: 60px 8%;
-            background-color: #070709;
-            border-top: 1px solid rgba(255, 255, 255, 0.01);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
-        }
-
-        .brands-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .brand-card {
-            background: rgba(14, 14, 18, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-        }
-
-        .brand-card span {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            color: #444448;
-            text-transform: uppercase;
-            transition: color 0.35s ease;
-        }
-
-        /* Индивидуальная премиальная подсветка каждого бренда при наведении */
-        .brand-card[data-brand="miele"]:hover {
-            border-color: rgba(140, 35, 35, 0.4);
-            background: rgba(140, 35, 35, 0.03);
-            box-shadow: 0 10px 25px rgba(140, 35, 35, 0.15);
-        }
-        .brand-card[data-brand="miele"]:hover span { color: #FFFFFF; }
-
-        .brand-card[data-brand="neff"]:hover {
-            border-color: rgba(0, 95, 117, 0.4);
-            background: rgba(0, 95, 117, 0.03);
-            box-shadow: 0 10px 25px rgba(0, 95, 117, 0.15);
-        }
-        .brand-card[data-brand="neff"]:hover span { color: #00A896; }
-
-        .brand-card[data-brand="smeg"]:hover {
-            border-color: rgba(142, 154, 175, 0.4);
-            background: rgba(142, 154, 175, 0.03);
-            box-shadow: 0 10px 25px rgba(142, 154, 175, 0.15);
-        }
-        .brand-card[data-brand="smeg"]:hover span { color: #FFFFFF; }
-
-        .brand-card[data-brand="gaggenau"]:hover {
-            border-color: rgba(214, 175, 55, 0.4);
-            background: rgba(214, 175, 55, 0.03);
-            box-shadow: 0 10px 25px rgba(214, 175, 55, 0.15);
-        }
-        .brand-card[data-brand="gaggenau"]:hover span { color: var(--gold-accent); }
-
-        .brand-card[data-brand="kuppersbusch"]:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.02);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-        }
-        .brand-card[data-brand="kuppersbusch"]:hover span { color: #E5E5EA; }
-
-        @media (max-width: 1024px) {
-            .brands-grid { grid-template-columns: repeat(3, 1fr); }
-            .brand-card:nth-child(4), .brand-card:nth-child(5) { grid-column: span 1; }
-        }
-        @media (max-width: 768px) {
-            .brands-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        /* ==========================================================================
-           ЧАСТЬ 5: СТИЛИ МОДНОЙ ПЛИТОЧНОЙ BENTO-СЕТКИ НАПРАВЛЕНИЙ РЕМОНТА
-           ========================================================================== */
-        .bento-section {
-            padding: 100px 8%;
-            background-color: var(--bg-obsidian);
-            position: relative;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 280px;
-            gap: 25px;
-            max-width: 1200px;
-            margin: 40px auto 0 auto;
-        }
-
-        .bento-item {
-            background: linear-gradient(135deg, rgba(20, 20, 24, 0.6) 0%, rgba(10, 10, 12, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 4px;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.45s cubic-bezier(0.25, 1, 0.4, 1);
-            cursor: pointer;
-        }
-
-        /* Настройка размеров Bento-ячеек */
-        .bento-w2 { grid-column: span 2; }
-        .bento-h2 { grid-row: span 2; }
-
-        .bento-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--miele-burgundy), var(--gold-accent));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .bento-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(214, 175, 55, 0.15);
-            background: rgba(18, 18, 22, 0.8);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .bento-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .bento-icon-box {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .bento-item:hover .bento-icon-box {
-            border-color: rgba(140, 35, 35, 0.3);
-            background: rgba(140, 35, 35, 0.04);
-        }
-
-        .bento-info h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-
-        .bento-info p {
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--text-muted);
-            font-weight: 300;
-            transition: color 0.3s ease;
-        }
-        .bento-item:hover .bento-info p {
-            color: #E5E5EA;
-        }
-
-        .bento-link {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold-accent);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .bento-item:hover .bento-link {
-            opacity: 1;
-        }
-
-        @media (max-width: 992px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 250px; }
-            .bento-w2 { grid-column: span 2; }
-        }
-        @media (max-width: 768px) {
-            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-            .bento-w2, .bento-h2 { grid-column: span 1; grid-row: span 1; }
-            .bento-item { padding: 25px; min-height: 220px; }
-        }
-        /* ==========================================================================
-           ЧАСТЬ 6: СТИЛИ ИНТЕРАКТИВНОГО КОНСТРУКТОРА ПОЛОМОК НА ДОМУ
-           ========================================================================== */
-        .calculator-section {
-            padding: 100px 8%;
-            background-color: #0A0A0F;
-            border-top: 1px solid rgba(255, 255, 255, 0.01);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
-            position: relative;
-        }
-
-        .calc-wrapper {
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 40px auto 0 auto;
-            background: linear-gradient(135deg, rgba(14, 14, 18, 0.6) 0%, rgba(8, 8, 10, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 50px;
-            border-radius: 4px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
-        }
-
-        .calc-steps-side {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .calc-step-group h4 {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        /* Кнопки-переключатели внутри конструктора */
-        .calc-options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 12px;
-        }
-
-        .calc-btn-option {
-            background: rgba(6, 6, 8, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 14px 18px;
-            color: #AEAEB2;
-            font-size: 13px;
-            font-weight: 500;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            user-select: none;
-        }
-
-        .calc-btn-option:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            color: #FFFFFF;
-        }
-
-        .calc-btn-option.active {
-            border-color: var(--gold-accent);
-            background: rgba(214, 175, 55, 0.04);
-            color: #FFFFFF;
-            font-weight: 600;
-            box-shadow: 0 0 15px rgba(214, 175, 55, 0.08);
-        }
-
-        /* Выпадающий список поломок */
-        .calc-select-custom {
-            width: 100%;
-            background-color: #060608;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            padding: 16px 20px;
-            color: #FFFFFF;
-            font-size: 15px;
-            border-radius: 2px;
-            outline: none;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-        }
-        .calc-select-custom:focus {
-            border-color: var(--gold-accent);
-        }
-
-        /* Правая колонка — Итоговый чек и Карта ремонта */
-        .calc-receipt-side {
-            background: rgba(6, 6, 8, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.01);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-radius: 2px;
-            position: relative;
-        }
-
-        .receipt-header h3 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #FFFFFF;
-            letter-spacing: 0.5px;
-            margin-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            padding-bottom: 15px;
-        }
-
-        .receipt-meta-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: var(--text-muted);
-        }
-        .receipt-meta-item span:last-child {
-            color: #FFFFFF;
-            font-weight: 500;
-        }
-
-        .receipt-total-box {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .receipt-total-box label {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-        .receipt-price {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--gold-accent);
-            letter-spacing: 0.5px;
-        }
-
-        @media (max-width: 992px) {
-            .calc-wrapper { grid-template-columns: 1fr; padding: 35px 25px; gap: 40px; }
-            .calc-receipt-side { padding: 30px; }
-        }
-        /* ==========================================================================
-           ЧАСТЬ 7: ФИНАЛЬНЫЕ CSS-СТИЛИ ДЛЯ КОНТАКТОВ, ПОДВАЛА И ЗАКРЫТИЕ СТИЛЕЙ
-           ========================================================================== */
-        .contacts-section { 
-            padding: 100px 8%; 
-            background-color: #060608; 
-            position: relative; 
-            border-top: 1px solid rgba(255, 255, 255, 0.01); 
-        }
-        .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
-        
-        .contact-item-box { 
-            display: flex; 
-            gap: 20px; 
-            background: rgba(14, 14, 16, 0.5); 
-            padding: 26px 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.02); 
-            border-radius: 2px; 
-            margin-bottom: 22px; 
-            transition: all 0.3s ease;
-        }
-        .contact-item-box:hover {
-            border-color: rgba(214, 175, 55, 0.15);
-            background: rgba(20, 20, 24, 0.6);
-        }
-        .contact-item-icon { 
-            width: 44px; 
-            height: 44px; 
-            background: rgba(214, 175, 55, 0.02); 
-            border: 1px solid rgba(214, 175, 55, 0.1); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border-radius: 2px; 
-            flex-shrink: 0; 
-        }
-        .contact-item-details h4 { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
-        .contact-item-details p, .contact-item-details a { font-size: 16px; color: #FFFFFF; text-decoration: none; line-height: 1.5; font-weight: 400; }
-        .contact-item-details a:hover { color: var(--gold-accent); }
-
-        .callback-form-box { 
-            background: linear-gradient(135deg, rgba(22, 22, 26, 0.4) 0%, rgba(12, 12, 14, 0.75) 100%); 
-            border: 1px solid rgba(255, 255, 255, 0.01); 
-            padding: 50px; 
-            border-radius: 2px; 
-        }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
-        .form-control { 
-            width: 100%; 
-            background-color: #040406; 
-            border: 1px solid rgba(255, 255, 255, 0.06); 
-            padding: 16px 20px; 
-            color: #FFFFFF; 
-            font-size: 15px; 
-            border-radius: 2px; 
-            outline: none; 
-            transition: all 0.3s ease; 
-        }
-        .form-control:focus { border-color: var(--gold-accent); background-color: #08080C; }
-        
-        .btn-gold-submit { 
-            background-color: var(--miele-burgundy); 
-            color: #FFFFFF; 
-            border: none; 
-            padding: 18px 35px; 
-            font-size: 13px; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            width: 100%; 
-            margin-top: 10px; 
-            border-radius: 2px;
-        }
-        .btn-gold-submit:hover { background-color: #A32A2A; box-shadow: 0 5px 22px rgba(140, 35, 35, 0.25); }
-        .form-note { font-size: 11.5px; color: #5C5C5E; line-height: 1.6; margin-top: 22px; font-weight: 300; }
-
-        /* МУЛЬТИБРЕНДОВЫЙ ПОДВАЛ */
-        .premium-footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.02); display: flex; justify-content: space-between; align-items: center; }
-        .footer-copyright { font-size: 12px; color: #55555A; letter-spacing: 0.5px; }
-        .footer-legal-note { font-size: 11px; color: #444448; max-width: 600px; text-align: right; line-height: 1.5; font-weight: 300; }
-
-        @media (max-width: 992px) {
-            .contacts-section { padding: 60px 5%; }
-            .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
-            .callback-form-box { padding: 35px 25px; }
-            .premium-footer { flex-direction: column; gap: 20px; text-align: center; margin-top: 50px; padding-top: 30px; }
-            .footer-legal-note { text-align: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>KLARWERK — Премиальный ремонт техники Miele, Neff, Gaggenau</title>
+<meta name="description" content="Выездной ремонт премиальной техники Miele, Neff, Smeg, Gaggenau на дому. Оригинальные запчасти, гарантия 24 месяца, диагностика бесплатно при ремонте.">
+<meta property="og:title" content="KLARWERK — Премиальный ремонт техники">
+<meta property="og:description" content="Выездной ремонт Miele, Neff, Gaggenau. Оригинальные детали. Гарантия 24 месяца.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
-    <!-- ==========================================================================
-       ЧАСТЬ 8: МУЛЬТИБРЕНДОВАЯ ПРЕМИУМ-ШАПКА САЙТА (HEADER)
-       ========================================================================== -->
-    <header class="premium-header">
-        <div class="logo-block">
-            <div class="logo-title">Premium<span>zentrum</span></div>
-            <div class="logo-subtitle">Независимый сервис элитной бытовой техники</div>
+
+<!-- ============ ПРЕЛОАДЕР ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="#services">Услуги</a>
+      <a href="#why">Почему я</a>
+      <a href="#process">Как работаю</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79990000000" class="header__phone">+7 (999) 000-00-00</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__left">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Выезд в течение 90 минут
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__title-line">Премиальный</span>
+        <span class="hero__title-line">ремонт техники</span>
+        <span class="hero__title-line hero__title-line--accent">
+          <em>Miele · Neff · Gaggenau</em>
+        </span>
+      </h1>
+
+      <p class="hero__subtitle">
+        Частный мастер с 12-летним опытом. Работаю только на дому —
+        никаких мастерских, никакой транспортировки. Оригинальные
+        запчасти. Гарантия 24 месяца на работу и детали.
+      </p>
+
+      <div class="hero__cta">
+        <a href="#contacts" class="btn btn--primary">
+          <span>Вызвать мастера</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#calculator" class="btn btn--ghost">
+          Рассчитать стоимость
+        </a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="stat">
+          <div class="stat__value" data-count="12">0</div>
+          <div class="stat__label">лет опыта</div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html" class="active">Главная</a></li>
-                <li><a href="price.html">Прайс-лист</a></li>
-                <li><a href="#bento-services">Направления</a></li>
-                <li><a href="#calc-widget">Конструктор ТО</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
-        </nav>
-        <div class="header-info">
-            <a href="tel:+79868311588" class="header-phone">+7 (986) 831-15-88</a>
-            <div class="header-status">
-                <span></span>Мастера на выезде • Свободны
-            </div>
+        <div class="stat">
+          <div class="stat__value" data-count="4200" data-suffix="+">0</div>
+          <div class="stat__label">ремонтов</div>
         </div>
-    </header>
-    <!-- ==========================================================================
-       ЧАСТЬ 9: ГЛАВНЫЙ ЭКРАН (HERO) С ДЕКЛАРАЦИЕЙ СЕРВИСА НА ДОМУ
-       ========================================================================== -->
-    <section class="hero-section">
-        <div class="hero-grid">
-            
-            <!-- Левая колонка — Оффер и преимущества -->
-            <div class="hero-content">
-                <div class="home-service-badge">
-                    <span></span>Ремонт строго на дому — без вывоза в мастерскую
-                </div>
-                <h1>
-                    Экспертный ремонт техники<br>Miele, Neff, Smeg и Gaggenau
-                    <span>Инженерия премиального уровня прямо у вас дома</span>
-                </h1>
-                <p class="hero-descr">
-                    Профессиональное восстановление электроники, гидросистем и силовых узлов элитного кухонного оборудования. Исключаем любые риски царапин при транспортировке и долгие недели ожидания — мастер разворачивает диагностический комплекс и выполняет работы <strong>непосредственно на вашей кухне</strong> в день обращения.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contacts" class="btn-premium-main">Вызвать инженера</a>
-                    <a href="price.html" class="btn-premium-secondary">Интерактивный прайс</a>
-                </div>
-            </div>
-
-            <!-- Правая колонка — Премиальный SVG-чертеж -->
-            <div class="hero-graphic-side">
-                <div class="hero-blueprint-box">
-                    <svg viewBox="0 0 400 300" fill="none" xmlns="http://w3.org">
-                        <!-- Сетка макета -->
-                        <line x1="20" y1="0" x2="20" y2="300" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-                        <line x1="100" y1="0" x2="100" y2="300" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-                        <line x1="200" y1="0" x2="200" y2="300" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                        <line x1="300" y1="0" x2="300" y2="300" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-                        <line x1="0" y1="150" x2="400" y2="150" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                        
-                        <!-- Векторный контур прибора Miele/Neff -->
-                        <rect x="80" y="40" width="240" height="220" rx="3" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
-                        <rect x="95" y="55" width="210" height="45" rx="1" stroke="#8C2323" stroke-width="1.5" stroke-dasharray="4 2"/>
-                        <circle cx="130" cy="77" r="8" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-                        <circle cx="270" cy="77" r="8" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-                        <line x1="160" y1="77" x2="240" y2="77" stroke="#D4AF37" stroke-width="2"/>
-                        
-                        <!-- Внутренние гидравлические узлы -->
-                        <circle cx="200" cy="180" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
-                        <path d="M165 180H235M200 145V215" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="2 2"/>
-                        <path d="M200 180 L232 205" stroke="#D4AF37" stroke-width="1.5"/>
-                        <circle cx="232" cy="205" r="3" fill="#8C2323"/>
-                        
-                        <text x="25" y="285" fill="rgba(255,255,255,0.15)" font-size="8" font-family="monospace" letter-spacing="1">PREMIUM HOME SERVICE DIAGNOSTIC SYSTEM v4.12</text>
-                    </svg>
-                </div>
-            </div>
-
+        <div class="stat">
+          <div class="stat__value" data-count="98" data-suffix="%">0</div>
+          <div class="stat__label">с первого визита</div>
         </div>
-    </section>
-    <!-- ==========================================================================
-       ЧАСТЬ 10: ИНТЕРАКТИВНАЯ МУЛЬТИБРЕНДОВАЯ ЛЕНТА ПРЕМИУМ-ПРОИЗВОДИТЕЛЕЙ
-       ========================================================================== -->
-    <section class="brands-selector-section">
-        <div class="brands-label">Экспертное обслуживание и оригинальные комплектующие</div>
-        <div class="brands-grid">
-            
-            <div class="brand-card" data-brand="miele">
-                <span>Miele</span>
-            </div>
-            
-            <div class="brand-card" data-brand="neff">
-                <span>Neff</span>
-            </div>
-            
-            <div class="brand-card" data-brand="smeg">
-                <span>Smeg</span>
-            </div>
-            
-            <div class="brand-card" data-brand="gaggenau">
-                <span>Gaggenau</span>
-            </div>
-            
-            <div class="brand-card" data-brand="kuppersbusch">
-                <span>Kuppersbusch</span>
-            </div>
+      </div>
+    </div>
 
+    <div class="hero__right" aria-hidden="true">
+      <div class="hero__visual">
+        <svg class="hero__machine" viewBox="0 0 320 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="40" width="200" height="400" rx="8" stroke="#c9a961" stroke-width="1" opacity="0.5"/>
+          <rect x="80" y="60" width="160" height="80" rx="4" stroke="#c9a961" stroke-width="0.8" opacity="0.4"/>
+          <circle cx="160" cy="100" r="18" stroke="#c9a961" stroke-width="0.8" opacity="0.6"/>
+          <line x1="80" y1="180" x2="240" y2="180" stroke="#c9a961" stroke-width="0.8" opacity="0.3"/>
+          <rect x="120" y="220" width="80" height="120" rx="4" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="160" cy="280" r="24" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+          <circle cx="160" cy="280" r="12" fill="#c9a961" opacity="0.15"/>
+          <rect x="100" y="380" width="120" height="40" rx="4" stroke="#c9a961" stroke-width="0.8" opacity="0.4"/>
+          <path d="M160 40 Q155 20 160 0 Q165 -20 160 -40" stroke="#c9a961" stroke-width="0.8" opacity="0.3" stroke-dasharray="2 4"/>
+          <path d="M140 45 Q135 25 140 5" stroke="#c9a961" stroke-width="0.8" opacity="0.2" stroke-dasharray="2 4"/>
+          <path d="M180 45 Q185 25 180 5" stroke="#c9a961" stroke-width="0.8" opacity="0.2" stroke-dasharray="2 4"/>
+        </svg>
+        <div class="hero__visual-label">
+          <span class="hero__visual-label-line"></span>
+          <span>Схема 042 · Бойлер и помпа</span>
         </div>
-    </section>
-    <!-- ==========================================================================
-       ЧАСТЬ 11: BENTO-СЕТКА НАПРАВЛЕНИЙ РЕМОНТА (СТАРТ И КРУПНЫЕ ПЛИТКИ)
-       ========================================================================== -->
-    <section id="bento-services" class="bento-section">
-        <div class="section-header" style="max-width: 700px; margin: 0 auto 50px auto; text-align: center;">
-            <span class="section-label">Направления работы</span>
-            <h2 class="section-title" style="font-size: 38px;">Профессиональный сервис без компромиссов</h2>
-            <p class="section-subtitle" style="margin: 0 auto; color: var(--text-muted); font-size: 15px;">Инженерный комплекс и оригинальный складской запас откалиброваны под технологические карты ведущих европейских брендов элитной бытовой техники [INDEX].</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__marquee" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee__track">
+        <span>MIELE</span><span>·</span><span>NEFF</span><span>·</span><span>GAGGENAU</span><span>·</span>
+        <span>SMEG</span><span>·</span><span>BOSCH</span><span>·</span><span>SIEMENS</span><span>·</span>
+        <span>MIELE</span><span>·</span><span>NEFF</span><span>·</span><span>GAGGENAU</span><span>·</span>
+        <span>SMEG</span><span>·</span><span>BOSCH</span><span>·</span><span>SIEMENS</span><span>·</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ УСЛУГИ ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">01 — Услуги</div>
+      <h2 class="section__title">Чиню всё, <em>что стоит у вас дома</em></h2>
+      <p class="section__lead">Только выездной ремонт. Диагностика и работа — на месте, без транспортировки техники.</p>
+    </div>
+
+    <div class="bento">
+      <article class="bento__card bento__card--wide">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="6" y="6" width="28" height="28" rx="3"/>
+            <path d="M13 6v10h14V6M13 34v-6h14v6"/>
+            <circle cx="20" cy="20" r="3"/>
+          </svg>
         </div>
+        <h3 class="bento__title">Кофемашины</h3>
+        <p class="bento__text">Промывка, ремонт бойлера, замена помпы, профилактика заварочного блока. Работа с Miele CM, Neff, Jura, Smeg.</p>
+        <div class="bento__price">от 3 500 ₽</div>
+      </article>
 
-        <div class="bento-grid">
-            
-            <!-- Ячейка 1: Кофемашины (Сдвоенная по высоте плитка) -->
-            <div class="bento-item bento-h2" onclick="location.href='price.html#coffee'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Кофемашины и кофейные группы</h3>
-                    <p style="margin-top: 10px;">Капитальная переборка заварных блоков, ремонт редукторов, устранение течи гидросистем под давлением 15 бар и калибровка кофемолок. Обслуживаем встраиваемые системы Miele CVA, а также элитные автоматы Jura, Nivona, Siemens, Melitta [INDEX].</p>
-                    <span class="bento-link">Перейти к дефектам <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-
-            <!-- Ячейка 2: Духовые шкафы и панели (Широкая горизонтальная плитка) -->
-            <div class="bento-item bento-w2" onclick="location.href='price.html#ovens'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M6 6h12"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Духовые шкафы, плиты и индукция</h3>
-                    <p style="margin-top: 10px;">Восстановление инверторов частоты, замена транзисторов IGBT варочных панелей Smeg и Neff [INDEX]. Ремонт систем пиролитической очистки Miele, замена кольцевых ТЭНов и тангенциального охлаждения [INDEX]. Работа со сложной механикой дверей Neff Slide&Hide [INDEX].</p>
-                    <span class="bento-link">Инженерные карты <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-            <!-- Ячейка 3: Посудомоечные машины (Широкая плитка) -->
-            <div class="bento-item bento-w2" onclick="location.href='price.html#dish'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Посудомоечные машины премиум-класса</h3>
-                    <p style="margin-top: 10px;">Профессиональное устранение внутренних течей по защитной системе Waterproof, замена и дефектовка высоконапорных циркуляционных помп, ремонт ТЭНов и регенерационных баков [INDEX]. Обслуживание автоматики доводчиков дверцы AutoOpen и Knock2Open на Miele и Smeg [INDEX].</p>
-                    <span class="bento-link">Тарифы ремонта <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-
-            <!-- Ячейка 4: Вытяжки (Стандартная плитка) -->
-            <div class="bento-item" onclick="location.href='price.html#hoods'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><path d="M4 22V10l8-6 8 6v12H4z"/><circle cx="12" cy="14" r="4"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Вытяжки и вентиляция</h3>
-                    <p style="margin-top: 8px;">Балансировка асинхронных двигателей, устранение вибрации купола, ремонт сенсоров Con@ctivity и плат радиоуправления [INDEX].</p>
-                    <span class="bento-link">Смотреть цены <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-
-            <!-- Ячейка 5: Гладильные системы (Стандартная плитка) -->
-            <div class="bento-item" onclick="location.href='price.html#iron'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><path d="M4 15h14.5a2.5 2.5 0 0 0 0-5H12V4H4v11z"/><path d="M4 19h16"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Гладильные системы</h3>
-                    <p style="margin-top: 8px;">Чистка бойлеров высокого давления FashionMaster от накипи, замена электромагнитных клапанов пара и ремонт подогрева подошвы утюга [INDEX].</p>
-                    <span class="bento-link">Разбор дефектов <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-
-            <!-- Ячейка 6: Подогреватели и вакууматоры (Стандартная плитка) -->
-            <div class="bento-item" onclick="location.href='price.html#warmers'">
-                <div class="bento-icon-box">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-                </div>
-                <div class="bento-info">
-                    <h3>Подогреватели и вакууматоры</h3>
-                    <p style="margin-top: 8px;">Ремонт роторных вакуумных насосов, замена сварочных шин пакетов, механизмов Push2open и терморегуляторов плат [INDEX].</p>
-                    <span class="bento-link">Цены ТО <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-                </div>
-            </div>
-
-        </div> <!-- Конец bento-grid -->
-    </section> <!-- Конец bento-section -->
-    <!-- ==========================================================================
-       ЧАСТЬ 13: ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПОЛОМОК (СТАРТ И ВЫБОР БРЕНДА)
-       ========================================================================== -->
-    <section id="calc-widget" class="calculator-section">
-        <div class="section-header" style="max-width: 700px; margin: 0 auto 50px auto; text-align: center;">
-            <span class="section-label">Онлайн-расчет</span>
-            <h2 class="section-title" style="font-size: 38px;">Конструктор стоимости ремонта на дому</h2>
-            <p class="section-subtitle" style="margin: 0 auto; color: var(--text-muted); font-size: 15px;">Выберите бренд, категорию прибора и характер неисправности. Система мгновенно рассчитает прозрачную стоимость обслуживания, дилерские регламенты времени и необходимые комплектующие [INDEX].</p>
+      <article class="bento__card">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="6" y="10" width="28" height="24" rx="3"/>
+            <path d="M6 18h28"/>
+            <circle cx="12" cy="14" r="1.2"/>
+          </svg>
         </div>
+        <h3 class="bento__title">Посудомойки</h3>
+        <p class="bento__text">Ошибки F11, F24, E15. Замена помп, ТЭНов, датчиков.</p>
+        <div class="bento__price">от 3 000 ₽</div>
+      </article>
 
-        <div class="calc-wrapper">
-            
-            <!-- Левая колонка: Интерактивный пошаговый выбор -->
-            <div class="calc-steps-side">
-                
-                <!-- Шаг 1: Селектор бренда бытовой техники -->
-                <div class="calc-step-group">
-                    <h4>Шаг 1: Выберите производителя техники</h4>
-                    <div class="calc-options-grid" id="calc-brands-container">
-                        <div class="calc-btn-option active" data-calc-brand="miele">Miele</div>
-                        <div class="calc-btn-option" data-calc-brand="neff">Neff</div>
-                        <div class="calc-btn-option" data-calc-brand="smeg">Smeg</div>
-                        <div class="calc-btn-option" data-calc-brand="gaggenau">Gaggenau</div>
-                        <div class="calc-btn-option" data-calc-brand="kuppersbusch">Kuppersbusch</div>
-                    </div>
-                </div>
-                <!-- Шаг 2: Селектор типа неисправного оборудования -->
-                <div class="calc-step-group">
-                    <h4>Шаг 2: Укажите категорию премиум-техники</h4>
-                    <div class="calc-options-grid" id="calc-types-container">
-                        <div class="calc-btn-option active" data-calc-type="coffee">Кофемашины</div>
-                        <div class="calc-btn-option" data-calc-type="ovens">Духовые шкафы</div>
-                        <div class="calc-btn-option" data-calc-type="dish">Посудомойки</div>
-                        <div class="calc-btn-option" data-calc-type="panels">Варочные панели</div>
-                    </div>
-                </div>
-
-                <!-- Шаг 3: Динамический выпадающий список поломок -->
-                <div class="calc-step-group">
-                    <h4>Шаг 3: Характер дефекта или код ошибки</h4>
-                    <select class="calc-select-custom" id="calc-fault-select">
-                        <!-- Сюда JavaScript автоматически добавит список поломок под выбранный бренд и тип прибора -->
-                    </select>
-                </div>
-
-            </div> <!-- Конец левой колонки calc-steps-side -->
-            <!-- Правая колонка: Премиальный чек-квитанция расчета -->
-            <div class="calc-receipt-side">
-                <div class="receipt-header">
-                    <h3>Спецификация ремонта на дому</h3>
-                    
-                    <div class="receipt-meta-item">
-                        <span>Локация инжиниринга:</span>
-                        <span>Объект заказчика (На дому)</span>
-                    </div>
-                    <div class="receipt-meta-item">
-                        <span>Выезд мастера по СПб:</span>
-                        <span style="color: #34C759; font-weight: 600;">0 ₽ (Бесплатно)</span>
-                    </div>
-                    <div class="receipt-meta-item">
-                        <span>Диагностика узлов:</span>
-                        <span style="color: #34C759; font-weight: 600;">0 ₽ (При ремонте)</span>
-                    </div>
-                    <div class="receipt-meta-item">
-                        <span>Среднее время работы:</span>
-                        <span id="calc-receipt-time">40-60 мин</span>
-                    </div>
-                    <div class="receipt-meta-item">
-                        <span>Комплектующие:</span>
-                        <span id="calc-receipt-parts">Оригинал (Склад СПб)</span>
-                    </div>
-                    <div class="receipt-meta-item">
-                        <span>Официальный сертификат:</span>
-                        <span id="calc-receipt-warranty">Гарантия 12 мес.</span>
-                    </div>
-                </div>
-
-                <div class="receipt-total-box">
-                    <label>Итоговая стоимость:</label>
-                    <div class="receipt-price" id="calc-total-price">от 2 500 ₽</div>
-                </div>
-            </div> <!-- Конец правой колонки calc-receipt-side -->
-
-        </div> <!-- Конец calc-wrapper -->
-    </section> <!-- Конец calculator-section -->
-    <!-- ==========================================================================
-       ЧАСТЬ 16: СЕКЦИЯ КОНТАКТОВ И ПРЕМИУМ-ФОРМА ВЫЗОВА ИНЖЕНЕРА НА ДОМ
-       ========================================================================== -->
-    <section id="contacts" class="contacts-section">
-        <div class="section-header">
-            <span class="section-label">Обратная связь</span>
-            <h2 class="section-title" style="font-size: 38px;">Согласуйте время визита инженера</h2>
+      <article class="bento__card">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="8" y="6" width="24" height="28" rx="3"/>
+            <circle cx="20" cy="20" r="7"/>
+            <circle cx="20" cy="20" r="3"/>
+          </svg>
         </div>
+        <h3 class="bento__title">Стиральные машины</h3>
+        <p class="bento__text">Замена подшипников, помп, электроники. Профилактика.</p>
+        <div class="bento__price">от 3 500 ₽</div>
+      </article>
 
-        <div class="contacts-grid">
-            <!-- Левая колонка — Данные -->
-            <div class="contacts-info-block">
-                
-                <div class="contact-item-box">
-                    <div class="contact-item-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <div class="contact-item-details">
-                        <h4>Прямой телефон службы выезда</h4>
-                        <a href="tel:+79868311588">+7 (986) 831-15-88</a>
-                    </div>
-                </div>
-
-                <div class="contact-item-box">
-                    <div class="contact-item-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    </div>
-                    <div class="contact-item-details">
-                        <h4>Отдел приема обращений</h4>
-                        <a href="mailto:miele.zentrum.service@gmail.com">miele.zentrum.service@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="contact-item-box">
-                    <div class="contact-item-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                    <div class="contact-item-details">
-                        <h4>График выезда мастеров</h4>
-                        <p>Ежедневно с 10:00 до 20:00 <span style="color: #707075; font-size: 14px;">(без выходных)</span></p>
-                    </div>
-                </div>
-
-                <div class="contact-item-box">
-                    <div class="contact-item-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    </div>
-                    <div class="contact-item-details">
-                        <h4>Пункт приема и оформления</h4>
-                        <p>г. Санкт-Петербург, В.О., Малый проспект, д. 54</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Правая колонка — Форма -->
-            <div id="callback" class="callback-form-box">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Заявка успешно принята! Дежурный инженер по вашему бренду свяжется с вами в течение 10 минут для согласования времени визита на дом.');">
-                    <div class="form-group">
-                        <label for="client-name">Ваше имя</label>
-                        <input type="text" id="client-name" class="form-control" placeholder="Константин" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="client-phone">Контактный телефон</label>
-                        <input type="tel" id="client-phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="device-type">Тип техники / Проблема</label>
-                        <input type="text" id="device-type" class="form-control" placeholder="Кофемашина Miele, не взбивает молоко">
-                    </div>
-                    
-                    <button type="submit" class="btn-gold-submit">Вызвать инженера со скидкой 10%</button>
-                    
-                    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Инженер свяжется с вами для согласования удобного времени визита.</p>
-                </form>
-            </div>
+      <article class="bento__card">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="6" y="8" width="28" height="24" rx="3"/>
+            <path d="M6 16h28M14 24h12"/>
+            <circle cx="12" cy="12" r="1.2"/>
+          </svg>
         </div>
-        <!-- Мультибрендовый подвал -->
-        <footer class="premium-footer">
-            <div class="footer-copyright">
-                &copy; 2026 Premium Zentrum. Все права защищены.
-            </div>
-            <div class="footer-legal-note">
-                Наименования торговых марок Miele, Neff, Smeg, Gaggenau, Kuppersbusch, Jura, Nivona, Siemens, Melitta используются исключительно для информирования потребителей об оказываемых услугах по ремонту и регламентному техническому обслуживанию. Сайт является ресурсом независимого специализированного сервисного центра и не является официальным сайтом компаний-производителей.
-            </div>
-        </footer>
-    </section> <!-- Конец секции contacts-section -->
-    <!-- ==========================================================================
-       ЧАСТЬ 18: БАЗА ДАННЫХ И JAVASCRIPT-ДВИЖОК ИНТЕРАКТИВНОГО КОНСТРУКТОРА
-       ========================================================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. ПОЛНАЯ БАЗА ДАННЫХ НЕИСПРАВНОСТЕЙ ПО ВСЕМ БРЕНДАМ И КАТЕГОРИЯМ
-            const faultsDatabase = {
-                coffee: [
-                    { name: "Напиток уходит в поддон / Износ колец заварника", price: "от 2 500 ₽", time: "40-60 мин", parts: "Оригинальные манжеты FKM", warranty: "12 месяцев" },
-                    { name: "Не взбивает молоко / Кальцинация пароблока или мультиклапана", price: "от 3 200 ₽", time: "50-80 мин", parts: "Ремкомплект гидросистемы", warranty: "12 месяцев" },
-                    { name: "Кофемолка работает долго / Износ стальных жерновов", price: "от 2 800 ₽", time: "45-70 min", parts: "Конические жернова Miele/Jura", warranty: "12 месяцев" },
-                    { name: "Ошибка положения / Заклинивание редуктора привода", price: "от 3 000 ₽", time: "50-90 мин", parts: "Шестерни / Мотор привода 220V", warranty: "12 месяцев" },
-                    { name: "Ошибка 'Опустошить поддон' / Окисление датчиков зумпфа", price: "от 1 500 ₽", time: "30-45 мин", parts: "Контакты поддона / Микрик", warranty: "6 месяцев" }
-                ],
-                ovens: [
-                    { name: "Не нагревается / Выгорание кольцевого ТЭНа конвекции", price: "от 2 900 ₽", time: "45-65 мин", parts: "Кольцевой ТЭН (2000W-2500W)", warranty: "12 месяцев" },
-                    { name: "Сильный гул или полная остановка вентилятора обдува", price: "от 2 400 ₽", time: "50-70 мин", parts: "Термостойкий мотор конвекции", warranty: "12 месяцев" },
-                    { name: "Блюда подгорают с одной стороны / Отказ контура Гриля", price: "от 2 600 ₽", time: "40-60 мин", parts: "Двухконтурный верхний ТЭН", warranty: "12 месяцев" },
-                    { name: "Ошибка F3 / Замок заблокирован после пиролитической очистки", price: "от 2 500 ₽", time: "50-70 мин", parts: "Электрозамок блокировки пиролиза", warranty: "12 месяцев" },
-                    { name: "Врет термодатчик / Ошибка температуры на дисплее (F00/F01)", price: "от 1 900 ₽", time: "35-50 мин", parts: "Платиновый датчик PT1000", warranty: "12 месяцев" }
-                ],
-                dish: [
-                    { name: "Ошибка Waterproof / Протечка воды в защитный поддон (F70)", price: "от 1 900 ₽", time: "50-80 мин", parts: "Оригинальные патрубки / Сальники", warranty: "12 месяцев" },
-                    { name: "Не сливает воду / Блокировка крыльчатки сливного насоса (F11)", price: "от 1 500 ₽", time: "40-55 мин", parts: "Бесшумная сливная помпа Miele", warranty: "12 месяцев" },
-                    { name: "Ошибка залива / Неисправность шланга Аквастоп (F12/F13)", price: "от 1 700 ₽", time: "45-60 мин", parts: "Армированный заливной шланг КЭН", warranty: "12 месяцев" },
-                    { name: "Слабое давление в системе / Коромысла-импеллеры не вращаются", price: "от 3 500 ₽", time: "60-90 мин", parts: "Циркуляционный насос в сборе", warranty: "12 месяцев" },
-                    { name: "Не работает автооткрывание двери AutoOpen / Knock2Open", price: "от 1 800 ₽", time: "40-60 мин", parts: "Шаговый актуатор выталкивателя", warranty: "12 месяцев" }
-                ],
-                panels: [
-                    { name: "Плита не видит посуду / Сбой индукционного генератора частоты", price: "от 3 800 ₽", time: "60-90 мин", parts: "Силовые ключи IGBT / Диодный мост", warranty: "12 месяцев" },
-                    { name: "Конфорка Hi-Light слабо нагревается или работает на максимум", price: "от 3 100 ₽", time: "45-60 мин", parts: "Ленточный ТЭН конфорки EGO", warranty: "12 месяцев" },
-                    { name: "Сенсорное стекло или слайдер SmartSelect не реагируют на касания", price: "от 2 800 ₽", time: "40-60 min", parts: "Емкостная плата обработки тача", warranty: "12 месяцев" },
-                    { name: "Выгорание силовых реле на плате распределения питания фаз", price: "от 3 500 ₽", time: "60-80 мин", parts: "Коммутационные реле Tyco/Schrack", warranty: "12 месяцев" },
-                    { name: "Ошибка сетевого фильтра / Плита выбивает автомат при включении", price: "от 2 600 ₽", time: "50-70 мин", parts: "Сетевой фильтр помех / Предохранители", warranty: "12 месяцев" }
-                ]
-            };
+        <h3 class="bento__title">Духовые шкафы</h3>
+        <p class="bento__text">Пиролиз, конвекция, замена ТЭНов, термостатов, модулей.</p>
+        <div class="bento__price">от 3 000 ₽</div>
+      </article>
 
-            // 2. ИНИЦИАЛИЗАЦИЯ ПЕРЕМЕННЫХ И СЕЛЕКТОРОВ ИНТЕРФЕЙСА
-            const brandButtons = document.querySelectorAll('#calc-brands-container .calc-btn-option');
-            const typeButtons = document.querySelectorAll('#calc-types-container .calc-btn-option');
-            const faultSelect = document.getElementById('calc-fault-select');
-            
-            const receiptTime = document.getElementById('calc-receipt-time');
-            const receiptParts = document.getElementById('calc-receipt-parts');
-            const receiptWarranty = document.getElementById('calc-receipt-warranty');
-            const totalPriceDisplay = document.getElementById('calc-total-price');
+      <article class="bento__card">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="14" cy="20" r="7"/>
+            <circle cx="26" cy="20" r="7"/>
+            <path d="M11 20h6M23 20h6"/>
+          </svg>
+        </div>
+        <h3 class="bento__title">Индукционные панели</h3>
+        <p class="bento__text">Диагностика модулей, замена индукторов, сенсоров, плат.</p>
+        <div class="bento__price">от 3 500 ₽</div>
+      </article>
 
-            let activeBrand = 'miele';
-            let activeType = 'coffee';
+      <article class="bento__card bento__card--wide">
+        <div class="bento__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="8" y="6" width="24" height="30" rx="3"/>
+            <line x1="8" y1="14" x2="32" y2="14"/>
+            <line x1="8" y1="22" x2="32" y2="22"/>
+            <line x1="8" y1="30" x2="32" y2="30"/>
+          </svg>
+        </div>
+        <h3 class="bento__title">Холодильники и винные шкафы</h3>
+        <p class="bento__text">Заправка фреоном, замена компрессоров, термостатов, работа с No Frost и премиум-системами охлаждения.</p>
+        <div class="bento__price">от 4 000 ₽</div>
+      </article>
+    </div>
+  </div>
+</section>
 
-            // 3. ФУНКЦИЯ ДИНАМИЧЕСКОГО ОБНОВЛЕНИЯ КОНСТРУКТОРА
-            function updateCalculator() {
-                // Очищаем текущий список поломок
-                faultSelect.innerHTML = '';
-                
-                // Получаем массив поломок под выбранный тип прибора
-                const faults = faultsDatabase[activeType];
-                
-                // Наполняем select опциями
-                faults.forEach((fault, index) => {
-                    const option = document.createElement('option');
-                    option.value = index;
-                    // Для красоты добавляем название бренда к отображению
-                    const brandName = activeBrand.charAt(0).toUpperCase() + activeBrand.slice(1);
-                    option.textContent = `${brandName} — ${fault.name}`;
-                    faultSelect.appendChild(option);
-                });
+<!-- ============ ПОЧЕМУ Я ============ -->
+<section class="section section--alt" id="why">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">02 — Почему меня выбирают</div>
+      <h2 class="section__title">Не сервисный центр. <em>Частный мастер.</em></h2>
+    </div>
 
-                // Вызываем обновление чека для первой поломки в списке
-                updateReceipt();
-            }
+    <div class="features">
+      <div class="feature">
+        <div class="feature__num">01</div>
+        <h3 class="feature__title">Только на дому</h3>
+        <p class="feature__text">Техника Miele не ездит в мастерские. Я привожу диагностику и ремонт к вам. Никаких рисков при транспортировке.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__num">02</div>
+        <h3 class="feature__title">Оригинальные запчасти</h3>
+        <p class="feature__text">Ставлю только оригинальные детали Miele, Neff, Gaggenau. Все запчасти заказываю напрямую у поставщиков из Германии и Австрии.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__num">03</div>
+        <h3 class="feature__title">Гарантия 24 месяца</h3>
+        <p class="feature__text">На работу и на запчасть. Если что-то пойдёт не так — приеду и исправлю бесплатно. Без вопросов.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__num">04</div>
+        <h3 class="feature__title">Без «сервисного центра»</h3>
+        <p class="feature__text">Вы платите за работу, а не за офис и менеджеров. Никаких накруток 40–60%, как в крупных сервисах.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // 4. ФУНКЦИЯ ПЕРЕРАСЧЕТА ЧЕКА-КВИТАНЦИИ
-            function updateReceipt() {
-                const selectedIndex = faultSelect.value;
-                if (selectedIndex === null || selectedIndex === undefined || selectedIndex === '') return;
-                
-                const currentFault = faultsDatabase[activeType][selectedIndex];
-                
-                if (currentFault) {
-                    // Плавно подставляем новые данные в спецификацию чека
-                    receiptTime.textContent = currentFault.time;
-                    
-                    // Брендируем название запчастей динамически
-                    const formattedBrand = activeBrand.toUpperCase();
-                    receiptParts.textContent = `${currentFault.parts.replace('Miele', formattedBrand).replace('Neff', formattedBrand).replace('Smeg', formattedBrand)}`;
-                    
-                    receiptWarranty.textContent = `Гарантия ${currentFault.warranty}`;
-                    totalPriceDisplay.textContent = currentFault.price;
-                }
-            }
+<!-- ============ ПРОЦЕСС ============ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">03 — Как это работает</div>
+      <h2 class="section__title">Пять шагов — <em>от звонка до гарантии</em></h2>
+    </div>
 
-            // 5. НАВЕШИВАНИЕ ОБРАБОТЧИКОВ СОБЫТИЙ НА ЭЛЕМЕНТЫ
-            // Клики по брендам
-            brandButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    brandButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    activeBrand = btn.getAttribute('data-brand-brand') || btn.getAttribute('data-calc-brand');
-                    updateCalculator();
-                });
-            });
+    <ol class="steps">
+      <li class="step">
+        <div class="step__num">1</div>
+        <div class="step__body">
+          <h3 class="step__title">Звонок или заявка</h3>
+          <p class="step__text">Опишите технику и симптом. Назову вилку цены сразу, без «приедем — посмотрим».</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step__num">2</div>
+        <div class="step__body">
+          <h3 class="step__title">Согласуем время</h3>
+          <p class="step__text">Подберём удобный интервал. Позвоню за 30 минут до приезда.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step__num">3</div>
+        <div class="step__body">
+          <h3 class="step__title">Диагностика на дому</h3>
+          <p class="step__text">20–40 минут, при вас. Назову точную причину и итоговую цену. Без ремонта — 1 500 ₽ за диагностику.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step__num">4</div>
+        <div class="step__body">
+          <h3 class="step__title">Ремонт на месте</h3>
+          <p class="step__text">90% поломок закрываю за один визит. Сложные случаи — с заказом запчасти из Германии.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step__num">5</div>
+        <div class="step__body">
+          <h3 class="step__title">Гарантия и чек</h3>
+          <p class="step__text">Выдаю гарантийный талон на 24 месяца и чек. Оригинальная запчасть остаётся у вас.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-            // Клики по типам техники
-            typeButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    typeButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    activeType = btn.getAttribute('data-brand-type') || btn.getAttribute('data-calc-type');
-                    updateCalculator();
-                });
-            });
+<!-- ============ КАЛЬКУЛЯТОР ============ -->
+<section class="section section--alt" id="calculator">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">04 — Калькулятор</div>
+      <h2 class="section__title">Прикиньте <em>стоимость ремонта</em></h2>
+      <p class="section__lead">Ориентировочная вилка. Точную сумму назову после диагностики.</p>
+    </div>
 
-            // Изменение выбора поломки в списке
-            faultSelect.addEventListener('change', updateReceipt);
+    <div class="calc">
+      <div class="calc__field">
+        <label class="calc__label">Тип техники</label>
+        <div class="calc__options" data-group="type">
+          <button type="button" class="chip is-active" data-value="coffee">Кофемашина</button>
+          <button type="button" class="chip" data-value="dish">Посудомойка</button>
+          <button type="button" class="chip" data-value="wash">Стиральная</button>
+          <button type="button" class="chip" data-value="oven">Духовка</button>
+          <button type="button" class="chip" data-value="induction">Индукция</button>
+          <button type="button" class="chip" data-value="fridge">Холодильник</button>
+        </div>
+      </div>
 
-            // Запускаем конструктор в первый раз при загрузке страницы
-            updateCalculator();
-        });
-    </script>
+      <div class="calc__field">
+        <label class="calc__label">Бренд</label>
+        <div class="calc__options" data-group="brand">
+          <button type="button" class="chip is-active" data-value="miele">Miele</button>
+          <button type="button" class="chip" data-value="neff">Neff</button>
+          <button type="button" class="chip" data-value="gaggenau">Gaggenau</button>
+          <button type="button" class="chip" data-value="smeg">Smeg</button>
+          <button type="button" class="chip" data-value="bosch">Bosch</button>
+          <button type="button" class="chip" data-value="other">Другой</button>
+        </div>
+      </div>
+
+      <div class="calc__result">
+        <div class="calc__result-label">Ориентировочно</div>
+        <div class="calc__result-value" id="calcValue">от 3 500 ₽</div>
+        <div class="calc__result-note">Диагностика — 1 500 ₽, бесплатно при согласии на ремонт</div>
+        <a href="#contacts" class="btn btn--primary">Уточнить по телефону</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОТЗЫВЫ ============ -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">05 — Отзывы</div>
+      <h2 class="section__title">Что говорят <em>клиенты</em></h2>
+    </div>
+
+    <div class="reviews">
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">А</div>
+          <div>
+            <div class="review__name">Анна К.</div>
+            <div class="review__meta">Приморский район · Кофемашина Miele</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Мастер приехал через час после звонка. Разобрал, показал износ, починил. Всё аккуратно, чисто. Работает как новая.</p>
+      </article>
+
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">Д</div>
+          <div>
+            <div class="review__name">Дмитрий В.</div>
+            <div class="review__meta">Центральный район · Посудомойка Miele</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Ошибка F11. Официальный сервис просил 18 000 и ждать деталь две недели. Мастер починил за 6 500 в тот же день, оригинальной запчастью.</p>
+      </article>
+
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">Е</div>
+          <div>
+            <div class="review__name">Екатерина М.</div>
+            <div class="review__meta">Петроградский район · Духовка Gaggenau</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Долго искала нормального мастера по Gaggenau. Этот — единственный, кто реально разбирается. Всё объяснил, показал, гарантия два года. Рекомендую.</p>
+      </article>
+
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">И</div>
+          <div>
+            <div class="review__name">Игорь С.</div>
+            <div class="review__meta">Московский район · Стиральная Miele</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Честный мастер. Мог бы наговорить на замену подшипников, а он поменял помпу и всё. Сэкономил прилично.</p>
+      </article>
+
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">О</div>
+          <div>
+            <div class="review__name">Ольга Р.</div>
+            <div class="review__meta">Выборгский район · Винный шкаф Miele</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Винный шкаф перестал держать температуру. Мастер приехал с инструментами, нашёл утечку, заправил. Работает идеально.</p>
+      </article>
+
+      <article class="review">
+        <div class="review__head">
+          <div class="review__avatar">С</div>
+          <div>
+            <div class="review__name">Сергей П.</div>
+            <div class="review__meta">Невский район · Индукционная панель Neff</div>
+          </div>
+        </div>
+        <div class="review__stars">★★★★★</div>
+        <p class="review__text">Панель просто перестала включаться. Оказалось, модуль. Заменил за один визит, всё работает. Профессионал своего дела.</p>
+      </article>
+    </div>
+
+    <div class="reviews__cta">
+      <p>Были у меня? Оставьте отзыв — это помогает другим.</p>
+      <a href="#contact-form" class="btn btn--ghost">Оставить отзыв</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--alt" id="faq">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">06 — Вопросы</div>
+      <h2 class="section__title">Частые <em>вопросы</em></h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq__item">
+        <summary>Сколько стоит выезд и диагностика?</summary>
+        <p>Выезд по городу — бесплатно при согласии на ремонт. Диагностика — 1 500 ₽. Если после диагностики соглашаетесь на ремонт — диагностика не оплачивается.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Какая гарантия на работу?</summary>
+        <p>24 месяца на работу и на запчасть. Если в течение этого срока возникнет та же проблема — приеду и исправлю бесплатно.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Вы работаете только с Miele?</summary>
+        <p>Основная специализация — Miele, Neff, Gaggenau, Smeg. Также работаю с Bosch, Siemens, AEG. С другими брендами — уточняйте по телефону.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Сколько идёт ремонт?</summary>
+        <p>90% поломок закрываю за один визит — 60–120 минут. Если нужна редкая запчасть из Германии — 5–10 дней. На время ожидания дам временное решение, если возможно.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Даёте ли чек и договор?</summary>
+        <p>Да. Выдаю чек и гарантийный талон с описанием работ и замененных деталей. Оригинальные запчасти после замены остаются у вас.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Вы приезжаете со своими инструментами?</summary>
+        <p>Да, полный набор диагностического оборудования и инструмента вожу с собой. Ничего дополнительно покупать не нужно.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КОНТАКТЫ ============ -->
+<section class="section contacts" id="contacts">
+  <div class="container">
+    <div class="contacts__inner">
+      <div class="contacts__left">
+        <div class="section__label">07 — Контакты</div>
+        <h2 class="contacts__title">Вызвать <em>мастера</em></h2>
+        <p class="contacts__lead">Позвоните или напишите в мессенджер. Отвечаю с 8:00 до 22:00, без выходных. Назову цену по телефону, если опишете проблему.</p>
+
+        <div class="contacts__list">
+          <a href="tel:+79990000000" class="contacts__item">
+            <span class="contacts__item-label">Телефон</span>
+            <span class="contacts__item-value">+7 (999) 000-00-00</span>
+          </a>
+          <a href="https://wa.me/79990000000" class="contacts__item">
+            <span class="contacts__item-label">WhatsApp</span>
+            <span class="contacts__item-value">+7 (999) 000-00-00</span>
+          </a>
+          <a href="https://t.me/username" class="contacts__item">
+            <span class="contacts__item-label">Telegram</span>
+            <span class="contacts__item-value">@username</span>
+          </a>
+          <a href="mailto:info@klarwerk.ru" class="contacts__item">
+            <span class="contacts__item-label">Email</span>
+            <span class="contacts__item-value">info@klarwerk.ru</span>
+          </a>
+          <div class="contacts__item">
+            <span class="contacts__item-label">Город</span>
+            <span class="contacts__item-value">Санкт-Петербург и пригород</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contacts__form" id="contact-form" onsubmit="event.preventDefault(); alert('Заявка отправлена (пока не подключено — см. инструкцию)'); this.reset();">
+        <div class="contacts__form-title">Оставить заявку</div>
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <textarea name="message" rows="3" placeholder="Что случилось с техникой?"></textarea>
+        <button type="submit" class="btn btn--primary">Отправить</button>
+        <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФУТЕР ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </div>
+    <div class="footer__copy">© 2025 KLARWERK. Частный мастер по ремонту премиальной техники.</div>
+    <div class="footer__links">
+      <a href="#services">Услуги</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
