@@ -26,7 +26,6 @@
   gap: 16px;
   margin-bottom: 64px;
 }
-
 .cases-stat {
   padding: 32px 28px;
   background: var(--surface);
@@ -36,7 +35,6 @@
   overflow: hidden;
   transition: all 0.5s var(--ease);
 }
-
 .cases-stat::before {
   content: '';
   position: absolute;
@@ -46,15 +44,12 @@
   opacity: 0;
   transition: opacity 0.5s;
 }
-
 .cases-stat:hover {
   border-color: var(--border);
   background: var(--surface-2);
   transform: translateY(-4px);
 }
-
 .cases-stat:hover::before { opacity: 1; }
-
 .cases-stat__value {
   font-family: var(--font-serif);
   font-size: 32px;
@@ -65,7 +60,6 @@
   letter-spacing: -0.02em;
   margin-bottom: 12px;
 }
-
 .cases-stat__label {
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -75,13 +69,11 @@
 }
 
 /* ---------- КАРТОЧКА КЕЙСА ---------- */
-
 .cases-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
-
 .case-card {
   padding: 36px 32px;
   background: var(--surface);
@@ -94,7 +86,6 @@
   flex-direction: column;
   gap: 22px;
 }
-
 .case-card::before {
   content: '';
   position: absolute;
@@ -104,15 +95,12 @@
   opacity: 0;
   transition: opacity 0.5s;
 }
-
 .case-card:hover {
   border-color: var(--border);
   background: var(--surface-2);
   transform: translateY(-3px);
 }
-
 .case-card:hover::before { opacity: 1; }
-
 .case-card__head {
   display: flex;
   justify-content: space-between;
@@ -121,7 +109,6 @@
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border-2);
 }
-
 .case-card__brand {
   font-family: var(--font-serif);
   font-size: 14px;
@@ -131,7 +118,6 @@
   font-weight: 500;
   margin-bottom: 6px;
 }
-
 .case-card__model {
   font-size: 18px;
   font-weight: 500;
@@ -139,7 +125,6 @@
   color: var(--text);
   line-height: 1.25;
 }
-
 .case-card__badge {
   font-size: 10px;
   letter-spacing: 0.18em;
@@ -153,27 +138,23 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
-
 .case-card__badge--express {
   color: var(--brass);
   border-color: var(--brass-dim);
   background: var(--brass-glow);
 }
-
 .case-card__body {
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex: 1;
 }
-
 .case-card__row {
   display: grid;
   grid-template-columns: 88px 1fr;
   gap: 16px;
   align-items: baseline;
 }
-
 .case-card__row-label {
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -181,18 +162,15 @@
   color: var(--text-3);
   font-weight: 500;
 }
-
 .case-card__row-text {
   font-size: 14px;
   color: var(--text-2);
   line-height: 1.65;
 }
-
 .case-card__row-text strong {
   color: var(--text);
   font-weight: 500;
 }
-
 .case-card__footer {
   display: flex;
   justify-content: space-between;
@@ -202,7 +180,6 @@
   border-top: 1px solid var(--border-2);
   margin-top: auto;
 }
-
 .case-card__price {
   font-family: var(--font-serif);
   font-size: 26px;
@@ -212,7 +189,6 @@
   line-height: 1;
   letter-spacing: -0.02em;
 }
-
 .case-card__price-label {
   font-size: 10px;
   letter-spacing: 0.16em;
@@ -221,7 +197,6 @@
   margin-bottom: 6px;
   font-weight: 500;
 }
-
 .case-card__meta {
   display: flex;
   flex-direction: column;
@@ -229,13 +204,11 @@
   align-items: flex-end;
   text-align: right;
 }
-
 .case-card__meta-item {
   font-size: 12px;
   color: var(--text-3);
   letter-spacing: 0.02em;
 }
-
 .case-card__meta-item span {
   color: var(--brass);
   font-family: var(--font-serif);
@@ -245,7 +218,6 @@
 }
 
 /* ---------- ИНФО-БЛОК ---------- */
-
 .cases-info {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr;
@@ -258,7 +230,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .cases-info::before {
   content: '';
   position: absolute;
@@ -267,7 +238,6 @@
   background: linear-gradient(90deg, transparent, var(--brass), transparent);
   opacity: 0.5;
 }
-
 .cases-info__title {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 400;
@@ -275,7 +245,6 @@
   margin: 16px 0 24px;
   line-height: 1.15;
 }
-
 .cases-info__text {
   font-size: 15px;
   color: var(--text-2);
@@ -283,13 +252,11 @@
   max-width: 620px;
   margin: 0;
 }
-
 .cases-info__right {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .cases-info__circle {
   width: 100%;
   max-width: 220px;
@@ -302,7 +269,6 @@
   position: relative;
   animation: float 8s ease-in-out infinite;
 }
-
 .cases-info__circle::after {
   content: '';
   position: absolute;
@@ -310,7 +276,6 @@
   border-radius: 50%;
   border: 1px solid var(--border);
 }
-
 .cases-info__circle-text {
   font-family: var(--font-serif);
   font-size: 44px;
@@ -321,14 +286,12 @@
 }
 
 /* ---------- АДАПТИВ ---------- */
-
 @media (max-width: 1100px) {
   .cases-stats { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: 1fr; gap: 14px; }
   .cases-info { grid-template-columns: 1fr; gap: 40px; padding: 48px 36px; }
   .cases-info__circle { max-width: 160px; margin: 0 auto; }
 }
-
 @media (max-width: 768px) {
   .cases-stats { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
   .cases-stat { padding: 24px 22px; }
@@ -488,11 +451,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">6 500 ₽</div>
+            <div class="case-card__price">7 200 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>90 минут</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>2 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>4 000 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>3 200 ₽</span></div>
           </div>
         </div>
       </article>
@@ -518,11 +481,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">9 800 ₽</div>
+            <div class="case-card__price">12 800 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>3,5 часа</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>5 лет</span></div>
+            <div class="case-card__meta-item">Работа: <span>9 000 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>3 800 ₽</span></div>
           </div>
         </div>
       </article>
@@ -548,11 +511,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">7 400 ₽</div>
+            <div class="case-card__price">10 700 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>2 часа</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>2 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>6 500 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>4 200 ₽</span></div>
           </div>
         </div>
       </article>
@@ -578,11 +541,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">18 500 ₽</div>
+            <div class="case-card__price">24 500 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>9 дней</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>3 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>5 500 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>19 000 ₽</span></div>
           </div>
         </div>
       </article>
@@ -608,11 +571,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">7 900 ₽</div>
+            <div class="case-card__price">13 400 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>100 минут</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>2 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>5 500 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>7 900 ₽</span></div>
           </div>
         </div>
       </article>
@@ -638,11 +601,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">5 600 ₽</div>
+            <div class="case-card__price">7 300 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>80 минут</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>2 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>4 000 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>3 300 ₽</span></div>
           </div>
         </div>
       </article>
@@ -668,11 +631,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">12 400 ₽</div>
+            <div class="case-card__price">17 400 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>2,5 часа</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>3 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>7 000 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>10 400 ₽</span></div>
           </div>
         </div>
       </article>
@@ -698,11 +661,11 @@
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">6 800 ₽</div>
+            <div class="case-card__price">11 200 ₽</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Время: <span>110 минут</span></div>
-            <div class="case-card__meta-item">Гарантия: <span>2 года</span></div>
+            <div class="case-card__meta-item">Работа: <span>4 500 ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>6 700 ₽</span></div>
           </div>
         </div>
       </article>
