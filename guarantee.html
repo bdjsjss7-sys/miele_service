@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
 <title>Гарантия на ремонт — от 6 месяцев до 5 лет | KLARWERK</title>
-<meta name="description" content="Гарантия на ремонт премиальной техники Miele, Neff, Gaggenau, Bosch, Siemens — от 6 месяцев до 5 лет. Письменный гарантийный талон, оригинальные запчасти. Работаем по Санкт-Петербургу.">
+<meta name="description" content="Гарантия на ремонт премиальной техники — от 6 месяцев до 5 лет. Письменный гарантийный талон, оригинальные запчасти.">
 <meta property="og:title" content="Гарантия на ремонт — до 5 лет | KLARWERK">
-<meta property="og:description" content="Письменный гарантийный талон от 6 месяцев до 5 лет. Оригинальные запчасти. Бесплатное исправление при повторной поломке.">
+<meta property="og:description" content="Письменный гарантийный талон от 6 месяцев до 5 лет.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,46 +15,238 @@
 <link rel="stylesheet" href="css/styles.css">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://klarwerk.ru/" },
-    { "@type": "ListItem", "position": 2, "name": "Гарантия", "item": "https://klarwerk.ru/guarantee.html" }
-  ]
+<style>
+/* ИНЛАЙН-СТИЛИ для страницы гарантии */
+.guarantee-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-</script>
+.g-level {
+  padding: 40px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--ease);
+}
+.g-level::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.g-level:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+.g-level:hover::before { opacity: 1; }
+.g-level--featured {
+  border-color: var(--brass-dim);
+  background: linear-gradient(180deg, rgba(201,169,97,0.05) 0%, var(--surface) 60%);
+}
+.g-level--featured::before { opacity: 1; }
+.g-level__badge {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  background: var(--brass-glow);
+  border: 1px solid var(--brass-dim);
+  padding: 5px 10px;
+  border-radius: 100px;
+  font-weight: 500;
+}
+.g-level__num {
+  font-family: var(--font-serif);
+  font-size: 64px;
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+.g-level__unit {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.g-level__title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.g-level__text {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.g-level__list {
+  list-style: none;
+  padding: 20px 0 0;
+  margin: 0;
+  border-top: 1px solid var(--border-2);
+}
+.g-level__list li {
+  position: relative;
+  padding: 8px 0 8px 20px;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.g-level__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brass);
+}
+
+.reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
+}
+.reason {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-2);
+  align-items: flex-start;
+}
+.reason:first-child { border-top: 1px solid var(--border-2); }
+.reason__num {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.reason__body { min-width: 0; }
+.reason__title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.reason__text {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.docs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.doc {
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+.doc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.doc:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+.doc:hover::before { opacity: 1; }
+.doc__num {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--brass);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+.doc__title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.3;
+}
+.doc__text {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Фикс размеров SVG в includes */
+.includes__icon { width: 36px !important; height: 36px !important; max-width: 36px !important; max-height: 36px !important; }
+.includes__icon svg { width: 18px !important; height: 18px !important; max-width: 18px !important; max-height: 18px !important; }
+
+/* АДАПТИВ */
+@media (max-width: 1100px) {
+  .guarantee-levels { grid-template-columns: 1fr; gap: 16px; max-width: 600px; margin: 0 auto; }
+  .docs { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .g-level { padding: 32px 24px; }
+  .g-level__num { font-size: 52px; }
+  .g-level__title { font-size: 18px; }
+  .g-level__text { font-size: 13px; }
+  .g-level__list li { font-size: 12px; }
+  .g-level__badge { top: 16px; right: 16px; font-size: 9px; padding: 4px 8px; }
+  .reason { grid-template-columns: 52px 1fr; gap: 20px; padding: 24px 0; }
+  .reason__num { font-size: 30px; }
+  .reason__title { font-size: 16px; }
+  .reason__text { font-size: 13px; }
+  .doc { padding: 28px 22px; }
+  .doc__title { font-size: 16px; }
+  .doc__text { font-size: 13px; }
+}
+</style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Сколько действует гарантия на ремонт?",
-      "acceptedAnswer": { "@type": "Answer", "text": "От 6 месяцев до 5 лет в зависимости от типа работ и запчасти. Точный срок фиксируем в гарантийном талоне." }
-    },
-    {
-      "@type": "Question",
-      "name": "Что покрывает гарантия?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Повторное возникновение той же неисправности, отказ установленной нами запчасти, дефекты монтажа. Устраняем бесплатно." }
-    },
-    {
-      "@type": "Question",
-      "name": "Что НЕ покрывает гарантия?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Механические повреждения после ремонта, самостоятельное вмешательство, скачки напряжения, попадание жидкости. Не путаем гарантию с ответственностью за всё, что происходит с техникой." }
-    },
-    {
-      "@type": "Question",
-      "name": "Как воспользоваться гарантией?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Позвоните по телефону или напишите. Приедем, диагностируем, устраним бесплатно, если случай гарантийный. Обычно — в течение 48 часов после обращения." }
-    },
-    {
-      "@type": "Question",
-      "name": "Даёте ли гарантию на работы, если запчасть была клиента?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Да, даём гарантию на работу инженера. Но не на саму запчасть, которую предоставил клиент. Если хотите полную гарантию — мы заказываем запчасть сами из Германии." }
-    }
+    { "@type": "Question", "name": "Сколько действует гарантия на ремонт?", "acceptedAnswer": { "@type": "Answer", "text": "От 6 месяцев до 5 лет в зависимости от типа работ и запчасти." } },
+    { "@type": "Question", "name": "Что покрывает гарантия?", "acceptedAnswer": { "@type": "Answer", "text": "Повторное возникновение той же неисправности, отказ установленной нами запчасти, дефекты монтажа." } }
   ]
 }
 </script>
@@ -123,7 +315,6 @@
   </div>
 </section>
 
-<!-- ТРИ УРОВНЯ ГАРАНТИИ -->
 <section class="section section--no-top">
   <div class="container">
     <div class="section__head">
@@ -176,7 +367,6 @@
   </div>
 </section>
 
-<!-- ОТ ЧЕГО ЗАВИСИТ СРОК -->
 <section class="section section--alt">
   <div class="container">
     <div class="section__head">
@@ -220,20 +410,18 @@
   </div>
 </section>
 
-<!-- ЧТО ПОКРЫВАЕТ / НЕ ПОКРЫВАЕТ -->
 <section class="section">
   <div class="container">
     <div class="section__head">
       <div class="section__label">03 — Покрытие</div>
       <h2 class="section__title">Что покрывает гарантия, <em>а что — нет</em></h2>
-      <p class="section__lead">Мы честно говорим о границах ответственности — чтобы не было недопониманий.</p>
     </div>
 
     <div class="includes">
       <div class="includes__block includes__block--yes">
         <div class="includes__head">
           <div class="includes__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;max-width:20px;max-height:20px;display:block;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;max-width:18px;max-height:18px;display:block;">
               <path d="M4 12l5 5L20 6"/>
             </svg>
           </div>
@@ -252,7 +440,7 @@
       <div class="includes__block includes__block--no">
         <div class="includes__head">
           <div class="includes__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;max-width:20px;max-height:20px;display:block;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;max-width:18px;max-height:18px;display:block;">
               <path d="M6 6l12 12M18 6L6 18"/>
             </svg>
           </div>
@@ -272,7 +460,6 @@
   </div>
 </section>
 
-<!-- КАК ВОСПОЛЬЗОВАТЬСЯ -->
 <section class="section section--alt">
   <div class="container">
     <div class="section__head">
@@ -313,7 +500,6 @@
   </div>
 </section>
 
-<!-- ЧТО ДАЁМ ПИСЬМЕННО -->
 <section class="section">
   <div class="container">
     <div class="section__head">
@@ -347,7 +533,6 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section section--alt">
   <div class="container">
     <div class="section__head">
@@ -366,36 +551,35 @@
       </details>
       <details class="faq__item">
         <summary>Что НЕ покрывает гарантия?</summary>
-        <p>Механические повреждения после ремонта, самостоятельное вмешательство, скачки напряжения, попадание жидкости. Не путаем гарантию с ответственностью за всё, что происходит с техникой.</p>
+        <p>Механические повреждения после ремонта, самостоятельное вмешательство, скачки напряжения, попадание жидкости.</p>
       </details>
       <details class="faq__item">
         <summary>Как воспользоваться гарантией?</summary>
-        <p>Позвоните по телефону или напишите. Приедем, диагностируем, устраним бесплатно, если случай гарантийный. Обычно — в течение 48 часов после обращения.</p>
+        <p>Позвоните по телефону или напишите. Приедем, диагностируем, устраним бесплатно, если случай гарантийный.</p>
       </details>
       <details class="faq__item">
-        <summary>Даёте ли гарантию на работы, если запчасть была клиента?</summary>
-        <p>Да, даём гарантию на работу инженера. Но не на саму запчасть, которую предоставил клиент. Если хотите полную гарантию — мы заказываем запчасть сами из Германии.</p>
+        <summary>Даёте ли гарантию, если запчасть была клиента?</summary>
+        <p>Да, гарантию на работу инженера. На саму запчасть — нет. Если хотите полную гарантию — заказываем запчасть сами из Германии.</p>
       </details>
       <details class="faq__item">
-        <summary>Что если гарантийный случай наступил, а мастер уже не работает?</summary>
-        <p>Гарантия даётся мастерской, а не конкретному инженеру. Если ваш инженер недоступен — приедет другой специалист по этому направлению. Обязательства остаются в силе.</p>
+        <summary>Что если мастер, делавший ремонт, недоступен?</summary>
+        <p>Гарантия даётся мастерской, а не конкретному инженеру. Приедет другой специалист по этому направлению.</p>
       </details>
       <details class="faq__item">
-        <summary>Гарантия на запчасть — это гарантия производителя?</summary>
-        <p>Мы даём свою гарантию на запчасть, но она подкреплена гарантией производителя Miele, Neff, Gaggenau. Если оригинальная деталь выйдет из строя раньше срока — мы заменим её бесплатно.</p>
+        <summary>Продлевается ли гарантия после повторного ремонта?</summary>
+        <p>Да, отсчёт гарантии начинается заново — с даты повторного ремонта.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- КОНТАКТЫ -->
 <section class="section contacts" id="contacts">
   <div class="container">
     <div class="contacts__inner">
       <div class="contacts__left">
         <div class="section__label">07 — Вызвать инженера</div>
         <h2 class="contacts__title">Гарантийный случай <em>или новый ремонт</em></h2>
-        <p class="contacts__lead">Опишите ситуацию по телефону — сразу скажем, гарантийный это случай или нет. Или оставьте заявку, диспетчер перезвонит в течение 15 минут.</p>
+        <p class="contacts__lead">Опишите ситуацию по телефону — сразу скажем, гарантийный это случай или нет.</p>
 
         <div class="contacts__list">
           <a href="tel:+79196989493" class="contacts__item">
@@ -423,10 +607,10 @@
 
       <form class="contacts__form" onsubmit="event.preventDefault(); alert('Заявка отправлена. Мы перезвоним в течение 15 минут.'); this.reset();">
         <div class="contacts__form-title">Обратный звонок</div>
-        <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и уточним ситуацию.</p>
+        <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут.</p>
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="tel" name="phone" placeholder="Телефон" required>
-        <textarea name="message" rows="3" placeholder="Опишите ситуацию (гарантийный случай или новый ремонт)"></textarea>
+        <textarea name="message" rows="3" placeholder="Опишите ситуацию"></textarea>
         <button type="submit" class="btn btn--primary">Жду звонка</button>
         <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
       </form>
