@@ -3024,3 +3024,56 @@ a.contacts__item:hover {
   .includes__list li { font-size: 13px; padding: 10px 0 10px 24px; }
   .includes__list li::before { top: 17px; }
 }
+
+/* ============================================================
+   ФИКС РАЗМЕРОВ SVG-ИКОНОК — жёсткие ограничения
+   ============================================================ */
+
+/* Универсально: любые SVG внутри иконок фиксируем по размеру */
+.cert-card__icon,
+.cert-card__icon svg,
+.anchor-card__icon,
+.anchor-card__icon svg,
+.includes__icon,
+.includes__icon svg,
+.price-cat__icon,
+.price-cat__icon svg,
+.bento__icon,
+.bento__icon svg,
+.service-card__icon,
+.service-card__icon svg,
+.aside-card svg,
+.feature__icon,
+.feature__icon svg {
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.cert-card__icon {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cert-card__icon svg {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Мобильная версия — уменьшаем */
+@media (max-width: 768px) {
+  .cert-card__icon,
+  .cert-card__icon svg {
+    width: 36px !important;
+    height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
+  }
+}
