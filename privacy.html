@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Политика конфиденциальности | KLARWERK</title>
+<meta name="description" content="Политика конфиденциальности и обработки персональных данных сайта KLARWERK. Порядок сбора, хранения и защиты персональной информации пользователей.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+.privacy-body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.privacy-toc {
+  position: sticky;
+  top: 100px;
+  padding: 32px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  position: sticky;
+}
+.privacy-toc__label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+.privacy-toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.privacy-toc__list a {
+  display: block;
+  padding: 9px 0 9px 16px;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.4;
+  border-left: 1px solid var(--border-2);
+  transition: all 0.3s var(--ease);
+  position: relative;
+}
+.privacy-toc__list a:hover {
+  color: var(--text);
+  border-left-color: var(--brass);
+  padding-left: 20px;
+}
+
+.privacy-content {
+  max-width: 780px;
+}
+.privacy-content__meta {
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-2);
+}
+.privacy-content__meta span {
+  color: var(--brass);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.privacy-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 100px;
+}
+.privacy-section__num {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--brass);
+  font-style: italic;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.privacy-section__title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 18px;
+  line-height: 1.25;
+}
+.privacy-section p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.privacy-section p:last-child {
+  margin-bottom: 0;
+}
+.privacy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.privacy-section ul li {
+  position: relative;
+  padding: 8px 0 8px 24px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+.privacy-section ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brass);
+}
+.privacy-section strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.privacy-section a {
+  color: var(--brass);
+  border-bottom: 1px solid var(--brass-dim);
+  transition: border-color 0.3s;
+}
+.privacy-section a:hover {
+  border-bottom-color: var(--brass);
+}
+
+.privacy-contacts {
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.privacy-contacts::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+}
+.privacy-contacts__title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.privacy-contacts__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.privacy-contacts__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-2);
+  color: inherit;
+  text-decoration: none;
+  transition: padding 0.3s var(--ease), color 0.3s;
+}
+.privacy-contacts__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+a.privacy-contacts__item:hover {
+  padding-left: 8px;
+  color: var(--brass);
+}
+.privacy-contacts__label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.privacy-contacts__value {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+@media (max-width: 1100px) {
+  .privacy-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .privacy-toc {
+    position: static;
+    padding: 24px 22px;
+  }
+  .privacy-toc__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+  }
+}
+@media (max-width: 768px) {
+  .privacy-toc { padding: 20px 18px; }
+  .privacy-toc__list { grid-template-columns: 1fr; }
+  .privacy-toc__list a { padding: 8px 0 8px 14px; font-size: 12px; }
+
+  .privacy-section { margin-bottom: 36px; }
+  .privacy-section__title { font-size: 18px; }
+  .privacy-section p { font-size: 14px; line-height: 1.7; }
+  .privacy-section ul li { font-size: 13px; padding: 6px 0 6px 20px; }
+  .privacy-section ul li::before { top: 12px; }
+
+  .privacy-contacts { padding: 26px 22px; }
+  .privacy-contacts__item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 0;
+  }
+  .privacy-contacts__value { text-align: left; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="services.html">Услуги</a>
+      <a href="index.html#breakdowns">Поломки</a>
+      <a href="about.html">О нас</a>
+      <a href="prices.html">Цены</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79196989493" class="header__phone">+7 (919) 698-94-93</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="page-hero__glow"></div>
+    <div class="page-hero__grid"></div>
+  </div>
+  <div class="container page-hero__inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Политика конфиденциальности</span>
+    </nav>
+
+    <div class="page-hero__label">Правовая информация</div>
+    <h1 class="page-hero__title">
+      Политика <em>конфиденциальности</em>
+    </h1>
+    <p class="page-hero__lead">
+      Порядок обработки и защиты персональных данных пользователей сайта
+      KLARWERK. Мы соблюдаем требования Федерального закона № 152-ФЗ
+      «О персональных данных».
+    </p>
+  </div>
+</section>
+
+<section class="section section--no-top">
+  <div class="container">
+    <div class="privacy-body">
+
+      <aside class="privacy-toc">
+        <div class="privacy-toc__label">Содержание</div>
+        <ul class="privacy-toc__list">
+          <li><a href="#s1">1. Общие положения</a></li>
+          <li><a href="#s2">2. Какие данные собираем</a></li>
+          <li><a href="#s3">3. Цели обработки</a></li>
+          <li><a href="#s4">4. Правовые основания</a></li>
+          <li><a href="#s5">5. Хранение и защита</a></li>
+          <li><a href="#s6">6. Передача третьим лицам</a></li>
+          <li><a href="#s7">7. Cookies и аналитика</a></li>
+          <li><a href="#s8">8. Права пользователя</a></li>
+          <li><a href="#s9">9. Изменения политики</a></li>
+          <li><a href="#s10">10. Контакты</a></li>
+        </ul>
+      </aside>
+
+      <div class="privacy-content">
+
+        <div class="privacy-content__meta">
+          Дата вступления в силу: <span>01 января 2025 года</span>
+        </div>
+
+        <div class="privacy-section" id="s1">
+          <div class="privacy-section__num">01</div>
+          <h2 class="privacy-section__title">Общие положения</h2>
+          <p>
+            Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок
+            обработки и защиты персональных данных пользователей сайта
+            <strong>KLARWERK</strong> (далее — «Сайт»), оператором которых является
+            инженерная мастерская KLARWERK (далее — «Оператор»).
+          </p>
+          <p>
+            Политика разработана в соответствии с Федеральным законом от 27.07.2006
+            № 152-ФЗ «О персональных данных» и действует в отношении всей информации,
+            которую Оператор может получить о пользователе во время использования Сайта.
+          </p>
+          <p>
+            Использование Сайта означает безоговорочное согласие пользователя с настоящей
+            Политикой и указанными в ней условиями обработки персональных данных.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s2">
+          <div class="privacy-section__num">02</div>
+          <h2 class="privacy-section__title">Какие данные мы собираем</h2>
+          <p>
+            Оператор обрабатывает следующие категории персональных данных, добровольно
+            предоставляемых пользователем через формы на Сайте:
+          </p>
+          <ul>
+            <li>Имя (либо иное имя, которое пользователь указал в форме)</li>
+            <li>Номер контактного телефона</li>
+            <li>Адрес электронной почты (при обращении по email)</li>
+            <li>Текст обращения — описание проблемы, модели техники, кода ошибки</li>
+            <li>Район города — при оставлении отзыва (по желанию)</li>
+            <li>Технические данные: IP-адрес, User-Agent, файлы cookies, страницы входа и просмотра</li>
+          </ul>
+          <p>
+            Оператор <strong>не собирает</strong> специальные категории персональных данных
+            (о расовой, национальной принадлежности, политических взглядах, религиозных
+            убеждениях, состоянии здоровья) и биометрические данные.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s3">
+          <div class="privacy-section__num">03</div>
+          <h2 class="privacy-section__title">Цели обработки персональных данных</h2>
+          <p>Персональные данные пользователей обрабатываются в следующих целях:</p>
+          <ul>
+            <li>Обработка заявок на выезд инженера и консультирование по телефону</li>
+            <li>Согласование времени и места выполнения ремонтных работ</li>
+            <li>Информирование о статусе заявки, стоимости и сроках</li>
+            <li>Ответы на обращения через форму отзыва и email</li>
+            <li>Улучшение качества сервиса и анализ статистики обращений</li>
+            <li>Исполнение требований законодательства Российской Федерации</li>
+          </ul>
+          <p>
+            Оператор не использует персональные данные для целей, не указанных в настоящем
+            разделе, и не передаёт их третьим лицам, кроме случаев, прямо предусмотренных
+            законом.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s4">
+          <div class="privacy-section__num">04</div>
+          <h2 class="privacy-section__title">Правовые основания обработки</h2>
+          <p>Обработка персональных данных осуществляется на следующих основаниях:</p>
+          <ul>
+            <li>Согласие пользователя, выраженное путём заполнения формы на Сайте</li>
+            <li>Исполнение договора на оказание услуг, стороной которого является пользователь</li>
+            <li>Исполнение требований Федерального закона № 152-ФЗ и других нормативных актов</li>
+          </ul>
+          <p>
+            Пользователь вправе в любой момент отозвать согласие на обработку персональных
+            данных, направив обращение на адрес, указанный в разделе «Контакты».
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s5">
+          <div class="privacy-section__num">05</div>
+          <h2 class="privacy-section__title">Хранение и защита данных</h2>
+          <p>
+            Оператор принимает необходимые организационные и технические меры для защиты
+            персональных данных от неправомерного или случайного доступа, уничтожения,
+            изменения, блокирования и распространения:
+          </p>
+          <ul>
+            <li>Использование защищённого протокола HTTPS при передаче данных</li>
+            <li>Ограничение доступа сотрудников к персональным данным</li>
+            <li>Хранение данных на защищённых серверах с резервным копированием</li>
+            <li>Регулярная проверка систем на уязвимости</li>
+          </ul>
+          <p>
+            Персональные данные хранятся не дольше, чем этого требуют цели их обработки.
+            Данные из заявок хранятся 3 года с момента последнего обращения. Данные отзывов —
+            до момента их удаления пользователем или Оператором.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s6">
+          <div class="privacy-section__num">06</div>
+          <h2 class="privacy-section__title">Передача данных третьим лицам</h2>
+          <p>
+            Оператор не передаёт персональные данные пользователей третьим лицам,
+            за исключением следующих случаев:
+          </p>
+          <ul>
+            <li>Получение явного согласия пользователя</li>
+            <li>Требование правоохранительных, судебных или иных государственных органов в рамках закона</li>
+            <li>Использование сервисов аналитики (например, Яндекс.Метрика), которые обрабатывают обезличенные данные</li>
+            <li>Привлечение подрядчиков для выполнения отдельных работ, связанных с заявкой, с обязательным соблюдением конфиденциальности</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section" id="s7">
+          <div class="privacy-section__num">07</div>
+          <h2 class="privacy-section__title">Cookies и аналитика</h2>
+          <p>
+            Сайт использует файлы cookies для улучшения работы пользователей и анализа
+            поведения посетителей. Cookies — небольшие текстовые файлы, которые сохраняются
+            в браузере пользователя.
+          </p>
+          <p>Какие cookies используются:</p>
+          <ul>
+            <li><strong>Технические</strong> — обеспечивают работу форм и навигации по сайту</li>
+            <li><strong>Аналитические</strong> — помогают понять, какие страницы наиболее полезны (Яндекс.Метрика, Google Analytics)</li>
+          </ul>
+          <p>
+            Пользователь может в любой момент отключить cookies в настройках браузера.
+            Это не повлияет на доступ к основной информации Сайта, но может ограничить
+            работу отдельных функций.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s8">
+          <div class="privacy-section__num">08</div>
+          <h2 class="privacy-section__title">Права пользователя</h2>
+          <p>Пользователь имеет право:</p>
+          <ul>
+            <li>Получать информацию об обработке своих персональных данных</li>
+            <li>Требовать уточнения, блокирования или уничтожения данных, если они неполны, устарели, неточны или незаконно получены</li>
+            <li>Отозвать согласие на обработку персональных данных</li>
+            <li>Обжаловать действия Оператора в Роскомнадзоре или в суде</li>
+            <li>Обращаться с запросами и жалобами по контактам, указанным в разделе «Контакты»</li>
+          </ul>
+          <p>
+            Для реализации своих прав пользователь может направить письменный запрос на
+            электронную почту Оператора. Запрос обрабатывается в течение 30 календарных дней.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s9">
+          <div class="privacy-section__num">09</div>
+          <h2 class="privacy-section__title">Изменения политики</h2>
+          <p>
+            Оператор оставляет за собой право вносить изменения в настоящую Политику.
+            Актуальная версия всегда размещена на этой странице.
+          </p>
+          <p>
+            При существенных изменениях условий обработки персональных данных Оператор
+            уведомит пользователей путём размещения информационного сообщения на Сайте
+            не менее чем за 7 календарных дней до вступления изменений в силу.
+          </p>
+        </div>
+
+        <div class="privacy-section" id="s10">
+          <div class="privacy-section__num">10</div>
+          <h2 class="privacy-section__title">Контакты для обращений</h2>
+          <p>
+            По всем вопросам, связанным с обработкой персональных данных, вы можете
+            обратиться по следующим контактам:
+          </p>
+          <div class="privacy-contacts">
+            <div class="privacy-contacts__title">KLARWERK — обращения по персональным данным</div>
+            <div class="privacy-contacts__list">
+              <a href="mailto:miele.zentrum.service@gmail.com" class="privacy-contacts__item">
+                <span class="privacy-contacts__label">Email</span>
+                <span class="privacy-contacts__value">miele.zentrum.service@gmail.com</span>
+              </a>
+              <a href="tel:+79196989493" class="privacy-contacts__item">
+                <span class="privacy-contacts__label">Телефон 1</span>
+                <span class="privacy-contacts__value">+7 (919) 698-94-93</span>
+              </a>
+              <a href="tel:+79868311588" class="privacy-contacts__item">
+                <span class="privacy-contacts__label">Телефон 2</span>
+                <span class="privacy-contacts__value">+7 (986) 831-15-88</span>
+              </a>
+              <div class="privacy-contacts__item">
+                <span class="privacy-contacts__label">Регион</span>
+                <span class="privacy-contacts__value">Санкт-Петербург, Россия</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </div>
+    <div class="footer__copy">© 2025 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.</div>
+    <div class="footer__links">
+      <a href="services.html">Услуги</a>
+      <a href="prices.html">Цены</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
