@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Страница не найдена — 404 | KLARWERK</title>
+<meta name="description" content="Запрашиваемая страница не найдена. Вернитесь на главную или свяжитесь с нами по телефону +7 (919) 698-94-93.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+.err-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.err-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.err-hero__glow {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 60vw; height: 60vw;
+  max-width: 700px; max-height: 700px;
+  background: radial-gradient(circle, rgba(201,169,97,0.12) 0%, transparent 60%);
+  filter: blur(60px);
+}
+.err-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,169,97,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,97,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+}
+.err-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+.err-code {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--brass);
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease) 0.1s forwards;
+}
+.err-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 20px;
+  line-height: 1.15;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease) 0.25s forwards;
+}
+.err-text {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease) 0.4s forwards;
+}
+.err-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease) 0.55s forwards;
+}
+.err-links {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease) 0.7s forwards;
+}
+.err-links__label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.err-links__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.err-links__grid a {
+  font-size: 14px;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border-2);
+  padding-bottom: 3px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.err-links__grid a:hover {
+  color: var(--brass);
+  border-bottom-color: var(--brass);
+}
+.err-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.err-visual svg {
+  width: 100%;
+  max-width: 340px;
+  animation: float 8s ease-in-out infinite;
+}
+@media (max-width: 1100px) {
+  .err-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .err-visual { order: -1; max-width: 220px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .err-hero { padding: 120px 0 60px; }
+  .err-actions { flex-direction: column; align-items: stretch; }
+  .err-actions .btn { width: 100%; justify-content: center; }
+  .err-visual svg { max-width: 180px; }
+  .err-code { font-size: 6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="services.html">Услуги</a>
+      <a href="index.html#breakdowns">Поломки</a>
+      <a href="about.html">О нас</a>
+      <a href="prices.html">Цены</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79196989493" class="header__phone">+7 (919) 698-94-93</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="err-hero">
+  <div class="err-hero__bg" aria-hidden="true">
+    <div class="err-hero__glow"></div>
+    <div class="err-hero__grid"></div>
+  </div>
+
+  <div class="container err-hero__inner">
+    <div>
+      <div class="err-code">404</div>
+      <h1 class="err-title">Такой страницы нет — <em>но техника всё ещё может сломаться</em></h1>
+      <p class="err-text">
+        Возможно, страница была удалена, переименована или вы ошиблись в адресе.
+        Вернитесь на главную или позвоните — поможем с ремонтом вашей премиальной техники.
+      </p>
+      <div class="err-actions">
+        <a href="index.html" class="btn btn--primary">
+          <span>На главную</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="tel:+79196989493" class="btn btn--ghost">+7 (919) 698-94-93</a>
+      </div>
+
+      <div class="err-links">
+        <div class="err-links__label">Популярные страницы</div>
+        <div class="err-links__grid">
+          <a href="services.html">Все услуги</a>
+          <a href="coffee-machines.html">Кофемашины</a>
+          <a href="dishwashers.html">Посудомойки</a>
+          <a href="washing-machines.html">Стиральные</a>
+          <a href="fridges.html">Холодильники</a>
+          <a href="prices.html">Цены</a>
+          <a href="reviews.html">Отзывы</a>
+          <a href="contacts.html">Контакты</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="err-visual" aria-hidden="true">
+      <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;height:auto;display:block;">
+        <circle cx="160" cy="160" r="130" stroke="#c9a961" stroke-width="0.8" opacity="0.25"/>
+        <circle cx="160" cy="160" r="95" stroke="#c9a961" stroke-width="0.8" opacity="0.35"/>
+        <circle cx="160" cy="160" r="60" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="160" cy="160" r="25" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+        <text x="160" y="170" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic" letter-spacing="0.05em" opacity="0.85">?</text>
+        <line x1="30" y1="160" x2="60" y2="160" stroke="#c9a961" stroke-width="0.8" opacity="0.3"/>
+        <line x1="260" y1="160" x2="290" y2="160" stroke="#c9a961" stroke-width="0.8" opacity="0.3"/>
+        <line x1="160" y1="30" x2="160" y2="60" stroke="#c9a961" stroke-width="0.8" opacity="0.3"/>
+        <line x1="160" y1="260" x2="160" y2="290" stroke="#c9a961" stroke-width="0.8" opacity="0.3"/>
+        <circle cx="160" cy="30" r="3" fill="#c9a961" opacity="0.6"/>
+        <circle cx="160" cy="290" r="3" fill="#c9a961" opacity="0.6"/>
+        <circle cx="30" cy="160" r="3" fill="#c9a961" opacity="0.6"/>
+        <circle cx="290" cy="160" r="3" fill="#c9a961" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script src="js/script.js"></script>
+</body>
+</html>
