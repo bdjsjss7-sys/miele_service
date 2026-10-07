@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Контакты — вызвать инженера по ремонту премиальной техники в СПб | KLARWERK</title>
+<meta name="description" content="Контакты KLARWERK: телефоны +7 (919) 698-94-93 и +7 (986) 831-15-88, email miele.zentrum.service@gmail.com. Работаем ежедневно с 8:00 до 22:00. Выезд по Санкт-Петербургу и пригороду.">
+<meta property="og:title" content="Контакты — KLARWERK, ремонт премиальной техники в СПб">
+<meta property="og:description" content="Два телефона, email, режим работы 8:00–22:00. Выезд по СПб и пригороду.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+/* ============================================================
+   ИНЛАЙН-СТИЛИ для contacts.html
+   ============================================================ */
+
+.contacts-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contacts-page__left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contacts-page__block {
+  padding: 32px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+.contacts-page__block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0.5;
+}
+.contacts-page__block--accent {
+  border-color: var(--brass-dim);
+  background: linear-gradient(180deg, rgba(201,169,97,0.05) 0%, var(--surface) 60%);
+}
+.contacts-page__block--accent::before {
+  opacity: 1;
+}
+
+.contacts-page__label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.contacts-page__title {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 18px;
+  line-height: 1.25;
+}
+
+.contacts-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contacts-page__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-2);
+  transition: padding 0.35s var(--ease), color 0.3s;
+  color: inherit;
+  text-decoration: none;
+}
+.contacts-page__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.contacts-page__item:first-child {
+  padding-top: 0;
+}
+a.contacts-page__item:hover {
+  padding-left: 10px;
+  color: var(--brass);
+}
+
+.contacts-page__item-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.contacts-page__item-value {
+  font-size: 15px;
+  color: inherit;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.contacts-page__note {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.7;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-2);
+}
+
+/* ---------- КАРТА ЗОНЫ ВЫЕЗДА ---------- */
+.zone {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 64px 56px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+.zone::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0.5;
+}
+.zone__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+.zone__text {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.zone__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+.zone__list li {
+  position: relative;
+  padding: 8px 0 8px 20px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+.zone__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brass);
+}
+.zone__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.zone__svg {
+  width: 100%;
+  max-width: 360px;
+  animation: float 10s ease-in-out infinite;
+}
+
+/* ---------- МИНИ FAQ ---------- */
+.contacts-faq {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+}
+.contacts-faq .faq__item {
+  border-bottom: 1px solid var(--border-2);
+  padding: 22px 0;
+  cursor: pointer;
+  transition: padding 0.3s var(--ease);
+}
+.contacts-faq .faq__item[open] { padding: 22px 0 28px; }
+.contacts-faq .faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  transition: color 0.3s;
+}
+.contacts-faq .faq__item summary::-webkit-details-marker { display: none; }
+.contacts-faq .faq__item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--brass);
+  transition: transform 0.4s var(--ease);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.contacts-faq .faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+.contacts-faq .faq__item summary:hover { color: var(--brass); }
+.contacts-faq .faq__item p {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 780px;
+}
+
+/* ---------- АДАПТИВ ---------- */
+@media (max-width: 1100px) {
+  .contacts-page { grid-template-columns: 1fr; gap: 40px; }
+  .zone { grid-template-columns: 1fr; gap: 40px; padding: 48px 36px; }
+  .zone__svg { max-width: 280px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .contacts-page__block { padding: 26px 22px; }
+  .contacts-page__title { font-size: 19px; }
+  .contacts-page__item {
+    padding: 14px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .contacts-page__item-value { text-align: left; font-size: 14px; }
+
+  .zone { padding: 32px 22px; }
+  .zone__title { font-size: 1.5rem; }
+  .zone__text { font-size: 14px; }
+  .zone__list { grid-template-columns: 1fr; gap: 4px; }
+  .zone__list li { font-size: 13px; padding: 6px 0 6px 18px; }
+  .zone__list li::before { top: 13px; }
+  .zone__svg { max-width: 220px; }
+
+  .contacts-faq .faq__item { padding: 18px 0; }
+  .contacts-faq .faq__item summary { font-size: 15px; gap: 16px; }
+  .contacts-faq .faq__item summary::after { font-size: 20px; }
+  .contacts-faq .faq__item p { font-size: 13px; line-height: 1.7; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Контакты KLARWERK",
+  "description": "Контакты инженерной мастерской KLARWERK: телефоны, email, режим работы.",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "KLARWERK",
+    "telephone": "+79196989493",
+    "email": "miele.zentrum.service@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Санкт-Петербург", "addressCountry": "RU" },
+    "areaServed": "Санкт-Петербург",
+    "openingHours": "Mo-Su 08:00-22:00",
+    "priceRange": "от 3000 ₽"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://klarwerk.ru/" },
+    { "@type": "ListItem", "position": 2, "name": "Контакты", "item": "https://klarwerk.ru/contacts.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="services.html">Услуги</a>
+      <a href="index.html#breakdowns">Поломки</a>
+      <a href="about.html">О нас</a>
+      <a href="prices.html">Цены</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="contacts.html" class="is-current">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79196989493" class="header__phone">+7 (919) 698-94-93</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="page-hero__glow"></div>
+    <div class="page-hero__grid"></div>
+  </div>
+  <div class="container page-hero__inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Контакты</span>
+    </nav>
+
+    <div class="page-hero__label">Контакты</div>
+    <h1 class="page-hero__title">
+      Свяжитесь с нами <em>любым способом</em>
+    </h1>
+    <p class="page-hero__lead">
+      Позвоните, напишите в мессенджер или оставьте заявку на обратный звонок.
+      Диспетчер ответит с 8:00 до 22:00, без выходных, и сразу назовёт вилку
+      стоимости по описанию проблемы.
+    </p>
+
+    <div class="page-hero__actions">
+      <a href="tel:+79196989493" class="btn btn--primary">Позвонить сейчас</a>
+      <a href="#contacts-form" class="btn btn--ghost">Обратный звонок</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--no-top">
+  <div class="container">
+    <div class="contacts-page">
+
+      <div class="contacts-page__left">
+
+        <div class="contacts-page__block contacts-page__block--accent">
+          <div class="contacts-page__label">Телефоны</div>
+          <div class="contacts-page__list">
+            <a href="tel:+79196989493" class="contacts-page__item">
+              <span class="contacts-page__item-label">Телефон 1</span>
+              <span class="contacts-page__item-value">+7 (919) 698-94-93</span>
+            </a>
+            <a href="tel:+79868311588" class="contacts-page__item">
+              <span class="contacts-page__item-label">Телефон 2</span>
+              <span class="contacts-page__item-value">+7 (986) 831-15-88</span>
+            </a>
+          </div>
+          <p class="contacts-page__note">
+            Если не дозвонились — попробуйте второй номер или оставьте заявку. Мы перезвоним в течение 15 минут.
+          </p>
+        </div>
+
+        <div class="contacts-page__block">
+          <div class="contacts-page__label">Почта и мессенджеры</div>
+          <div class="contacts-page__list">
+            <a href="mailto:miele.zentrum.service@gmail.com" class="contacts-page__item">
+              <span class="contacts-page__item-label">Email</span>
+              <span class="contacts-page__item-value">miele.zentrum.service@gmail.com</span>
+            </a>
+          </div>
+          <p class="contacts-page__note">
+            На почту удобно присылать фото шильдика техники и кода ошибки — по ним можем сразу назвать вилку стоимости.
+          </p>
+        </div>
+
+        <div class="contacts-page__block">
+          <div class="contacts-page__label">Режим работы</div>
+          <div class="contacts-page__list">
+            <div class="contacts-page__item">
+              <span class="contacts-page__item-label">Пн — Вс</span>
+              <span class="contacts-page__item-value">8:00 — 22:00</span>
+            </div>
+            <div class="contacts-page__item">
+              <span class="contacts-page__item-label">Праздники</span>
+              <span class="contacts-page__item-value">По тому же графику</span>
+            </div>
+          </div>
+          <p class="contacts-page__note">
+            Экстренные случаи — уточняйте по телефону. Иногда можем приехать и позже 22:00.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="contacts-page__right" id="contacts-form">
+        <form class="contacts__form" onsubmit="event.preventDefault(); alert('Заявка отправлена. Мы перезвоним в течение 15 минут.'); this.reset();">
+          <div class="contacts__form-title">Обратный звонок</div>
+          <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и назовём вилку стоимости по описанию проблемы.</p>
+          <input type="text" name="name" placeholder="Ваше имя" required>
+          <input type="tel" name="phone" placeholder="Телефон" required>
+          <textarea name="message" rows="4" placeholder="Модель техники и что случилось? Можно приложить код ошибки или описание"></textarea>
+          <button type="submit" class="btn btn--primary">Жду звонка</button>
+          <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ЗОНА ВЫЕЗДА -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="zone">
+      <div>
+        <div class="section__label">01 — Зона выезда</div>
+        <h2 class="zone__title">Работаем по всему <em>Санкт-Петербургу</em></h2>
+        <p class="zone__text">
+          Выезжаем во все районы города и ближний пригород. За пределы КАД —
+          по километражу, уточняйте по телефону. Средний срок выезда в черте
+          города — 90 минут после подтверждения заявки.
+        </p>
+        <ul class="zone__list">
+          <li>Приморский</li>
+          <li>Выборгский</li>
+          <li>Калининский</li>
+          <li>Красногвардейский</li>
+          <li>Невский</li>
+          <li>Фрунзенский</li>
+          <li>Московский</li>
+          <li>Кировский</li>
+          <li>Красносельский</li>
+          <li>Адмиралтейский</li>
+          <li>Центральный</li>
+          <li>Петроградский</li>
+          <li>Василеостровский</li>
+          <li>Пушкинский</li>
+          <li>Петродворцовый</li>
+          <li>Колпинский</li>
+        </ul>
+      </div>
+      <div class="zone__right" aria-hidden="true">
+        <svg class="zone__svg" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;height:auto;display:block;">
+          <!-- Внешний контур -->
+          <circle cx="180" cy="180" r="160" stroke="#c9a961" stroke-width="0.8" opacity="0.25"/>
+          <circle cx="180" cy="180" r="120" stroke="#c9a961" stroke-width="0.8" opacity="0.35"/>
+          <circle cx="180" cy="180" r="80" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="180" cy="180" r="40" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+          <!-- Центр -->
+          <circle cx="180" cy="180" r="8" fill="#c9a961" opacity="0.7"/>
+          <circle cx="180" cy="180" r="3" fill="#0a0a0a"/>
+          <!-- Точки районов по кругу -->
+          <circle cx="180" cy="40" r="5" fill="#c9a961" opacity="0.6"/>
+          <circle cx="270" cy="80" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="320" cy="170" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="300" cy="270" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="210" cy="320" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="110" cy="320" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="40" cy="240" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="30" cy="130" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="90" cy="60" r="5" fill="#c9a961" opacity="0.5"/>
+          <circle cx="240" cy="240" r="5" fill="#c9a961" opacity="0.7"/>
+          <circle cx="130" cy="240" r="5" fill="#c9a961" opacity="0.7"/>
+          <circle cx="240" cy="130" r="5" fill="#c9a961" opacity="0.7"/>
+          <circle cx="130" cy="130" r="5" fill="#c9a961" opacity="0.7"/>
+          <!-- Соединительные линии -->
+          <line x1="180" y1="180" x2="180" y2="40" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="270" y2="80" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="320" y2="170" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="300" y2="270" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="210" y2="320" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="110" y2="320" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="40" y2="240" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="30" y2="130" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <line x1="180" y1="180" x2="90" y2="60" stroke="#c9a961" stroke-width="0.5" opacity="0.2"/>
+          <!-- Подпись -->
+          <text x="180" y="200" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="14" font-style="italic" letter-spacing="0.15em">СПб</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- МИНИ FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">02 — Перед звонком</div>
+      <h2 class="section__title">Частые вопросы <em>про выезд</em></h2>
+    </div>
+
+    <div class="contacts-faq">
+      <details class="faq__item">
+        <summary>Как быстро приедет инженер?</summary>
+        <p>В пределах Санкт-Петербурга — в течение 90 минут после подтверждения заявки. В часы пик может быть дольше. Позвоним за 30 минут до приезда.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Выезд платный?</summary>
+        <p>Выезд по городу — бесплатно при согласии на ремонт. Если вы отказываетесь от ремонта — оплачиваете диагностику 1500 ₽. За КАД — по километражу.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Что подготовить к приезду инженера?</summary>
+        <p>Освободите доступ к технике, при возможности сохраните код ошибки, приготовьте модель (на шильдике). Для встраиваемой техники — заранее отключите от сети, если возможно.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Можно ли записаться на конкретное время?</summary>
+        <p>Да, подбираем удобный 2-часовой интервал. Заранее согласуем дату и время, позвоним за 30 минут до приезда.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Работаете ли вы ночью или в праздники?</summary>
+        <p>Основной график — с 8:00 до 22:00, включая выходные и праздники. Экстренные ситуации — уточняйте по телефону, иногда можем приехать и позже.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__label">03 — Полезные ссылки</div>
+      <h2 class="section__title">Смотрите <em>также</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="prices.html" class="related-card">
+        <div class="related-card__title">Цены на ремонт</div>
+        <div class="related-card__link">Перейти →</div>
+      </a>
+      <a href="services.html" class="related-card">
+        <div class="related-card__title">Все услуги</div>
+        <div class="related-card__link">Перейти →</div>
+      </a>
+      <a href="reviews.html" class="related-card">
+        <div class="related-card__title">Отзывы клиентов</div>
+        <div class="related-card__link">Перейти →</div>
+      </a>
+      <a href="faq.html" class="related-card">
+        <div class="related-card__title">Вопросы и ответы</div>
+        <div class="related-card__link">Перейти →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </div>
+    <div class="footer__copy">© 2025 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.</div>
+    <div class="footer__links">
+      <a href="services.html">Услуги</a>
+      <a href="prices.html">Цены</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
