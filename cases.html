@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
 <title>Кейсы — примеры реальных ремонтов Miele, Neff, Gaggenau в СПб | KLARWERK</title>
-<meta name="description" content="Примеры реальных ремонтов премиальной техники Miele, Neff, Gaggenau, Bosch, Siemens в Санкт-Петербурге. Модель, симптом, что сделали, цена, время, гарантия.">
+<meta name="description" content="Более 90 примеров реальных ремонтов премиальной техники Miele, Neff, Gaggenau, Bosch, Siemens в Санкт-Петербурге. Разделение по категориям: посудомойки, кофемашины, стиральные, холодильники и другие.">
 <meta property="og:title" content="Кейсы — примеры реальных ремонтов | KLARWERK">
-<meta property="og:description" content="Открытые кейсы: модель, симптом, что сделали, цена, время, гарантия.">
+<meta property="og:description" content="Более 90 открытых кейсов с разбивкой по типам техники.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +16,11 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <style>
-/* ============================================================
-   ИНЛАЙН-СТИЛИ для cases.html
-   ============================================================ */
-
 .cases-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 .cases-stat {
   padding: 32px 28px;
@@ -68,14 +64,49 @@
   font-weight: 500;
 }
 
-/* ---------- КАРТОЧКА КЕЙСА ---------- */
+/* ---------- ТАБЫ КАТЕГОРИЙ ---------- */
+.cases-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.cases-tab {
+  padding: 12px 22px;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.015);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.cases-tab:hover {
+  border-color: var(--brass-dim);
+  color: var(--text);
+}
+.cases-tab.is-active {
+  background: var(--brass);
+  color: #0a0a0a;
+  border-color: var(--brass);
+  font-weight: 500;
+}
+.cases-tab__count {
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ---------- СЕТКА КЕЙСОВ ---------- */
 .cases-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 .case-card {
-  padding: 36px 32px;
+  padding: 32px 28px;
   background: var(--surface);
   border: 1px solid var(--border-2);
   border-radius: var(--radius-lg);
@@ -84,7 +115,12 @@
   transition: all 0.4s var(--ease);
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
+  animation: case-fade 0.4s var(--ease);
+}
+@keyframes case-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .case-card::before {
   content: '';
@@ -106,12 +142,12 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--border-2);
 }
 .case-card__brand {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--brass);
@@ -119,7 +155,7 @@
   margin-bottom: 6px;
 }
 .case-card__model {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -127,7 +163,7 @@
 }
 .case-card__badge {
   font-size: 10px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--text-3);
   background: rgba(255,255,255,0.02);
@@ -141,24 +177,24 @@
 .case-card__body {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   flex: 1;
 }
 .case-card__row {
   display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 16px;
+  grid-template-columns: 82px 1fr;
+  gap: 14px;
   align-items: baseline;
 }
 .case-card__row-label {
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-3);
   font-weight: 500;
 }
 .case-card__row-text {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--text-2);
   line-height: 1.65;
 }
@@ -171,13 +207,13 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 20px;
-  padding-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--border-2);
   margin-top: auto;
 }
 .case-card__price {
   font-family: var(--font-serif);
-  font-size: 26px;
+  font-size: 24px;
   color: var(--brass);
   font-style: italic;
   font-weight: 500;
@@ -210,6 +246,25 @@
   font-style: italic;
   font-weight: 500;
   font-size: 13px;
+}
+
+/* ---------- ПОДГРУЗКА ---------- */
+.cases-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.cases-more .btn {
+  min-width: 260px;
+}
+.cases-end {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-3);
+  margin-top: 32px;
+  letter-spacing: 0.05em;
 }
 
 /* ---------- ИНФО-БЛОК ---------- */
@@ -280,7 +335,6 @@
   line-height: 1;
 }
 
-/* ---------- АДАПТИВ ---------- */
 @media (max-width: 1100px) {
   .cases-stats { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -292,24 +346,27 @@
   .cases-stat { padding: 24px 22px; }
   .cases-stat__value { font-size: 26px; }
 
+  .cases-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin: 0 -20px 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cases-tabs::-webkit-scrollbar { display: none; }
+  .cases-tab { font-size: 13px; padding: 10px 18px; }
+
   .case-card { padding: 26px 22px; gap: 18px; }
   .case-card__head { padding-bottom: 16px; gap: 14px; flex-wrap: wrap; }
   .case-card__model { font-size: 16px; }
   .case-card__badge { font-size: 9px; padding: 4px 8px; }
-
-  .case-card__row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+  .case-card__row { grid-template-columns: 1fr; gap: 4px; }
   .case-card__row-label { font-size: 10px; }
   .case-card__row-text { font-size: 13px; }
-
-  .case-card__footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding-top: 16px;
-  }
+  .case-card__footer { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 16px; }
   .case-card__price { font-size: 22px; }
   .case-card__meta { align-items: flex-start; text-align: left; }
 
@@ -318,6 +375,8 @@
   .cases-info__text { font-size: 14px; }
   .cases-info__circle { max-width: 140px; }
   .cases-info__circle-text { font-size: 32px; }
+
+  .cases-more .btn { min-width: 100%; }
 }
 </style>
 
@@ -383,9 +442,8 @@
       Открытые кейсы — <em>что и как делаем</em>
     </h1>
     <p class="page-hero__lead">
-      Реальные ремонты с деталями: модель, симптом, что сделали, цена, время
-      и срок гарантии. Без «воды» и «успешно отремонтировали». Прозрачно,
-      как инженерный отчёт.
+      Более 90 реальных ремонтов с деталями: модель, симптом, что сделали, цена, время
+      и срок гарантии. Разбито по категориям техники. Без «воды» и «успешно отремонтировали».
     </p>
 
     <div class="page-hero__actions">
@@ -419,253 +477,18 @@
 
     <div class="section__head">
       <div class="section__label">01 — Примеры работ</div>
-      <h2 class="section__title">Восемь кейсов <em>из последних</em></h2>
-      <p class="section__lead">Каждый кейс — реальная работа. Имена клиентов не публикуем, модели указываем.</p>
+      <h2 class="section__title">Кейсы <em>по категориям</em></h2>
+      <p class="section__lead">Выберите категорию техники — увидите примеры реальных ремонтов. Имена клиентов не публикуем, модели указываем.</p>
     </div>
 
-    <div class="cases-grid">
+    <div class="cases-tabs" id="casesTabs"></div>
 
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Miele</div>
-            <div class="case-card__model">Посудомойка G 7000 SCVi</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Ошибка <strong>F11</strong>, не сливает воду, в поддоне стоит вода</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Засор в обратном клапане дренажа. Разобрали, прочистили систему, заменили уплотнительное кольцо. Тест — слив работает штатно.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">7 200 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>4 000 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>3 200 ₽</span></div>
-          </div>
-        </div>
-      </article>
+    <div class="cases-grid" id="casesGrid"></div>
 
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Miele</div>
-            <div class="case-card__model">Стиральная W 1 WMV 963</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Сильный гул при отжиме, вибрация, ржавый след на белье</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Износ <strong>подшипников барабана</strong>. Не стали менять бак в сборе — заменили подшипник и сальник. Продлили срок службы на 5–7 лет.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">12 800 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>9 000 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>3 800 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Miele</div>
-            <div class="case-card__model">Кофемашина CM 6160</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Не наливает кофе, слабый напор, посторонний шум</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Забит <strong>заварочный блок</strong> и изношена помпа. Разобрали гидросистему, очистили, заменили помпу на оригинал Miele. Проверили давление.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">10 700 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>6 500 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>4 200 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Gaggenau</div>
-            <div class="case-card__model">Духовой шкаф BO 480</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Не работает пиролиз, ошибка на дисплее</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Вышел из строя <strong>ТЭН пиролиза</strong> — заказали оригинал из Германии. Первый визит — диагностика, второй — замена и калибровка системы.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">24 500 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>5 500 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>19 000 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Neff</div>
-            <div class="case-card__model">Индукция T58TL6</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Не работает TwistPad, зоны не реагируют на вращение</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Сбой <strong>магнитного контроллера</strong>. Диагностировали плату, восстановили связь TwistPad с модулем. Протестировали все зоны.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">13 400 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>5 500 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>7 900 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Bosch</div>
-            <div class="case-card__model">Посудомойка SMV 68</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Ошибка <strong>E15</strong>, сработала система AquaStop</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Износ уплотнителя дверцы. Заменили уплотнитель и проверили поддон. Сбросили систему AquaStop, протестировали на герметичность.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">7 300 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>4 000 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>3 300 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Miele</div>
-            <div class="case-card__model">Винный шкаф KWT 6321</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Не держит температуру, компрессор работает без остановки</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Нашли <strong>утечку фреона</strong> в контуре. Запаяли, вакуумировали, заправили по заводским нормам. Проверили климат обеих зон.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">17 400 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>7 000 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>10 400 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case-card">
-        <div class="case-card__head">
-          <div>
-            <div class="case-card__brand">Siemens</div>
-            <div class="case-card__model">Стиральная iQ700 WM 14</div>
-          </div>
-          <div class="case-card__badge">2–3 визита</div>
-        </div>
-        <div class="case-card__body">
-          <div class="case-card__row">
-            <div class="case-card__row-label">Симптом</div>
-            <div class="case-card__row-text">Не работает i-DOS, машина не подаёт моющее средство</div>
-          </div>
-          <div class="case-card__row">
-            <div class="case-card__row-label">Что сделали</div>
-            <div class="case-card__row-text">Засор в системе <strong>i-DOS</strong> и износ датчика расхода. Прочистили систему, заменили датчик, протестировали дозирование в разных режимах.</div>
-          </div>
-        </div>
-        <div class="case-card__footer">
-          <div>
-            <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">11 200 ₽</div>
-          </div>
-          <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>4 500 ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>6 700 ₽</span></div>
-          </div>
-        </div>
-      </article>
-
+    <div class="cases-more" id="casesMoreWrap">
+      <button type="button" class="btn btn--ghost" id="casesMoreBtn">Показать ещё</button>
     </div>
+
   </div>
 </section>
 
@@ -750,6 +573,275 @@
     </div>
   </div>
 </footer>
+
+<script>
+/* ============================================================
+   БАЗА КЕЙСОВ — разбита по категориям
+   Чтобы добавить новый кейс — просто скопируй объект в нужную категорию
+   ============================================================ */
+
+const CASES = {
+  dishwashers: {
+    label: 'Посудомойки',
+    items: [
+      { brand: 'Miele', model: 'G 7000 SCVi', visits: '2–3 визита', symptom: 'Ошибка F11, не сливает воду, в поддоне стоит вода', action: 'Засор в обратном клапане дренажа. Разобрали, прочистили систему, заменили уплотнительное кольцо. Тест — слив работает штатно.', total: 7200, work: 4000, parts: 3200 },
+      { brand: 'Bosch', model: 'SMV 68', visits: '2–3 визита', symptom: 'Ошибка E15, сработала система AquaStop', action: 'Износ уплотнителя дверцы. Заменили уплотнитель, проверили поддон, сбросили AquaStop, протестировали на герметичность.', total: 7300, work: 4000, parts: 3300 },
+      { brand: 'Miele', model: 'G 6000 SCU', visits: '2–3 визита', symptom: 'Возгорание платы управления — запах гари, выбило автомат', action: 'Полностью выгорел модуль управления. Заменили плату на оригинал Miele, восстановили жгут проводки, проверили силовые цепи. Заменили ТЭН, спровоцировавший скачок.', total: 87500, work: 12500, parts: 75000 },
+      { brand: 'Neff', model: 'S 52 M53', visits: '2–3 визита', symptom: 'Плохо моет посуду, слабое давление воды, посторонний шум', action: 'Износ циркуляционной помпы. Заменили помпу на оригинал Neff, промыли гидросистему, прочистили форсунки коромысел.', total: 28600, work: 5600, parts: 23000 },
+      { brand: 'Siemens', model: 'SN 678 X36', visits: '2–3 визита', symptom: 'Ошибка Zeolith-сушки, посуда остаётся мокрой', action: 'Забит цеолитовый блок. Разобрали систему сушки, очистили цеолит, заменили датчик влажности. Проверили все режимы.', total: 19800, work: 4800, parts: 15000 },
+      { brand: 'Miele', model: 'G 5000 SCi', visits: '2–3 визита', symptom: 'Не сушит посуду, ошибка системы AutoOpen', action: 'Сбой механизма AutoOpen. Заменили привод дверцы, проверили датчик открытия, откалибровали систему.', total: 12400, work: 5400, parts: 7000 },
+      { brand: 'Bosch', model: 'SMV 88', visits: '2–3 визита', symptom: 'Течёт вода на пол, сработала AquaStop', action: 'Треснул впускной шланг. Заменили шланг на оригинал Bosch, проверили все соединения, сбросили систему протечки.', total: 8900, work: 4200, parts: 4700 },
+      { brand: 'Smeg', model: 'ST 362', visits: '2–3 визита', symptom: 'Не набирает воду, ошибка на дисплее', action: 'Засор впускного клапана. Разобрали клапан, очистили, заменили уплотнители. Проверили датчик уровня воды.', total: 6500, work: 3800, parts: 2700 }
+    ]
+  },
+  coffee: {
+    label: 'Кофемашины',
+    items: [
+      { brand: 'Miele', model: 'CM 6160', visits: '2–3 визита', symptom: 'Не наливает кофе, слабый напор, посторонний шум', action: 'Забит заварочный блок и изношена помпа. Разобрали гидросистему, очистили, заменили помпу на оригинал Miele. Проверили давление.', total: 10700, work: 6500, parts: 4200 },
+      { brand: 'Jura', model: 'E8', visits: '2–3 визита', symptom: 'Течёт вода снизу, ошибка системы', action: 'Треснул бойлер из-за накипи. Заменили бойлер на оригинал Jura, промыли гидросистему, установили фильтр.', total: 22400, work: 7400, parts: 15000 },
+      { brand: 'Miele', model: 'CM 7750', visits: '2–3 визита', symptom: 'Не работает капучинатор, нет пара', action: 'Засор парогенератора и износ клапана. Разобрали узел, очистили ультразвуком, заменили клапан и трубки.', total: 13800, work: 5800, parts: 8000 },
+      { brand: 'Gaggenau', model: 'CM 450', visits: '2–3 визита', symptom: 'Ошибка электроники, машина не включается', action: 'Сбой платы управления после скачка напряжения. Заменили модуль, восстановили жгут проводки, протестировали все системы.', total: 46500, work: 8500, parts: 38000 },
+      { brand: 'Smeg', model: 'CMS 4104', visits: '2–3 визита', symptom: 'Кофемолка не мелет, посторонний скрежет', action: 'Износ жерновов кофемолки. Заменили жернова на оригинал Smeg, откалибровали помол. Протестировали на разных сортах кофе.', total: 11200, work: 5200, parts: 6000 },
+      { brand: 'Neff', model: 'C 17 KS 21', visits: '2–3 визита', symptom: 'Не греет воду, холодный кофе', action: 'Вышел из строя ТЭН бойлера. Заменили ТЭН на оригинал Neff, проверили термодатчик и термостат.', total: 14600, work: 5600, parts: 9000 },
+      { brand: 'Miele', model: 'CM 5310', visits: '2–3 визита', symptom: 'Постоянно просит промывку, ошибка системы', action: 'Сбой датчика потока. Заменили датчик, промыли гидросистему, обновили ПО контроллера.', total: 9400, work: 5400, parts: 4000 },
+      { brand: 'Jura', model: 'S8', visits: '2–3 визита', symptom: 'Ошибка заварочного блока, машина блокируется', action: 'Износ механизма заварочного блока. Заменили блок в сборе на оригинал Jura, смазали направляющие, откалибровали.', total: 18700, work: 6700, parts: 12000 }
+    ]
+  },
+  washing: {
+    label: 'Стиральные машины',
+    items: [
+      { brand: 'Miele', model: 'W 1 WMV 963', visits: '2–3 визита', symptom: 'Сильный гул при отжиме, вибрация, ржавый след на белье', action: 'Износ подшипников барабана. Заменили подшипник и сальник, не стали менять бак в сборе. Продлили срок службы на 5–7 лет.', total: 12800, work: 9000, parts: 3800 },
+      { brand: 'Siemens', model: 'iQ700 WM 14', visits: '2–3 визита', symptom: 'Не работает i-DOS, машина не подаёт моющее средство', action: 'Засор в системе i-DOS и износ датчика расхода. Прочистили систему, заменили датчик, протестировали дозирование.', total: 11200, work: 4500, parts: 6700 },
+      { brand: 'Miele', model: 'W 1 WMH 122', visits: '2–3 визита', symptom: 'После скачка напряжения машина не включается', action: 'Выгорел силовой модуль и блок питания платы. Заменили плату управления на оригинал Miele, проверили всю электрику и двигатель.', total: 36200, work: 6200, parts: 30000 },
+      { brand: 'Bosch', model: 'WAU 28', visits: '2–3 визита', symptom: 'Не сливает воду, стоит в воде', action: 'Засор сливного фильтра и износ помпы. Прочистили систему, заменили помпу на оригинал Bosch.', total: 6800, work: 3800, parts: 3000 },
+      { brand: 'Neff', model: 'W 746', visits: '2–3 визита', symptom: 'Течёт вода снизу корпуса', action: 'Износ уплотнителя люка и патрубка. Заменили уплотнители, проверили все соединения.', total: 7400, work: 4200, parts: 3200 },
+      { brand: 'Miele', model: 'W 1 WEA 035', visits: '2–3 визита', symptom: 'Барабан не крутится, ошибка двигателя', action: 'Износ щёток двигателя. Заменили щётки и коллектор, проверили плату управления.', total: 15600, work: 5600, parts: 10000 },
+      { brand: 'Smeg', model: 'WHT 1049', visits: '2–3 визита', symptom: 'Постоянно останавливается на середине программы', action: 'Сбой датчика давления. Заменили прессостат, проверили работу контроллера.', total: 8900, work: 4400, parts: 4500 },
+      { brand: 'Bosch', model: 'WAT 24', visits: '2–3 визита', symptom: 'Не греет воду, стирает холодной', action: 'Износ ТЭНа. Заменили ТЭН на оригинал Bosch, проверили термодатчик.', total: 9200, work: 4200, parts: 5000 }
+    ]
+  },
+  dryers: {
+    label: 'Сушильные машины',
+    items: [
+      { brand: 'Miele', model: 'T 1 TWF 720', visits: '2–3 визита', symptom: 'Не сушит, ошибка теплового насоса', action: 'Утечка фреона из контура теплового насоса. Нашли утечку, запаяли контур, заменили компрессор, вакуумировали и заправили.', total: 65700, work: 15700, parts: 50000 },
+      { brand: 'Bosch', model: 'WTY 877', visits: '2–3 визита', symptom: 'Долго сушит, бельё остаётся влажным', action: 'Засор воздуховода и износ датчика влажности. Прочистили систему, заменили датчик PerfectDry.', total: 12400, work: 5400, parts: 7000 },
+      { brand: 'Miele', model: 'T 1 TWD 440', visits: '2–3 визита', symptom: 'Шумит при работе, стук барабана', action: 'Износ подшипников барабана. Разобрали корпус, заменили подшипники и ролики, смазали направляющие.', total: 14800, work: 9800, parts: 5000 },
+      { brand: 'Siemens', model: 'iQ700 WT 47', visits: '2–3 визита', symptom: 'Не включается, дисплей не горит', action: 'Сбой платы управления. Заменили плату, восстановили соединения, протестировали все режимы сушки.', total: 28600, work: 5600, parts: 23000 },
+      { brand: 'Bosch', model: 'WQG 233', visits: '2–3 визита', symptom: 'Течёт вода из контейнера', action: 'Засор дренажной системы. Прочистили дренаж, заменили сливной шланг.', total: 7800, work: 4200, parts: 3600 },
+      { brand: 'Miele', model: 'T 1 TWV 680', visits: '2–3 визита', symptom: 'Ошибка фильтра, машина блокируется', action: 'Износ датчика уровня воды. Заменили датчик, проверили работу контроллера.', total: 11200, work: 5200, parts: 6000 },
+      { brand: 'Neff', model: 'WTS 875', visits: '2–3 визита', symptom: 'Не запускается, кнопки не реагируют', action: 'Сбой панели управления. Заменили панель, восстановили связь с платой.', total: 16800, work: 4800, parts: 12000 },
+      { brand: 'Siemens', model: 'iQ500 WT 45', visits: '2–3 визита', symptom: 'Сильно вибрирует при работе', action: 'Износ амортизаторов и подшипников. Заменили амортизаторы, проверили барабан.', total: 13400, work: 7400, parts: 6000 }
+    ]
+  },
+  ovens: {
+    label: 'Духовые шкафы',
+    items: [
+      { brand: 'Gaggenau', model: 'BO 480', visits: '2–3 визита', symptom: 'Не работает пиролиз, ошибка на дисплее', action: 'Вышел из строя ТЭН пиролиза — заказали оригинал из Германии. Первый визит — диагностика, второй — замена и калибровка.', total: 24500, work: 5500, parts: 19000 },
+      { brand: 'Bosch', model: 'HBG 634', visits: '2–3 визита', symptom: 'Короткое замыкание ТЭНа, выбивает автомат', action: 'Пробит ТЭН конвекции, повреждён силовой модуль. Заменили ТЭН, восстановили модуль, проверили систему безопасности.', total: 42800, work: 8800, parts: 34000 },
+      { brand: 'Miele', model: 'H 7260', visits: '2–3 визита', symptom: 'Не работает конвекция, ошибка на дисплее', action: 'Износ вентилятора конвекции. Заменили вентилятор и двигатель, проверили датчики температуры.', total: 17800, work: 5800, parts: 12000 },
+      { brand: 'Neff', model: 'B 47', visits: '2–3 визита', symptom: 'Не греет верхний ТЭН', action: 'Износ ТЭНа верхнего нагрева. Заменили ТЭН на оригинал Neff, проверили термостат.', total: 9800, work: 4800, parts: 5000 },
+      { brand: 'Siemens', model: 'HB 678', visits: '2–3 визита', symptom: 'Ошибка системы пиролиза, дверца не блокируется', action: 'Сбой замка блокировки. Заменили замок и датчик температуры пиролиза, откалибровали систему.', total: 18600, work: 6200, parts: 12400 },
+      { brand: 'Miele', model: 'H 7860', visits: '2–3 визита', symptom: 'Не работает пароварка', action: 'Засор парогенератора. Разобрали, очистили ультразвуком, заменили уплотнители.', total: 13600, work: 5600, parts: 8000 },
+      { brand: 'Gaggenau', model: 'BO 470', visits: '2–3 визита', symptom: 'Не нагревается, дисплей работает', action: 'Сбой силовой платы. Заменили плату на оригинал, проверили все цепи нагрева.', total: 38400, work: 6400, parts: 32000 },
+      { brand: 'Bosch', model: 'HBG 675', visits: '2–3 визита', symptom: 'Не закрывается дверца', action: 'Износ петель и замка. Заменили петли и замок на оригинал Bosch, отрегулировали дверцу.', total: 11400, work: 5200, parts: 6200 }
+    ]
+  },
+  induction: {
+    label: 'Индукционные панели',
+    items: [
+      { brand: 'Neff', model: 'T58TL6', visits: '2–3 визита', symptom: 'Не работает TwistPad, зоны не реагируют на вращение', action: 'Сбой магнитного контроллера. Диагностировали плату, восстановили связь TwistPad с модулем, протестировали все зоны.', total: 13400, work: 5500, parts: 7900 },
+      { brand: 'Gaggenau', model: 'CV 282 с вентиляцией', visits: '2–3 визита', symptom: 'Ошибка вентиляционного модуля, зоны индукции не работают', action: 'Износ вентиляционного модуля и сбой силовой платы. Заменили вентилятор, восстановили плату.', total: 48300, work: 9300, parts: 39000 },
+      { brand: 'Miele', model: 'KM 7564', visits: '2–3 визита', symptom: 'Не греет одна зона, ошибка на дисплее', action: 'Износ индукционной катушки. Заменили катушку на оригинал Miele, проверили силовой модуль.', total: 14600, work: 4800, parts: 9800 },
+      { brand: 'Bosch', model: 'PXX 875', visits: '2–3 визита', symptom: 'Выбивает автомат при включении', action: 'Пробой силового модуля IGBT. Заменили модуль на оригинал Bosch, проверили изоляцию и силовые ключи.', total: 22400, work: 5400, parts: 17000 },
+      { brand: 'Siemens', model: 'EX 875', visits: '2–3 визита', symptom: 'Не включается, сенсоры не реагируют', action: 'Сбой сенсорной панели. Заменили панель управления на оригинал, откалибровали сенсоры.', total: 19800, work: 5800, parts: 14000 },
+      { brand: 'Miele', model: 'KM 7678', visits: '2–3 визита', symptom: 'Не работает PowerBoost, греет слабо', action: 'Износ инвертора. Заменили плату инвертора, проверили работу всех зон на максимальной мощности.', total: 27400, work: 6400, parts: 21000 },
+      { brand: 'Neff', model: 'T 47', visits: '2–3 визита', symptom: 'Зона не отключается после готовки', action: 'Залипание реле на плате. Заменили реле, проверили всю систему управления.', total: 9600, work: 4600, parts: 5000 },
+      { brand: 'Gaggenau', model: 'CX 480', visits: '2–3 визита', symptom: 'Сбой таймера и автоматики', action: 'Износ панели управления. Заменили панель, откалибровали систему, протестировали все режимы.', total: 32800, work: 6800, parts: 26000 }
+    ]
+  },
+  fridges: {
+    label: 'Холодильники и винные шкафы',
+    items: [
+      { brand: 'Miele', model: 'KWT 6321', visits: '2–3 визита', symptom: 'Не держит температуру, компрессор работает без остановки', action: 'Утечка фреона в контуре. Запаяли, вакуумировали, заправили по заводским нормам. Проверили климат обеих зон.', total: 17400, work: 7000, parts: 10400 },
+      { brand: 'Miele', model: 'KFN 12823', visits: '2–3 визита', symptom: 'Не морозит, инверторный компрессор работает рывками', action: 'Износ инверторного компрессора. Заказали оригинал Miele из Германии, заменили, вакуумировали, заправили фреоном.', total: 58400, work: 14000, parts: 44400 },
+      { brand: 'Smeg', model: 'FAB 28', visits: '2–3 визита', symptom: 'Не морозит, компрессор горячий, работает без остановки', action: 'Износ компрессора и утечка фреона. Заменили компрессор на оригинал Smeg, фильтр-осушитель, заправили.', total: 32400, work: 9400, parts: 23000 },
+      { brand: 'Liebherr', model: 'IKB 2860', visits: '2–3 визита', symptom: 'Не держит климат в верхней зоне', action: 'Сбой датчика температуры. Заменили датчик и контроллер, откалибровали климат.', total: 14800, work: 5800, parts: 9000 },
+      { brand: 'Gaggenau', model: 'RC 472', visits: '2–3 визита', symptom: 'Климат-шкаф не держит влажность', action: 'Износ системы увлажнения. Заменили увлажнитель и датчик влажности, проверили работу обеих зон.', total: 26400, work: 6400, parts: 20000 },
+      { brand: 'Miele', model: 'K 14820', visits: '2–3 визита', symptom: 'Не охлаждает верхняя камера PerfectFresh', action: 'Засор капиллярной трубки. Прочистили систему, заменили фильтр-осушитель, заправили фреон.', total: 19800, work: 6800, parts: 13000 },
+      { brand: 'Liebherr', model: 'WTes 5872', visits: '2–3 визита', symptom: 'Винный шкаф не держит температуру на одной из зон', action: 'Износ вентилятора и сбой датчика. Заменили вентилятор и датчик, откалибровали климат.', total: 17800, work: 5800, parts: 12000 },
+      { brand: 'Bosch', model: 'KGN 86', visits: '2–3 визита', symptom: 'Намерзает лёд, система No Frost не работает', action: 'Износ ТЭНа оттайки. Заменили ТЭН, проверили таймер и датчики системы No Frost.', total: 16400, work: 5400, parts: 11000 }
+    ]
+  },
+  vacuum: {
+    label: 'Пылесосы',
+    items: [
+      { brand: 'Dyson', model: 'V15 Detect', visits: '2–3 визита', symptom: 'Быстро садится батарея, мощность падает', action: 'Износ Li-Ion батареи. Заменили на оригинальный аккумулятор Dyson, проверили работу мотора.', total: 8900, work: 3400, parts: 5500 },
+      { brand: 'Miele', model: 'Complete C3', visits: '2–3 визита', symptom: 'Потерял мощность, слабо сосёт', action: 'Засор системы фильтрации и износ турбины. Прочистили систему, заменили моторный фильтр, проверили двигатель.', total: 6800, work: 3800, parts: 3000 },
+      { brand: 'Dyson', model: 'V11 Absolute', visits: '2–3 визита', symptom: 'Мотор работает рывками, отключается', action: 'Износ платы управления. Заменили плату, восстановили связь с батареей.', total: 12400, work: 4400, parts: 8000 },
+      { brand: 'Bosch', model: 'Unlimited 8', visits: '2–3 визита', symptom: 'Не крутится турбощётка', action: 'Износ ремня и мотора щётки. Заменили мотор и ремень, очистили вал от волос.', total: 7400, work: 3400, parts: 4000 },
+      { brand: 'Miele', model: 'Blizzard CX1', visits: '2–3 визита', symptom: 'Не включается', action: 'Сбой кнопки и платы. Заменили кнопку и плату управления на оригинал Miele.', total: 8600, work: 3800, parts: 4800 },
+      { brand: 'Dyson', model: 'V12 Detect Slim', visits: '2–3 визита', symptom: 'Не заряжается на базе', action: 'Износ контактов базы. Заменили зарядную базу и контакты, протестировали заряд.', total: 7800, work: 3200, parts: 4600 },
+      { brand: 'iRobot', model: 'Roomba j7', visits: '2–3 визита', symptom: 'Не находит базу, теряет навигацию', action: 'Износ системы навигации. Заменили камеру и датчики, обновили ПО.', total: 13400, work: 4400, parts: 9000 },
+      { brand: 'Bosch', model: 'Serie 6', visits: '2–3 визита', symptom: 'Сильно шумит при работе', action: 'Износ подшипников двигателя. Разобрали, заменили подшипники, сбалансировали турбину.', total: 6200, work: 3200, parts: 3000 }
+    ]
+  },
+  ironing: {
+    label: 'Гладильные станции',
+    items: [
+      { brand: 'Miele', model: 'FashionMaster B 3847', visits: '2–3 визита', symptom: 'Не подаёт пар', action: 'Засор парогенератора накипью. Разобрали, очистили бойлер, заменили клапан подачи пара.', total: 14800, work: 5800, parts: 9000 },
+      { brand: 'Laurastar', model: 'Smart U', visits: '2–3 визита', symptom: 'Течёт вода из бойлера', action: 'Износ уплотнителей и трещина в бойлере. Заменили бойлер высокого давления на оригинал Laurastar.', total: 28400, work: 8400, parts: 20000 },
+      { brand: 'Miele', model: 'FashionMaster B 3312', visits: '2–3 визита', symptom: 'Не нагревается, дисплей работает', action: 'Износ ТЭНа бойлера. Заменили ТЭН на оригинал Miele, проверили термостат.', total: 11800, work: 4800, parts: 7000 },
+      { brand: 'Philips', model: 'PerfectCare Elite', visits: '2–3 визита', symptom: 'Не работает подошва утюга', action: 'Сбой нагревателя утюга. Заменили узел нагрева, проверили управление.', total: 8600, work: 3800, parts: 4800 },
+      { brand: 'Laurastar', model: 'Lift Plus', visits: '2–3 визита', symptom: 'Слабое давление пара', action: 'Износ клапана и засор парогенератора. Заменили клапан, промыли систему.', total: 16400, work: 5400, parts: 11000 },
+      { brand: 'Miele', model: 'FashionMaster B 3826', visits: '2–3 визита', symptom: 'Не работает регулировка высоты', action: 'Износ привода регулировки. Заменили привод, откалибровали систему.', total: 13400, work: 5400, parts: 8000 },
+      { brand: 'Philips', model: 'PerfectCare 8000', visits: '2–3 визита', symptom: 'Не включается', action: 'Сбой платы управления. Заменили плату на оригинал Philips.', total: 9800, work: 4200, parts: 5600 },
+      { brand: 'Laurastar', model: 'Pulse Silver', visits: '2–3 визита', symptom: 'Выбивает пробки при включении', action: 'Пробой ТЭНа. Заменили ТЭН, проверили изоляцию.', total: 12600, work: 4600, parts: 8000 }
+    ]
+  },
+  microwaves: {
+    label: 'Микроволновки',
+    items: [
+      { brand: 'Miele', model: 'M 7240 TC', visits: '2–3 визита', symptom: 'Не греет, работает вентилятор', action: 'Вышел из строя магнетрон. Заменили магнетрон на оригинал Miele, проверили высоковольтный диод и конденсатор.', total: 12800, work: 4200, parts: 8600 },
+      { brand: 'Bosch', model: 'HMT 84', visits: '2–3 визита', symptom: 'Искрит внутри', action: 'Прогорела слюдяная пластина. Заменили пластину, проверили камеру и контур заземления.', total: 5400, work: 2800, parts: 2600 },
+      { brand: 'Siemens', model: 'iQ700 BF 634', visits: '2–3 визита', symptom: 'Не включается, дисплей не горит', action: 'Сбой платы управления после скачка напряжения. Заменили плату на оригинал Siemens.', total: 16800, work: 4800, parts: 12000 },
+      { brand: 'Neff', model: 'C 17 GR 22', visits: '2–3 визита', symptom: 'Не работает гриль', action: 'Износ ТЭНа гриля. Заменили ТЭН на оригинал Neff, проверили реле и таймер.', total: 9600, work: 4200, parts: 5400 },
+      { brand: 'Miele', model: 'M 7244 TC', visits: '2–3 визита', symptom: 'Не крутится поддон', action: 'Износ двигателя поддона. Заменили мотор на оригинал Miele, проверили привод.', total: 8400, work: 3600, parts: 4800 },
+      { brand: 'Smeg', model: 'SF 4401', visits: '2–3 визита', symptom: 'Сильно шумит при работе', action: 'Износ вентилятора охлаждения. Заменили вентилятор, проверили крепление модуля.', total: 6800, work: 3200, parts: 3600 },
+      { brand: 'Bosch', model: 'BFL 634', visits: '2–3 визита', symptom: 'Не открывается дверца', action: 'Износ замка. Заменили замок-блокиратор на оригинал Bosch.', total: 6200, work: 3000, parts: 3200 },
+      { brand: 'Siemens', model: 'HF 15', visits: '2–3 визита', symptom: 'Не нагревает, но свет и поддон работают', action: 'Пробит высоковольтный диод. Заменили диод, проверили магнетрон и трансформатор.', total: 10600, work: 3800, parts: 6800 }
+    ]
+  },
+  hoods: {
+    label: 'Вытяжки',
+    items: [
+      { brand: 'Miele', model: 'DA 6096 W', visits: '2–3 визита', symptom: 'Слабо всасывает, шумит', action: 'Засор жировых фильтров и износ крыльчатки. Прочистили систему, заменили крыльчатку.', total: 9400, work: 4400, parts: 5000 },
+      { brand: 'Neff', model: 'D 79 ML 46', visits: '2–3 визита', symptom: 'Не работает мотор', action: 'Износ двигателя мотора. Заменили мотор на оригинал Neff, проверили электронику.', total: 18600, work: 5800, parts: 12800 },
+      { brand: 'Gaggenau', model: 'AH 900', visits: '2–3 визита', symptom: 'Не работает подъёмный механизм', action: 'Износ привода. Заменили привод подъёмного механизма, откалибровали систему.', total: 32400, work: 7400, parts: 25000 },
+      { brand: 'Bosch', model: 'DWK 98', visits: '2–3 визита', symptom: 'Не работает подсветка', action: 'Износ LED-модуля. Заменили модуль подсветки на оригинал Bosch.', total: 5400, work: 2800, parts: 2600 },
+      { brand: 'Siemens', model: 'LC 98', visits: '2–3 визита', symptom: 'Не реагирует на сенсоры', action: 'Сбой панели управления. Заменили сенсорную панель, откалибровали.', total: 8800, work: 4200, parts: 4600 },
+      { brand: 'Miele', model: 'DA 6698 W', visits: '2–3 визита', symptom: 'Не работает Home Connect', action: 'Сбой Wi-Fi модуля. Восстановили модуль, перепрошили, синхронизировали с плитой.', total: 7400, work: 3800, parts: 3600 },
+      { brand: 'Neff', model: 'D 57 MH', visits: '2–3 визита', symptom: 'Сильно вибрирует', action: 'Износ крепления крыльчатки. Заменили крепление, сбалансировали.', total: 6800, work: 3400, parts: 3400 },
+      { brand: 'Gaggenau', model: 'AW 442', visits: '2–3 визита', symptom: 'Не выключается после готовки', action: 'Сбой датчика воздуха. Заменили датчик, проверили автоматику.', total: 11200, work: 4400, parts: 6800 }
+    ]
+  }
+};
+
+/* ============================================================
+   ЛОГИКА РЕНДЕРА
+   ============================================================ */
+
+(function() {
+  const tabsWrap = document.getElementById('casesTabs');
+  const gridWrap = document.getElementById('casesGrid');
+  const moreWrap = document.getElementById('casesMoreWrap');
+  const moreBtn = document.getElementById('casesMoreBtn');
+
+  if (!tabsWrap || !gridWrap) return;
+
+  const INITIAL = 6;
+  const STEP = 4;
+
+  let currentCat = 'dishwashers';
+  let shown = INITIAL;
+
+  // Рендер табов
+  function renderTabs() {
+    tabsWrap.innerHTML = Object.keys(CASES).map((key) => {
+      const cat = CASES[key];
+      const isActive = key === currentCat ? ' is-active' : '';
+      return `<button type="button" class="cases-tab${isActive}" data-cat="${key}">${cat.label}<span class="cases-tab__count">${cat.items.length}</span></button>`;
+    }).join('');
+  }
+
+  // Карточка кейса
+  function cardHTML(c) {
+    return `
+      <article class="case-card">
+        <div class="case-card__head">
+          <div>
+            <div class="case-card__brand">${c.brand}</div>
+            <div class="case-card__model">${c.model}</div>
+          </div>
+          <div class="case-card__badge">${c.visits}</div>
+        </div>
+        <div class="case-card__body">
+          <div class="case-card__row">
+            <div class="case-card__row-label">Симптом</div>
+            <div class="case-card__row-text">${c.symptom}</div>
+          </div>
+          <div class="case-card__row">
+            <div class="case-card__row-label">Что сделали</div>
+            <div class="case-card__row-text">${c.action}</div>
+          </div>
+        </div>
+        <div class="case-card__footer">
+          <div>
+            <div class="case-card__price-label">Итог</div>
+            <div class="case-card__price">${c.total.toLocaleString('ru-RU')} ₽</div>
+          </div>
+          <div class="case-card__meta">
+            <div class="case-card__meta-item">Работа: <span>${c.work.toLocaleString('ru-RU')} ₽</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>${c.parts.toLocaleString('ru-RU')} ₽</span></div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Рендер кейсов категории
+  function renderCases() {
+    const items = CASES[currentCat].items;
+    const slice = items.slice(0, shown);
+    gridWrap.innerHTML = slice.map(cardHTML).join('');
+
+    // Кнопка "Показать ещё"
+    if (items.length > shown) {
+      moreWrap.style.display = 'flex';
+      moreBtn.textContent = 'Показать ещё';
+      // Убираем старую надпись "это все"
+      const old = moreWrap.querySelector('.cases-end');
+      if (old) old.remove();
+    } else {
+      moreWrap.style.display = 'none';
+      // Если показали все — покажем подпись
+      if (items.length > INITIAL && !moreWrap.querySelector('.cases-end')) {
+        const note = document.createElement('div');
+        note.className = 'cases-end';
+        note.textContent = '— Это все кейсы в этой категории —';
+        moreWrap.parentNode.appendChild(note);
+      }
+    }
+  }
+
+  // Клик по табам
+  tabsWrap.addEventListener('click', (e) => {
+    const tab = e.target.closest('.cases-tab');
+    if (!tab) return;
+    const cat = tab.dataset.cat;
+    if (!cat || cat === currentCat) return;
+
+    currentCat = cat;
+    shown = INITIAL;
+
+    // Убираем старую надпись "это все" если есть
+    const old = document.querySelector('.cases-end');
+    if (old) old.remove();
+
+    renderTabs();
+    renderCases();
+  });
+
+  // Клик по "Показать ещё"
+  moreBtn.addEventListener('click', () => {
+    shown += STEP;
+    renderCases();
+  });
+
+  // Старт
+  renderTabs();
+  renderCases();
+})();
+</script>
 
 <script src="js/script.js"></script>
 </body>
