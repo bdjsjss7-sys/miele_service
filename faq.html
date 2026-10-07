@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Вопросы и ответы — ремонт премиальной техники в СПб | KLARWERK</title>
+<meta name="description" content="Ответы на частые вопросы о ремонте премиальной техники Miele, Neff, Gaggenau: цены, гарантия, диагностика, запчасти, сроки. Более 60 вопросов.">
+<meta property="og:title" content="Вопросы и ответы о ремонте премиальной техники | KLARWERK">
+<meta property="og:description" content="Более 60 вопросов и ответов: цены, гарантия, запчасти, диагностика.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+.faq-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.faq-tab {
+  padding: 12px 22px;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.015);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.faq-tab:hover {
+  border-color: var(--brass-dim);
+  color: var(--text);
+}
+.faq-tab.is-active {
+  background: var(--brass);
+  color: #0a0a0a;
+  border-color: var(--brass);
+  font-weight: 500;
+}
+.faq-tab__count {
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-2);
+  padding: 24px 0;
+  cursor: pointer;
+  transition: padding 0.3s var(--ease);
+  animation: faq-fade 0.4s var(--ease);
+}
+@keyframes faq-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.faq-item[open] {
+  padding: 24px 0 28px;
+}
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  transition: color 0.3s;
+  line-height: 1.4;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--brass);
+  transition: transform 0.4s var(--ease);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item summary:hover { color: var(--brass); }
+.faq-item p {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 780px;
+}
+
+.faq-cta {
+  margin-top: 48px;
+  padding: 40px 40px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.faq-cta__text {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text-2);
+  max-width: 520px;
+}
+
+@media (max-width: 768px) {
+  .faq-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin: 0 -20px 28px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .faq-tabs::-webkit-scrollbar { display: none; }
+  .faq-tab { font-size: 13px; padding: 10px 18px; }
+
+  .faq-item { padding: 20px 0; }
+  .faq-item[open] { padding: 20px 0 24px; }
+  .faq-item summary { font-size: 15px; gap: 16px; }
+  .faq-item summary::after { font-size: 22px; }
+  .faq-item p { font-size: 14px; line-height: 1.7; }
+
+  .faq-cta { padding: 28px 22px; flex-direction: column; align-items: flex-start; }
+  .faq-cta__text { font-size: 17px; }
+  .faq-cta .btn { width: 100%; justify-content: center; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://klarwerk.ru/" },
+    { "@type": "ListItem", "position": 2, "name": "Вопросы и ответы", "item": "https://klarwerk.ru/faq.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="services.html">Услуги</a>
+      <a href="index.html#breakdowns">Поломки</a>
+      <a href="about.html">О нас</a>
+      <a href="prices.html">Цены</a>
+      <a href="reviews.html">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79196989493" class="header__phone">+7 (919) 698-94-93</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="page-hero__glow"></div>
+    <div class="page-hero__grid"></div>
+  </div>
+  <div class="container page-hero__inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Вопросы и ответы</span>
+    </nav>
+
+    <div class="page-hero__label">Вопросы и ответы</div>
+    <h1 class="page-hero__title">
+      Частые вопросы — <em>коротко и по делу</em>
+    </h1>
+    <p class="page-hero__lead">
+      Более 60 вопросов, которые нам задают чаще всего. Разбито по темам.
+      Если не нашли ответ — позвоните, ответим за 2 минуты.
+    </p>
+
+    <div class="page-hero__actions">
+      <a href="#contacts" class="btn btn--primary">Вызвать инженера</a>
+      <a href="tel:+79196989493" class="btn btn--ghost">+7 (919) 698-94-93</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--no-top">
+  <div class="container">
+
+    <div class="section__head">
+      <div class="section__label">01 — Вопросы по категориям</div>
+      <h2 class="section__title">Ответы <em>по темам</em></h2>
+      <p class="section__lead">Выберите тему — увидите вопросы. Кликните на вопрос — раскроется ответ.</p>
+    </div>
+
+    <div class="faq-tabs" id="faqTabs"></div>
+
+    <div class="faq-list" id="faqList"></div>
+
+    <div class="faq-cta">
+      <div class="faq-cta__text">Не нашли ответ? Позвоните — диспетчер ответит за 2 минуты.</div>
+      <a href="tel:+79196989493" class="btn btn--ghost">+7 (919) 698-94-93</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section contacts" id="contacts">
+  <div class="container">
+    <div class="contacts__inner">
+      <div class="contacts__left">
+        <div class="section__label">02 — Вызвать инженера</div>
+        <h2 class="contacts__title">Обсудим <em>вашу задачу</em></h2>
+        <p class="contacts__lead">Опишите модель и симптом — назовём вилку цены сразу. Или оставьте заявку, диспетчер перезвонит в течение 15 минут.</p>
+
+        <div class="contacts__list">
+          <a href="tel:+79196989493" class="contacts__item">
+            <span class="contacts__item-label">Телефон 1</span>
+            <span class="contacts__item-value">+7 (919) 698-94-93</span>
+          </a>
+          <a href="tel:+79868311588" class="contacts__item">
+            <span class="contacts__item-label">Телефон 2</span>
+            <span class="contacts__item-value">+7 (986) 831-15-88</span>
+          </a>
+          <a href="mailto:miele.zentrum.service@gmail.com" class="contacts__item">
+            <span class="contacts__item-label">Email</span>
+            <span class="contacts__item-value">miele.zentrum.service@gmail.com</span>
+          </a>
+          <div class="contacts__item">
+            <span class="contacts__item-label">Город</span>
+            <span class="contacts__item-value">Санкт-Петербург и пригород</span>
+          </div>
+          <div class="contacts__item">
+            <span class="contacts__item-label">Режим работы</span>
+            <span class="contacts__item-value">Ежедневно, 8:00 — 22:00</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contacts__form" onsubmit="event.preventDefault(); alert('Заявка отправлена. Мы перезвоним в течение 15 минут.'); this.reset();">
+        <div class="contacts__form-title">Обратный звонок</div>
+        <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и назовём вилку стоимости.</p>
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <textarea name="message" rows="3" placeholder="Модель техники и что случилось?"></textarea>
+        <button type="submit" class="btn btn--primary">Жду звонка</button>
+        <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </div>
+    <div class="footer__copy">© 2025 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.</div>
+    <div class="footer__links">
+      <a href="services.html">Услуги</a>
+      <a href="prices.html">Цены</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   БАЗА FAQ — 60+ вопросов, разбито по категориям
+   ============================================================ */
+
+const FAQ = {
+  general: {
+    label: 'Общие',
+    items: [
+      { q: 'Кто вы — сервис или частные мастера?', a: 'Мы — небольшая инженерная мастерская KLARWERK. Работаем командой профильных инженеров, без менеджеров и офиса. Каждый специализируется на своей категории техники: кофемашины, стиральные, холодильники и т.д.' },
+      { q: 'Как давно вы на рынке?', a: 'Первый ремонт сделали в 2013 году. За 12 лет — более 4200 ремонтов премиальной техники Miele, Neff, Gaggenau, Smeg, Bosch, Siemens.' },
+      { q: 'С какими брендами вы работаете?', a: 'Основная специализация — Miele, Neff, Gaggenau, Smeg, Bosch, Siemens, Liebherr. Также работаем с Dyson, Jura, Laurastar, iRobot. С другими брендами — уточняйте по телефону.' },
+      { q: 'С какими типами техники вы работаете?', a: 'Кофемашины, посудомойки, стиральные и сушильные машины, духовые шкафы, индукционные панели, холодильники, винные шкафы, пылесосы, гладильные станции, микроволновки, вытяжки.' },
+      { q: 'Вы работаете только по Санкт-Петербургу?', a: 'Да, выезжаем по всему Санкт-Петербургу и пригороду. За пределы КАД — по километражу, уточняйте по телефону.' },
+      { q: 'Работаете ли вы с юридическими лицами?', a: 'Да, работаем с ресторанами, отелями, апартаментами, частными домами. Оплата по счёту, полный пакет документов. Договор и акт выполненных работ.' },
+      { q: 'Вы ремонтируете технику на дому или забираете в мастерскую?', a: 'Только на дому. Это принципиальная позиция: техника Miele не ездит в мастерские — ни вы, ни мы не хотим рисков при транспортировке.' },
+      { q: 'Что если моей техники нет в списке?', a: 'Позвоните. Скорее всего, поможем. Если не работаем с конкретным брендом — скажем прямо и порекомендуем, куда обратиться.' },
+      { q: 'Есть ли у вас физический адрес?', a: 'Нет, мы работаем только выездным форматом. Это не «офис с ресепшн», а команда инженеров. Экономия на аренде идёт в квалификацию и инструмент, а не в помещение.' },
+      { q: 'В какие часы вы работаете?', a: 'Ежедневно, с 8:00 до 22:00, без выходных. Экстренные случаи — уточняйте по телефону, можем приехать и позже.' }
+    ]
+  },
+  prices: {
+    label: 'Цены и оплата',
+    items: [
+      { q: 'Сколько стоит диагностика?', a: 'Диагностика на дому — 1500 ₽. Если после диагностики соглашаетесь на ремонт, диагностика бесплатна.' },
+      { q: 'Есть ли скрытые доплаты?', a: 'Нет. Все цены открыты. Итоговую стоимость называем до начала ремонта. Стоимость запчасти оплачивается отдельно — по факту заказа у поставщика.' },
+      { q: 'Что входит в стоимость ремонта?', a: 'Выезд инженера, диагностика, работа, согласование итоговой цены, гарантийный талон и чек, уборка рабочего места. Стоимость оригинальной запчасти — отдельно.' },
+      { q: 'Можно ли оплатить картой?', a: 'Да, принимаем наличные и карты. Для юридических лиц — оплата по счёту с полным пакетом документов.' },
+      { q: 'Даёте ли скидки?', a: 'На повторные обращения — да, скидка 10%. На профилактику после капитального ремонта — 15%. Постоянным клиентам — индивидуально.' },
+      { q: 'Что если ремонт нецелесообразен?', a: 'Скажем прямо. Не предлагаем «тянуть деньги» из клиента. Если стоимость ремонта превышает 50% цены новой техники — рекомендуем замену.' },
+      { q: 'Диагностика платная, если я не соглашусь на ремонт?', a: 'Да, диагностика — 1500 ₽. Это цена работы инженера: он приехал, разобрал, нашёл причину. Диагностика бесплатна только при согласии на ремонт.' },
+      { q: 'Почему у вас цены «от», а не фиксированные?', a: 'Потому что один и тот же симптом может быть вызван разными причинами. Точную цену называем после диагностики. Не берём деньги «наугад».' },
+      { q: 'Как вы оцениваете работу?', a: 'По прайсу, который опубликован на странице «Цены». Стоимость зависит от типа работы и категории запчасти. Всё открыто и прозрачно.' },
+      { q: 'Возможна ли рассрочка или отсрочка?', a: 'Для физических лиц — нет. Для юридических — оплата по счёту в течение 5 рабочих дней после выполнения работ.' }
+    ]
+  },
+  diagnostics: {
+    label: 'Диагностика',
+    items: [
+      { q: 'Сколько длится диагностика?', a: '20–40 минут. Инженер разбирает узел, при необходимости использует диагностическое оборудование, показывает причину неисправности.' },
+      { q: 'Можно ли присутствовать при диагностике?', a: 'Да, обязательно. Мы работаем при клиенте — показываем, что и где сломалось, объясняем причины. Никакой «унесу и посмотрю».' },
+      { q: 'Что если инженер не найдёт причину?', a: 'Это редкость, но бывает при сложных электронных сбоях. В таком случае оплачиваете только диагностику. Если нужны дополнительные проверки в мастерской — обсудим отдельно.' },
+      { q: 'Диагностика — это разбор техники?', a: 'Не всегда. Многие проблемы видны сразу — по ошибкам, звуку, поведению техники. Для сложных случаев разбираем частично, чтобы добраться до нужного узла.' },
+      { q: 'Как вы определяете причину?', a: 'Считываем коды ошибок (у Miele, Bosch, Siemens есть самодиагностика), проверяем узлы приборами, смотрим на износ деталей. Называем точную причину и стоимость ремонта.' },
+      { q: 'Бывает, что вы называете одну причину, а после разбора — другую?', a: 'Иногда да. Если после разбора выясняется дополнительный дефект — предупреждаем и пересогласовываем цену. Без согласия клиента ничего не делаем.' },
+      { q: 'Приедете ли с нужным инструментом?', a: 'Да, полный набор диагностического оборудования и инструмента входит в стандартную комплектацию выезда. Дополнительно ничего покупать не нужно.' },
+      { q: 'Что если техника нуждается в диагностике в мастерской?', a: 'Такие случаи бывают редко (например, для проверки платы управления под нагрузкой). Тогда обсудим с вами варианты — либо замена узла по симптомам, либо временный вывоз.' }
+    ]
+  },
+  guarantee: {
+    label: 'Гарантия',
+    items: [
+      { q: 'Сколько действует гарантия на ремонт?', a: 'От 6 месяцев до 5 лет. Зависит от типа работ: базовый ремонт — 6 месяцев, средний — 2 года, капитальный (подшипники, компрессоры) — до 5 лет.' },
+      { q: 'Что покрывает гарантия?', a: 'Повторное возникновение той же неисправности, отказ установленной нами запчасти, дефекты монтажа. Устраняем бесплатно.' },
+      { q: 'Что НЕ покрывает гарантия?', a: 'Механические повреждения после ремонта, самостоятельное вмешательство, скачки напряжения, попадание жидкости, засоры по вине клиента.' },
+      { q: 'Как воспользоваться гарантией?', a: 'Позвоните по телефону, скажите, что это гарантийный случай. Приедем в течение 48 часов. Если случай гарантийный — исправим бесплатно.' },
+      { q: 'Даёте ли чек и договор?', a: 'Да, выдаём чек и гарантийный талон с описанием работ и заменённых деталей. По запросу оформляем договор.' },
+      { q: 'Что если гарантийный случай, а мастера уже нет?', a: 'Гарантия даётся мастерской, а не конкретному инженеру. Если ваш инженер недоступен — приедет другой специалист. Обязательства остаются в силе.' },
+      { q: 'Даёте ли гарантию, если запчасть была моя?', a: 'Да, гарантию на работу инженера. На саму запчасть — нет. Если хотите полную гарантию, заказываем запчасть сами из Германии.' },
+      { q: 'Продлевается ли гарантия после повторного ремонта?', a: 'Да, отсчёт гарантии начинается заново — с даты повторного ремонта.' },
+      { q: 'Что если моя техника устарела и запчасть снята с производства?', a: 'Ищем альтернативы: восстановление узла, поиск оригинальной детали у поставщиков, проверенные аналоги. Если ни один вариант не подходит — говорим прямо.' },
+      { q: 'Гарантия на запчасть — это гарантия производителя?', a: 'Мы даём свою гарантию на запчасть, она подкреплена гарантией производителя Miele, Neff, Gaggenau. Если оригинальная деталь выйдет из строя — заменим бесплатно.' }
+    ]
+  },
+  brands: {
+    label: 'Техника и бренды',
+    items: [
+      { q: 'Работаете ли вы с Miele?', a: 'Да, Miele — наша основная специализация. Работаем со всеми линейками: кофемашины CM, стиральные W1, посудомойки G, духовки H, холодильники K, винные шкафы.' },
+      { q: 'Что вы знаете про Neff?', a: 'Neff — встраиваемая техника с TwistPad, TwistPad Flex, Home Connect. Работаем с индукцией, духовками, посудомойками, вытяжками. Знаем особенности каждой линейки.' },
+      { q: 'Берёте ли вы Gaggenau?', a: 'Да, Gaggenau — одна из наших специализаций. Работаем с сериями 400 и 200. Понимаем особенности пиролиза, индукции с вентиляцией, климат-шкафов.' },
+      { q: 'Работаете ли вы с Bosch и Siemens?', a: 'Да, с премиум-сериями. Bosch — Serie 6 и 8, Siemens — iQ700 и iQ500. Знаем особенности i-DOS, Zeolith, Home Connect.' },
+      { q: 'Что с Smeg?', a: 'Smeg — итальянская техника с оригинальной конструкцией. Работаем со всеми линейками, включая ретро-серию FAB.' },
+      { q: 'Работаете ли с другими брендами?', a: 'Из премиум-сегмента — Liebherr, Dyson, Jura, Laurastar, iRobot. С другими брендами уточняйте по телефону.' },
+      { q: 'А с Indesit, Ariston, Beko работаете?', a: 'Нет. Мы специализируемся только на премиум-сегменте. Это позволяет держать глубину экспертизы. По бытовым брендам — обратитесь в другой сервис.' },
+      { q: 'Знаете ли вы конкретные модели?', a: 'Да, по большинству популярных моделей можем назвать типичные поломки по телефону. Если модель редкая — уточним и подготовимся к выезду.' },
+      { q: 'Как понять, что техника премиум-класса?', a: 'Обычно это техника стоимостью от 80 000 ₽ с ресурсом 15+ лет. Если сомневаетесь — позвоните, подскажем по модели.' },
+      { q: 'Работаете ли с Miele Professional?', a: 'Нет, только с бытовыми линейками Miele. Для профессионального оборудования — уточняйте по телефону, возможно, поможем.' }
+    ]
+  },
+  repair: {
+    label: 'Процесс ремонта',
+    items: [
+      { q: 'Как быстро вы приедете?', a: 'В пределах Санкт-Петербурга — в течение 90 минут после подтверждения заявки. В часы пик может быть дольше, диспетчер предупредит.' },
+      { q: 'Позвоните ли вы перед приездом?', a: 'Да, за 30 минут до приезда. Это позволяет вам спланировать время и подготовиться.' },
+      { q: 'Сколько длится ремонт?', a: '90% поломок закрываем за один визит — 60–120 минут. Сложные случаи с заказом запчасти — 2 визита.' },
+      { q: 'Ремонтируете ли вы при мне?', a: 'Да, всегда. Мы работаем при клиенте, показываем процесс, объясняем. Никаких «унесу и посмотрю».' },
+      { q: 'Убираете ли вы за собой?', a: 'Да, входит в стоимость. После ремонта — чисто, аккуратно, инструмент сложен. Старую запчасть оставляем вам.' },
+      { q: 'Можно ли ремонтировать при включённой технике?', a: 'Диагностику частично — да. Полный ремонт — с обесточиванием. Это техника безопасности, неотъемлемая часть работы.' },
+      { q: 'Оставляете ли вы старую запчасть?', a: 'Да, всегда. Она ваша собственность. Если хотите — можете её проверить, показать другому мастеру или выбросить.' },
+      { q: 'Что если во время ремонта выяснится дополнительная проблема?', a: 'Останавливаемся, показываем, называем новую стоимость. Если согласны — продолжаем. Если нет — заканчиваем на согласованных работах.' },
+      { q: 'Работаете ли вы в выходные?', a: 'Да, ежедневно с 8:00 до 22:00. В выходные и праздники — по тому же графику.' },
+      { q: 'Можно ли записаться на конкретное время?', a: 'Да, подбираем удобный интервал — обычно 2-часовое окно. Позвоним за 30 минут до приезда.' }
+    ]
+  },
+  parts: {
+    label: 'Запчасти',
+    items: [
+      { q: 'Используете ли вы оригинальные запчасти?', a: 'Да, только оригинальные комплектующие. Никаких «совместимых» аналогов. Ставим только то, что рекомендует производитель.' },
+      { q: 'Где вы берёте запчасти?', a: 'Заказываем напрямую у поставщиков из Германии, Австрии, Италии. Без посредников — это даёт оригинальное качество и меньшую цену.' },
+      { q: 'Сколько ждать запчасть?', a: 'Если деталь есть на складе — привозим в день ремонта. Если нужно заказывать — 5–12 дней в зависимости от поставщика.' },
+      { q: 'Можно ли заказать запчасть заранее?', a: 'Да, если известна модель и поломка. Скажем по телефону, что нужно, и закажем заранее — приедем уже с деталью.' },
+      { q: 'Что если запчасть снята с производства?', a: 'Ищем на складах, у поставщиков, восстанавливаем узел, если возможно. Если нет — говорим прямо, предлагаем альтернативу.' },
+      { q: 'Входит ли стоимость запчасти в прайс?', a: 'Нет, стоимость запчасти оплачивается отдельно — по факту заказа. В прайсе указана только стоимость работы.' },
+      { q: 'Можно ли купить запчасть самому и попросить вас поставить?', a: 'Да, можно. Но гарантия будет только на работу инженера, не на саму запчасть. Если хотите полную гарантию — заказываем сами.' },
+      { q: 'Даёте ли гарантию на запчасть?', a: 'Да. На оригинальные запчасти — от 6 месяцев до 5 лет в зависимости от узла. Подкреплено гарантией производителя.' },
+      { q: 'А если я хочу дешевле?', a: 'Тогда можем предложить восстановленный узел (аккуратно снятый с донора с малым износом) или сертифицированный аналог. Скажем оба варианта и цены — решение за вами.' },
+      { q: 'Что делать с упаковкой от старой запчасти?', a: 'Утилизируем сами. Если запчасть крупная (компрессор, двигатель) — можем оставить или вынести.' }
+    ]
+  }
+};
+
+/* ============================================================
+   РЕНДЕР
+   ============================================================ */
+
+(function() {
+  const tabsWrap = document.getElementById('faqTabs');
+  const listWrap = document.getElementById('faqList');
+  if (!tabsWrap || !listWrap) return;
+
+  let currentCat = 'general';
+
+  function renderTabs() {
+    tabsWrap.innerHTML = Object.keys(FAQ).map((key) => {
+      const cat = FAQ[key];
+      const isActive = key === currentCat ? ' is-active' : '';
+      return `<button type="button" class="faq-tab${isActive}" data-cat="${key}">${cat.label}<span class="faq-tab__count">${cat.items.length}</span></button>`;
+    }).join('');
+  }
+
+  function renderItems() {
+    const items = FAQ[currentCat].items;
+    listWrap.innerHTML = items.map((item, i) => `
+      <details class="faq-item">
+        <summary>${item.q}</summary>
+        <p>${item.a}</p>
+      </details>
+    `).join('');
+  }
+
+  tabsWrap.addEventListener('click', (e) => {
+    const tab = e.target.closest('.faq-tab');
+    if (!tab) return;
+    const cat = tab.dataset.cat;
+    if (!cat || cat === currentCat) return;
+    currentCat = cat;
+    renderTabs();
+    renderItems();
+    window.scrollTo({
+      top: tabsWrap.getBoundingClientRect().top + window.scrollY - 100,
+      behavior: 'smooth'
+    });
+  });
+
+  renderTabs();
+  renderItems();
+})();
+</script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
