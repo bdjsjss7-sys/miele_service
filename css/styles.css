@@ -1468,3 +1468,381 @@ a.contacts__item:hover {
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   НОВЫЕ БЛОКИ v2 — Каталог поломок, инженеры, отзывы с подгрузкой
+   ============================================================ */
+
+/* ---------- КАТАЛОГ ПОЛОМОК ---------- */
+
+.breakdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.breakdowns__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.btab {
+  padding: 12px 22px;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.015);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.btab:hover {
+  border-color: var(--brass-dim);
+  color: var(--text);
+}
+
+.btab.is-active {
+  background: var(--brass);
+  color: #0a0a0a;
+  border-color: var(--brass);
+  font-weight: 500;
+}
+
+.breakdowns__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: opacity 0.3s var(--ease);
+}
+
+.breakdown {
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+
+.breakdown:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+
+.breakdown[open] {
+  border-color: var(--brass-dim);
+  background: var(--surface-2);
+}
+
+.breakdown__head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  cursor: pointer;
+  list-style: none;
+  transition: padding 0.3s var(--ease);
+}
+
+.breakdown__head::-webkit-details-marker { display: none; }
+
+.breakdown__title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.breakdown__price {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--brass);
+  font-style: italic;
+  white-space: nowrap;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.breakdown__arrow {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-2);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--brass);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease), background 0.3s, border-color 0.3s;
+}
+
+.breakdown[open] .breakdown__arrow {
+  transform: rotate(45deg);
+  background: var(--brass-glow);
+  border-color: var(--brass-dim);
+}
+
+.breakdown__body {
+  padding: 0 28px 24px;
+  animation: breakdown-open 0.4s var(--ease);
+}
+
+@keyframes breakdown-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.breakdown__article {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.75;
+  padding: 18px 20px;
+  border-left: 2px solid var(--brass-dim);
+  background: rgba(201,169,97,0.03);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 20px;
+}
+
+.breakdown__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--brass);
+  letter-spacing: 0.02em;
+  padding: 10px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, gap 0.3s;
+  font-weight: 500;
+}
+
+.breakdown__cta::after {
+  content: '→';
+  transition: transform 0.3s var(--ease);
+}
+
+.breakdown__cta:hover {
+  border-bottom-color: var(--brass);
+}
+
+.breakdown__cta:hover::after {
+  transform: translateX(4px);
+}
+
+.breakdowns__footer {
+  margin-top: 40px;
+  padding: 32px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.breakdowns__footer-text {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text-2);
+}
+
+/* ---------- ИНЖЕНЕРЫ (команда) ---------- */
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.engineer {
+  padding: 36px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.5s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.engineer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.engineer:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+
+.engineer:hover::before { opacity: 1; }
+
+.engineer__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--brass-dim);
+  background: linear-gradient(135deg, var(--surface-2), var(--bg-3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 4px;
+  transition: transform 0.4s var(--ease);
+}
+
+.engineer:hover .engineer__avatar {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+.engineer__name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.engineer__role {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 500;
+}
+
+.engineer__spec {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-2);
+  margin-top: 4px;
+}
+
+/* ---------- ОТЗЫВЫ — подгрузка ---------- */
+
+.reviews__more {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 56px;
+}
+
+.reviews__more .btn {
+  min-width: 260px;
+}
+
+.reviews__end {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-3);
+  margin-top: 24px;
+  letter-spacing: 0.05em;
+}
+
+.review__stars--dim {
+  color: var(--text-3);
+  opacity: 0.7;
+}
+
+/* ---------- КОНТАКТЫ — подпись под заголовком формы ---------- */
+
+.contacts__form-lead {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  margin-top: -6px;
+}
+
+/* ============================================================
+   АДАПТИВ для новых блоков
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .team { grid-template-columns: repeat(2, 1fr); }
+  .breakdowns__footer { flex-direction: column; align-items: flex-start; }
+  .breakdowns__footer .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .breakdowns__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .breakdowns__tabs::-webkit-scrollbar { display: none; }
+
+  .btab { font-size: 13px; padding: 10px 18px; }
+
+  .breakdown__head {
+    padding: 18px 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .breakdown__title {
+    font-size: 15px;
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .breakdown__price {
+    order: 2;
+    font-size: 15px;
+    flex: 1;
+  }
+
+  .breakdown__arrow {
+    order: 3;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  .breakdown__body { padding: 0 20px 20px; }
+  .breakdown__article { font-size: 13px; padding: 14px 16px; }
+
+  .breakdowns__footer { padding: 24px 20px; }
+  .breakdowns__footer-text { font-size: 17px; }
+
+  .team { grid-template-columns: 1fr; gap: 12px; }
+  .engineer { padding: 28px 24px; }
+  .engineer__avatar { width: 56px; height: 56px; font-size: 24px; }
+
+  .reviews__more .btn { min-width: 100%; }
+
+  .contacts__form-lead { font-size: 12px; }
+}
