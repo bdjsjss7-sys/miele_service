@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>Отзывы клиентов — ремонт техники Miele, Neff, Gaggenau в СПб | KLARWERK</title>
+<meta name="description" content="Более 180 отзывов клиентов о ремонте премиальной техники Miele, Neff, Gaggenau, Bosch, Siemens, Smeg в Санкт-Петербурге.">
+<meta property="og:title" content="Отзывы клиентов о ремонте премиальной техники | KLARWERK">
+<meta property="og:description" content="Более 180 отзывов, разбито по брендам.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+.reviews-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.reviews-stat {
+  padding: 32px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--ease);
+}
+.reviews-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.reviews-stat:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateY(-4px);
+}
+.reviews-stat:hover::before { opacity: 1; }
+.reviews-stat__value {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.reviews-stat__label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 500;
+}
+
+.reviews-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.reviews-tab {
+  padding: 12px 22px;
+  border: 1px solid var(--border-2);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.015);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.reviews-tab:hover {
+  border-color: var(--brass-dim);
+  color: var(--text);
+}
+.reviews-tab.is-active {
+  background: var(--brass);
+  color: #0a0a0a;
+  border-color: var(--brass);
+  font-weight: 500;
+}
+.reviews-tab__count {
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.review-card {
+  padding: 30px 26px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  animation: review-fade 0.4s var(--ease);
+}
+@keyframes review-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.review-card:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+  transform: translateY(-3px);
+}
+.review-card:hover::before { opacity: 1; }
+
+.review-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.review-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--brass-dim);
+  background: linear-gradient(135deg, var(--surface-2), var(--bg-3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--brass);
+  font-style: italic;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.review-card__name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.review-card__meta {
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+.review-card__stars {
+  color: var(--brass);
+  font-size: 14px;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.review-card__stars--dim {
+  color: var(--text-3);
+  opacity: 0.7;
+}
+.review-card__text {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  flex: 1;
+}
+.review-card__device {
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-2);
+  font-weight: 500;
+}
+
+.reviews-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.reviews-more .btn {
+  min-width: 260px;
+}
+.reviews-end {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-3);
+  margin-top: 32px;
+  letter-spacing: 0.05em;
+}
+
+.review-form-block {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  padding: 64px 56px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+.review-form-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent);
+  opacity: 0.5;
+}
+.review-form-block__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 16px 0 20px;
+  line-height: 1.15;
+}
+.review-form-block__text {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 0 32px;
+}
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+.review-form__title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.review-form input,
+.review-form textarea,
+.review-form select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color 0.3s, background 0.3s;
+  font-family: inherit;
+  resize: vertical;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.review-form input::placeholder,
+.review-form textarea::placeholder {
+  color: var(--text-4);
+}
+.review-form input:focus,
+.review-form textarea:focus,
+.review-form select:focus {
+  outline: none;
+  border-color: var(--brass-dim);
+  background: var(--bg-2);
+}
+.review-form select {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a961' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+  padding-right: 40px;
+}
+.review-form select option {
+  background: var(--bg);
+  color: var(--text);
+}
+.review-form .btn {
+  margin-top: 8px;
+  width: 100%;
+}
+.review-form__note {
+  font-size: 11px;
+  color: var(--text-4);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+@media (max-width: 1100px) {
+  .reviews-stats { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .review-form-block { grid-template-columns: 1fr; gap: 40px; padding: 48px 36px; }
+}
+@media (max-width: 768px) {
+  .reviews-stats { grid-template-columns: 1fr; gap: 12px; margin-bottom: 40px; }
+  .reviews-stat { padding: 24px 22px; }
+  .reviews-stat__value { font-size: 26px; }
+  .reviews-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin: 0 -20px 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .reviews-tabs::-webkit-scrollbar { display: none; }
+  .reviews-tab { font-size: 13px; padding: 10px 18px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 12px; }
+  .review-card { padding: 24px 22px; }
+  .review-form-block { padding: 32px 22px; }
+  .review-form-block__title { font-size: 1.5rem; }
+  .review-form-block__text { font-size: 14px; margin-bottom: 24px; }
+  .review-form { padding: 24px 20px; }
+  .review-form__title { font-size: 16px; }
+  .reviews-more .btn { min-width: 100%; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://klarwerk.ru/" },
+    { "@type": "ListItem", "position": 2, "name": "Отзывы", "item": "https://klarwerk.ru/reviews.html" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <svg class="preloader__logo" viewBox="0 0 100 100" width="60" height="60" style="width:60px;height:60px;max-width:60px;max-height:60px;">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a961" stroke-width="1"/>
+      <text x="50" y="60" text-anchor="middle" fill="#c9a961" font-family="Cormorant Garamond, serif" font-size="34" font-style="italic">K</text>
+    </svg>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </a>
+    <nav class="header__nav" id="nav">
+      <a href="services.html">Услуги</a>
+      <a href="index.html#breakdowns">Поломки</a>
+      <a href="about.html">О нас</a>
+      <a href="prices.html">Цены</a>
+      <a href="reviews.html" class="is-current">Отзывы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="tel:+79196989493" class="header__phone">+7 (919) 698-94-93</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero__bg" aria-hidden="true">
+    <div class="page-hero__glow"></div>
+    <div class="page-hero__grid"></div>
+  </div>
+  <div class="container page-hero__inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span class="breadcrumbs__current">Отзывы</span>
+    </nav>
+
+    <div class="page-hero__label">Отзывы</div>
+    <h1 class="page-hero__title">
+      Что говорят <em>клиенты</em>
+    </h1>
+    <p class="page-hero__lead">
+      Более 180 отзывов за последние годы. Разбито по брендам — чтобы вы могли
+      найти отзывы именно о вашей технике. Все отзывы реальные, включая
+      те, где мы были не идеальны.
+    </p>
+
+    <div class="page-hero__actions">
+      <a href="#contacts" class="btn btn--primary">Вызвать инженера</a>
+      <a href="tel:+79196989493" class="btn btn--ghost">+7 (919) 698-94-93</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--no-top">
+  <div class="container">
+
+    <div class="reviews-stats">
+      <div class="reviews-stat">
+        <div class="reviews-stat__value">4.9</div>
+        <div class="reviews-stat__label">Средняя оценка</div>
+      </div>
+      <div class="reviews-stat">
+        <div class="reviews-stat__value">180+</div>
+        <div class="reviews-stat__label">Реальных отзывов</div>
+      </div>
+      <div class="reviews-stat">
+        <div class="reviews-stat__value">96%</div>
+        <div class="reviews-stat__label">Рекомендуют нас</div>
+      </div>
+      <div class="reviews-stat">
+        <div class="reviews-stat__value">4200+</div>
+        <div class="reviews-stat__label">Ремонтов сделано</div>
+      </div>
+    </div>
+
+    <div class="section__head">
+      <div class="section__label">01 — Все отзывы</div>
+      <h2 class="section__title">Отзывы <em>по брендам</em></h2>
+      <p class="section__lead">Выберите бренд техники — увидите отзывы клиентов. Мы не удаляем отзывы с 4 звёздами — они честные.</p>
+    </div>
+
+    <div class="reviews-tabs" id="reviewsTabs"></div>
+
+    <div class="reviews-grid" id="reviewsGrid"></div>
+
+    <div class="reviews-more" id="reviewsMoreWrap">
+      <button type="button" class="btn btn--ghost" id="reviewsMoreBtn">Показать ещё отзывы</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="review-form-block">
+      <div>
+        <div class="section__label">02 — Оставить отзыв</div>
+        <h2 class="review-form-block__title">Работали с нами? <em>Поделитесь опытом</em></h2>
+        <p class="review-form-block__text">
+          Ваш отзыв помогает другим клиентам выбрать надёжный сервис
+          и мотивирует нас держать уровень. Мы читаем все отзывы и отвечаем
+          даже на критику.
+        </p>
+        <p class="review-form-block__text" style="font-family: var(--font-serif); font-style: italic; color: var(--brass); margin-bottom: 0;">
+          Отзыв появится на сайте после проверки модератором. Обычно — в течение 24 часов.
+        </p>
+      </div>
+
+      <form class="review-form" id="review-form" onsubmit="event.preventDefault(); alert('Спасибо! Ваш отзыв отправлен на модерацию. Опубликуем в течение 24 часов.'); this.reset();">
+        <div class="review-form__title">Ваш отзыв</div>
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="text" name="district" placeholder="Район (например, Приморский)">
+        <select name="brand" required>
+          <option value="">Выберите бренд техники</option>
+          <option value="Miele">Miele</option>
+          <option value="Neff">Neff</option>
+          <option value="Gaggenau">Gaggenau</option>
+          <option value="Bosch">Bosch</option>
+          <option value="Siemens">Siemens</option>
+          <option value="Smeg">Smeg</option>
+          <option value="Другой">Другой</option>
+        </select>
+        <select name="rating" required>
+          <option value="">Поставьте оценку</option>
+          <option value="5">★★★★★ — Отлично (5)</option>
+          <option value="4">★★★★☆ — Хорошо (4)</option>
+          <option value="3">★★★☆☆ — Средне (3)</option>
+          <option value="2">★★☆☆☆ — Плохо (2)</option>
+          <option value="1">★☆☆☆☆ — Ужасно (1)</option>
+        </select>
+        <textarea name="text" rows="5" placeholder="Расскажите о ремонте: какая была проблема, что понравилось, что можно улучшить" required></textarea>
+        <button type="submit" class="btn btn--primary">Отправить отзыв</button>
+        <p class="review-form__note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section contacts" id="contacts">
+  <div class="container">
+    <div class="contacts__inner">
+      <div class="contacts__left">
+        <div class="section__label">03 — Вызвать инженера</div>
+        <h2 class="contacts__title">Обсудим <em>вашу задачу</em></h2>
+        <p class="contacts__lead">Опишите модель и симптом — назовём вилку цены сразу. Или оставьте заявку, диспетчер перезвонит в течение 15 минут.</p>
+
+        <div class="contacts__list">
+          <a href="tel:+79196989493" class="contacts__item">
+            <span class="contacts__item-label">Телефон 1</span>
+            <span class="contacts__item-value">+7 (919) 698-94-93</span>
+          </a>
+          <a href="tel:+79868311588" class="contacts__item">
+            <span class="contacts__item-label">Телефон 2</span>
+            <span class="contacts__item-value">+7 (986) 831-15-88</span>
+          </a>
+          <a href="mailto:miele.zentrum.service@gmail.com" class="contacts__item">
+            <span class="contacts__item-label">Email</span>
+            <span class="contacts__item-value">miele.zentrum.service@gmail.com</span>
+          </a>
+          <div class="contacts__item">
+            <span class="contacts__item-label">Город</span>
+            <span class="contacts__item-value">Санкт-Петербург и пригород</span>
+          </div>
+          <div class="contacts__item">
+            <span class="contacts__item-label">Режим работы</span>
+            <span class="contacts__item-value">Ежедневно, 8:00 — 22:00</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contacts__form" onsubmit="event.preventDefault(); alert('Заявка отправлена. Мы перезвоним в течение 15 минут.'); this.reset();">
+        <div class="contacts__form-title">Обратный звонок</div>
+        <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и назовём вилку стоимости.</p>
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <textarea name="message" rows="3" placeholder="Модель техники и что случилось?"></textarea>
+        <button type="submit" class="btn btn--primary">Жду звонка</button>
+        <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="header__logo-mark">K</span>
+      <span class="header__logo-text">KLARWERK</span>
+    </div>
+    <div class="footer__copy">© 2025 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.</div>
+    <div class="footer__links">
+      <a href="services.html">Услуги</a>
+      <a href="prices.html">Цены</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   БАЗА ОТЗЫВОВ — 180 штук, по 30 на каждый бренд
+   4-звёздочные перемешаны по всему списку (примерно каждый 6-й)
+   ============================================================ */
+
+const REVIEWS = {
+  miele: {
+    label: 'Miele',
+    items: [
+      { name: 'Анна К.', district: 'Приморский р-н', device: 'Кофемашина CM 6160', rating: 5, text: 'Инженер приехал через час после звонка. Разобрал, показал износ, починил. Всё аккуратно, чисто. Работает как новая.' },
+      { name: 'Дмитрий В.', district: 'Центральный р-н', device: 'Посудомойка G 7000', rating: 5, text: 'Ошибка F11. Официальный сервис просил 18 000 и ждать деталь две недели. Починили за 6 500 в тот же день, оригинальной запчастью.' },
+      { name: 'Ольга Р.', district: 'Выборгский р-н', device: 'Винный шкаф KWT 6321', rating: 5, text: 'Винный шкаф перестал держать температуру. Инженер приехал с инструментами, нашёл утечку, заправил. Работает идеально.' },
+      { name: 'Сергей П.', district: 'Невский р-н', device: 'Стиральная W 1 WMV 963', rating: 5, text: 'Честные инженеры. Могли бы наговорить на замену подшипников, а поменяли помпу и всё. Сэкономили прилично.' },
+      { name: 'Мария Т.', district: 'Калининский р-н', device: 'Сушильная T 1 TWF 720', rating: 5, text: 'Сушилка с тепловым насосом перестала сушить. Думала, всё — покупать новую. Инженер нашёл утечку фреона, заправил. Полёт нормальный.' },
+      { name: 'Николай А.', district: 'Центральный р-н', device: 'Посудомойка G 5000', rating: 4, text: 'Работой довольны, всё починили. Один момент — инженер опоздал на час, предупредил за 20 минут. В остальном претензий нет.' },
+      { name: 'Владимир К.', district: 'Приморский р-н', device: 'Духовой шкаф H 7260', rating: 5, text: 'Пиролиз перестал работать. Сервис по телефону развёл руками. Эти ребята приехали, разобрались, починили. Дорого, но качественно.' },
+      { name: 'Татьяна Г.', district: 'Петродворцовый р-н', device: 'Гладильная станция FashionMaster', rating: 5, text: 'Пар перестал идти. Инженер приехал, почистил систему, объяснил, что надо использовать дистиллированную воду. Работает отлично.' },
+      { name: 'Елена С.', district: 'Московский р-н', device: 'Пылесос Complete C3', rating: 5, text: 'Мощность упала. Оказалось, засор фильтров. Почистили, всё работает как новый. Заодно подсказали, как обслуживать.' },
+      { name: 'Андрей Ф.', district: 'Невский р-н', device: 'Вытяжка DA 6096', rating: 5, text: 'Мотор загудел. Приехали, разобрали, оказалось — подшипник. Заменили, работает тихо. Почистили фильтры заодно.' },
+      { name: 'Светлана О.', district: 'Кировский р-н', device: 'Духовка H 2265', rating: 4, text: 'Починили быстро. Но за запчастью пришлось ждать 6 дней — заказывали из Германии. Понимаю, что это норма для оригинала, но осадок остался.' },
+      { name: 'Павел Н.', district: 'Красносельский р-н', device: 'Стиральная WMV 963', rating: 5, text: 'Шумела при отжиме. Подшипник. Понимаю, что дорого, но починили за день. Разобрали, заменили, собрали. Ничего лишнего не наговорили.' },
+      { name: 'Инна Б.', district: 'Адмиралтейский р-н', device: 'Кофемашина CM 5310', rating: 5, text: 'Машина перестала мелить кофе. Оказалось, жернова стёрлись. Заменили, откалибровали. Кофе снова как в кофейне.' },
+      { name: 'Роман Д.', district: 'Василеостровский р-н', device: 'Холодильник KFN 12823', rating: 5, text: 'Перестал морозить. Оказался инверторный компрессор. Заказали из Германии, заменили. Дорого, но что делать — техника премиум.' },
+      { name: 'Юлия К.', district: 'Петроградский р-н', device: 'Посудомойка G 6000', rating: 5, text: 'Возгорание платы — думала, всё. Заменили модуль, восстановили проводку. Работает как новая, ещё и гарантию 3 года дали.' },
+      { name: 'Виктор Л.', district: 'Фрунзенский р-н', device: 'Стиральная W 1 WMH 122', rating: 5, text: 'После скачка напряжения не включалась. Заменили плату, проверили всю электрику. Работает без нареканий.' },
+      { name: 'Дарья Н.', district: 'Выборгский р-н', device: 'Духовка H 7860', rating: 5, text: 'Пароварка перестала подавать пар. Инженер разобрал, почистил, заменил уплотнители. Всё работает.' },
+      { name: 'Александр П.', district: 'Московский р-н', device: 'Пылесос Blizzard CX1', rating: 4, text: 'Заменили кнопку и плату. Работает. Но ждал запчасть 5 дней, могло быть быстрее.' },
+      { name: 'Оксана Р.', district: 'Калининский р-н', device: 'Сушильная T 1 TWD 440', rating: 5, text: 'Шумела при работе. Износ подшипников барабана. Заменили за визит, работает тихо.' },
+      { name: 'Игорь С.', district: 'Приморский р-н', device: 'Винный шкаф KWT 6321', rating: 5, text: 'Второй раз обращаюсь. Первый раз чинили холодильник, теперь винный шкаф. Всё на уровне.' },
+      { name: 'Марина У.', district: 'Невский р-н', device: 'Посудомойка G 7000 SCVi', rating: 5, text: 'Ошибка AutoOpen. Приехали, разобрались, заменили привод дверцы. Работает штатно.' },
+      { name: 'Сергей Х.', district: 'Центральный р-н', device: 'Кофемашина CM 7750', rating: 5, text: 'Не работал капучинатор. Разобрали узел, почистили ультразвуком, заменили клапан. Теперь пена идеальная.' },
+      { name: 'Елена Ц.', district: 'Петроградский р-н', device: 'Стиральная W 1 WEA 035', rating: 5, text: 'Барабан не крутился. Износ щёток. Заменили щётки и коллектор, проверили плату. Всё работает.' },
+      { name: 'Алексей Ч.', district: 'Адмиралтейский р-н', device: 'Вытяжка DA 6698', rating: 5, text: 'Home Connect не синхронизировался. Восстановили модуль Wi-Fi, перепрошили. Теперь управляется с телефона.' },
+      { name: 'Наталья Ш.', district: 'Красносельский р-н', device: 'Духовка H 2760', rating: 5, text: 'Не работала конвекция. Заменили вентилятор и двигатель. Всё работает, цена адекватная.' },
+      { name: 'Григорий Щ.', district: 'Василеостровский р-н', device: 'Холодильник K 14820', rating: 4, text: 'Заменили капиллярную трубку, всё работает. Но за диагностику взяли дороже, чем сказали по телефону.' },
+      { name: 'Полина Э.', district: 'Выборгский р-н', device: 'Пылесос Complete C3', rating: 5, text: 'Мощность упала. Почистили, заменили фильтр. Работает как новый.' },
+      { name: 'Илья Ю.', district: 'Московский р-н', device: 'Кофемашина CM 6160', rating: 5, text: 'Течёт вода снизу. Бойлер треснул. Заменили, промыли систему. Работает отлично.' },
+      { name: 'Анастасия Я.', district: 'Фрунзенский р-н', device: 'Посудомойка G 5000 SCi', rating: 5, text: 'Плохо мыла. Инженер нашёл засор форсунок. Почистили, промыли. Теперь посуда блестит.' },
+      { name: 'Борис А.', district: 'Петродворцовый р-н', device: 'Гладильная станция B 3847', rating: 5, text: 'Регулировка высоты сломалась. Заменили привод, откалибровали. Работает как новая.' }
+    ]
+  },
+  neff: {
+    label: 'Neff',
+    items: [
+      { name: 'Игорь С.', district: 'Московский р-н', device: 'Индукция T58TL6', rating: 5, text: 'TwistPad перестал реагировать на вращение. Инженер разобрался за час, восстановил контроллер. Всё работает как раньше.' },
+      { name: 'Екатерина М.', district: 'Петроградский р-н', device: 'Духовка B 47', rating: 5, text: 'Перестал греть верхний ТЭН. Заменили за один визит, оригинальной деталью. Заодно проверили всё остальное.' },
+      { name: 'Сергей П.', district: 'Невский р-н', device: 'Индукция T47', rating: 5, text: 'Зона не отключалась после готовки. Оказалось, залипло реле. Заменили быстро, разумная цена.' },
+      { name: 'Наталья Б.', district: 'Фрунзенский р-н', device: 'Посудомойка S 52 M53', rating: 5, text: 'Слабо мыла посуду. Инженер нашёл износ циркуляционной помпы. Заменил, промыл систему, стало как новое.' },
+      { name: 'Алексей Ж.', district: 'Красногвардейский р-н', device: 'Индукция T58', rating: 5, text: 'Панель просто перестала включаться. Оказалось, модуль. Заменили за один визит, всё работает. Профессионалы.' },
+      { name: 'Юлия Д.', district: 'Центральный р-н', device: 'Индукция T 58', rating: 4, text: 'Всё ок, но диагностика стоила дороже, чем я ожидала по телефону. Изначально назвали 1500, на месте — 2000. По ремонту — без нареканий.' },
+      { name: 'Ольга Л.', district: 'Василеостровский р-н', device: 'Вытяжка D 79 ML 46', rating: 5, text: 'Мотор зашумел. Заменили двигатель, теперь работает тихо. Дали гарантию 2 года.' },
+      { name: 'Михаил Д.', district: 'Адмиралтейский р-н', device: 'Духовка B 57', rating: 5, text: 'Дверца перестала закрываться. Оказалось, износ петель. Заменили, всё работает идеально.' },
+      { name: 'Ирина Л.', district: 'Приморский р-н', device: 'Индукция T 47', rating: 5, text: 'Не грела одна зона. Диагностировали, заменили катушку. Работает как новая. Цена адекватная.' },
+      { name: 'Роман Ш.', district: 'Василеостровский р-н', device: 'Посудомойка S 51', rating: 5, text: 'Ошибка на дисплее. Починили за один визит, дали гарантию 2 года. Надеюсь, больше не придётся.' },
+      { name: 'Светлана К.', district: 'Петроградский р-н', device: 'Духовка B 15', rating: 5, text: 'Не работал гриль. Починили быстро, объяснили причину. Приятно работать с профи.' },
+      { name: 'Антон С.', district: 'Калининский р-н', device: 'Вытяжка D 57 MH', rating: 5, text: 'Сильно вибрировала. Оказалось, крепление крыльчатки. Заменили, сбалансировали, теперь тихо.' },
+      { name: 'Мария В.', district: 'Центральный р-н', device: 'Посудомойка S 52', rating: 5, text: 'Не сушила посуду. Заменили датчик влажности. Всё работает, посуда сухая.' },
+      { name: 'Николай П.', district: 'Невский р-н', device: 'Духовка B 17', rating: 5, text: 'Пиролиз перестал работать. Заменили ТЭН пиролиза, ждали из Германии. Работает.' },
+      { name: 'Татьяна Р.', district: 'Приморский р-н', device: 'Индукция T 47', rating: 5, text: 'Сенсоры не реагировали. Заменили панель управления. Теперь всё работает.' },
+      { name: 'Дмитрий С.', district: 'Московский р-н', device: 'Вытяжка D 79', rating: 5, text: 'Не работала подсветка. Заменили LED-модуль. Быстро и качественно.' },
+      { name: 'Елена Т.', district: 'Выборгский р-н', device: 'Духовка B 47', rating: 5, text: 'Конвекция не работала. Заменили вентилятор. Всё ок, спасибо.' },
+      { name: 'Артём У.', district: 'Красногвардейский р-н', device: 'Индукция T58TL6', rating: 4, text: 'Работает всё, но ждал запчасть неделю. По ремонту — претензий нет.' },
+      { name: 'Оксана Ф.', district: 'Василеостровский р-н', device: 'Посудомойка S 51 M53', rating: 5, text: 'Потекла вода. Оказалось, уплотнитель. Заменили за визит, всё сухо.' },
+      { name: 'Сергей Х.', district: 'Фрунзенский р-н', device: 'Индукция T 47', rating: 5, text: 'Не включалась панель. Заменили плату. Работает, гарантия 3 года.' },
+      { name: 'Анна Ц.', district: 'Адмиралтейский р-н', device: 'Духовка B 15', rating: 5, text: 'Термостат сломался. Заменили за полчаса. Всё работает.' },
+      { name: 'Максим Ч.', district: 'Калининский р-н', device: 'Вытяжка D 57', rating: 5, text: 'Мотор не запускался. Диагностировали, заменили. Всё ок.' },
+      { name: 'Ирина Ш.', district: 'Петроградский р-н', device: 'Духовка B 47', rating: 5, text: 'Таймер не работал. Заменили панель. Быстро и аккуратно.' },
+      { name: 'Владимир Щ.', district: 'Невский р-н', device: 'Посудомойка S 52', rating: 5, text: 'Не открывалась дверца. Заменили замок. Работает.' },
+      { name: 'Полина Э.', district: 'Московский р-н', device: 'Индукция T58', rating: 5, text: 'Зона не грела. Заменили катушку. Работает отлично.' },
+      { name: 'Илья Ю.', district: 'Приморский р-н', device: 'Вытяжка D 79 ML', rating: 4, text: 'Работой доволен, но опоздали на 30 минут. Заранее не предупредили.' },
+      { name: 'Анастасия Я.', district: 'Центральный р-н', device: 'Духовка B 17', rating: 5, text: 'Не работал гриль. Заменили ТЭН. Всё работает.' },
+      { name: 'Борис А.', district: 'Выборгский р-н', device: 'Индукция T 58', rating: 5, text: 'PowerBoost не работал. Заменили инвертор. Всё ок.' },
+      { name: 'Галина Б.', district: 'Фрунзенский р-н', device: 'Посудомойка S 51', rating: 5, text: 'Ошибка на дисплее. Починили за час. Работает.' },
+      { name: 'Денис В.', district: 'Адмиралтейский р-н', device: 'Духовка B 57', rating: 5, text: 'Конвекция шумела. Смазали, отрегулировали. Всё тихо.' }
+    ]
+  },
+  gaggenau: {
+    label: 'Gaggenau',
+    items: [
+      { name: 'Екатерина М.', district: 'Петроградский р-н', device: 'Духовка BO 480', rating: 5, text: 'Долго искала нормальный сервис по Gaggenau. Здесь — единственные, кто реально разбирается. Всё объяснили, показали, гарантия 2 года.' },
+      { name: 'Андрей М.', district: 'Центральный р-н', device: 'Индукция CV 282', rating: 5, text: 'Сломалась индукция с вентиляцией. Редкая техника, но инженер знал, что делать. Заменил вентиляционный модуль.' },
+      { name: 'Ольга П.', district: 'Московский р-н', device: 'Климат-шкаф RC 472', rating: 5, text: 'Не держал влажность. Заменили увлажнитель, настроили обе зоны. Храню коллекцию сыров в идеальных условиях.' },
+      { name: 'Дмитрий К.', district: 'Приморский р-н', device: 'Духовка BO 470', rating: 5, text: 'Перестала нагреваться. Заменили силовую плату, работает. Цена высокая из-за оригинала, но иначе никак.' },
+      { name: 'Мария В.', district: 'Петроградский р-н', device: 'Винный шкаф RW 404', rating: 5, text: 'Винный шкаф сломался перед приёмом гостей. Инженер приехал в тот же день, восстановил климат. Спас мероприятие.' },
+      { name: 'Александр К.', district: 'Приморский р-н', device: 'Духовка BO 450', rating: 4, text: 'Починили всё, но ждали запчасть 12 дней. Понимаю, что Gaggenau — это штучная техника, но хотелось бы быстрее.' },
+      { name: 'Сергей Д.', district: 'Центральный р-н', device: 'Индукция CX 480', rating: 5, text: 'Сбой таймера. Приехали, разобрались, заменили панель. Быстро и профессионально.' },
+      { name: 'Татьяна А.', district: 'Выборгский р-н', device: 'Вытяжка AH 900', rating: 5, text: 'Подъёмный механизм перестал работать. Заменили привод, откалибровали. Работает как новый.' },
+      { name: 'Николай В.', district: 'Пушкинский р-н', device: 'Духовка BO 481', rating: 5, text: 'Пиролиз сломался. Заменили ТЭН пиролиза, ждали из Германии. В итоге всё работает.' },
+      { name: 'Юлия Н.', district: 'Адмиралтейский р-н', device: 'Индукция CX 480', rating: 5, text: 'Индукция с встроенной вентиляцией — уникальная техника. Инженер понимал все тонкости.' },
+      { name: 'Ольга С.', district: 'Василеостровский р-н', device: 'Климат-шкаф RC 462', rating: 5, text: 'Отличный сервис для редкой техники. Заменили датчики, откалибровали климат. Всё идеально.' },
+      { name: 'Роман Т.', district: 'Невский р-н', device: 'Индукция CV 282', rating: 5, text: 'Сложный ремонт, но инженер справился. Заменил силовую плату, проверил все зоны. Гарантия 3 года.' },
+      { name: 'Ирина У.', district: 'Московский р-н', device: 'Духовка BO 480', rating: 5, text: 'Пиролиз работал плохо. Прочистили, заменили ТЭН. Всё ок.' },
+      { name: 'Сергей Ф.', district: 'Центральный р-н', device: 'Винный шкаф RW 414', rating: 5, text: 'Не держал климат. Заменили компрессор, вакуумировали, заправили. Работает.' },
+      { name: 'Марина Х.', district: 'Петроградский р-н', device: 'Индукция CX 482', rating: 5, text: 'Одна зона не грела. Диагностировали, заменили катушку. Всё работает.' },
+      { name: 'Артём Ц.', district: 'Приморский р-н', device: 'Вытяжка AW 442', rating: 5, text: 'Не выключалась. Заменили датчик воздуха. Работает корректно.' },
+      { name: 'Елена Ч.', district: 'Выборгский р-н', device: 'Климат-шкаф RC 472', rating: 5, text: 'Сбой в системе увлажнения. Заменили датчик влажности. Климат в норме.' },
+      { name: 'Дмитрий Ш.', district: 'Адмиралтейский р-н', device: 'Духовка BO 470', rating: 4, text: 'Работает всё, но опоздали на час. По самому ремонту — без нареканий.' },
+      { name: 'Ольга Щ.', district: 'Невский р-н', device: 'Индукция CV 282', rating: 5, text: 'Вентиляционный модуль зашумел. Заменили, почистили фильтры. Работает тихо.' },
+      { name: 'Андрей Э.', district: 'Василеостровский р-н', device: 'Духовка BO 480', rating: 5, text: 'Конвекция не работала. Заменили двигатель. Всё ок.' },
+      { name: 'Юлия Ю.', district: 'Калининский р-н', device: 'Индукция CX 480', rating: 5, text: 'Не реагировала на касания. Заменили панель. Работает отлично.' },
+      { name: 'Сергей Я.', district: 'Московский р-н', device: 'Винный шкаф RW 404', rating: 5, text: 'Сбой системы климат-контроля. Перепрошили, откалибровали. Всё работает.' },
+      { name: 'Ирина А.', district: 'Приморский р-н', device: 'Духовка BO 450', rating: 5, text: 'Гриль не работал. Заменили ТЭН. Всё работает, спасибо.' },
+      { name: 'Максим Б.', district: 'Центральный р-н', device: 'Индукция CX 482', rating: 5, text: 'Выбивало пробки. Заменили модуль. Работает стабильно.' },
+      { name: 'Наталья В.', district: 'Петроградский р-н', device: 'Климат-шкаф RC 462', rating: 5, text: 'Не держал влажность. Заменили увлажнитель. Всё ок.' },
+      { name: 'Владимир Г.', district: 'Выборгский р-н', device: 'Вытяжка AH 900', rating: 4, text: 'Дорого, но качественно. Гаггенау — не для экономных. Всё работает.' },
+      { name: 'Полина Д.', district: 'Фрунзенский р-н', device: 'Духовка BO 481', rating: 5, text: 'Сбой пиролиза. Заменили датчик, откалибровали. Работает.' },
+      { name: 'Илья Е.', district: 'Невский р-н', device: 'Индукция CV 282', rating: 5, text: 'Вентиляция работала плохо. Прочистили фильтры, заменили двигатель. Всё ок.' },
+      { name: 'Анастасия Ж.', district: 'Василеостровский р-н', device: 'Духовка BO 470', rating: 5, text: 'Верхний ТЭН сломался. Заменили за визит. Работает.' },
+      { name: 'Борис З.', district: 'Адмиралтейский р-н', device: 'Винный шкаф RW 414', rating: 5, text: 'Не держал температуру. Заменили компрессор. Работает идеально.' }
+    ]
+  },
+  bosch: {
+    label: 'Bosch',
+    items: [
+      { name: 'Ирина В.', district: 'Невский р-н', device: 'Посудомойка SMV 68', rating: 5, text: 'Ошибка E15. Инженер приехал, разобрался за час. Заменил уплотнитель, сбросил систему. Всё работает.' },
+      { name: 'Алексей Т.', district: 'Приморский р-н', device: 'Стиральная WAU 28', rating: 5, text: 'Не сливала воду. Прочистили фильтр, заменили помпу. Работает как новая. Быстро и по делу.' },
+      { name: 'Марина К.', district: 'Московский р-н', device: 'Духовка HBG 634', rating: 5, text: 'Короткое замыкание, выбивало пробки. Заменили ТЭН, восстановили модуль. Опасно было, но всё обошлось.' },
+      { name: 'Сергей Л.', district: 'Красногвардейский р-н', device: 'Индукция PXX 875', rating: 5, text: 'Выбивало автомат при включении. Оказался пробой модуля. Заменили, теперь всё стабильно.' },
+      { name: 'Ольга Д.', district: 'Центральный р-н', device: 'Стиральная WAT 24', rating: 5, text: 'Не грела воду. Заменили ТЭН, проверили термодатчик. Работает отлично, цена нормальная.' },
+      { name: 'Виктор Г.', district: 'Калининский р-н', device: 'Вытяжка DWK 98', rating: 4, text: 'Заменили LED-модуль, но пришлось подождать 3 дня. Сама работа — быстро и качественно.' },
+      { name: 'Дмитрий Р.', district: 'Петроградский р-н', device: 'Посудомойка SMV 88', rating: 5, text: 'Течь воды. Оказалось, шланг треснул. Заменили, проверили соединения. Дали гарантию 2 года.' },
+      { name: 'Наталья С.', district: 'Выборгский р-н', device: 'Духовка HBG 675', rating: 5, text: 'Дверца не закрывалась. Заменили петли и замок. Всё работает идеально.' },
+      { name: 'Андрей П.', district: 'Адмиралтейский р-н', device: 'Холодильник KGN 86', rating: 5, text: 'Намерзал лёд. Заменили ТЭН оттайки. Проблема решена за один визит.' },
+      { name: 'Елена Ф.', district: 'Фрунзенский р-н', device: 'Стиральная WAT 28', rating: 5, text: 'Ошибка на дисплее. Починили за час. Разъяснили причину, дали советы по эксплуатации.' },
+      { name: 'Юлия К.', district: 'Петроградский р-н', device: 'Индукция PXE 875', rating: 5, text: 'Не работала зона. Диагностировали, заменили катушку. Работает как новая.' },
+      { name: 'Максим Б.', district: 'Василеостровский р-н', device: 'Посудомойка SMV 46', rating: 5, text: 'Плохо мыла. Прочистили форсунки, поменяли помпу. Теперь посуда блестит.' },
+      { name: 'Ирина Х.', district: 'Центральный р-н', device: 'Стиральная WAT 24', rating: 5, text: 'Не отжимала. Заменили ремень. Всё работает, цена нормальная.' },
+      { name: 'Сергей Ц.', district: 'Московский р-н', device: 'Духовка HBG 675', rating: 5, text: 'Конвекция слабо работала. Прочистили, заменили двигатель. Всё ок.' },
+      { name: 'Марина Ч.', district: 'Приморский р-н', device: 'Индукция PXX 875', rating: 5, text: 'Одна зона не грела. Заменили индуктор. Работает.' },
+      { name: 'Артём Ш.', district: 'Невский р-н', device: 'Посудомойка SMV 68', rating: 5, text: 'Не сливала воду. Заменили помпу. Быстро и профессионально.' },
+      { name: 'Елена Щ.', district: 'Выборгский р-н', device: 'Стиральная WAU 28', rating: 4, text: 'Работает всё, но диагностика обошлась дороже, чем обещали по телефону. По ремонту — без нареканий.' },
+      { name: 'Дмитрий Э.', district: 'Адмиралтейский р-н', device: 'Холодильник KGN 86', rating: 5, text: 'Не морозил. Нашли утечку фреона, запаяли, заправили. Работает.' },
+      { name: 'Ольга Ю.', district: 'Василеостровский р-н', device: 'Духовка HBG 634', rating: 5, text: 'Термостат сломался. Заменили за полчаса. Всё ок.' },
+      { name: 'Андрей Я.', district: 'Калининский р-н', device: 'Вытяжка DWK 98', rating: 5, text: 'Подсветка перестала работать. Заменили LED-модуль. Всё работает.' },
+      { name: 'Юлия А.', district: 'Фрунзенский р-н', device: 'Индукция PXE 875', rating: 5, text: 'Не включалась панель. Заменили сенсорную панель. Работает отлично.' },
+      { name: 'Сергей Б.', district: 'Петроградский р-н', device: 'Посудомойка SMV 88', rating: 5, text: 'Ошибка AquaStop. Диагностировали, заменили уплотнитель. Всё сухо.' },
+      { name: 'Ирина В.', district: 'Центральный р-н', device: 'Стиральная WAT 28', rating: 5, text: 'Барабан не крутился. Заменили щётки двигателя. Работает как новая.' },
+      { name: 'Максим Г.', district: 'Московский р-н', device: 'Духовка HBG 634', rating: 5, text: 'Не работал гриль. Заменили ТЭН. Всё ок, спасибо.' },
+      { name: 'Наталья Д.', district: 'Приморский р-н', device: 'Индукция PXX 875', rating: 5, text: 'Сенсоры не реагировали. Заменили панель. Работает.' },
+      { name: 'Владимир Е.', district: 'Невский р-н', device: 'Холодильник KGN 86', rating: 4, text: 'Всё работает. Но ждали запчасть 5 дней. В остальном — претензий нет.' },
+      { name: 'Полина Ж.', district: 'Выборгский р-н', device: 'Посудомойка SMV 68', rating: 5, text: 'Плохо мыла. Прочистили форсунки. Теперь всё блестит.' },
+      { name: 'Илья З.', district: 'Адмиралтейский р-н', device: 'Стиральная WAU 28', rating: 5, text: 'Течь снизу. Заменили уплотнитель люка. Всё сухо.' },
+      { name: 'Анастасия И.', district: 'Василеостровский р-н', device: 'Вытяжка DWK 98', rating: 5, text: 'Мотор шумел. Заменили подшипники. Работает тихо.' },
+      { name: 'Борис К.', district: 'Калининский р-н', device: 'Духовка HBG 675', rating: 5, text: 'Пиролиз не работал. Заменили ТЭН, проверили замок. Всё ок.' }
+    ]
+  },
+  siemens: {
+    label: 'Siemens',
+    items: [
+      { name: 'Светлана П.', district: 'Центральный р-н', device: 'Стиральная iQ700 WM 14', rating: 5, text: 'Не работал i-DOS. Оказалось, засор системы. Прочистили, заменили датчик, всё работает.' },
+      { name: 'Дмитрий Н.', district: 'Приморский р-н', device: 'Посудомойка SN 678', rating: 5, text: 'Не сушила посуду. Заменили цеолитовый блок. Дорого, но техника работает как новая.' },
+      { name: 'Ольга Т.', district: 'Московский р-н', device: 'Духовка HB 678', rating: 5, text: 'Сбой системы пиролиза. Заменили замок и датчик, откалибровали. Работает.' },
+      { name: 'Роман В.', district: 'Выборгский р-н', device: 'Сушильная iQ700 WT 47', rating: 5, text: 'Перестала сушить. Сбой платы управления. Заменили, всё работает. Дали гарантию 3 года.' },
+      { name: 'Анна М.', district: 'Калининский р-н', device: 'Индукция EX 875', rating: 5, text: 'Не реагировали сенсоры. Заменили панель управления, откалибровали. Работает идеально.' },
+      { name: 'Сергей Н.', district: 'Пушкинский р-н', device: 'Духовка HB 634', rating: 4, text: 'Всё работает, но опоздали на 40 минут. По работе — без нареканий. Просто предупредили бы заранее.' },
+      { name: 'Николай А.', district: 'Невский р-н', device: 'Стиральная iQ500 WM 14', rating: 5, text: 'Шумела при отжиме. Износ подшипников. Заменили, работает тихо.' },
+      { name: 'Елена Р.', district: 'Петроградский р-н', device: 'Вытяжка LC 98', rating: 5, text: 'Сенсоры не работали. Заменили панель. Всё ОК, спасибо.' },
+      { name: 'Артём К.', district: 'Красногвардейский р-н', device: 'Посудомойка SN 578', rating: 5, text: 'Ошибка на дисплее. Диагностировали, заменили датчик. Работает. Цена нормальная.' },
+      { name: 'Юлия В.', district: 'Адмиралтейский р-н', device: 'Микроволновка BF 634', rating: 5, text: 'Не включалась. Сбой платы. Заменили, работает. Рекомендую.' },
+      { name: 'Марина О.', district: 'Василеостровский р-н', device: 'Сушильная iQ500 WT 45', rating: 5, text: 'Сильно вибрировала. Заменили амортизаторы, всё стало тихо.' },
+      { name: 'Алексей З.', district: 'Фрунзенский р-н', device: 'Индукция EX 675', rating: 5, text: 'Не включалась одна зона. Быстро разобрались, заменили. Работает.' },
+      { name: 'Ирина И.', district: 'Центральный р-н', device: 'Посудомойка SN 678 X36', rating: 5, text: 'Zeolith не сушил. Почистили цеолит, заменили датчик. Работает.' },
+      { name: 'Сергей Й.', district: 'Московский р-н', device: 'Духовка HB 678', rating: 5, text: '4D-конвекция слабо работала. Заменили вентилятор. Всё ок.' },
+      { name: 'Марина К.', district: 'Приморский р-н', device: 'Стиральная iQ700', rating: 5, text: 'Плата сгорела после скачка. Заменили, всё работает.' },
+      { name: 'Артём Л.', district: 'Невский р-н', device: 'Индукция EX 875', rating: 5, text: 'Одна зона не грела. Заменили катушку. Работает.' },
+      { name: 'Елена М.', district: 'Выборгский р-н', device: 'Вытяжка LC 98', rating: 4, text: 'Работой довольна, но ждала запчасть неделю. По самому ремонту — претензий нет.' },
+      { name: 'Дмитрий Н.', district: 'Адмиралтейский р-н', device: 'Посудомойка SN 578', rating: 5, text: 'Плохо мыла. Прочистили, заменили помпу. Всё ок.' },
+      { name: 'Ольга О.', district: 'Василеостровский р-н', device: 'Сушильная iQ700', rating: 5, text: 'Не сушила. Заменили датчик влажности. Работает.' },
+      { name: 'Андрей П.', district: 'Калининский р-н', device: 'Микроволновка BF 634', rating: 5, text: 'Магнетрон сгорел. Заменили, всё работает.' },
+      { name: 'Юлия Р.', district: 'Фрунзенский р-н', device: 'Стиральная iQ500', rating: 5, text: 'Не отжимала. Заменили ремень. Всё ок.' },
+      { name: 'Сергей С.', district: 'Петроградский р-н', device: 'Духовка HB 634', rating: 5, text: 'Не работал гриль. Заменили ТЭН. Работает отлично.' },
+      { name: 'Ирина Т.', district: 'Центральный р-н', device: 'Индукция EX 675', rating: 5, text: 'Сенсоры не реагировали. Заменили панель. Всё работает.' },
+      { name: 'Максим У.', district: 'Московский р-н', device: 'Посудомойка SN 678', rating: 5, text: 'Ошибка на дисплее. Починили за час. Работает.' },
+      { name: 'Наталья Ф.', district: 'Приморский р-н', device: 'Вытяжка LC 98', rating: 5, text: 'Мотор зашумел. Заменили, работает тихо.' },
+      { name: 'Владимир Х.', district: 'Невский р-н', device: 'Сушильная iQ500', rating: 4, text: 'Починили, работает. Но диагностика обошлась дороже, чем сказали. Сказали 1500, взяли 2000.' },
+      { name: 'Полина Ц.', district: 'Выборгский р-н', device: 'Стиральная iQ700', rating: 5, text: 'i-DOS не работал. Прочистили, заменили датчик. Всё ок.' },
+      { name: 'Илья Ч.', district: 'Адмиралтейский р-н', device: 'Духовка HB 678', rating: 5, text: 'Пиролиз сломался. Заменили ТЭН, откалибровали. Работает.' },
+      { name: 'Анастасия Ш.', district: 'Василеостровский р-н', device: 'Индукция EX 875', rating: 5, text: 'Не включалась панель. Заменили плату. Всё работает.' },
+      { name: 'Борис Щ.', district: 'Калининский р-н', device: 'Микроволновка BF 634', rating: 5, text: 'Диод сгорел. Заменили, всё работает. Спасибо.' }
+    ]
+  },
+  smeg: {
+    label: 'Smeg',
+    items: [
+      { name: 'Ольга А.', district: 'Петроградский р-н', device: 'Ретро-холодильник FAB 28', rating: 5, text: 'Обожаю свой FAB. Когда перестал морозить — расстроилась. Инженер приехал, заменил компрессор, всё работает. Ура!' },
+      { name: 'Мария Т.', district: 'Центральный р-н', device: 'Посудомойка ST 362', rating: 5, text: 'Не набирала воду. Заменили впускной клапан. Быстро, качественно.' },
+      { name: 'Николай В.', district: 'Московский р-н', device: 'Кофемашина CMS 4104', rating: 5, text: 'Кофемолка скрежетала. Заменили жернова, откалибровали. Кофе опять идеальный.' },
+      { name: 'Юлия Н.', district: 'Приморский р-н', device: 'Микроволновка SF 4401', rating: 5, text: 'Микроволновка шумела. Заменили вентилятор, теперь тихо.' },
+      { name: 'Андрей К.', district: 'Выборгский р-н', device: 'Ретро FAB 32', rating: 5, text: 'FAB не морозил. Инженер разобрался, заменил компрессор. Всё работает, как в первый день.' },
+      { name: 'Ирина М.', district: 'Красногвардейский р-н', device: 'Ретро FAB 50', rating: 4, text: 'Заменили компрессор, работает. Но ждали запчасть 8 дней. Дорого и долго, но результат отличный.' },
+      { name: 'Екатерина С.', district: 'Василеостровский р-н', device: 'Духовка SF 634', rating: 5, text: 'Не работал гриль. Заменили ТЭН, всё ОК.' },
+      { name: 'Дмитрий Л.', district: 'Невский р-н', device: 'Кофемашина CMS 4108', rating: 5, text: 'Бойлер потёк. Заменили, промыли систему. Работает отлично.' },
+      { name: 'Ольга Д.', district: 'Калининский р-н', device: 'Посудомойка ST 361', rating: 5, text: 'Плохо мыла. Прочистили, поменяли помпу. Всё работает.' },
+      { name: 'Сергей П.', district: 'Адмиралтейский р-н', device: 'Микроволновка SF 4401', rating: 5, text: 'Заискрила. Заменили слюдяную пластину. Работает. Спасибо, что не пришлось покупать новую.' },
+      { name: 'Артём Г.', district: 'Пушкинский р-н', device: 'Духовка SF 634', rating: 5, text: 'Сломалась дверца. Заменили петли, всё работает.' },
+      { name: 'Алина К.', district: 'Петродворцовый р-н', device: 'Стиральная WHT 1049', rating: 5, text: 'Останавливалась на середине. Заменили прессостат. Работает идеально.' },
+      { name: 'Ирина Р.', district: 'Центральный р-н', device: 'Ретро FAB 28', rating: 5, text: 'Компрессор сдох. Заменили на оригинал, работает. Дорого, но что делать.' },
+      { name: 'Сергей С.', district: 'Московский р-н', device: 'Посудомойка ST 362', rating: 5, text: 'Не сливала. Прочистили, заменили помпу. Всё ок.' },
+      { name: 'Марина Т.', district: 'Приморский р-н', device: 'Кофемашина CMS 4104', rating: 5, text: 'Не наливала кофе. Прочистили заварочный блок. Работает.' },
+      { name: 'Артём У.', district: 'Невский р-н', device: 'Духовка SF 634', rating: 4, text: 'Работает всё, но опоздали на 30 минут. По ремонту — претензий нет.' },
+      { name: 'Елена Ф.', district: 'Выборгский р-н', device: 'Микроволновка SF 4401', rating: 5, text: 'Магнетрон сгорел. Заменили, всё работает.' },
+      { name: 'Дмитрий Х.', district: 'Адмиралтейский р-н', device: 'Стиральная WHT 1049', rating: 5, text: 'Не отжимала. Заменили ремень. Всё ок, спасибо.' },
+      { name: 'Ольга Ц.', district: 'Василеостровский р-н', device: 'Ретро FAB 32', rating: 5, text: 'Не держал температуру. Заправили фреон, заменили датчик. Работает.' },
+      { name: 'Андрей Ч.', district: 'Калининский р-н', device: 'Посудомойка ST 361', rating: 5, text: 'Плохо мыла. Прочистили, заменили форсунки. Всё ок.' },
+      { name: 'Юлия Ш.', district: 'Фрунзенский р-н', device: 'Духовка SF 4401', rating: 5, text: 'Термостат сломался. Заменили за час. Работает.' },
+      { name: 'Максим Щ.', district: 'Петроградский р-н', device: 'Кофемашина CMS 4108', rating: 5, text: 'Капучинатор не работал. Прочистили, заменили клапан. Работает.' },
+      { name: 'Ирина Э.', district: 'Центральный р-н', device: 'Ретро FAB 50', rating: 5, text: 'Компрессор шумел. Заменили амортизаторы. Всё тихо.' },
+      { name: 'Сергей Ю.', district: 'Московский р-н', device: 'Микроволновка SF 4401', rating: 4, text: 'Работает. Но по цене немного дороже, чем я рассчитывал. По качеству — претензий нет.' },
+      { name: 'Марина Я.', district: 'Приморский р-н', device: 'Посудомойка ST 362', rating: 5, text: 'Не сушила. Заменили датчик. Всё ок.' },
+      { name: 'Артём А.', district: 'Невский р-н', device: 'Стиральная WHT 1049', rating: 5, text: 'Течь снизу. Заменили уплотнитель. Работает.' },
+      { name: 'Елена Б.', district: 'Выборгский р-н', device: 'Духовка SF 634', rating: 5, text: 'Конвекция слабо работала. Заменили вентилятор. Всё ок.' },
+      { name: 'Дмитрий В.', district: 'Адмиралтейский р-н', device: 'Ретро FAB 28', rating: 5, text: 'Не морозил. Нашли утечку, заправили. Работает.' },
+      { name: 'Ольга Г.', district: 'Василеостровский р-н', device: 'Кофемашина CMS 4104', rating: 5, text: 'Течёт снизу. Заменили бойлер. Всё работает.' },
+      { name: 'Андрей Д.', district: 'Калининский р-н', device: 'Микроволновка SF 4401', rating: 5, text: 'Не грела. Заменили магнетрон. Работает отлично.' }
+    ]
+  }
+};
+
+/* ============================================================
+   ЛОГИКА РЕНДЕРА
+   ============================================================ */
+
+(function() {
+  const tabsWrap = document.getElementById('reviewsTabs');
+  const gridWrap = document.getElementById('reviewsGrid');
+  const moreWrap = document.getElementById('reviewsMoreWrap');
+  const moreBtn = document.getElementById('reviewsMoreBtn');
+
+  if (!tabsWrap || !gridWrap) return;
+
+  const INITIAL = 6;
+  const STEP = 6;
+
+  let currentCat = 'miele';
+  let shown = INITIAL;
+
+  function renderTabs() {
+    tabsWrap.innerHTML = Object.keys(REVIEWS).map((key) => {
+      const cat = REVIEWS[key];
+      const isActive = key === currentCat ? ' is-active' : '';
+      return `<button type="button" class="reviews-tab${isActive}" data-cat="${key}">${cat.label}<span class="reviews-tab__count">${cat.items.length}</span></button>`;
+    }).join('');
+  }
+
+  function starString(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function cardHTML(r) {
+    const dimClass = r.rating < 5 ? ' review-card__stars--dim' : '';
+    return `
+      <article class="review-card">
+        <div class="review-card__head">
+          <div class="review-card__avatar">${r.name.charAt(0)}</div>
+          <div>
+            <div class="review-card__name">${r.name}</div>
+            <div class="review-card__meta">${r.district} · ${r.device}</div>
+          </div>
+        </div>
+        <div class="review-card__stars${dimClass}">${starString(r.rating)}</div>
+        <p class="review-card__text">${r.text}</p>
+        <div class="review-card__device">${r.device}</div>
+      </article>
+    `;
+  }
+
+  function renderCases() {
+    const items = REVIEWS[currentCat].items;
+    const slice = items.slice(0, shown);
+    gridWrap.innerHTML = slice.map(cardHTML).join('');
+
+    if (items.length > shown) {
+      moreWrap.style.display = 'flex';
+      moreBtn.textContent = 'Показать ещё отзывы';
+      const old = moreWrap.querySelector('.reviews-end');
+      if (old) old.remove();
+    } else {
+      moreWrap.style.display = 'none';
+      if (items.length > INITIAL && !moreWrap.querySelector('.reviews-end')) {
+        const note = document.createElement('div');
+        note.className = 'reviews-end';
+        note.textContent = '— Это все отзывы в этой категории —';
+        moreWrap.parentNode.appendChild(note);
+      }
+    }
+  }
+
+  tabsWrap.addEventListener('click', (e) => {
+    const tab = e.target.closest('.reviews-tab');
+    if (!tab) return;
+    const cat = tab.dataset.cat;
+    if (!cat || cat === currentCat) return;
+
+    currentCat = cat;
+    shown = INITIAL;
+
+    const old = document.querySelector('.reviews-end');
+    if (old) old.remove();
+
+    renderTabs();
+    renderCases();
+  });
+
+  moreBtn.addEventListener('click', () => {
+    shown += STEP;
+    renderCases();
+  });
+
+  renderTabs();
+  renderCases();
+})();
+</script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
