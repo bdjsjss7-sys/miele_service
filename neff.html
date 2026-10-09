@@ -494,7 +494,8 @@
         </div>
       </div>
 
-      <form class="contacts__form" onsubmit="event.preventDefault(); alert('Заявка отправлена. Мы перезвоним в течение 15 минут.'); this.reset();">
+      <form class="contacts__form" action="https://formspree.io/f/maeqogzv" method="POST">
+  <input type="hidden" name="_subject" value="KLARWERK — новая заявка с сайта">
         <div class="contacts__form-title">Обратный звонок</div>
         <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и назовём вилку стоимости.</p>
         <input type="text" name="name" placeholder="Ваше имя" required>
