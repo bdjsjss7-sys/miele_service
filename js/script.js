@@ -183,9 +183,9 @@
       contacts.className = 'nav-contacts';
       contacts.innerHTML =
         '<div class="nav-contacts__label">Позвонить инженеру</div>' +
-        '<a href="tel:+79196989493" class="nav-contacts__phone">+7 (919) 698-94-93</a>' +
+        '<a href="tel:+79868311588" class="nav-contacts__phone">+7 (986) 831-15-88</a>' +
         '<div class="nav-contacts__note">Ежедневно, с 8:00 до 22:00</div>' +
-        '<a href="tel:+79196989493" class="nav-contacts__btn">Вызвать инженера</a>';
+        '<a href="tel:+79868311588" class="nav-contacts__btn">Вызвать инженера</a>';
       nav.appendChild(contacts);
     }
   }

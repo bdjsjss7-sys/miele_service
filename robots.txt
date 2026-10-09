@@ -3,4 +3,4 @@ Allow: /
 Disallow: /privacy.html
 Disallow: /404.html
 
-Sitemap: https://bdjsjss7-sys.github.io/miele_service/sitemap.xml
+Sitemap: https://premium-remont-miele.pro/sitemap.xml
