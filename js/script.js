@@ -196,14 +196,13 @@
       const tick = (now) => {
         const p = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - p, 3);
-        // ФОРМАТИРУЕМ С ПРОБЕЛОМ
+        
         const currentVal = Math.floor(eased * target);
         el.textContent = currentVal.toLocaleString('ru-RU') + suffix;
         
         if (p < 1) {
           requestAnimationFrame(tick);
         } else {
-          // Финальное значение тоже с пробелом
           el.textContent = target.toLocaleString('ru-RU') + suffix;
         }
       };
