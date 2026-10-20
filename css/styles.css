@@ -405,6 +405,7 @@ em {
   font-size: 1.02em;
   letter-spacing: -0.01em;
   display: inline-block;
+  line-height: 1.2; /* Добавлено для красивого переноса двух строк брендов */
 }
 
 @keyframes fade-up {
