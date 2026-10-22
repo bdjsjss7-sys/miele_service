@@ -142,7 +142,15 @@ em {
 }
 
 .preloader__logo {
+  width: 72px;
+  height: 72px;
+  background: url('../assets/logo-mark.svg') center / contain no-repeat;
   animation: preloader-pulse 1.5s ease-in-out infinite;
+}
+
+.preloader__logo circle,
+.preloader__logo text {
+  opacity: 0;
 }
 
 @keyframes preloader-pulse {
@@ -196,29 +204,30 @@ em {
 .header__logo:hover { opacity: 0.85; }
 
 .header__logo-mark {
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--brass);
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 0;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 20px;
-  color: var(--brass);
-  font-weight: 500;
-  font-style: italic;
   flex-shrink: 0;
-  transition: background 0.3s, transform 0.4s var(--ease);
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+  background: url('../assets/logo-mark.svg') center / contain no-repeat;
+  transition: filter 0.3s, transform 0.4s var(--ease);
 }
 
 .header__logo:hover .header__logo-mark {
-  background: var(--brass-glow);
-  transform: rotate(-8deg);
+  filter: drop-shadow(0 0 10px rgba(201, 169, 97, 0.22));
+  transform: scale(1.04);
 }
 
 .header__logo-text {
   display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
 }
 
 .header__nav {
