@@ -85,18 +85,18 @@
      БАЗА ОТЗЫВОВ (Для главной страницы)
      ========================================================== */
   const REVIEWS = [
-    { name: 'Анна К.', area: 'Приморский р-н', device: 'Кофемашина Miele', rating: 5, text: 'Инженер приехал через час после звонка. Разобрал, показал износ, починил. Всё аккуратно, чисто. Работает как новая.' },
-    { name: 'Дмитрий В.', area: 'Центральный р-н', device: 'Посудомойка Miele', rating: 5, text: 'Ошибка F11. Официальный сервис просил 18 000 и ждать деталь две недели. Инженер KLARWERK починил за 6 500 в тот же день, оригинальной запчастью.' },
-    { name: 'Юлия Д.', area: 'Центральный р-н', device: 'Индукция Neff', rating: 3, text: 'Сам ремонт качественный, панель работает. Но изначально по телефону назвали одну сумму за диагностику, а на месте взяли больше. Неприятно.' },
-    { name: 'Максим А.', area: 'Выборгский р-н', device: 'Посудомойка Miele', rating: 4, text: 'Работой довольны, всё починили. Один момент — инженер опоздал на час, предупредил за 20 минут. В остальном претензий нет.' },
-    { name: 'Екатерина М.', area: 'Петроградский р-н', device: 'Духовка Gaggenau', rating: 5, text: 'Долго искала нормальный сервис по Gaggenau. Здесь — единственные, кто реально разбирается. Всё объяснили, показали, гарантия 2 года.' },
-    { name: 'Игорь С.', area: 'Московский р-н', device: 'Стиральная Miele', rating: 5, text: 'Честные инженеры. Могли бы наговорить на замену подшипников, а поменяли помпу и всё. Сэкономили прилично.' },
-    { name: 'Ольга Р.', area: 'Выборгский р-н', device: 'Винный шкаф Miele', rating: 5, text: 'Винный шкаф перестал держать температуру. Инженер приехал с инструментами, нашёл утечку, заправил. Работает идеально.' },
-    { name: 'Сергей П.', area: 'Невский р-н', device: 'Индукционная панель Neff', rating: 5, text: 'Панель просто перестала включаться. Оказалось, модуль. Заменили за один визит, всё работает. Профессионалы своего дела.' },
-    { name: 'Мария Т.', area: 'Калининский р-н', device: 'Сушильная Miele', rating: 4, text: 'Сушилка с тепловым насосом перестала сушить. Инженер нашёл утечку фреона, заправил. Полёт нормальный. Сняла звезду за долгое ожидание.' },
-    { name: 'Алексей Ж.', area: 'Красногвардейский р-н', device: 'Кофемашина Neff', rating: 5, text: 'Потекло снизу. Оказался бойлер. Заменили за 2 часа, поставили оригинал. Дали гарантию 3 года.' },
-    { name: 'Наталья Б.', area: 'Фрунзенский р-н', device: 'Посудомойка Smeg', rating: 5, text: 'Не сушила посуду. Оказалось, вентилятор сушки. Заменили быстро, объяснили причину.' },
-    { name: 'Владимир К.', area: 'Приморский р-н', device: 'Духовка Miele', rating: 5, text: 'Пиролиз перестал работать. Сервис по телефону развёл руками. Эти ребята приехали, разобрались, починили.' }
+    { name: 'Анна К.', area: 'Приморский р-н', device: 'Кофемашина Miele', rating: 5, text: 'Кофемашина утром просто перестала наливать кофе. Инженер приехал примерно через час, разобрал её прямо при мне и показал изношенную деталь. После ремонта всё проверили несколько раз — работает как раньше.' },
+    { name: 'Дмитрий В.', area: 'Центральный р-н', device: 'Посудомойка Miele', rating: 5, text: 'На дисплее появилась F11, вода осталась внутри. По телефону сразу сказали возможные причины и вилку цены. Мастер справился за один приезд, итоговая сумма не изменилась.' },
+    { name: 'Юлия Д.', area: 'Центральный р-н', device: 'Индукция Neff', rating: 3, text: 'Саму панель починили хорошо — пользуюсь уже несколько месяцев. Но за диагностику на месте вышло больше, чем мне назвали по телефону. Хотелось бы, чтобы такие моменты проговаривали заранее.' },
+    { name: 'Максим А.', area: 'Выборгский р-н', device: 'Посудомойка Miele', rating: 4, text: 'К ремонту вопросов нет: машинка снова нормально сливает и не гудит. Инженер задержался почти на час, но всё-таки позвонил и предупредил. За это снимаю одну звезду.' },
+    { name: 'Екатерина М.', area: 'Петроградский р-н', device: 'Духовка Gaggenau', rating: 5, text: 'С Gaggenau до этого два мастера даже не захотели связываться. Здесь инженер приехал с нужной диагностикой, спокойно нашёл причину и объяснил, что именно вышло из строя. Духовка снова греет ровно.' },
+    { name: 'Игорь С.', area: 'Московский р-н', device: 'Стиральная Miele', rating: 5, text: 'Я уже приготовился к замене подшипников и большой сумме. Оказалось, проблема была в помпе. Её и заменили — без попыток продать лишние работы. Такой подход уважаю.' },
+    { name: 'Ольга Р.', area: 'Выборгский р-н', device: 'Винный шкаф Miele', rating: 5, text: 'Шкаф начал гулять по температуре, для вина это критично. Нашли небольшую утечку, устранили и заправили контур. Уже больше месяца температура держится стабильно.' },
+    { name: 'Сергей П.', area: 'Невский р-н', device: 'Индукционная панель Neff', rating: 5, text: 'Панель погасла прямо во время готовки. Причину нашли в силовом модуле, нужная деталь у мастера была с собой. Через пару часов уже всё работало.' },
+    { name: 'Мария Т.', area: 'Калининский р-н', device: 'Сушильная Miele', rating: 4, text: 'Сушилка крутила барабан, но бельё оставалось влажным. Инженер нашёл утечку в контуре теплового насоса и всё восстановил. Сделали хорошо, только ожидание выезда оказалось дольше обещанного.' },
+    { name: 'Алексей Ж.', area: 'Красногвардейский р-н', device: 'Кофемашина Neff', rating: 5, text: 'Под машиной каждое утро появлялась вода. Оказался бойлер. Замену согласовали до начала работ, старую деталь оставили и показали место протечки. Всё прозрачно.' },
+    { name: 'Наталья Б.', area: 'Фрунзенский р-н', device: 'Посудомойка Smeg', rating: 5, text: 'Посудомойка мыла нормально, но посуда выходила мокрой. Поменяли вентилятор сушки, заодно объяснили, как чистить фильтры. Сейчас даже пластик высыхает заметно лучше.' },
+    { name: 'Владимир К.', area: 'Приморский р-н', device: 'Духовка Miele', rating: 5, text: 'Перестал запускаться пиролиз. По телефону никто толком не мог объяснить причину, а здесь инженер разобрался на месте. После ремонта специально прогнали полный цикл — всё работает.' }
   ];
 
   /* ==========================================================
@@ -411,10 +411,242 @@
     }, { passive: true });
   }
 
+
+  /* ==========================================================
+     11. АТРИБУЦИЯ, АНТИФРОД И ЗАЩИЩЁННЫЕ ФОРМЫ
+     ========================================================== */
+  function safeStorageGet(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : fallback;
+    } catch (_) {
+      return fallback;
+    }
+  }
+
+  function safeStorageSet(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) {}
+  }
+
+  function metrikaGoal(goal, params) {
+    if (typeof window.ym === 'function') {
+      window.ym(113586542, 'reachGoal', goal, params || {});
+    }
+  }
+
+  function buildSessionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    return 'kw-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function initTrafficProtection() {
+    const now = Date.now();
+    let sessionId = safeStorageGet('kw_session_id', '');
+    if (!sessionId) {
+      sessionId = buildSessionId();
+      safeStorageSet('kw_session_id', sessionId);
+    }
+
+    const query = new URLSearchParams(window.location.search);
+    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'yclid'];
+    const current = {};
+    keys.forEach((key) => {
+      const value = query.get(key);
+      if (value) current[key] = value.slice(0, 300);
+    });
+
+    let attribution = safeStorageGet('kw_attribution', {});
+    if (Object.keys(current).length) {
+      attribution = {
+        ...attribution,
+        ...current,
+        first_landing: attribution.first_landing || window.location.href,
+        first_referrer: attribution.first_referrer || document.referrer,
+        updated_at: now
+      };
+      safeStorageSet('kw_attribution', attribution);
+    }
+
+    let adVisits = safeStorageGet('kw_ad_visits', []);
+    if (current.yclid) {
+      adVisits = adVisits.filter((item) => now - item.time < 60 * 60 * 1000);
+      adVisits.push({ time: now, yclid: current.yclid });
+      safeStorageSet('kw_ad_visits', adVisits);
+    }
+
+    const distinctClicks = new Set(adVisits.map((item) => item.yclid)).size;
+    const suspicious = adVisits.length >= 5 || distinctClicks >= 4;
+    window.KLARWERK_TRAFFIC = {
+      sessionId,
+      attribution,
+      suspicious,
+      repeatVisits: adVisits.length,
+      distinctClicks
+    };
+
+    if (typeof window.ym === 'function') {
+      window.ym(113586542, 'params', {
+        traffic_quality: {
+          ad_visit: Boolean(attribution.yclid),
+          suspected_repeat_click: suspicious,
+          repeat_visits_60m: adVisits.length,
+          distinct_yclid_60m: distinctClicks
+        }
+      });
+    }
+  }
+
+  function initConversionTracking() {
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (link) {
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('tel:')) metrikaGoal('phone_click', { href });
+        if (href.includes('t.me/klarwerk_spb')) metrikaGoal('telegram_click', { page: location.pathname });
+        if (href.includes('instagram.com/klarwerk_spb')) metrikaGoal('instagram_click', { page: location.pathname });
+      }
+
+      const calcButton = event.target.closest('.calc__option, [data-group]');
+      if (calcButton) metrikaGoal('calculator_interaction', { page: location.pathname });
+    });
+  }
+
+  function initProtectedForms() {
+    const forms = document.querySelectorAll('form[data-protected-form]');
+    if (!forms.length) return;
+    const pageOpenedAt = Date.now();
+
+    forms.forEach((form) => {
+      const phone = form.querySelector('input[name="phone"]');
+      if (phone) {
+        phone.addEventListener('input', () => {
+          const digits = phone.value.replace(/\D/g, '').replace(/^8/, '7').slice(0, 11);
+          if (!digits) return;
+          let value = '+7';
+          const body = digits.startsWith('7') ? digits.slice(1) : digits;
+          if (body.length) value += ' (' + body.slice(0, 3);
+          if (body.length >= 3) value += ') ' + body.slice(3, 6);
+          if (body.length >= 6) value += '-' + body.slice(6, 8);
+          if (body.length >= 8) value += '-' + body.slice(8, 10);
+          phone.value = value;
+        });
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const status = form.querySelector('.form-status');
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button ? button.textContent : '';
+        const setStatus = (message, type) => {
+          if (!status) return;
+          status.className = 'form-status' + (type ? ' form-status--' + type : '');
+          status.innerHTML = message;
+        };
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          setStatus('Проверьте обязательные поля.', 'error');
+          return;
+        }
+
+        const honeypot = form.querySelector('input[name="_gotcha"]');
+        if (honeypot && honeypot.value) {
+          setStatus('Спасибо! Сообщение принято.', 'success');
+          return;
+        }
+
+        if (Date.now() - pageOpenedAt < 2500) {
+          setStatus('Подождите пару секунд и отправьте форму ещё раз.', 'error');
+          return;
+        }
+
+        if (phone && phone.value.replace(/\D/g, '').length < 11) {
+          phone.setCustomValidity('Введите полный номер телефона');
+          phone.reportValidity();
+          phone.setCustomValidity('');
+          return;
+        }
+
+        const now = Date.now();
+        let attempts = safeStorageGet('kw_form_attempts', []);
+        attempts = attempts.filter((time) => now - time < 15 * 60 * 1000);
+        if (attempts.length >= 3) {
+          setStatus('Мы уже получили несколько обращений. Позвоните по <a href="tel:+79868311588">+7 (986) 831-15-88</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          return;
+        }
+
+        const data = new FormData(form);
+        const subject = String(data.get('_subject') || 'form');
+        const identity = String(data.get('phone') || data.get('name') || '');
+        const message = String(data.get('message') || data.get('text') || '').slice(0, 160);
+        const fingerprint = [subject, identity, message].join('|').toLowerCase();
+        const last = safeStorageGet('kw_last_submission', {});
+        if (last.fingerprint === fingerprint && now - last.time < 10 * 60 * 1000) {
+          setStatus('Эта заявка уже отправлена. Мы свяжемся с вами в ближайшее время.', 'success');
+          return;
+        }
+
+        const traffic = window.KLARWERK_TRAFFIC || {};
+        const attribution = traffic.attribution || {};
+        Object.entries(attribution).forEach(([key, value]) => {
+          if (value !== undefined && value !== null) data.set(key, String(value));
+        });
+        data.set('_page', window.location.href);
+        data.set('_landing_page', attribution.first_landing || window.location.href);
+        data.set('_referrer', attribution.first_referrer || document.referrer || 'direct');
+        data.set('_session_id', traffic.sessionId || '');
+        data.set('_traffic_quality', traffic.suspicious ? 'suspected_repeat_click' : 'normal');
+        data.set('_page_time_seconds', String(Math.round((now - pageOpenedAt) / 1000)));
+
+        if (button) {
+          button.disabled = true;
+          button.classList.add('is-loading');
+          button.textContent = 'Отправляем…';
+        }
+        setStatus('Отправляем обращение…', '');
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' }
+          });
+          if (!response.ok) throw new Error('Form submit failed');
+
+          attempts.push(now);
+          safeStorageSet('kw_form_attempts', attempts);
+          safeStorageSet('kw_last_submission', { fingerprint, time: now });
+          form.reset();
+          setStatus(form.classList.contains('review-form')
+            ? 'Спасибо! Отзыв отправлен на модерацию.'
+            : 'Спасибо! Заявка отправлена. Мы скоро вам позвоним.', 'success');
+          metrikaGoal(form.classList.contains('review-form') ? 'review_success' : 'form_success', {
+            page: location.pathname,
+            traffic_quality: traffic.suspicious ? 'suspected_repeat_click' : 'normal'
+          });
+        } catch (_) {
+          setStatus('Не удалось отправить форму. Позвоните по <a href="tel:+79868311588">+7 (986) 831-15-88</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          metrikaGoal('form_error', { page: location.pathname });
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.classList.remove('is-loading');
+            button.textContent = originalText;
+          }
+        }
+      });
+    });
+  }
+
   /* ==========================================================
      ИНИЦИАЛИЗАЦИЯ
      ========================================================== */
   function init() {
+    initTrafficProtection();
+    initConversionTracking();
+    initProtectedForms();
     initPreloader();
     initHeaderScroll();
     initBurger();

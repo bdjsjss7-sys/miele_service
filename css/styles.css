@@ -3292,3 +3292,59 @@ a.contacts__item:hover {
 .nav-contacts {
   display: none;
 }
+
+
+/* ============================================================
+   ЗАЩИЩЁННЫЕ ФОРМЫ И СТАТУС ОТПРАВКИ
+   ============================================================ */
+.form-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.form-status {
+  min-height: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-2);
+  transition: color 0.25s ease;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status--success {
+  color: #8fd6a4;
+}
+
+.form-status--error {
+  color: #e7a69c;
+}
+
+.form-status a,
+.contacts__form-note a,
+.review-form__note a {
+  color: var(--brass);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 169, 97, 0.35);
+  text-underline-offset: 3px;
+}
+
+button.is-loading {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

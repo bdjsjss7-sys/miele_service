@@ -77,6 +77,102 @@
 }
 </script>
 <script type="text/javascript" src="/metrika.js"></script>
+
+<!-- KLARWERK SEO -->
+<link rel="canonical" href="https://www.premium-remont-miele.pro/miele.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta property="og:url" content="https://www.premium-remont-miele.pro/miele.html">
+<meta property="og:image" content="https://www.premium-remont-miele.pro/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KLARWERK — инженерный ремонт премиальной техники">
+<meta property="og:site_name" content="KLARWERK">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ремонт техники Miele на дому в СПб — все линейки | KLARWERK">
+<meta name="twitter:description" content="Ремонт премиальной техники Miele на дому в Санкт-Петербурге. Кофемашины CM, стиральные W1, посудомойки G, духовки H, холодильники K, винные шкафы. Оригинальные запчасти, гарантия до 5 лет.">
+<meta name="twitter:image" content="https://www.premium-remont-miele.pro/assets/og-cover.png">
+<meta name="geo.region" content="RU-SPE">
+<meta name="geo.placename" content="Санкт-Петербург">
+<script type="application/ld+json" id="klarwerk-seo-graph">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "HomeAndConstructionBusiness"
+      ],
+      "@id": "https://www.premium-remont-miele.pro/#business",
+      "name": "KLARWERK",
+      "legalName": "ИП «Петревич Диана Олеговна»",
+      "taxID": "591963341",
+      "url": "https://www.premium-remont-miele.pro/",
+      "logo": "https://www.premium-remont-miele.pro/assets/logo-mark.svg",
+      "image": "https://www.premium-remont-miele.pro/assets/og-cover.png",
+      "telephone": [
+        "+7 986 831-15-88",
+        "+7 919 698-94-93"
+      ],
+      "email": "miele.zentrum.service@gmail.com",
+      "priceRange": "₽₽₽",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Санкт-Петербург",
+        "addressCountry": "RU"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Санкт-Петербург"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "22:00"
+        }
+      ],
+      "sameAs": [
+        "https://t.me/klarwerk_spb",
+        "https://www.instagram.com/klarwerk_spb/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.premium-remont-miele.pro/#website",
+      "url": "https://www.premium-remont-miele.pro/",
+      "name": "KLARWERK",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "https://www.premium-remont-miele.pro/#business"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.premium-remont-miele.pro/miele.html#webpage",
+      "url": "https://www.premium-remont-miele.pro/miele.html",
+      "name": "Ремонт техники Miele на дому в СПб — все линейки | KLARWERK",
+      "description": "Ремонт премиальной техники Miele на дому в Санкт-Петербурге. Кофемашины CM, стиральные W1, посудомойки G, духовки H, холодильники K, винные шкафы. Оригинальные запчасти, гарантия до 5 лет.",
+      "inLanguage": "ru-RU",
+      "isPartOf": {
+        "@id": "https://www.premium-remont-miele.pro/#website"
+      },
+      "about": {
+        "@id": "https://www.premium-remont-miele.pro/#business"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -496,15 +592,17 @@
         </div>
       </div>
 
-      <form class="contacts__form" action="https://formspree.io/f/maeqogzv" method="POST">
+      <form class="contacts__form" action="https://formspree.io/f/maeqogzv" method="POST" novalidate data-protected-form>
   <input type="hidden" name="_subject" value="KLARWERK — новая заявка с сайта">
-        <div class="contacts__form-title">Обратный звонок</div>
+        <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="contacts__form-title">Обратный звонок</div>
         <p class="contacts__form-lead">Оставьте номер — перезвоним в течение 15 минут и назовём вилку стоимости.</p>
-        <input type="text" name="name" placeholder="Ваше имя" required>
-        <input type="tel" name="phone" placeholder="Телефон" required>
+        <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+        <input type="tel" name="phone" placeholder="Телефон" required inputmode="tel" autocomplete="tel" aria-describedby="phone-hint">
         <textarea name="message" rows="3" placeholder="Модель Miele и что случилось?"></textarea>
         <button type="submit" class="btn btn--primary">Жду звонка</button>
-        <p class="contacts__form-note">Нажимая, вы соглашаетесь на обработку персональных данных.</p>
+        <div class="form-status" role="status" aria-live="polite"></div>
+        <p class="contacts__form-note">Отправляя форму, вы соглашаетесь с <a href="privacy.html">политикой обработки данных</a>.</p>
       </form>
     </div>
   </div>
@@ -544,7 +642,7 @@
       <span class="header__logo-text">KLARWERK</span>
     </div>
     <div class="footer__copy">
-      © 2025 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.<br>
+      © 2025–2026 KLARWERK. Инженерный сервис по ремонту премиальной техники Miele, Neff, Gaggenau.<br>
       <span style="display: inline-flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: 12px; line-height: 1.5; opacity: 0.68;"><span>ИП «Петревич Диана Олеговна»</span><span>УНП 591963341</span></span>
     </div>
     <div class="footer__links">

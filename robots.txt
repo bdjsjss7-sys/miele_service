@@ -3,4 +3,4 @@ Allow: /
 Disallow: /privacy.html
 Disallow: /404.html
 
-Sitemap: https://premium-remont-miele.pro/sitemap.xml
+Sitemap: https://www.premium-remont-miele.pro/sitemap.xml
