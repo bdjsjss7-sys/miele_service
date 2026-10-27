@@ -452,23 +452,23 @@
     const cookingPages = new Set(['ovens.html', 'induction.html', 'microwaves.html', 'hoods.html']);
     const brandPages = new Set(['miele.html', 'neff.html', 'gaggenau.html', 'smeg.html', 'bosch.html', 'siemens.html']);
 
-    let image = 'assets/editorial/control-board-diagnostics.webp';
+    let image = '/assets/editorial/control-board-diagnostics.webp';
     let brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'];
 
     if (coffeePages.has(page)) {
-      image = 'assets/editorial/coffee-service-v2.webp';
+      image = '/assets/editorial/coffee-service-v2.webp';
       brands = ['Miele', 'Jura', 'Gaggenau', 'Smeg', 'Neff'];
     } else if (laundryPages.has(page)) {
-      image = 'assets/editorial/laundry-service-v2.webp';
+      image = '/assets/editorial/laundry-service-v2.webp';
       brands = ['Miele', 'ASKO', 'V-ZUG', 'Neff', 'Bosch'];
     } else if (coldPages.has(page)) {
-      image = 'assets/editorial/refrigeration-service-v2.webp';
+      image = '/assets/editorial/refrigeration-service-v2.webp';
       brands = ['Liebherr', 'Miele', 'Sub-Zero', 'Gaggenau', 'V-ZUG'];
     } else if (cookingPages.has(page)) {
-      image = 'assets/editorial/induction-diagnostics.webp';
+      image = '/assets/editorial/induction-diagnostics.webp';
       brands = ['Miele', 'Gaggenau', 'Neff', 'Smeg', 'BORA'];
     } else if (brandPages.has(page)) {
-      image = 'assets/editorial/control-board-diagnostics.webp';
+      image = '/assets/editorial/control-board-diagnostics.webp';
       const title = (document.querySelector('.page-hero__title')?.textContent || '').toLowerCase();
       brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'].filter((brand, index) =>
         index === 0 || !title.includes(brand.toLowerCase())
