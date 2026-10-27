@@ -2023,9 +2023,35 @@ a.contacts__item:hover {
 
 .page-hero {
   position: relative;
-  padding: 180px 0 80px;
+  min-height: 720px;
+  padding: 170px 0 88px;
   overflow: hidden;
   border-bottom: 1px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.page-hero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--page-hero-image);
+  background-position: center;
+  background-size: cover;
+  filter: saturate(0.82) contrast(1.08) brightness(0.72);
+  transform: scale(1.01);
+}
+
+.page-hero--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(7,7,7,0.98) 0%, rgba(7,7,7,0.92) 34%, rgba(7,7,7,0.63) 58%, rgba(7,7,7,0.22) 100%),
+    linear-gradient(180deg, rgba(7,7,7,0.56) 0%, transparent 34%, rgba(7,7,7,0.82) 100%);
 }
 
 .page-hero__bg {
@@ -2061,7 +2087,8 @@ a.contacts__item:hover {
 .page-hero__inner {
   position: relative;
   z-index: 1;
-  max-width: 900px;
+  width: 100%;
+  max-width: 1280px;
 }
 
 .breadcrumbs {
@@ -2106,6 +2133,8 @@ a.contacts__item:hover {
   letter-spacing: -0.03em;
   margin-bottom: 24px;
   line-height: 1.08;
+  max-width: 780px;
+  text-shadow: 0 3px 28px rgba(0,0,0,0.56);
 }
 
 .page-hero__lead {
@@ -2113,6 +2142,67 @@ a.contacts__item:hover {
   color: var(--text-2);
   line-height: 1.75;
   max-width: 640px;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.72);
+}
+
+.page-hero__brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 720px;
+  margin-top: 28px;
+}
+
+.page-hero__brands span {
+  padding: 8px 12px;
+  border: 1px solid rgba(201,169,97,0.28);
+  border-radius: 999px;
+  background: rgba(8,8,8,0.44);
+  color: rgba(239,237,232,0.84);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.page-hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  width: fit-content;
+  margin-top: 30px;
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 14px;
+  background: rgba(8,8,8,0.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.page-hero__proof span {
+  display: grid;
+  gap: 4px;
+  min-width: 158px;
+  padding: 15px 20px;
+  color: rgba(239,237,232,0.58);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-hero__proof span + span {
+  border-left: 1px solid rgba(255,255,255,0.09);
+}
+
+.page-hero__proof strong {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* ---------- СЕКЦИЯ БЕЗ ВЕРХНЕГО ПАДДИНГА ---------- */
@@ -2682,6 +2772,50 @@ a.contacts__item:hover {
 }
 
 @media (max-width: 768px) {
+  .page-hero {
+    min-height: 0;
+    padding: 132px 0 54px;
+    align-items: flex-end;
+  }
+
+  .page-hero--photo::before {
+    background-position: 63% center;
+    filter: saturate(0.72) contrast(1.06) brightness(0.58);
+  }
+
+  .page-hero--photo::after {
+    background:
+      linear-gradient(90deg, rgba(7,7,7,0.96) 0%, rgba(7,7,7,0.78) 72%, rgba(7,7,7,0.48) 100%),
+      linear-gradient(180deg, rgba(7,7,7,0.55) 0%, rgba(7,7,7,0.3) 28%, rgba(7,7,7,0.94) 100%);
+  }
+
+  .page-hero__brands {
+    gap: 6px;
+    margin-top: 22px;
+  }
+
+  .page-hero__brands span {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .page-hero__proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .page-hero__proof span {
+    min-width: 0;
+    padding: 13px 10px;
+    font-size: 8px;
+  }
+
+  .page-hero__proof strong {
+    font-size: 15px;
+  }
+
   .page-hero__actions {
     flex-direction: column;
     align-items: stretch;

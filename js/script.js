@@ -434,6 +434,71 @@
     }
   }
 
+  /* ==========================================================
+     КОНВЕРСИОННЫЙ HERO НА ВНУТРЕННИХ СТРАНИЦАХ
+     ========================================================== */
+  function initPageHeroEnhancement() {
+    const hero = document.querySelector('.page-hero');
+    if (!hero) return;
+
+    const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (page === 'privacy.html' || page === '404.html' || page === 'index.html') return;
+    const coffeePages = new Set(['coffee-machines.html']);
+    const laundryPages = new Set([
+      'washing-machines.html', 'dishwashers.html', 'dryers.html',
+      'ironing-stations.html', 'vacuum-cleaners.html'
+    ]);
+    const coldPages = new Set(['fridges.html']);
+    const cookingPages = new Set(['ovens.html', 'induction.html', 'microwaves.html', 'hoods.html']);
+    const brandPages = new Set(['miele.html', 'neff.html', 'gaggenau.html', 'smeg.html', 'bosch.html', 'siemens.html']);
+
+    let image = 'assets/editorial/control-board-diagnostics.webp';
+    let brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'];
+
+    if (coffeePages.has(page)) {
+      image = 'assets/editorial/coffee-service-v2.webp';
+      brands = ['Miele', 'Jura', 'Gaggenau', 'Smeg', 'Neff'];
+    } else if (laundryPages.has(page)) {
+      image = 'assets/editorial/laundry-service-v2.webp';
+      brands = ['Miele', 'ASKO', 'V-ZUG', 'Neff', 'Bosch'];
+    } else if (coldPages.has(page)) {
+      image = 'assets/editorial/refrigeration-service-v2.webp';
+      brands = ['Liebherr', 'Miele', 'Sub-Zero', 'Gaggenau', 'V-ZUG'];
+    } else if (cookingPages.has(page)) {
+      image = 'assets/editorial/induction-diagnostics.webp';
+      brands = ['Miele', 'Gaggenau', 'Neff', 'Smeg', 'BORA'];
+    } else if (brandPages.has(page)) {
+      image = 'assets/editorial/control-board-diagnostics.webp';
+      const title = (document.querySelector('.page-hero__title')?.textContent || '').toLowerCase();
+      brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'].filter((brand, index) =>
+        index === 0 || !title.includes(brand.toLowerCase())
+      );
+    }
+
+    hero.classList.add('page-hero--photo');
+    hero.style.setProperty('--page-hero-image', `url("${image}")`);
+
+    const inner = hero.querySelector('.page-hero__inner');
+    const actions = hero.querySelector('.page-hero__actions');
+    if (!inner || !actions || inner.querySelector('.page-hero__proof')) return;
+
+    const brandRow = document.createElement('div');
+    brandRow.className = 'page-hero__brands';
+    brandRow.setAttribute('aria-label', 'Обслуживаемые премиальные бренды');
+    brandRow.innerHTML = brands.map((brand) => `<span>${brand}</span>`).join('');
+
+    const proof = document.createElement('div');
+    proof.className = 'page-hero__proof';
+    proof.innerHTML = `
+      <span><strong>от 90 минут</strong> выезд инженера</span>
+      <span><strong>от 1 500 ₽</strong> диагностика</span>
+      <span><strong>до 5 лет</strong> гарантия</span>
+    `;
+
+    actions.before(brandRow);
+    actions.after(proof);
+  }
+
   function buildSessionId() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {
       return window.crypto.randomUUID();
@@ -644,6 +709,7 @@
      ИНИЦИАЛИЗАЦИЯ
      ========================================================== */
   function init() {
+    initPageHeroEnhancement();
     initTrafficProtection();
     initConversionTracking();
     initProtectedForms();
