@@ -490,6 +490,7 @@
     const proof = document.createElement('div');
     proof.className = 'page-hero__proof';
     proof.innerHTML = `
+      <span class="page-hero__proof-home"><strong>у вас дома</strong> при вас · без вывоза</span>
       <span><strong>от 90 минут</strong> выезд инженера</span>
       <span><strong>от 1 500 ₽</strong> диагностика</span>
       <span><strong>до 5 лет</strong> гарантия</span>
@@ -497,6 +498,16 @@
 
     actions.before(brandRow);
     actions.after(proof);
+  }
+
+  function initHomeServicePromise() {
+    document.querySelectorAll('.contacts__form-lead').forEach((lead) => {
+      if (lead.parentElement?.querySelector('.form-home-promise')) return;
+      const promise = document.createElement('div');
+      promise.className = 'form-home-promise';
+      promise.innerHTML = '<strong>Ремонт на дому, при вас</strong><span>Без вывоза техники в мастерскую</span>';
+      lead.after(promise);
+    });
   }
 
   function buildSessionId() {
@@ -710,6 +721,7 @@
      ========================================================== */
   function init() {
     initPageHeroEnhancement();
+    initHomeServicePromise();
     initTrafficProtection();
     initConversionTracking();
     initProtectedForms();
