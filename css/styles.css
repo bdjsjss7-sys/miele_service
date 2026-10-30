@@ -81,6 +81,42 @@ input, textarea { font: inherit; color: inherit; }
 
 ::selection { background: var(--brass); color: var(--bg); }
 
+/* Карточки этапов на профильных SEO-страницах */
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.process-card {
+  min-height: 220px;
+  padding: 28px;
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+}
+
+.process-card__num {
+  margin-bottom: 42px;
+  color: var(--brass);
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: italic;
+}
+
+.process-card h3 { margin-bottom: 12px; }
+.process-card p { color: var(--text-2); font-size: 14px; line-height: 1.7; }
+
+@media (max-width: 900px) {
+  .process__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .process__grid { grid-template-columns: 1fr; }
+  .process-card { min-height: 0; }
+  .process-card__num { margin-bottom: 24px; }
+}
+
 /* Скроллбар */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
