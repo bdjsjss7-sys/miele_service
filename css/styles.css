@@ -1471,6 +1471,34 @@ a.contacts__item:hover {
   margin-top: 6px;
 }
 
+.form-consent {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin-top: 8px;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+
+.form-consent input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--brass);
+  cursor: pointer;
+}
+
+.form-consent a {
+  color: var(--brass);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 169, 97, 0.35);
+  text-underline-offset: 3px;
+}
+
 /* ============================================================
    ФУТЕР
    ============================================================ */
