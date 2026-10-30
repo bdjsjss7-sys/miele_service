@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /privacy.html
 Disallow: /404.html
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid /
 
 Host: www.premium-remont-miele.pro
 Sitemap: https://www.premium-remont-miele.pro/sitemap.xml
