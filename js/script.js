@@ -105,11 +105,11 @@
   function initPreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
-    const hide = () => setTimeout(() => preloader.classList.add('is-hidden'), 350);
+    const hide = () => setTimeout(() => preloader.classList.add('is-hidden'), 80);
     if (document.readyState === 'complete') hide();
     else {
       window.addEventListener('load', hide);
-      setTimeout(hide, 2500);
+      setTimeout(hide, 1800);
     }
   }
 
