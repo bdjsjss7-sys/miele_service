@@ -1474,7 +1474,10 @@ a.contacts__item:hover {
 
 .footer__links {
   display: flex;
-  gap: 24px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  max-width: 460px;
   font-size: 13px;
   color: var(--text-3);
 }
