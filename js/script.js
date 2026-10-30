@@ -493,7 +493,7 @@
       <span class="page-hero__proof-home"><strong>у вас дома</strong> при вас · без вывоза</span>
       <span><strong>от 90 минут</strong> выезд инженера</span>
       <span><strong>от 1 500 ₽</strong> диагностика</span>
-      <span><strong>до 5 лет</strong> гарантия</span>
+      <span><strong>до 12 месяцев</strong> гарантия</span>
     `;
 
     actions.before(brandRow);
