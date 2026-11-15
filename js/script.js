@@ -598,14 +598,18 @@
       const phone = form.querySelector('input[name="phone"]');
       if (phone) {
         phone.addEventListener('input', () => {
-          const digits = phone.value.replace(/\D/g, '').replace(/^8/, '7').slice(0, 11);
+          const digits = phone.value.replace(/\D/g, '');
           if (!digits) return;
+          let body = digits;
+          if (body.startsWith('375')) body = body.slice(3);
+          else if (body.startsWith('80')) body = body.slice(2);
+          else if (body.startsWith('8')) body = body.slice(1);
+          body = body.slice(0, 9);
           let value = '+375';
-          const body = digits.startsWith('7') ? digits.slice(1) : digits;
-          if (body.length) value += ' (' + body.slice(0, 3);
-          if (body.length >= 3) value += ') ' + body.slice(3, 6);
-          if (body.length >= 6) value += '-' + body.slice(6, 8);
-          if (body.length >= 8) value += '-' + body.slice(8, 10);
+          if (body.length) value += ' (' + body.slice(0, 2);
+          if (body.length >= 2) value += ') ' + body.slice(2, 5);
+          if (body.length >= 5) value += '-' + body.slice(5, 7);
+          if (body.length >= 7) value += '-' + body.slice(7, 9);
           phone.value = value;
         });
       }
@@ -638,7 +642,7 @@
           return;
         }
 
-        if (phone && phone.value.replace(/\D/g, '').length < 11) {
+        if (phone && phone.value.replace(/\D/g, '').length < 12) {
           phone.setCustomValidity('Введите полный номер телефона');
           phone.reportValidity();
           phone.setCustomValidity('');
