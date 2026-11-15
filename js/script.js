@@ -244,17 +244,17 @@
     const calcValue = document.getElementById('calcValue');
     if (!calcValue) return;
     const prices = {
-      coffee:    { miele: 4500, neff: 3800, gaggenau: 5000, smeg: 3800, bosch: 3200, other: 3000 },
-      dish:      { miele: 4200, neff: 3400, gaggenau: 4500, smeg: 3200, bosch: 3000, other: 2800 },
-      wash:      { miele: 4500, neff: 3800, gaggenau: 4500, smeg: 3500, bosch: 3200, other: 3000 },
-      oven:      { miele: 4200, neff: 3400, gaggenau: 4800, smeg: 3400, bosch: 3000, other: 2800 },
-      induction: { miele: 4500, neff: 3800, gaggenau: 5200, smeg: 3800, bosch: 3400, other: 3000 },
-      fridge:    { miele: 5500, neff: 4500, gaggenau: 6000, smeg: 4500, bosch: 4000, other: 3500 }
+      coffee:    { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 35, other: 35 },
+      dish:      { miele: 40, neff: 35, gaggenau: 45, smeg: 35, bosch: 35, other: 35 },
+      wash:      { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 35, other: 35 },
+      oven:      { miele: 40, neff: 35, gaggenau: 45, smeg: 35, bosch: 35, other: 35 },
+      induction: { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 40, other: 35 },
+      fridge:    { miele: 45, neff: 45, gaggenau: 45, smeg: 45, bosch: 40, other: 40 }
     };
     const state = { type: 'coffee', brand: 'miele' };
-    const fmt = (n) => 'от ' + n.toLocaleString('ru-RU') + ' ₽';
+    const fmt = (n) => 'от ' + n + ' BYN';
     const update = () => {
-      const price = (prices[state.type] && prices[state.type][state.brand]) || 3000;
+      const price = (prices[state.type] && prices[state.type][state.brand]) || 35;
       calcValue.style.opacity = '0';
       setTimeout(() => {
         calcValue.textContent = fmt(price);
@@ -600,7 +600,7 @@
         phone.addEventListener('input', () => {
           const digits = phone.value.replace(/\D/g, '').replace(/^8/, '7').slice(0, 11);
           if (!digits) return;
-          let value = '+7';
+          let value = '+375';
           const body = digits.startsWith('7') ? digits.slice(1) : digits;
           if (body.length) value += ' (' + body.slice(0, 3);
           if (body.length >= 3) value += ') ' + body.slice(3, 6);
