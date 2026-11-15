@@ -127,17 +127,21 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "08:00",
-          "closes": "22:00"
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "12:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "18:00"
         }
       ],
     },
@@ -523,7 +527,7 @@
           </div>
           <div class="contacts__item">
             <span class="contacts__item-label">Режим работы</span>
-            <span class="contacts__item-value">Ежедневно, 8:00 — 22:00</span>
+            <span class="contacts__item-value">Пн–Пт 11:00–20:00 · Сб 12:00–20:00 · Вс 13:00–18:00</span>
           </div>
         </div>
       </div>
