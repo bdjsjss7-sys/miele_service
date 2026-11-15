@@ -242,6 +242,7 @@
       wash: 35,
       oven: 35,
       induction: 40,
+      gas: 35,
       dryer: 40,
       vacuum: 35,
       microwave: 35,
@@ -271,6 +272,7 @@
       bertazzoni: 5,
       kuppersbusch: 5,
       dedietrich: 5,
+      teka: 0,
       samsung: 0,
       lg: 0,
       other: 0
