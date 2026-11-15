@@ -7,7 +7,7 @@
 <title>Контакты сервиса KLARWERK в Гродно</title>
 <meta name="description" content="Контакты KLARWERK в Гродно. Вызов инженера по ремонту бытовой техники среднего и премиального класса на дому.">
 <meta property="og:title" content="Контакты KLARWERK — ремонт бытовой техники в Гродно">
-<meta property="og:description" content="Два телефона, email, режим работы 8:00–22:00. Выезд по Гродно и пригороду.">
+<meta property="og:description" content="Два телефона, email, режим работы: будни 11:00–20:00, суббота 12:00–20:00, воскресенье 13:00–18:00. Выезд по Гродно и пригороду.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -299,7 +299,7 @@ a.contacts-page__item:hover {
     "telephone": "+375295293644",
     "email": "miele.zentrum.service@gmail.com",
     "areaServed": "Гродно",
-    "openingHours": "Mo-Su 08:00-22:00",
+    "openingHours": ["Mo-Fr 11:00-20:00", "Sa 12:00-20:00", "Su 13:00-18:00"],
     "priceRange": "от 35 BYN"
   }
 }
@@ -357,17 +357,21 @@ a.contacts-page__item:hover {
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "08:00",
-          "closes": "22:00"
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "11:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "12:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "13:00",
+          "closes": "18:00"
         }
       ]
     },
@@ -386,7 +390,7 @@ a.contacts-page__item:hover {
       "@id": "https://www.premium-remont-miele.pro/contacts.html#webpage",
       "url": "https://www.premium-remont-miele.pro/contacts.html",
       "name": "Контакты — вызвать инженера по ремонту бытовой техники в Гродно | KLARWERK",
-      "description": "Контакты KLARWERK: телефоны +375 29 529-36-44 и +375 29 529-36-44, email miele.zentrum.service@gmail.com. Работаем ежедневно с 8:00 до 22:00. Выезд по Гродно и пригороду.",
+      "description": "Контакты KLARWERK: телефоны +375 29 529-36-44 и +375 29 529-36-44, email miele.zentrum.service@gmail.com. Работаем по будням с 11:00 до 20:00, в субботу с 12:00 до 20:00, в воскресенье с 13:00 до 18:00. Выезд по Гродно и пригороду.",
       "inLanguage": "ru-RU",
       "isPartOf": {
         "@id": "https://www.premium-remont-miele.pro/#website"
@@ -451,7 +455,7 @@ a.contacts-page__item:hover {
     </h1>
     <p class="page-hero__lead">
       Позвоните, напишите в мессенджер или оставьте заявку на обратный звонок.
-      Диспетчер ответит с 8:00 до 22:00, без выходных, и сразу назовёт вилку
+      Диспетчер ответит в будни с 11:00 до 20:00, в субботу с 12:00 до 20:00, в воскресенье с 13:00 до 18:00, и сразу назовёт вилку
       стоимости по описанию проблемы.
     </p>
 
@@ -506,8 +510,16 @@ a.contacts-page__item:hover {
           <div class="contacts-page__label">Режим работы</div>
           <div class="contacts-page__list">
             <div class="contacts-page__item">
-              <span class="contacts-page__item-label">Пн — Вс</span>
-              <span class="contacts-page__item-value">8:00 — 22:00</span>
+              <span class="contacts-page__item-label">Пн — Пт</span>
+              <span class="contacts-page__item-value">11:00 — 20:00</span>
+            </div>
+            <div class="contacts-page__item">
+              <span class="contacts-page__item-label">Суббота</span>
+              <span class="contacts-page__item-value">12:00 — 20:00</span>
+            </div>
+            <div class="contacts-page__item">
+              <span class="contacts-page__item-label">Воскресенье</span>
+              <span class="contacts-page__item-value">13:00 — 18:00</span>
             </div>
             <div class="contacts-page__item">
               <span class="contacts-page__item-label">Праздники</span>
@@ -515,7 +527,7 @@ a.contacts-page__item:hover {
             </div>
           </div>
           <p class="contacts-page__note">
-            Экстренные случаи — уточняйте по телефону. Иногда можем приехать и позже 22:00.
+            Выезд вне указанного графика — только по предварительной договорённости.
           </p>
         </div>
 
@@ -647,7 +659,7 @@ a.contacts-page__item:hover {
       </details>
       <details class="faq__item">
         <summary>Работаете ли вы ночью или в праздники?</summary>
-        <p>Основной график — с 8:00 до 22:00, включая выходные и праздники. Экстренные ситуации — уточняйте по телефону, иногда можем приехать и позже.</p>
+        <p>Основной график — по будням с 11:00 до 20:00, в субботу с 12:00 до 20:00, в воскресенье с 13:00 до 18:00. Выезд вне указанного графика — только по предварительной договорённости.</p>
       </details>
     </div>
   </div>
