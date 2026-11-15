@@ -872,11 +872,11 @@ const CASES = {
         <div class="case-card__footer">
           <div>
             <div class="case-card__price-label">Итог</div>
-            <div class="case-card__price">${c.total.toLocaleString('ru-RU')} ₽</div>
+            <div class="case-card__price">${workPrice(c.work)} BYN</div>
           </div>
           <div class="case-card__meta">
-            <div class="case-card__meta-item">Работа: <span>${c.work.toLocaleString('ru-RU')} ₽</span></div>
-            <div class="case-card__meta-item">Запчасть: <span>${c.parts.toLocaleString('ru-RU')} ₽</span></div>
+            <div class="case-card__meta-item">Работа: <span>${workPrice(c.work)} BYN</span></div>
+            <div class="case-card__meta-item">Запчасть: <span>по стоимости детали</span></div>
           </div>
         </div>
       </article>
@@ -884,6 +884,8 @@ const CASES = {
   }
 
   // Рендер кейсов категории
+  const workPrice = (value) => value <= 3500 ? 35 : value <= 5000 ? 40 : 45;
+
   function renderCases() {
     const items = CASES[currentCat].items;
     const slice = items.slice(0, shown);
