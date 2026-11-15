@@ -488,9 +488,6 @@
     } else if (laundryPages.has(page)) {
       image = '/assets/editorial/laundry-service-v2.webp';
       brands = ['Miele', 'ASKO', 'V-ZUG', 'Neff', 'Bosch'];
-    } else if (coldPages.has(page)) {
-      image = '/assets/editorial/refrigeration-service-v2.webp';
-      brands = ['Miele', 'Gaggenau', 'V-ZUG'];
     } else if (cookingPages.has(page)) {
       image = '/assets/editorial/induction-diagnostics.webp';
       brands = ['Miele', 'Gaggenau', 'Neff', 'Smeg', 'BORA'];
@@ -751,12 +748,12 @@
      ИНИЦИАЛИЗАЦИЯ
      ========================================================== */
   function init() {
+    initPreloader();
     initPageHeroEnhancement();
     initHomeServicePromise();
     initTrafficProtection();
     initConversionTracking();
     initProtectedForms();
-    initPreloader();
     initHeaderScroll();
     initBurger();
     initNavContacts();
