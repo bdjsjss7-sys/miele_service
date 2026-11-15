@@ -236,17 +236,48 @@
   function initCalculator() {
     const calcValue = document.getElementById('calcValue');
     if (!calcValue) return;
-    const prices = {
-      coffee:    { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 35, other: 35 },
-      dish:      { miele: 40, neff: 35, gaggenau: 45, smeg: 35, bosch: 35, other: 35 },
-      wash:      { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 35, other: 35 },
-      oven:      { miele: 40, neff: 35, gaggenau: 45, smeg: 35, bosch: 35, other: 35 },
-      induction: { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 40, other: 35 },
+    const basePrices = {
+      coffee: 40,
+      dish: 35,
+      wash: 35,
+      oven: 35,
+      induction: 40,
+      dryer: 40,
+      vacuum: 35,
+      microwave: 35,
+      hood: 35,
+      ironing: 35
+    };
+    const brandAdjustments = {
+      miele: 5,
+      neff: 5,
+      gaggenau: 10,
+      smeg: 5,
+      vzug: 10,
+      bosch: 0,
+      siemens: 0,
+      aeg: 0,
+      electrolux: 0,
+      asko: 5,
+      jura: 5,
+      bora: 10,
+      dyson: 5,
+      laurastar: 5,
+      wolf: 10,
+      franke: 5,
+      bertazzoni: 5,
+      kuppersbusch: 5,
+      dedietrich: 5,
+      samsung: 0,
+      lg: 0,
+      other: 0
     };
     const state = { type: 'coffee', brand: 'miele' };
     const fmt = (n) => 'от ' + n + ' BYN';
     const update = () => {
-      const price = (prices[state.type] && prices[state.type][state.brand]) || 35;
+      const base = basePrices[state.type] || 35;
+      const adjustment = brandAdjustments[state.brand] || 0;
+      const price = base + adjustment;
       calcValue.style.opacity = '0';
       setTimeout(() => {
         calcValue.textContent = fmt(price);
