@@ -175,9 +175,9 @@
       contacts.className = 'nav-contacts';
       contacts.innerHTML =
         '<div class="nav-contacts__label">Позвонить инженеру</div>' +
-        '<a href="tel:+375291087979" class="nav-contacts__phone">+375 29 108-79-79</a>' +
+        '<a href="tel:+375295293644" class="nav-contacts__phone">+375 29 529-36-44</a>' +
         '<div class="nav-contacts__note">Ежедневно, с 8:00 до 22:00</div>' +
-        '<a href="tel:+375291087979" class="nav-contacts__btn">Вызвать инженера</a>';
+        '<a href="tel:+375295293644" class="nav-contacts__btn">Вызвать инженера</a>';
       nav.appendChild(contacts);
     }
   }
@@ -649,7 +649,7 @@
         let attempts = safeStorageGet('kw_form_attempts', []);
         attempts = attempts.filter((time) => now - time < 15 * 60 * 1000);
         if (attempts.length >= 3) {
-          setStatus('Мы уже получили несколько обращений. Позвоните по <a href="tel:+375291087979">+375 29 108-79-79</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          setStatus('Мы уже получили несколько обращений. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
           return;
         }
 
@@ -703,7 +703,7 @@
             traffic_quality: traffic.suspicious ? 'suspected_repeat_click' : 'normal'
           });
         } catch (_) {
-          setStatus('Не удалось отправить форму. Позвоните по <a href="tel:+375291087979">+375 29 108-79-79</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          setStatus('Не удалось отправить форму. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
           metrikaGoal('form_error', { page: location.pathname });
         } finally {
           if (button) {
