@@ -54,13 +54,6 @@
       { title: 'Ошибка на дисплее', price: 'от 45 BYN', article: 'Диагностика электроники. У Neff TwistPad — проверим пульт управления, у Miele — сенсорную панель. При сбое — замена модуля или ремонт платы.' },
       { title: 'Выбивает пробки при включении', price: 'от 45 BYN', article: 'Пробой индуктора или короткое замыкание в плате. Диагностируем изоляцию, проверяем силовые ключи. Опасно эксплуатировать — вызывайте инженера.' }
     ],
-    fridge: [
-      { title: 'Не морозит / слабо морозит', price: 'от 45 BYN', article: 'Утечка фреона, износ компрессора или засор капилляра. У премиум-моделей Miele — двойной контур охлаждения. Диагностируем давление, ищем утечку, заправляем фреон.' },
-      { title: 'Течёт вода внутри', price: 'от 45 BYN', article: 'Засор дренажа или проблема с системой No Frost. У Miele с PerfectFresh — отдельный дренаж для зоны свежести. Чистим, проверяем систему оттайки.' },
-      { title: 'Шумит / гудит', price: 'от 45 BYN', article: 'Износ компрессора или вентилятора No Frost. Проверяем оба, при износе меняем. У Miele компрессоры с инверторным управлением — точная диагностика.' },
-      { title: 'Намерзает лёд / снег', price: 'от 45 BYN', article: 'Сбой системы No Frost — неисправен ТЭН оттайки, таймер или датчик. Диагностируем, меняем неисправный узел. Профилактика — не ставить горячее, следить за уплотнителем.' },
-      { title: 'Ошибка на дисплее', price: 'от 45 BYN', article: 'Электроника Miele с самодиагностикой. Считываем коды, диагностируем плату, датчики температуры, систему управления. Меняем неисправные модули.' }
-    ],
     vacuum: [
       { title: 'Не включается', price: 'от 35 BYN', article: 'У Miele — проблема с кнопкой или платой. У Dyson — износ аккумулятора. Проверяем питание, батарею, кнопку. Меняем неисправный узел.' },
       { title: 'Потерял мощность / слабо сосёт', price: 'от 35 BYN', article: 'Засор фильтров, износ турбины или проблема с мотором. Чистим систему, проверяем щётки двигателя. У Dyson V — износ аккумулятора теряет мощность.' },
@@ -249,7 +242,6 @@
       wash:      { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 35, other: 35 },
       oven:      { miele: 40, neff: 35, gaggenau: 45, smeg: 35, bosch: 35, other: 35 },
       induction: { miele: 45, neff: 40, gaggenau: 45, smeg: 40, bosch: 40, other: 35 },
-      fridge:    { miele: 45, neff: 45, gaggenau: 45, smeg: 45, bosch: 40, other: 40 }
     };
     const state = { type: 'coffee', brand: 'miele' };
     const fmt = (n) => 'от ' + n + ' BYN';
@@ -448,12 +440,11 @@
       'washing-machines.html', 'dishwashers.html', 'dryers.html',
       'ironing-stations.html', 'vacuum-cleaners.html'
     ]);
-    const coldPages = new Set(['fridges.html']);
     const cookingPages = new Set(['ovens.html', 'induction.html', 'microwaves.html', 'hoods.html']);
     const brandPages = new Set(['miele.html', 'neff.html', 'gaggenau.html', 'smeg.html', 'bosch.html', 'siemens.html']);
 
     let image = '/assets/editorial/control-board-diagnostics.webp';
-    let brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'];
+    let brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO'];
 
     if (coffeePages.has(page)) {
       image = '/assets/editorial/coffee-service-v2.webp';
@@ -463,14 +454,14 @@
       brands = ['Miele', 'ASKO', 'V-ZUG', 'Neff', 'Bosch'];
     } else if (coldPages.has(page)) {
       image = '/assets/editorial/refrigeration-service-v2.webp';
-      brands = ['Liebherr', 'Miele', 'Sub-Zero', 'Gaggenau', 'V-ZUG'];
+      brands = ['Miele', 'Gaggenau', 'V-ZUG'];
     } else if (cookingPages.has(page)) {
       image = '/assets/editorial/induction-diagnostics.webp';
       brands = ['Miele', 'Gaggenau', 'Neff', 'Smeg', 'BORA'];
     } else if (brandPages.has(page)) {
       image = '/assets/editorial/control-board-diagnostics.webp';
       const title = (document.querySelector('.page-hero__title')?.textContent || '').toLowerCase();
-      brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO', 'Sub-Zero'].filter((brand, index) =>
+      brands = ['Miele', 'Gaggenau', 'V-ZUG', 'ASKO'].filter((brand, index) =>
         index === 0 || !title.includes(brand.toLowerCase())
       );
     }
