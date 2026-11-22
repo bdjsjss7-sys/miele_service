@@ -169,7 +169,7 @@
       contacts.innerHTML =
         '<div class="nav-contacts__label">Позвонить инженеру</div>' +
         '<a href="tel:+375295293644" class="nav-contacts__phone">+375 29 529-36-44</a>' +
-        '<div class="nav-contacts__note">Ежедневно, с 8:00 до 22:00</div>' +
+        '<div class="nav-contacts__note">Пн–пт 11:00–20:00 · Сб 12:00–20:00 · Вс 13:00–18:00</div>' +
         '<a href="tel:+375295293644" class="nav-contacts__btn">Вызвать инженера</a>';
       nav.appendChild(contacts);
     }
@@ -191,12 +191,12 @@
         const eased = 1 - Math.pow(1 - p, 3);
         
         const currentVal = Math.floor(eased * target);
-        el.textContent = currentVal.toLocaleString('ru-RU') + suffix;
+        el.textContent = currentVal.toLocaleString('ru-BY') + suffix;
         
         if (p < 1) {
           requestAnimationFrame(tick);
         } else {
-          el.textContent = target.toLocaleString('ru-RU') + suffix;
+          el.textContent = target.toLocaleString('ru-BY') + suffix;
         }
       };
       requestAnimationFrame(tick);
