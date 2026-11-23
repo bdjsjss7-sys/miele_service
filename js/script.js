@@ -604,8 +604,6 @@
       if (link) {
         const href = link.getAttribute('href') || '';
         if (href.startsWith('tel:')) metrikaGoal('phone_click', { href });
-        if (href.includes('t.me/klarwerk_spb')) metrikaGoal('telegram_click', { page: location.pathname });
-        if (href.includes('instagram.com/klarwerk_spb')) metrikaGoal('instagram_click', { page: location.pathname });
       }
 
       const calcButton = event.target.closest('.calc__option, [data-group]');
@@ -677,7 +675,7 @@
         let attempts = safeStorageGet('kw_form_attempts', []);
         attempts = attempts.filter((time) => now - time < 15 * 60 * 1000);
         if (attempts.length >= 3) {
-          setStatus('Мы уже получили несколько обращений. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          setStatus('Мы уже получили несколько обращений. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a>.', 'error');
           return;
         }
 
@@ -731,7 +729,7 @@
             traffic_quality: traffic.suspicious ? 'suspected_repeat_click' : 'normal'
           });
         } catch (_) {
-          setStatus('Не удалось отправить форму. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a> или напишите в <a href="https://t.me/klarwerk_spb" target="_blank" rel="noopener">Telegram</a>.', 'error');
+          setStatus('Не удалось отправить форму. Позвоните по <a href="tel:+375295293644">+375 29 529-36-44</a>.', 'error');
           metrikaGoal('form_error', { page: location.pathname });
         } finally {
           if (button) {
